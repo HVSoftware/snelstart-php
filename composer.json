@@ -31,12 +31,6 @@
         "phpunit/phpunit": "^8.4",
         "vimeo/psalm": "^4.0"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/HVSoftware/snelstart-php"
-        }
-    ],
     "suggest": {
         "psr/cache": "Caching made a little easier. Useful for access tokens."
     },
