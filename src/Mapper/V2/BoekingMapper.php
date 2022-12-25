@@ -1,7 +1,7 @@
 <?php
 /**
- * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
- * @project SnelstartApiPHP
+ * @author     IntoWebDevelopment <info@intowebdevelopment.nl>
+ * @project    SnelstartApiPHP
  * @deprecated
  */
 
@@ -225,37 +225,45 @@ final class BoekingMapper extends AbstractMapper
         }
 
         if (isset($data["boekingsregels"])) {
-            $boeking->setBoekingsregels(...array_map(function(array $boekingsregel): Model\Boekingsregel {
-                $boekingsregelObject = (new Model\Boekingsregel())
-                    ->setBedrag($this->getMoney($boekingsregel["bedrag"]))
-                    ->setBtwSoort(new Type\BtwSoort($boekingsregel["btwSoort"]));
+            $boeking->setBoekingsregels(
+                ...array_map(
+                    function (array $boekingsregel): Model\Boekingsregel {
+                        $boekingsregelObject = (new Model\Boekingsregel())
+                            ->setBedrag($this->getMoney($boekingsregel["bedrag"]))
+                            ->setBtwSoort(new Type\BtwSoort($boekingsregel["btwSoort"]));
 
-                if (isset($boekingsregel["omschrijving"])) {
-                    $boekingsregelObject->setOmschrijving($boekingsregel["omschrijving"]);
-                }
+                        if (isset($boekingsregel["omschrijving"])) {
+                            $boekingsregelObject->setOmschrijving($boekingsregel["omschrijving"]);
+                        }
 
-                if (isset($boekingsregel["grootboek"])) {
-                    $boekingsregelObject
-                        ->setGrootboek(Model\Grootboek::createFromUUID(Uuid::fromString($boekingsregel["grootboek"]["id"])));
-                }
+                        if (isset($boekingsregel["grootboek"])) {
+                            $boekingsregelObject
+                            ->setGrootboek(Model\Grootboek::createFromUUID(Uuid::fromString($boekingsregel["grootboek"]["id"])));
+                        }
 
-                if (isset($boekingsregel["kostenplaats"])) {
-                    $boekingsregelObject->setKostenplaats(
-                        Kostenplaats::createFromUUID(Uuid::fromString($boekingsregel["kostenplaats"]["id"]))
-                    );
-                }
+                        if (isset($boekingsregel["kostenplaats"])) {
+                            $boekingsregelObject->setKostenplaats(
+                                Kostenplaats::createFromUUID(Uuid::fromString($boekingsregel["kostenplaats"]["id"]))
+                            );
+                        }
 
-                return $boekingsregelObject;
-            }, $data["boekingsregels"]));
+                        return $boekingsregelObject;
+                    }, $data["boekingsregels"]
+                )
+            );
         }
 
         if (isset($data["btw"])) {
-            $boeking->setBtw(...array_map(function(array $btw): Model\Btwregel {
-                return new Model\Btwregel(
-                    new Type\BtwRegelSoort($btw["btwSoort"]),
-                    $this->getMoney($btw["btwBedrag"])
-                );
-            }, $data["btw"]));
+            $boeking->setBtw(
+                ...array_map(
+                    function (array $btw): Model\Btwregel {
+                        return new Model\Btwregel(
+                            new Type\BtwRegelSoort($btw["btwSoort"]),
+                            $this->getMoney($btw["btwBedrag"])
+                        );
+                    }, $data["btw"]
+                )
+            );
         }
 
         if (isset($data["documents"])) {

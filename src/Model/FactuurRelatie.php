@@ -37,7 +37,7 @@ final class FactuurRelatie extends BaseObject
     }
 
     /**
-     * @param UuidInterface $id
+     * @param  UuidInterface $id
      * @return FactuurRelatie
      */
     public function setId(UuidInterface $id): FactuurRelatie
@@ -56,7 +56,7 @@ final class FactuurRelatie extends BaseObject
     }
 
     /**
-     * @param string $uri
+     * @param  string $uri
      * @return FactuurRelatie
      */
     public function setUri(string $uri): FactuurRelatie

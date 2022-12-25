@@ -23,7 +23,9 @@ final class DoorlopendeIncassoMachtigingMapper extends AbstractMapper
     private function mapResultToDoorlopendeIncassoMachtiging(DoorlopendeIncassoMachtiging $doorlopendeIncassoMachtiging, array $data = []): DoorlopendeIncassoMachtiging
     {
         $data = empty($data) ? $this->responseData : $data;
-        /** @var DoorlopendeIncassoMachtiging $object */
+        /**
+ * @var DoorlopendeIncassoMachtiging $object 
+*/
         $object = $this->mapArrayDataToModel($doorlopendeIncassoMachtiging, $data);
 
         if (isset($data["afsluitDatum"])) {

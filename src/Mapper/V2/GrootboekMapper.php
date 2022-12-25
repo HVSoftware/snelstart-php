@@ -1,7 +1,7 @@
 <?php
 /**
- * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
- * @project SnelstartApiPHP
+ * @author     IntoWebDevelopment <info@intowebdevelopment.nl>
+ * @project    SnelstartApiPHP
  * @deprecated
  */
 
@@ -46,9 +46,13 @@ final class GrootboekMapper extends AbstractMapper
         }
 
         if (isset($data["rgsCode"])) {
-            $grootboek->setRgsCode(... \array_map(static function(array $rgsCode) {
-                return new Model\RgsCode($rgsCode["versie"], $rgsCode["rgsCode"]);
-            }, $data["rgsCode"]));
+            $grootboek->setRgsCode(
+                ... \array_map(
+                    static function (array $rgsCode) {
+                        return new Model\RgsCode($rgsCode["versie"], $rgsCode["rgsCode"]);
+                    }, $data["rgsCode"]
+                )
+            );
         }
 
         return $grootboek;

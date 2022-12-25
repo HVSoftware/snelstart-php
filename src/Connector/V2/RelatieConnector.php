@@ -66,7 +66,7 @@ final class RelatieConnector extends BaseConnector
     }
 
     /**
-     * @return Model\Relatie[]
+     * @return       Model\Relatie[]
      * @psalm-return iterable<int, Model\Relatie>
      */
     public function findAllLeveranciers(?ODataRequestDataInterface $ODataRequestData = null, bool $fetchAll = false, ?iterable $previousResults = null): iterable
@@ -74,9 +74,11 @@ final class RelatieConnector extends BaseConnector
         $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
 
         if (\method_exists($ODataRequestData, "setFilter")) {
-            $ODataRequestData->setFilter(\array_merge(
-                $ODataRequestData->getFilter(),
-                [ sprintf("Relatiesoort/any(soort:soort eq '%s')", Relatiesoort::LEVERANCIER()->getValue()) ])
+            $ODataRequestData->setFilter(
+                \array_merge(
+                    $ODataRequestData->getFilter(),
+                    [ sprintf("Relatiesoort/any(soort:soort eq '%s')", Relatiesoort::LEVERANCIER()->getValue()) ]
+                )
             );
         }
 
@@ -84,7 +86,7 @@ final class RelatieConnector extends BaseConnector
     }
 
     /**
-     * @return Model\Relatie[]|iterable
+     * @return       Model\Relatie[]|iterable
      * @psalm-return iterable<int, Model\Relatie>
      */
     public function findAllKlanten(?ODataRequestDataInterface $ODataRequestData = null, bool $fetchAll = false, ?iterable $previousResults = null): iterable
@@ -92,9 +94,11 @@ final class RelatieConnector extends BaseConnector
         $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
 
         if (\method_exists($ODataRequestData, "setFilter")) {
-            $ODataRequestData->setFilter(\array_merge(
-                $ODataRequestData->getFilter(),
-                [ sprintf("Relatiesoort/any(soort:soort eq '%s')", Relatiesoort::KLANT()->getValue()) ])
+            $ODataRequestData->setFilter(
+                \array_merge(
+                    $ODataRequestData->getFilter(),
+                    [ sprintf("Relatiesoort/any(soort:soort eq '%s')", Relatiesoort::KLANT()->getValue()) ]
+                )
             );
         }
 

@@ -37,14 +37,16 @@ final class AccessTokenConnection implements ConnectionInterface
     public function __construct(BearerTokenInterface $bearerToken, ?ClientInterface $client = null, ?LoggerInterface $logger = null)
     {
         $this->bearerToken = $bearerToken;
-        $this->client = $client ?? new Client([
+        $this->client = $client ?? new Client(
+            [
             "base_uri"  =>  self::getEndpoint(),
-        ]);
+            ]
+        );
         $this->logger = $logger;
     }
 
     /**
-     * @param RequestInterface $request
+     * @param  RequestInterface $request
      * @return \Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
@@ -70,9 +72,11 @@ final class AccessTokenConnection implements ConnectionInterface
             $this->logger->debug(sprintf("[AccessToken] Trying to obtain an access token with token type '%s'", get_class($this->bearerToken)));
         }
 
-        $request = new Request("POST", static::getEndpoint() . "token", [
+        $request = new Request(
+            "POST", static::getEndpoint() . "token", [
             "Content-Type"      =>  "application/x-www-form-urlencoded",
-        ], http_build_query($this->bearerToken->getFormParams()));
+            ], http_build_query($this->bearerToken->getFormParams())
+        );
 
         $response = $this->doRequest($request);
 

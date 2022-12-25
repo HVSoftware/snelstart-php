@@ -38,7 +38,7 @@ final class Land extends SnelstartObject
     }
 
     /**
-     * @param string $naam
+     * @param  string $naam
      * @return Land
      */
     public function setNaam(string $naam): self
@@ -57,7 +57,7 @@ final class Land extends SnelstartObject
     }
 
     /**
-     * @param string $landcodeISO
+     * @param  string $landcodeISO
      * @return Land
      */
     public function setLandcodeISO(string $landcodeISO): self
@@ -76,7 +76,7 @@ final class Land extends SnelstartObject
     }
 
     /**
-     * @param string $landcode
+     * @param  string $landcode
      * @return Land
      */
     public function setLandcode(string $landcode): self

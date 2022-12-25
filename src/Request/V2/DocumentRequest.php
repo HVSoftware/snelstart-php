@@ -58,9 +58,11 @@ final class DocumentRequest extends BaseRequest
             throw PreValidationException::shouldHaveAnIdException();
         }
 
-        return new Request("PUT", "documenten/" . $document->getId()->toString(), [
+        return new Request(
+            "PUT", "documenten/" . $document->getId()->toString(), [
             "Content-Type"  =>  "application/json",
-        ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($document)));
+            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($document))
+        );
     }
 
     public function deleteDocument(Document $document): RequestInterface
@@ -74,8 +76,10 @@ final class DocumentRequest extends BaseRequest
 
     protected function fromDocumentType(Document $document, DocumentType $documentType): RequestInterface
     {
-        return new Request("POST", sprintf("documenten/%s", $documentType->getValue()), [
+        return new Request(
+            "POST", sprintf("documenten/%s", $documentType->getValue()), [
             "Content-Type" =>   "application/json",
-        ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($document)));
+            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($document))
+        );
     }
 }

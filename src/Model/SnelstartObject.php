@@ -24,7 +24,9 @@ abstract class SnelstartObject extends BaseObject
      */
     protected $uri;
 
-    final public function __construct() {}
+    final public function __construct()
+    {
+    }
 
     public static $editableAttributes = [
         "id"
@@ -69,7 +71,9 @@ abstract class SnelstartObject extends BaseObject
 
         foreach (static::getEditableAttributes() as $editableAttribute) {
             try {
-                /** @psalm-suppress RedundantCondition */
+                /**
+ * @psalm-suppress RedundantCondition 
+*/
                 if ($editableAttribute !== "id" && $editableAttribute !== "url" && !$hydrated) {
                     $possibleMethodNames = [ "get{$editableAttribute}", $editableAttribute ];
 

@@ -16,9 +16,11 @@ final class VerkooporderRequest extends BaseRequest
 {
     public function add(Verkooporder $verkooporder): RequestInterface
     {
-        return new Request("POST", "verkooporders", [
+        return new Request(
+            "POST", "verkooporders", [
             "Content-Type"  =>  "application/json"
-        ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($verkooporder)));
+            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($verkooporder))
+        );
     }
 
     public function delete(Verkooporder $verkooporder): RequestInterface

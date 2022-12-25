@@ -47,7 +47,7 @@ final class IncassoMachtiging extends SnelstartObject
     }
 
     /**
-     * @param string $kenmerk
+     * @param  string $kenmerk
      * @return IncassoMachtiging
      */
     public function setKenmerk(string $kenmerk): IncassoMachtiging
@@ -66,7 +66,7 @@ final class IncassoMachtiging extends SnelstartObject
     }
 
     /**
-     * @param string $omschrijving
+     * @param  string $omschrijving
      * @return IncassoMachtiging
      */
     public function setOmschrijving(string $omschrijving): IncassoMachtiging
@@ -85,7 +85,7 @@ final class IncassoMachtiging extends SnelstartObject
     }
 
     /**
-     * @param \DateTimeInterface $datum
+     * @param  \DateTimeInterface $datum
      * @return IncassoMachtiging
      */
     public function setDatum(\DateTimeInterface $datum): IncassoMachtiging

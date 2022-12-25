@@ -2,7 +2,7 @@
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
- * @see https://b2bapi-developer.snelstart.nl/odata
+ * @see     https://b2bapi-developer.snelstart.nl/odata
  */
 
 namespace SnelstartPHP\Request;

@@ -68,9 +68,10 @@ final class ArtikelMapper extends AbstractMapper
         }
 
         foreach ($data["subartikelen"] ?? [] as $subArtikel) {
-            $artikel->addSubArtikel(SubArtikel::createFromUUID($subArtikel["id"])
-                ->setAantal($subArtikel["aantal"])
-                ->setArtikelcode($subArtikel["artikelcode"])
+            $artikel->addSubArtikel(
+                SubArtikel::createFromUUID($subArtikel["id"])
+                    ->setAantal($subArtikel["aantal"])
+                    ->setArtikelcode($subArtikel["artikelcode"])
             );
         }
 
@@ -96,8 +97,7 @@ final class ArtikelMapper extends AbstractMapper
             ->setBasisprijs($this->getMoney($data["basisprijs"]))
             ->setDatumVanaf($data["datumVanaf"] !== null ? new \DateTimeImmutable($data["datumVanaf"]) : null)
             ->setDatumTotEnMet($data["datumTotEnMet"] !== null ? new \DateTimeImmutable($data["datumTotEnMet"]) : null)
-            ->setPrijsBepalingSoort(new PrijsBepalingSoort($data["prijsBepalingSoort"]))
-        ;
+            ->setPrijsBepalingSoort(new PrijsBepalingSoort($data["prijsBepalingSoort"]));
     }
 
     /**

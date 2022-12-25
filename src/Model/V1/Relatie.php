@@ -1,7 +1,7 @@
 <?php
 /**
- * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
- * @project SnelstartApiPHP
+ * @author     IntoWebDevelopment <info@intowebdevelopment.nl>
+ * @project    SnelstartApiPHP
  * @deprecated
  */
 
@@ -246,7 +246,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param \DateTimeInterface|null $modifiedOn
+     * @param  \DateTimeInterface|null $modifiedOn
      * @return Relatie
      */
     public function setModifiedOn(?\DateTimeInterface $modifiedOn): self
@@ -265,7 +265,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param array $relatiesoort
+     * @param  array $relatiesoort
      * @return Relatie
      */
     public function setRelatiesoort(array $relatiesoort): self
@@ -284,7 +284,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param int $relatiecode
+     * @param  int $relatiecode
      * @return Relatie
      */
     public function setRelatiecode(?int $relatiecode): self
@@ -366,7 +366,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param null|string $email
+     * @param  null|string $email
      * @return Relatie
      */
     public function setEmail(?string $email): self
@@ -385,7 +385,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param null|string $btwNummer
+     * @param  null|string $btwNummer
      * @return Relatie
      */
     public function setBtwNummer(?string $btwNummer): self
@@ -404,7 +404,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param Money|null $factuurkorting
+     * @param  Money|null $factuurkorting
      * @return Relatie
      */
     public function setFactuurkorting(?Money $factuurkorting): self
@@ -423,7 +423,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param int $krediettermijn
+     * @param  int $krediettermijn
      * @return Relatie
      */
     public function setKrediettermijn(?int $krediettermijn): self
@@ -442,7 +442,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param bool $bankieren
+     * @param  bool $bankieren
      * @return Relatie
      */
     public function setBankieren(bool $bankieren): self
@@ -461,7 +461,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param bool $nonactief
+     * @param  bool $nonactief
      * @return Relatie
      */
     public function setNonactief(bool $nonactief): self
@@ -480,7 +480,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param Money|null $kredietLimiet
+     * @param  Money|null $kredietLimiet
      * @return Relatie
      */
     public function setKredietLimiet(?Money $kredietLimiet): self
@@ -499,7 +499,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param null|string $memo
+     * @param  null|string $memo
      * @return Relatie
      */
     public function setMemo(?string $memo): self
@@ -518,7 +518,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param null|string $kvkNummer
+     * @param  null|string $kvkNummer
      * @return Relatie
      */
     public function setKvkNummer(?string $kvkNummer): self
@@ -537,7 +537,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param null|string $websiteUrl
+     * @param  null|string $websiteUrl
      * @return Relatie
      */
     public function setWebsiteUrl(?string $websiteUrl): self
@@ -556,7 +556,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param null|Types\Aanmaningsoort $aanmaningsoort
+     * @param  null|Types\Aanmaningsoort $aanmaningsoort
      * @return Relatie
      */
     public function setAanmaningsoort(?Types\Aanmaningsoort $aanmaningsoort): self
@@ -575,7 +575,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param EmailVersturen $offerteEmailVersturen
+     * @param  EmailVersturen $offerteEmailVersturen
      * @return Relatie
      */
     public function setOfferteEmailVersturen(EmailVersturen $offerteEmailVersturen): self
@@ -594,7 +594,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param EmailVersturen $bevestigingsEmailVersturen
+     * @param  EmailVersturen $bevestigingsEmailVersturen
      * @return Relatie
      */
     public function setBevestigingsEmailVersturen(EmailVersturen $bevestigingsEmailVersturen): self
@@ -613,7 +613,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param EmailVersturen $factuurEmailVersturen
+     * @param  EmailVersturen $factuurEmailVersturen
      * @return Relatie
      */
     public function setFactuurEmailVersturen(EmailVersturen $factuurEmailVersturen): self
@@ -632,7 +632,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param EmailVersturen $aanmaningEmailVersturen
+     * @param  EmailVersturen $aanmaningEmailVersturen
      * @return Relatie
      */
     public function setAanmaningEmailVersturen(EmailVersturen $aanmaningEmailVersturen): self
@@ -651,7 +651,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param bool $ublBestandAlsBijlage
+     * @param  bool $ublBestandAlsBijlage
      * @return Relatie
      */
     public function setUblBestandAlsBijlage(bool $ublBestandAlsBijlage): self
@@ -670,7 +670,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param null|string $iban
+     * @param  null|string $iban
      * @return Relatie
      */
     public function setIban(?string $iban): self
@@ -689,7 +689,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param null|string $bic
+     * @param  null|string $bic
      * @return Relatie
      */
     public function setBic(?string $bic): self
@@ -708,7 +708,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param null|Types\Incassosoort $incassoSoort
+     * @param  null|Types\Incassosoort $incassoSoort
      * @return Relatie
      */
     public function setIncassoSoort(?Types\Incassosoort $incassoSoort): self
@@ -727,7 +727,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param null|string $inkoopBoekingenUri
+     * @param  null|string $inkoopBoekingenUri
      * @return Relatie
      */
     public function setInkoopBoekingenUri(?string $inkoopBoekingenUri): self
@@ -746,7 +746,7 @@ final class Relatie extends SnelstartObject
     }
 
     /**
-     * @param null|string $verkoopBoekingenUri
+     * @param  null|string $verkoopBoekingenUri
      * @return Relatie
      */
     public function setVerkoopBoekingenUri(?string $verkoopBoekingenUri): self

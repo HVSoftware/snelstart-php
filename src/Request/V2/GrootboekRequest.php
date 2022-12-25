@@ -1,7 +1,7 @@
 <?php
 /**
- * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
- * @project SnelstartApiPHP
+ * @author     IntoWebDevelopment <info@intowebdevelopment.nl>
+ * @project    SnelstartApiPHP
  * @deprecated
  */
 
@@ -29,9 +29,11 @@ final class GrootboekRequest extends BaseRequest
 
     public function add(Model\Grootboek $grootboek): RequestInterface
     {
-        return new Request("POST", "grootboeken", [
+        return new Request(
+            "POST", "grootboeken", [
             "Content-Type"  =>  "application/json"
-        ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($grootboek)));
+            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($grootboek))
+        );
     }
 
     public function update(Model\Grootboek $grootboek): RequestInterface
@@ -40,8 +42,10 @@ final class GrootboekRequest extends BaseRequest
             throw PreValidationException::shouldHaveAnIdException();
         }
 
-        return new Request("PUT", "grootboeken/" . $grootboek->getId()->toString(), [
+        return new Request(
+            "PUT", "grootboeken/" . $grootboek->getId()->toString(), [
             "Content-Type"  =>  "application/json"
-        ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($grootboek)));
+            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($grootboek))
+        );
     }
 }

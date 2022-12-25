@@ -33,9 +33,11 @@ final class RelatieRequest extends BaseRequest
 
     public function add(Model\Relatie $relatie): RequestInterface
     {
-        return new Request("POST", "relaties", [
+        return new Request(
+            "POST", "relaties", [
             "Content-Type"  =>  "application/json"
-        ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($relatie)));
+            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($relatie))
+        );
     }
 
     public function update(Model\Relatie $relatie): RequestInterface
@@ -44,8 +46,10 @@ final class RelatieRequest extends BaseRequest
             throw PreValidationException::shouldHaveAnIdException();
         }
 
-        return new Request("PUT", "relaties/" . $relatie->getId()->toString(), [
+        return new Request(
+            "PUT", "relaties/" . $relatie->getId()->toString(), [
             "Content-Type"  =>  "application/json"
-        ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($relatie)));
+            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($relatie))
+        );
     }
 }

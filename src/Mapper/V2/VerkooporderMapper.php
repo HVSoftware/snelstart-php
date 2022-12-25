@@ -45,7 +45,7 @@ final class VerkooporderMapper extends AbstractMapper
          */
         $verkooporder = $this->mapArrayDataToModel($verkooporder, $data);
         $verkooporder->setRelatie(Relatie::createFromUUID(Uuid::fromString($data["relatie"]["id"])))
-                     ->setProcesStatus(new ProcesStatus($data["procesStatus"]));
+            ->setProcesStatus(new ProcesStatus($data["procesStatus"]));
 
         if ($data["incassomachtiging"] !== null) {
             $verkooporder->setIncassomachtiging(IncassoMachtiging::createFromUUID(Uuid::fromString($data["incassomachtiging"]["id"])));
@@ -63,16 +63,17 @@ final class VerkooporderMapper extends AbstractMapper
             $verkooporder->setKostenplaats(Kostenplaats::createFromUUID(Uuid::fromString($data["kostenplaats"]["id"])));
         }
 
-        $regels = array_map(function(array $data) {
-            return (new VerkooporderRegel())
-                ->setArtikel(Artikel::createFromUUID(Uuid::fromString($data["artikel"]["id"])))
-                ->setOmschrijving($data["omschrijving"])
-                ->setStuksprijs($this->getMoney($data["stuksprijs"]))
-                ->setAantal($data["aantal"])
-                ->setKortingsPercentage($data["kortingsPercentage"])
-                ->setTotaal($this->getMoney($data["totaal"]))
-            ;
-        }, $data["regels"]);
+        $regels = array_map(
+            function (array $data) {
+                return (new VerkooporderRegel())
+                    ->setArtikel(Artikel::createFromUUID(Uuid::fromString($data["artikel"]["id"])))
+                    ->setOmschrijving($data["omschrijving"])
+                    ->setStuksprijs($this->getMoney($data["stuksprijs"]))
+                    ->setAantal($data["aantal"])
+                    ->setKortingsPercentage($data["kortingsPercentage"])
+                    ->setTotaal($this->getMoney($data["totaal"]));
+            }, $data["regels"]
+        );
 
         $verkooporder->setRegels(...$regels);
 

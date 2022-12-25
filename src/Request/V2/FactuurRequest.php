@@ -17,23 +17,29 @@ final class FactuurRequest
             throw PreValidationException::shouldHaveAnIdException();
         }
 
-        return new Request("GET", "inkoopfacturen/" . $inkoopfactuur->getId()->toString(), [
+        return new Request(
+            "GET", "inkoopfacturen/" . $inkoopfactuur->getId()->toString(), [
             "Content-Type"  =>  "application/json",
-        ]);
+            ]
+        );
     }
 
     public function findInkoopfacturen(ODataRequestDataInterface $ODataRequestData): RequestInterface
     {
-        return new Request("GET", "inkoopfacturen?" . $ODataRequestData->getHttpCompatibleQueryString(), [
+        return new Request(
+            "GET", "inkoopfacturen?" . $ODataRequestData->getHttpCompatibleQueryString(), [
             "Content-Type"  =>  "application/json"
-        ]);
+            ]
+        );
     }
 
     public function findVerkoopfacturen(ODataRequestDataInterface $ODataRequestData): RequestInterface
     {
-        return new Request("GET", "verkoopfacturen?" . $ODataRequestData->getHttpCompatibleQueryString(), [
+        return new Request(
+            "GET", "verkoopfacturen?" . $ODataRequestData->getHttpCompatibleQueryString(), [
             "Content-Type"  =>  "application/json"
-        ]);
+            ]
+        );
     }
 
     public function findVerkoopfactuur(Verkoopfactuur $verkoopfactuur): RequestInterface
@@ -42,9 +48,11 @@ final class FactuurRequest
             throw PreValidationException::shouldHaveAnIdException();
         }
 
-        return new Request("GET", "verkoopfacturen/" . $verkoopfactuur->getId()->toString(), [
+        return new Request(
+            "GET", "verkoopfacturen/" . $verkoopfactuur->getId()->toString(), [
             "Content-Type"  =>  "application/json",
-        ]);
+            ]
+        );
     }
 
     public function getUBLForVerkoopfactuur(Verkoopfactuur $verkoopfactuur): RequestInterface

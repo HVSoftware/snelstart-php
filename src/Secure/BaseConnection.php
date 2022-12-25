@@ -94,10 +94,12 @@ abstract class BaseConnection implements ConnectionInterface
             $this->numRetries++;
 
             if ($this->logger !== null) {
-                $this->logger->debug("[Connection] About to send a request with the following specs", [
+                $this->logger->debug(
+                    "[Connection] About to send a request with the following specs", [
                     "method"    =>  $request->getMethod(),
                     "uri"       =>  (string) $request->getUri(),
-                ]);
+                    ]
+                );
             }
 
             $response = $client->send($request);
@@ -118,9 +120,11 @@ abstract class BaseConnection implements ConnectionInterface
                 }
 
                 if ($this->logger !== null) {
-                    $this->logger->error("[Connection] " . $jsonBody, [
+                    $this->logger->error(
+                        "[Connection] " . $jsonBody, [
                         "exception" =>  $clientException
-                    ]);
+                        ]
+                    );
                 }
 
                 throw SnelstartApiErrorException::handleError($body);
@@ -195,10 +199,12 @@ abstract class BaseConnection implements ConnectionInterface
     protected function getClient(): ClientInterface
     {
         if ($this->client === null) {
-            $this->client = new Client([
+            $this->client = new Client(
+                [
                 'base_uri'  =>  static::getEndpoint(),
                 'timeout'   =>  60,
-            ]);
+                ]
+            );
         }
 
         return $this->client;

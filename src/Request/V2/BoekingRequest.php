@@ -23,9 +23,11 @@ final class BoekingRequest extends BaseRequest
 
     public function addInkoopboeking(Model\Inkoopboeking $inkoopboeking): RequestInterface
     {
-        return new Request("POST", "inkoopboekingen", [
+        return new Request(
+            "POST", "inkoopboekingen", [
             "Content-Type"  =>  "application/json"
-        ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($inkoopboeking)));
+            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($inkoopboeking))
+        );
     }
 
     public function updateInkoopboeking(Model\Inkoopboeking $inkoopboeking): RequestInterface
@@ -34,16 +36,20 @@ final class BoekingRequest extends BaseRequest
             throw PreValidationException::shouldHaveAnIdException();
         }
 
-        return new Request("PUT", "inkoopboekingen/" . $inkoopboeking->getId()->toString(), [
+        return new Request(
+            "PUT", "inkoopboekingen/" . $inkoopboeking->getId()->toString(), [
             "Content-Type"  =>  "application/json"
-        ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($inkoopboeking)));
+            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($inkoopboeking))
+        );
     }
 
     public function addVerkoopboeking(Model\Verkoopboeking $verkoopboeking): RequestInterface
     {
-        return new Request("POST", "verkoopboekingen", [
+        return new Request(
+            "POST", "verkoopboekingen", [
             "Content-Type"  =>  "application/json"
-        ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($verkoopboeking)));
+            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($verkoopboeking))
+        );
     }
 
     public function updateVerkoopboeking(Model\Verkoopboeking $verkoopboeking): RequestInterface
@@ -52,9 +58,11 @@ final class BoekingRequest extends BaseRequest
             throw PreValidationException::shouldHaveAnIdException();
         }
 
-        return new Request("PUT", "verkoopboekingen/" . $verkoopboeking->getId()->toString(), [
+        return new Request(
+            "PUT", "verkoopboekingen/" . $verkoopboeking->getId()->toString(), [
             "Content-Type"  =>  "application/json"
-        ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($verkoopboeking)));
+            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($verkoopboeking))
+        );
     }
 
     /**

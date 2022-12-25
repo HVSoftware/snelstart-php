@@ -1,7 +1,7 @@
 <?php
 /**
- * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
- * @project SnelstartApiPHP
+ * @author     IntoWebDevelopment <info@intowebdevelopment.nl>
+ * @project    SnelstartApiPHP
  * @deprecated
  */
 
@@ -70,7 +70,7 @@ final class Boekingsregel extends BaseObject
     }
 
     /**
-     * @param string $omschrijving
+     * @param  string $omschrijving
      * @return Boekingsregel
      */
     public function setOmschrijving(string $omschrijving): self
@@ -89,7 +89,7 @@ final class Boekingsregel extends BaseObject
     }
 
     /**
-     * @param Grootboek $grootboek
+     * @param  Grootboek $grootboek
      * @return Boekingsregel
      */
     public function setGrootboek(Grootboek $grootboek): self
@@ -108,7 +108,7 @@ final class Boekingsregel extends BaseObject
     }
 
     /**
-     * @param Kostenplaats $kostenplaats
+     * @param  Kostenplaats $kostenplaats
      * @return Boekingsregel
      */
     public function setKostenplaats(Kostenplaats $kostenplaats): self
@@ -127,7 +127,7 @@ final class Boekingsregel extends BaseObject
     }
 
     /**
-     * @param Money $bedrag
+     * @param  Money $bedrag
      * @return Boekingsregel
      */
     public function setBedrag(Money $bedrag): self
@@ -146,7 +146,7 @@ final class Boekingsregel extends BaseObject
     }
 
     /**
-     * @param BtwSoort $btwSoort
+     * @param  BtwSoort $btwSoort
      * @return Boekingsregel
      */
     public function setBtwSoort(BtwSoort $btwSoort): self

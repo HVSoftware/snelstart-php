@@ -42,7 +42,7 @@ final class Btwregel extends BaseObject
     }
 
     /**
-     * @param BtwRegelSoort $btwSoort
+     * @param  BtwRegelSoort $btwSoort
      * @return Btwregel
      */
     public function setBtwSoort(BtwRegelSoort $btwSoort): self
@@ -61,7 +61,7 @@ final class Btwregel extends BaseObject
     }
 
     /**
-     * @param Money $btwBedrag
+     * @param  Money $btwBedrag
      * @return Btwregel
      */
     public function setBtwBedrag(Money $btwBedrag): self

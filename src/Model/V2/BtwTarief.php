@@ -44,7 +44,7 @@ final class BtwTarief extends BaseObject
     }
 
     /**
-     * @param BtwSoort $btwSoort
+     * @param  BtwSoort $btwSoort
      * @return $this
      */
     public function setBtwSoort(BtwSoort $btwSoort): self
@@ -63,7 +63,7 @@ final class BtwTarief extends BaseObject
     }
 
     /**
-     * @param float $btwPercentage
+     * @param  float $btwPercentage
      * @return $this
      */
     public function setBtwPercentage(float $btwPercentage): self
@@ -82,7 +82,7 @@ final class BtwTarief extends BaseObject
     }
 
     /**
-     * @param DateTimeImmutable $datumVanaf
+     * @param  DateTimeImmutable $datumVanaf
      * @return $this
      */
     public function setDatumVanaf(DateTimeImmutable $datumVanaf): self
@@ -101,7 +101,7 @@ final class BtwTarief extends BaseObject
     }
 
     /**
-     * @param DateTimeImmutable $datumTotEnMet
+     * @param  DateTimeImmutable $datumTotEnMet
      * @return $this
      */
     public function setDatumTotEnMet(DateTimeImmutable $datumTotEnMet): self
