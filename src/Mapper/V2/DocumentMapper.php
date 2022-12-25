@@ -25,11 +25,6 @@ final class DocumentMapper extends AbstractMapper
         return $this->mapResponseToDocumentInstance();
     }
 
-    public function delete(ResponseInterface $response): void
-    {
-
-    }
-
     public function add(ResponseInterface $response): Document
     {
         $this->setResponseData($response);

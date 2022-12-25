@@ -29,18 +29,11 @@ final class Land extends SnelstartObject
      */
     private $landcode;
 
-    /**
-     * @return string
-     */
     public function getNaam(): string
     {
         return $this->naam;
     }
 
-    /**
-     * @param  string $naam
-     * @return Land
-     */
     public function setNaam(string $naam): self
     {
         $this->naam = $naam;
@@ -48,18 +41,11 @@ final class Land extends SnelstartObject
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getLandcodeISO(): string
     {
         return $this->landcodeISO;
     }
 
-    /**
-     * @param  string $landcodeISO
-     * @return Land
-     */
     public function setLandcodeISO(string $landcodeISO): self
     {
         $this->landcodeISO = $landcodeISO;
@@ -67,18 +53,11 @@ final class Land extends SnelstartObject
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getLandcode(): string
     {
         return $this->landcode;
     }
 
-    /**
-     * @param  string $landcode
-     * @return Land
-     */
     public function setLandcode(string $landcode): self
     {
         $this->landcode = $landcode;

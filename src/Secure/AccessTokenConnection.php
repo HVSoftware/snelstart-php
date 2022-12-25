@@ -46,8 +46,6 @@ final class AccessTokenConnection implements ConnectionInterface
     }
 
     /**
-     * @param  RequestInterface $request
-     * @return \Psr\Http\Message\ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function doRequest(RequestInterface $request): ResponseInterface

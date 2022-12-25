@@ -13,11 +13,6 @@ use SnelstartPHP\Model\SnelstartObject;
 final class Artikel extends SnelstartObject
 {
     /**
-     * @var bool|null
-     */
-    private $isHoofdartikel;
-
-    /**
      * @var SubArtikel[]
      */
     private $subArtikelen = [];
@@ -261,9 +256,6 @@ final class Artikel extends SnelstartObject
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getEenheid(): string
     {
         return $this->eenheid;

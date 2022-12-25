@@ -55,9 +55,6 @@ final class Adres extends BaseObject
         "land",
     ];
 
-    /**
-     * @return null|string
-     */
     public function getContactpersoon(): ?string
     {
         return $this->contactpersoon;

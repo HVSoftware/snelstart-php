@@ -65,10 +65,6 @@ final class Boekingsregel extends BaseObject
         return $this->omschrijving;
     }
 
-    /**
-     * @param  string $omschrijving
-     * @return Boekingsregel
-     */
     public function setOmschrijving(string $omschrijving): self
     {
         $this->omschrijving = $omschrijving;
@@ -76,18 +72,11 @@ final class Boekingsregel extends BaseObject
         return $this;
     }
 
-    /**
-     * @return Grootboek
-     */
     public function getGrootboek(): Grootboek
     {
         return $this->grootboek;
     }
 
-    /**
-     * @param  Grootboek $grootboek
-     * @return Boekingsregel
-     */
     public function setGrootboek(Grootboek $grootboek): self
     {
         $this->grootboek = $grootboek;
@@ -103,10 +92,6 @@ final class Boekingsregel extends BaseObject
         return $this->kostenplaats;
     }
 
-    /**
-     * @param  Kostenplaats $kostenplaats
-     * @return Boekingsregel
-     */
     public function setKostenplaats(Kostenplaats $kostenplaats): self
     {
         $this->kostenplaats = $kostenplaats;
@@ -114,18 +99,11 @@ final class Boekingsregel extends BaseObject
         return $this;
     }
 
-    /**
-     * @return Money
-     */
     public function getBedrag(): Money
     {
         return $this->bedrag;
     }
 
-    /**
-     * @param  Money $bedrag
-     * @return Boekingsregel
-     */
     public function setBedrag(Money $bedrag): self
     {
         $this->bedrag = $bedrag;
@@ -133,18 +111,11 @@ final class Boekingsregel extends BaseObject
         return $this;
     }
 
-    /**
-     * @return BtwSoort
-     */
     public function getBtwSoort(): BtwSoort
     {
         return $this->btwSoort;
     }
 
-    /**
-     * @param  BtwSoort $btwSoort
-     * @return Boekingsregel
-     */
     public function setBtwSoort(BtwSoort $btwSoort): self
     {
         $this->btwSoort = $btwSoort;

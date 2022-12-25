@@ -30,11 +30,6 @@ final class VerkooporderMapper extends AbstractMapper
         return $this->map(new Verkooporder());
     }
 
-    public function delete(ResponseInterface $response): void
-    {
-
-    }
-
     public function map(Verkooporder $verkooporder, array $data = []): Verkooporder
     {
         $data = empty($data) ? $this->responseData : $data;

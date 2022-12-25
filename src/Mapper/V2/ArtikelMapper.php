@@ -102,8 +102,6 @@ final class ArtikelMapper extends AbstractMapper
 
     /**
      * Map many results to the mapper.
-     *
-     * @return \Generator
      */
     protected function mapManyResultsToSubMappers(): \Generator
     {

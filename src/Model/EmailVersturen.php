@@ -42,25 +42,16 @@ final class EmailVersturen extends BaseObject
         $this->ccEmail = $ccEmail;
     }
 
-    /**
-     * @return bool
-     */
     public function isShouldSend(): bool
     {
         return $this->shouldSend;
     }
 
-    /**
-     * @return null|string
-     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    /**
-     * @return null|string
-     */
     public function getCcEmail(): ?string
     {
         return $this->ccEmail;

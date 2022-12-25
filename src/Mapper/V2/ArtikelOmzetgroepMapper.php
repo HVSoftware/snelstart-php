@@ -48,8 +48,6 @@ final class ArtikelOmzetgroepMapper extends AbstractMapper
 
     /**
      * Map many results to the mapper.
-     *
-     * @return \Generator
      */
     protected function mapManyResultsToSubMappers(): \Generator
     {

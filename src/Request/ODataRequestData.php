@@ -46,10 +46,6 @@ final class ODataRequestData implements ODataRequestDataInterface
      */
     public const FILTER_MODE_AND = "and";
 
-    public function __construct()
-    {
-    }
-
     public function getFilter(): array
     {
         return $this->filter;

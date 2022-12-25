@@ -54,13 +54,9 @@ final class RelatieMapper extends AbstractMapper
         $relatie = $this->mapArrayDataToModel($relatie, $data);
         $adresMapper = new AdresMapper();
 
-        $relatie->setRelatiesoort(
-            ... array_map(
-                static function (string $relatiesoort) {
-                    return new Type\Relatiesoort($relatiesoort);
-                }, $data["relatiesoort"]
-            )
-        );
+        $relatie->setRelatiesoort(... array_map(static function(string $relatiesoort) {
+            return new Type\Relatiesoort($relatiesoort);
+        }, $data["relatiesoort"]));
 
         if (!empty($data["incassoSoort"])) {
             $relatie->setIncassoSoort(new Type\Incassosoort($data["incassoSoort"]));
@@ -95,30 +91,26 @@ final class RelatieMapper extends AbstractMapper
         }
 
         if (isset($data["extraVeldenKlant"])) {
-            $extraVeldenKlant = array_map(
-                static function (array $extraVeldKlant): NaamWaarde {
-                    return (new NaamWaarde())
-                        ->setNaam($extraVeldKlant["naam"])
-                        ->setWaarde($extraVeldKlant["waarde"]);
-                }, $data["extraVeldenKlant"]
-            );
+            $extraVeldenKlant = array_map(static function(array $extraVeldKlant): NaamWaarde {
+                return (new NaamWaarde())
+                    ->setNaam($extraVeldKlant["naam"])
+                    ->setWaarde($extraVeldKlant["waarde"])
+                ;
+            }, $data["extraVeldenKlant"]);
 
             $relatie->setExtraVeldenKlant(... $extraVeldenKlant);
         }
 
         $relatie->setOfferteEmailVersturen($this->mapEmailVersturenField($data["offerteEmailVersturen"]))
-            ->setBevestigingsEmailVersturen($this->mapEmailVersturenField($data["offerteEmailVersturen"]))
-            ->setFactuurEmailVersturen($this->mapEmailVersturenField($data["factuurEmailVersturen"]))
-            ->setAanmaningEmailVersturen($this->mapEmailVersturenField($data["aanmaningEmailVersturen"]));
+                ->setBevestigingsEmailVersturen($this->mapEmailVersturenField($data["offerteEmailVersturen"]))
+                ->setFactuurEmailVersturen($this->mapEmailVersturenField($data["factuurEmailVersturen"]))
+                ->setAanmaningEmailVersturen($this->mapEmailVersturenField($data["aanmaningEmailVersturen"]));
 
         return $relatie;
     }
 
     /**
      * Map all data to the EmailVersturen class (added support for subtypes).
-     *
-     * @param  array $emailVersturen
-     * @return EmailVersturen
      */
     public function mapEmailVersturenField(array $emailVersturen): EmailVersturen
     {
@@ -131,8 +123,6 @@ final class RelatieMapper extends AbstractMapper
 
     /**
      * Map many results to the mapper.
-     *
-     * @return \Generator
      */
     protected function mapManyResultsToSubMappers(): \Generator
     {

@@ -28,18 +28,11 @@ final class FactuurRelatie extends BaseObject
         "id"
     ];
 
-    /**
-     * @return UuidInterface
-     */
     public function getId(): UuidInterface
     {
         return $this->id;
     }
 
-    /**
-     * @param  UuidInterface $id
-     * @return FactuurRelatie
-     */
     public function setId(UuidInterface $id): FactuurRelatie
     {
         $this->id = $id;
@@ -55,10 +48,6 @@ final class FactuurRelatie extends BaseObject
         return $this->uri;
     }
 
-    /**
-     * @param  string $uri
-     * @return FactuurRelatie
-     */
     public function setUri(string $uri): FactuurRelatie
     {
         $this->uri = $uri;
