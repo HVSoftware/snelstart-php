@@ -29,6 +29,7 @@
         "dg/bypass-finals": "^1.1",
         "phpstan/phpstan": "^1.5",
         "phpunit/phpunit": "^8.4",
+        "slevomat/coding-standard": "^8.7",
         "vimeo/psalm": "^4.0"
     },
     "suggest": {
@@ -37,7 +38,8 @@
     "config": {
         "sort-packages": true,
         "allow-plugins": {
-            "composer/package-versions-deprecated": true
+            "composer/package-versions-deprecated": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
     "autoload": {
