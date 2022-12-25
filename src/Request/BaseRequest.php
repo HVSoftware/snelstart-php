@@ -25,7 +25,7 @@ abstract class BaseRequest
      * Iterate over the Model objects and ask for the editable attributes. We will only serialize the editable fields
      * in this case.
      *
-     * @param string[]   $editableAttributes
+     * @param string[] $editableAttributes
      */
     public function prepareAddOrEditRequestForSerialization(BaseObject $object, string ...$editableAttributes): array
     {

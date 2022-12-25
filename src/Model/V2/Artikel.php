@@ -13,6 +13,11 @@ use SnelstartPHP\Model\SnelstartObject;
 final class Artikel extends SnelstartObject
 {
     /**
+     * @var bool|null
+     */
+    private $isHoofdartikel;
+
+    /**
      * @var SubArtikel[]
      */
     private $subArtikelen = [];

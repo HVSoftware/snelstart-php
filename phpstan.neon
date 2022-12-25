@@ -1,5 +1,5 @@
 parameters:
-	level: 4
+	level: 2
 	paths:
 		- src
 		- tests
@@ -21,10 +21,10 @@ parameters:
 			paths:
 				- src/Request
 		-
-			message: '#Method SnelstartPHP\\Mapper\\AbstractMapper\:\:__construct\(\) with return type void returns SnelstartPHP\\Mapper\\AbstractMapper but should not return anything#'
-			paths:
-				- src/Mapper
+		    message: '#Call to an undefined method SnelstartPHP\\Mapper\\V2\\KostenplaatsMapper\:\:delete\(\)#'
+		    paths:
+		        - src/Connector/V2
 		-
-			message: '#Method SnelstartPHP\\Model\\SnelstartObject\:\:createFromUUID\(\) should return static#'
+			message: '#Call to an undefined method SnelstartPHP\\Mapper\\V2\\VerkooporderMapper\:\:delete\(\)#'
 			paths:
-				- src/Model
+				- src/Connector/V2
