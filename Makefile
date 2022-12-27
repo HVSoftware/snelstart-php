@@ -15,5 +15,8 @@ phpstan:
 psalm:
 	vendor/bin/psalm
 
+psalm-show-info:
+	vendor/bin/psalm --show-info=true
+
 rector:
 	vendor/bin/rector process src
