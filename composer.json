@@ -29,7 +29,7 @@
         "dg/bypass-finals": "^1.1",
         "doctrine/coding-standard": "^11.0",
         "phpstan/phpstan": "^1.9",
-        "phpunit/phpunit": "^8.4",
+        "phpunit/phpunit": "^9.5",
         "rector/rector": "^0.15.2",
         "squizlabs/php_codesniffer": "^3.7",
         "vimeo/psalm": "^4.0"
