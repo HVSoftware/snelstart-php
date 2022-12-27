@@ -95,7 +95,6 @@
         <exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine" />
         <exclude name="Squiz.WhiteSpace.ControlStructureSpacing.SpacingAfterOpen" />
         <exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingAfterVariadic" />
-        <exclude name="Squiz.Arrays.ArrayDeclaration.MultiLineNotAllowed" />
         <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar" />
     </rule>
 

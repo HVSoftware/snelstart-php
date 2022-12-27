@@ -35,8 +35,11 @@ final class GrootboekConnector extends BaseConnector
     /**
      * @return iterable<Model\Grootboek>
      */
-    public function findAll(?ODataRequestDataInterface $ODataRequestData = null, bool $fetchAll = false, iterable $previousResults = null): iterable
-    {
+    public function findAll(
+        ?ODataRequestDataInterface $ODataRequestData = null,
+        bool $fetchAll = false,
+        iterable $previousResults = null
+    ): iterable {
         $request = new Request\GrootboekRequest();
         $mapper = new Mapper\GrootboekMapper();
         $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
@@ -61,9 +64,7 @@ final class GrootboekConnector extends BaseConnector
     public function findByNumber(string $number): ?Model\Grootboek
     {
         $criteria = (new ODataRequestData())->setFilter(
-            [
-            sprintf("Nummer eq %s", $number)
-            ]
+            [ sprintf("Nummer eq %s", $number) ]
         );
 
         $mapper = new Mapper\GrootboekMapper();

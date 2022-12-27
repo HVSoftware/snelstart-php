@@ -12,21 +12,15 @@ final class FactuurRelatie extends BaseObject
 {
     /**
      * De publieke sleutel (public identifier, als uuid) dat uniek een object identificeert.
-     *
-     * @var UuidInterface
      */
-    private $id;
+    private UuidInterface $id;
 
     /**
      * Geeft de realtieve uri terug van het object waartoe de identifier behoort.
-     *
-     * @var string
      */
-    private $uri;
+    private string $uri;
 
-    public static $editableAttributes = [
-        "id"
-    ];
+    public static $editableAttributes = [ 'id'];
 
     public function getId(): UuidInterface
     {
@@ -40,9 +34,6 @@ final class FactuurRelatie extends BaseObject
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getUri(): ?string
     {
         return $this->uri;

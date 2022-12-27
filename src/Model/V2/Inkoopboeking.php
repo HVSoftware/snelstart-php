@@ -10,22 +10,23 @@ final class Inkoopboeking extends Boeking
 {
     /**
      * De leverancier/crediteur van wie de factuur afkomstig is.
-     *
-     * @var Relatie
      */
-    private $leverancier;
+    private Relatie $leverancier;
 
     /**
      * @var string[]
      */
-    public static $editableAttributes = [
-        "leverancier",
-    ];
+    public static $editableAttributes = [ 'leverancier' ];
 
     public static function getEditableAttributes(): array
     {
-        return \array_unique(
-            \array_merge(parent::$editableAttributes, parent::getEditableAttributes(), static::$editableAttributes, self::$editableAttributes)
+        return array_unique(
+            array_merge(
+                parent::$editableAttributes,
+                parent::getEditableAttributes(),
+                Inkoopboeking::$editableAttributes,
+                self::$editableAttributes
+            ),
         );
     }
 
