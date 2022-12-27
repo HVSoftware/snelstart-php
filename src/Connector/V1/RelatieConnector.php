@@ -1,7 +1,7 @@
 <?php
 /**
- * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
- * @project SnelstartApiPHP
+ * @author     IntoWebDevelopment <info@intowebdevelopment.nl>
+ * @project    SnelstartApiPHP
  * @deprecated
  */
 
@@ -63,9 +63,11 @@ final class RelatieConnector extends BaseConnector
     public function findAllLeveranciers(?ODataRequestData $ODataRequestData = null, bool $fetchAll = false, ?\Iterator $previousResults = null): iterable
     {
         $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
-        $ODataRequestData->setFilter(\array_merge(
-            $ODataRequestData->getFilter(),
-            [ sprintf("Relatiesoort/any(soort:soort eq '%s')", Relatiesoort::LEVERANCIER()) ])
+        $ODataRequestData->setFilter(
+            \array_merge(
+                $ODataRequestData->getFilter(),
+                [ sprintf("Relatiesoort/any(soort:soort eq '%s')", Relatiesoort::LEVERANCIER()) ]
+            )
         );
 
         return $this->findAll($ODataRequestData, $fetchAll, $previousResults);
@@ -77,9 +79,11 @@ final class RelatieConnector extends BaseConnector
     public function findAllKlanten(?ODataRequestData $ODataRequestData = null, bool $fetchAll = false, ?\Iterator $previousResults = null): iterable
     {
         $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
-        $ODataRequestData->setFilter(\array_merge(
-            $ODataRequestData->getFilter(),
-            [ sprintf("Relatiesoort/any(soort:soort eq '%s') or Relatiesoort/any(soort:soort eq '%s')", Relatiesoort::KLANT(), Relatiesoort::EIGEN()) ])
+        $ODataRequestData->setFilter(
+            \array_merge(
+                $ODataRequestData->getFilter(),
+                [ sprintf("Relatiesoort/any(soort:soort eq '%s') or Relatiesoort/any(soort:soort eq '%s')", Relatiesoort::KLANT(), Relatiesoort::EIGEN()) ]
+            )
         );
 
         return $this->findAll($ODataRequestData, $fetchAll, $previousResults);

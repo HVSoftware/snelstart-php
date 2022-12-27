@@ -2,7 +2,7 @@
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
- * @see https://b2bapi-developer.snelstart.nl/odata
+ * @see     https://b2bapi-developer.snelstart.nl/odata
  */
 
 namespace SnelstartPHP\Request;
@@ -24,12 +24,12 @@ final class ODataRequestData implements ODataRequestDataInterface
     /**
      * @var int
      */
-    private $top;
+    private $top = Snelstart::MAX_RESULTS;
 
     /**
      * @var int
      */
-    private $skip;
+    private $skip = 0;
 
     /**
      * @var string
@@ -45,12 +45,6 @@ final class ODataRequestData implements ODataRequestDataInterface
      * Use 'and' when combining multiple filters.
      */
     public const FILTER_MODE_AND = "and";
-
-    public function __construct()
-    {
-        $this->top = Snelstart::MAX_RESULTS;
-        $this->skip = 0;
-    }
 
     public function getFilter(): array
     {

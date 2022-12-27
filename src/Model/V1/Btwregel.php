@@ -1,7 +1,7 @@
 <?php
 /**
- * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
- * @project SnelstartApiPHP
+ * @author     IntoWebDevelopment <info@intowebdevelopment.nl>
+ * @project    SnelstartApiPHP
  * @deprecated
  */
 
@@ -36,18 +36,11 @@ final class Btwregel extends BaseObject
         $this->setBtwSoort($btwRegelSoort)->setBtwBedrag($btwBedrag);
     }
 
-    /**
-     * @return BtwRegelSoort
-     */
     public function getBtwSoort(): BtwRegelSoort
     {
         return $this->btwSoort;
     }
 
-    /**
-     * @param BtwRegelSoort $btwSoort
-     * @return Btwregel
-     */
     public function setBtwSoort(BtwRegelSoort $btwSoort): self
     {
         $this->btwSoort = $btwSoort;
@@ -55,18 +48,11 @@ final class Btwregel extends BaseObject
         return $this;
     }
 
-    /**
-     * @return Money
-     */
     public function getBtwBedrag(): Money
     {
         return $this->btwBedrag;
     }
 
-    /**
-     * @param Money $btwBedrag
-     * @return Btwregel
-     */
     public function setBtwBedrag(Money $btwBedrag): self
     {
         $this->btwBedrag = $btwBedrag;

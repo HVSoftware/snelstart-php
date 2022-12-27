@@ -1,7 +1,7 @@
 <?php
 /**
- * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
- * @project SnelstartApiPHP
+ * @author     IntoWebDevelopment <info@intowebdevelopment.nl>
+ * @project    SnelstartApiPHP
  * @deprecated
  */
 
@@ -54,9 +54,11 @@ final class GrootboekConnector extends BaseConnector
 
     public function findByNumber(string $number): ?Model\Grootboek
     {
-        $criteria = (new ODataRequestData())->setFilter([
+        $criteria = (new ODataRequestData())->setFilter(
+            [
             sprintf("Nummer eq %s", $number)
-        ]);
+            ]
+        );
 
         foreach (Mapper\GrootboekMapper::findAll($this->connection->doRequest(Request\GrootboekRequest::findAll($criteria))) as $grootboek) {
             return $grootboek;

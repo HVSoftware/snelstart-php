@@ -1,7 +1,7 @@
 <?php
 /**
- * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
- * @project SnelstartApiPHP
+ * @author     IntoWebDevelopment <info@intowebdevelopment.nl>
+ * @project    SnelstartApiPHP
  * @deprecated
  */
 
@@ -32,9 +32,11 @@ final class RelatieRequest extends BaseRequest
 
     public static function add(Model\Relatie $relatie): RequestInterface
     {
-        return new Request("POST", "relaties", [
+        return new Request(
+            "POST", "relaties", [
             "Content-Type"  =>  "application/json"
-        ], \GuzzleHttp\json_encode((new static())->prepareAddOrEditRequestForSerialization($relatie)));
+            ], \GuzzleHttp\json_encode((new static())->prepareAddOrEditRequestForSerialization($relatie))
+        );
     }
 
     public static function update(Model\Relatie $relatie): RequestInterface
@@ -43,8 +45,10 @@ final class RelatieRequest extends BaseRequest
             throw PreValidationException::shouldHaveAnIdException();
         }
 
-        return new Request("PUT", "relaties/" . $relatie->getId()->toString(), [
+        return new Request(
+            "PUT", "relaties/" . $relatie->getId()->toString(), [
             "Content-Type"  =>  "application/json"
-        ], \GuzzleHttp\json_encode((new static())->prepareAddOrEditRequestForSerialization($relatie)));
+            ], \GuzzleHttp\json_encode((new static())->prepareAddOrEditRequestForSerialization($relatie))
+        );
     }
 }

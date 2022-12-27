@@ -25,9 +25,7 @@ abstract class BaseRequest
      * Iterate over the Model objects and ask for the editable attributes. We will only serialize the editable fields
      * in this case.
      *
-     * @param BaseObject $object
-     * @param string[]   $editableAttributes
-     * @return array
+     * @param string[] $editableAttributes
      */
     public function prepareAddOrEditRequestForSerialization(BaseObject $object, string ...$editableAttributes): array
     {
@@ -95,11 +93,13 @@ abstract class BaseRequest
             } else if ($value instanceof BaseObject) {
                 $value = $this->prepareAddOrEditRequestForSerialization($value);
             } else {
-                throw new \LogicException(sprintf(
-                    "You need to implement something to handle the serialization of '%s' (type: %s)",
-                    \get_class($value),
-                    \gettype($value)
-                ));
+                throw new \LogicException(
+                    sprintf(
+                        "You need to implement something to handle the serialization of '%s' (type: %s)",
+                        \get_class($value),
+                        \gettype($value)
+                    )
+                );
             }
 
             $serialize[$editableAttributeName] = $value;

@@ -34,11 +34,6 @@ final class KostenplaatsMapper extends AbstractMapper
         return $this->mapSimpleResponse($response);
     }
 
-    public function delete(ResponseInterface $response): void
-    {
-        return;
-    }
-
     private function mapSimpleResponse(ResponseInterface $response): Kostenplaats
     {
         $this->setResponseData($response);

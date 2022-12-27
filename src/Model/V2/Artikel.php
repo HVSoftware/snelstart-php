@@ -261,9 +261,6 @@ final class Artikel extends SnelstartObject
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getEenheid(): string
     {
         return $this->eenheid;

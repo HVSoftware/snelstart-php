@@ -1,7 +1,7 @@
 <?php
 /**
- * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
- * @project SnelstartApiPHP
+ * @author     IntoWebDevelopment <info@intowebdevelopment.nl>
+ * @project    SnelstartApiPHP
  * @deprecated
  */
 
@@ -17,6 +17,6 @@ final class EchoConnector extends BaseConnector
 {
     public function echo(string $input): string
     {
-        return (string) str_replace('"', "", $this->connection->doRequest(EchoRequest::echo($input))->getBody()->getContents());
+        return str_replace('"', "", $this->connection->doRequest(EchoRequest::echo($input))->getBody()->getContents());
     }
 }

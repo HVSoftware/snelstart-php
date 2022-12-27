@@ -15,9 +15,7 @@ use SnelstartPHP\Model\Land;
 final class AdresMapper extends AbstractMapper
 {
     /**
-     * @param array $data
      * @throws InvalidMapperDataException
-     * @return Adres
      */
     public function mapAdresToSnelstartObject(array $data): Adres
     {

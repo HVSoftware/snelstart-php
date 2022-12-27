@@ -27,9 +27,11 @@ final class KostenplaatsRequest extends BaseRequest
 
     public function add(Kostenplaats $kostenplaats): RequestInterface
     {
-        return new Request("POST", "kostenplaatsen", [
+        return new Request(
+            "POST", "kostenplaatsen", [
             "Content-Type"  =>  "application/json"
-        ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($kostenplaats)));
+            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($kostenplaats))
+        );
     }
 
     public function update(Kostenplaats $kostenplaats): RequestInterface
@@ -38,9 +40,11 @@ final class KostenplaatsRequest extends BaseRequest
             throw PreValidationException::shouldHaveAnIdException();
         }
 
-        return new Request("PUT", "kostenplaatsen/" . $kostenplaats->getId()->toString(), [
+        return new Request(
+            "PUT", "kostenplaatsen/" . $kostenplaats->getId()->toString(), [
             "Content-Type"  =>  "application/json"
-        ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($kostenplaats)));
+            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($kostenplaats))
+        );
     }
 
     public function delete(Kostenplaats $kostenplaats): RequestInterface
@@ -49,8 +53,10 @@ final class KostenplaatsRequest extends BaseRequest
             throw PreValidationException::shouldHaveAnIdException();
         }
 
-        return new Request("PUT", "kostenplaatsen/" . $kostenplaats->getId()->toString(), [
+        return new Request(
+            "PUT", "kostenplaatsen/" . $kostenplaats->getId()->toString(), [
             "Content-Type"  =>  "application/json"
-        ]);
+            ]
+        );
     }
 }

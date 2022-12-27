@@ -2,7 +2,7 @@
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
- * @see https://b2bapi-developer.snelstart.nl/granttype_password
+ * @see     https://b2bapi-developer.snelstart.nl/granttype_password
  */
 
 namespace SnelstartPHP\Secure\BearerToken;

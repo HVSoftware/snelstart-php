@@ -8,7 +8,8 @@ use GuzzleHttp\Exception\InvalidArgumentException;
 final class Utils
 {
     private function __construct()
-    {}
+    {
+    }
 
     /**
      * Source package: guzzlehttp/guzzle

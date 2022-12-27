@@ -40,11 +40,15 @@ final class ArtikelRequest extends BaseRequest
             $relatieId = $relatie->getId()->toString();
         }
 
-        return http_build_query(array_filter([
-            "relatieId" =>  $relatieId,
-            "aantal"    =>  $aantal,
-        ], static function($value) {
-            return $value !== null;
-        }), "", "&", \PHP_QUERY_RFC3986);
+        return http_build_query(
+            array_filter(
+                [
+                "relatieId" =>  $relatieId,
+                "aantal"    =>  $aantal,
+                ], static function ($value) {
+                    return $value !== null;
+                }
+            ), "", "&", \PHP_QUERY_RFC3986
+        );
     }
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
+ * @author IntoWebDevelopment <info@intowebdevelopment.nl>
  */
 
 namespace SnelstartPHP\Model\Type;

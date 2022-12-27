@@ -34,8 +34,8 @@ abstract class AbstractMapper
     /**
      * Map the array data to the given class.
      *
-     * @template T of SnelstartObject
-     * @psalm-param T $class
+     * @template     T of SnelstartObject
+     * @psalm-param  T $class
      * @psalm-return T
      */
     protected function mapArrayDataToModel(SnelstartObject $class, array $data = []): SnelstartObject
@@ -53,8 +53,8 @@ abstract class AbstractMapper
     }
 
     /**
-     * @template T of SnelstartObject
-     * @psalm-param T $class
+     * @template     T of SnelstartObject
+     * @psalm-param  T $class
      * @psalm-return T
      */
     protected function setDataToModel(SnelstartObject $class, string $key, $value): SnelstartObject

@@ -1,7 +1,7 @@
 <?php
 /**
- * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
- * @project SnelstartApiPHP
+ * @author     IntoWebDevelopment <info@intowebdevelopment.nl>
+ * @project    SnelstartApiPHP
  * @deprecated
  */
 
@@ -56,9 +56,13 @@ final class RelatieMapper extends AbstractMapper
          */
         $relatie = $this->mapArrayDataToModel($relatie, $data);
 
-        $relatie->setRelatiesoort(array_map(function(string $relatiesoort) {
-            return new Type\Relatiesoort($relatiesoort);
-        }, $data["relatiesoort"]));
+        $relatie->setRelatiesoort(
+            array_map(
+                function (string $relatiesoort) {
+                    return new Type\Relatiesoort($relatiesoort);
+                }, $data["relatiesoort"]
+            )
+        );
 
         if (!empty($data["incassoSoort"])) {
             $relatie->setIncassoSoort(new Type\Incassosoort($data["incassoSoort"]));
@@ -85,9 +89,9 @@ final class RelatieMapper extends AbstractMapper
         }
 
         $relatie->setOfferteEmailVersturen($this->mapEmailVersturenField($data["offerteEmailVersturen"]))
-                ->setBevestigingsEmailVersturen($this->mapEmailVersturenField($data["offerteEmailVersturen"]))
-                ->setFactuurEmailVersturen($this->mapEmailVersturenField($data["factuurEmailVersturen"]))
-                ->setAanmaningEmailVersturen($this->mapEmailVersturenField($data["aanmaningEmailVersturen"]));
+            ->setBevestigingsEmailVersturen($this->mapEmailVersturenField($data["offerteEmailVersturen"]))
+            ->setFactuurEmailVersturen($this->mapEmailVersturenField($data["factuurEmailVersturen"]))
+            ->setAanmaningEmailVersturen($this->mapEmailVersturenField($data["aanmaningEmailVersturen"]));
 
         return $relatie;
     }
@@ -107,10 +111,6 @@ final class RelatieMapper extends AbstractMapper
 
     /**
      * Map all data to the EmailVersturen class (added support for subtypes).
-     *
-     * @param array  $emailVersturen
-     * @param string $emailVersturenClass
-     * @return EmailVersturen
      */
     public function mapEmailVersturenField(array $emailVersturen, string $emailVersturenClass = EmailVersturen::class): EmailVersturen
     {
@@ -123,8 +123,6 @@ final class RelatieMapper extends AbstractMapper
 
     /**
      * Map many results to the mapper.
-     *
-     * @return \Generator
      */
     protected function mapManyResultsToSubMappers(): \Generator
     {

@@ -1,7 +1,7 @@
 <?php
 /**
- * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
- * @project SnelstartApiPHP
+ * @author     IntoWebDevelopment <info@intowebdevelopment.nl>
+ * @project    SnelstartApiPHP
  * @deprecated
  */
 
@@ -60,9 +60,11 @@ final class GrootboekConnector extends BaseConnector
 
     public function findByNumber(string $number): ?Model\Grootboek
     {
-        $criteria = (new ODataRequestData())->setFilter([
+        $criteria = (new ODataRequestData())->setFilter(
+            [
             sprintf("Nummer eq %s", $number)
-        ]);
+            ]
+        );
 
         $mapper = new Mapper\GrootboekMapper();
         $request = new Request\GrootboekRequest();
