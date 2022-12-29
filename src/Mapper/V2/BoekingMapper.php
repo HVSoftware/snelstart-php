@@ -280,13 +280,13 @@ final class BoekingMapper extends AbstractMapper
     {
         foreach ($this->responseData as $boekingData) {
             if ($className === Model\Inkoopboeking::class) {
-                yield $this->mapInkoopboekingResult(new $className, $boekingData);
-            } else if ($className === Model\Verkoopboeking::class) {
-                yield $this->mapVerkoopboekingResult(new $className, $boekingData);
-            } else if ($className === Model\Verkoopfactuur::class) {
-                yield $this->mapVerkoopfactuurResult(new $className, $boekingData);
-            } else if ($className === Model\Inkoopfactuur::class) {
-                yield $this->mapInkoopfactuurResult(new $className, $boekingData);
+                yield $this->mapInkoopboekingResult(new $className(), $boekingData);
+            } elseif ($className === Verkoopboeking::class) {
+                yield $this->mapVerkoopboekingResult(new $className(), $boekingData);
+            } elseif ($className === Verkoopfactuur::class) {
+                yield $this->mapVerkoopfactuurResult(new $className(), $boekingData);
+            } elseif ($className === Inkoopfactuur::class) {
+                yield $this->mapInkoopfactuurResult(new $className(), $boekingData);
             }
         }
     }
