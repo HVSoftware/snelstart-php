@@ -18,7 +18,6 @@ final class LandRequestTest extends TestCase
 
     public function testFindAll()
     {
-        $landRequest = new LandRequest();
         $this->assertEquals(new Request("GET", "landen"), $this->landRequest->findAll());
     }
 
