@@ -120,7 +120,7 @@ abstract class BaseConnection implements ConnectionInterface
 
             if ($response->getStatusCode() === 400) {
                 $jsonBody = (string) $response->getBody();
-                $body = [ 'message' => $response->getReasonPhrase(), 'errorCode' => 'NONEXISTENT' ];
+                $body = ['message' => $response->getReasonPhrase(), 'errorCode' => 'NONEXISTENT'];
 
                 if ($jsonBody !== '') {
                     $body = Utils::jsonDecode($jsonBody, true);

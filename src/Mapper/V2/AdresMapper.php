@@ -19,7 +19,7 @@ final class AdresMapper extends AbstractMapper
      */
     public function mapAdresToSnelstartObject(array $data): Adres
     {
-        $mandatoryParameters = [ "contactpersoon", "straat", "postcode", "plaats", "land" ];
+        $mandatoryParameters = ["contactpersoon", "straat", "postcode", "plaats", "land"];
         $diff = array_diff(array_keys($data), $mandatoryParameters);
 
         if (count($diff) > 0) {

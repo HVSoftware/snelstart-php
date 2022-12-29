@@ -63,7 +63,7 @@ final class AccessTokenConnection implements ConnectionInterface
         $request = new Request(
             'POST',
             static::getEndpoint() . 'token',
-            [ 'Content-Type' => 'application/x-www-form-urlencoded' ],
+            ['Content-Type' => 'application/x-www-form-urlencoded'],
             http_build_query($this->bearerToken->getFormParams()),
         );
 

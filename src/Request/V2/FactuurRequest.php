@@ -20,7 +20,7 @@ final class FactuurRequest
         return new Request(
             'GET',
             'inkoopfacturen/' . $inkoopfactuur->getId()->toString(),
-            [ 'Content-Type' => 'application/json' ],
+            ['Content-Type' => 'application/json'],
         );
     }
 
@@ -29,7 +29,7 @@ final class FactuurRequest
         return new Request(
             'GET',
             'inkoopfacturen?' . $ODataRequestData->getHttpCompatibleQueryString(),
-            [ 'Content-Type' => 'application/json' ],
+            ['Content-Type' => 'application/json'],
         );
     }
 
@@ -38,7 +38,7 @@ final class FactuurRequest
         return new Request(
             'GET',
             'verkoopfacturen?' . $ODataRequestData->getHttpCompatibleQueryString(),
-            [ 'Content-Type' => 'application/json' ],
+            ['Content-Type' => 'application/json'],
         );
     }
 
@@ -51,7 +51,7 @@ final class FactuurRequest
         return new Request(
             'GET',
             'verkoopfacturen/' . $verkoopfactuur->getId()->toString(),
-            [ 'Content-Type' => 'application/json' ],
+            ['Content-Type' => 'application/json'],
         );
     }
 

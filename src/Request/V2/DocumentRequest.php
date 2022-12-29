@@ -72,7 +72,7 @@ final class DocumentRequest extends BaseRequest
         return new Request(
             'PUT',
             'documenten/' . $document->getId()->toString(),
-            [ 'Content-Type' => 'application/json' ],
+            ['Content-Type' => 'application/json'],
             \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($document)),
         );
     }
@@ -91,7 +91,7 @@ final class DocumentRequest extends BaseRequest
         return new Request(
             'POST',
             sprintf('documenten/%s', $documentType->getValue()),
-            [ 'Content-Type' => 'application/json'],
+            ['Content-Type' => 'application/json'],
             \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($document)),
         );
     }

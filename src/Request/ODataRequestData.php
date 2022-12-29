@@ -55,7 +55,7 @@ final class ODataRequestData implements ODataRequestDataInterface
     {
         $this->filter = $filter;
 
-        if (! \in_array($mode, [ self::FILTER_MODE_OR, self::FILTER_MODE_AND ])) {
+        if (! \in_array($mode, [self::FILTER_MODE_OR, self::FILTER_MODE_AND])) {
             throw new \BadMethodCallException("We expected either 'and' or 'or'.");
         }
 
