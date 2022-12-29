@@ -46,15 +46,17 @@ final class BoekingConnector extends BaseConnector
             yield $inkoopboeking;
         }
 
-        if ($fetchAll && $hasItems) {
-            if ($previousResults === null) {
-                $ODataRequestData->setSkip($ODataRequestData->getTop());
-            } else {
-                $ODataRequestData->setSkip($ODataRequestData->getSkip() + $ODataRequestData->getTop());
-            }
-
-            yield from $this->findInkoopfacturen($ODataRequestData, true, []);
+        if (! $fetchAll || ! $hasItems) {
+            return;
         }
+
+        if ($previousResults === null) {
+            $ODataRequestData->setSkip($ODataRequestData->getTop());
+        } else {
+            $ODataRequestData->setSkip($ODataRequestData->getSkip() + $ODataRequestData->getTop());
+        }
+
+        yield from $this->findInkoopfacturen($ODataRequestData, true, []);
     }
 
     public function addInkoopboeking(Model\Inkoopboeking $inkoopboeking): Model\Inkoopboeking
@@ -132,15 +134,17 @@ final class BoekingConnector extends BaseConnector
             yield $verkoopboeking;
         }
 
-        if ($fetchAll && $hasItems) {
-            if ($previousResults === null) {
-                $ODataRequestData->setSkip($ODataRequestData->getTop());
-            } else {
-                $ODataRequestData->setSkip($ODataRequestData->getSkip() + $ODataRequestData->getTop());
-            }
-
-            yield from $this->findVerkoopfacturen($ODataRequestData, true, []);
+        if (! $fetchAll || ! $hasItems) {
+            return;
         }
+
+        if ($previousResults === null) {
+            $ODataRequestData->setSkip($ODataRequestData->getTop());
+        } else {
+            $ODataRequestData->setSkip($ODataRequestData->getSkip() + $ODataRequestData->getTop());
+        }
+
+        yield from $this->findVerkoopfacturen($ODataRequestData, true, []);
     }
 
     public function addVerkoopboeking(Model\Verkoopboeking $verkoopboeking): Model\Verkoopboeking

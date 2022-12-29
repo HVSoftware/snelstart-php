@@ -44,14 +44,16 @@ final class ArtikelConnector extends BaseConnector
             yield $artikel;
         }
 
-        if ($fetchAll && $hasItems) {
-            if ($previousResults === null) {
-                $ODataRequestData->setSkip($ODataRequestData->getTop());
-            } else {
-                $ODataRequestData->setSkip($ODataRequestData->getSkip() + $ODataRequestData->getTop());
-            }
-
-            yield from $this->findAll($ODataRequestData, true, [], $relatie, $aantal);
+        if (! $fetchAll || ! $hasItems) {
+            return;
         }
+
+        if ($previousResults === null) {
+            $ODataRequestData->setSkip($ODataRequestData->getTop());
+        } else {
+            $ODataRequestData->setSkip($ODataRequestData->getSkip() + $ODataRequestData->getTop());
+        }
+
+        yield from $this->findAll($ODataRequestData, true, [], $relatie, $aantal);
     }
 }

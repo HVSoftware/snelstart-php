@@ -54,15 +54,17 @@ final class RelatieConnector extends BaseConnector
             yield $relatie;
         }
 
-        if ($fetchAll && $hasItems) {
-            if ($previousResults === null) {
-                $ODataRequestData->setSkip($ODataRequestData->getTop());
-            } else {
-                $ODataRequestData->setSkip($ODataRequestData->getSkip() + $ODataRequestData->getTop());
-            }
-
-            yield from $this->findAll($ODataRequestData, true, []);
+        if (! $fetchAll || ! $hasItems) {
+            return;
         }
+
+        if ($previousResults === null) {
+            $ODataRequestData->setSkip($ODataRequestData->getTop());
+        } else {
+            $ODataRequestData->setSkip($ODataRequestData->getSkip() + $ODataRequestData->getTop());
+        }
+
+        yield from $this->findAll($ODataRequestData, true, []);
     }
 
     /**

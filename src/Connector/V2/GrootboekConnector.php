@@ -48,15 +48,17 @@ final class GrootboekConnector extends BaseConnector
             yield $grootboek;
         }
 
-        if ($fetchAll && $hasItems) {
-            if ($previousResults === null) {
-                $ODataRequestData->setSkip($ODataRequestData->getTop());
-            } else {
-                $ODataRequestData->setSkip($ODataRequestData->getSkip() + $ODataRequestData->getTop());
-            }
-
-            yield from $this->findAll($ODataRequestData, true, []);
+        if (! $fetchAll || ! $hasItems) {
+            return;
         }
+
+        if ($previousResults === null) {
+            $ODataRequestData->setSkip($ODataRequestData->getTop());
+        } else {
+            $ODataRequestData->setSkip($ODataRequestData->getSkip() + $ODataRequestData->getTop());
+        }
+
+        yield from $this->findAll($ODataRequestData, true, []);
     }
 
     public function findByNumber(string $number): ?Model\Grootboek

@@ -78,9 +78,11 @@ abstract class BaseRequest
                 // If our value is an array and contains anything that is an instance of 'BaseObject'
                 // Try to serialize that again. Please note that this is done by reference.
                 foreach ($value as &$subValue) {
-                    if ($subValue instanceof BaseObject) {
-                        $subValue = $this->prepareAddOrEditRequestForSerialization($subValue);
+                    if (! ($subValue instanceof BaseObject)) {
+                        continue;
                     }
+
+                    $subValue = $this->prepareAddOrEditRequestForSerialization($subValue);
                 }
 
                 // Else do nothing.
