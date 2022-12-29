@@ -8,5 +8,4 @@ namespace SnelstartPHP\Exception;
 
 final class MaxRetriesReachedException extends \RuntimeException
 {
-
 }
