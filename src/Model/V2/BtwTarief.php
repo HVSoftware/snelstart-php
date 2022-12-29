@@ -80,9 +80,6 @@ final class BtwTarief extends BaseObject
         return $this;
     }
 
-    /**
-     * @return DateTimeImmutable
-     */
     public function getDatumTotEnMet(): ?DateTimeImmutable
     {
         return $this->datumTotEnMet;
