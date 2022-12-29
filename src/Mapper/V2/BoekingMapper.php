@@ -152,13 +152,15 @@ final class BoekingMapper extends AbstractMapper
         }
 
         if (isset($data["doorlopendeIncassoMachtiging"]["id"])) {
-            $doorlopendeIncassoMachtiging = IncassoMachtiging::createFromUUID(Uuid::fromString($data["doorlopendeIncassoMachtiging"]["id"]));
+            $doorlopendeIncassoMachtiging = IncassoMachtiging::createFromUUID(
+                Uuid::fromString($data["doorlopendeIncassoMachtiging"]["id"])
+            );
             $verkoopboeking->setDoorlopendeIncassoMachtiging($doorlopendeIncassoMachtiging);
         }
 
         if (isset($data["eenmaligeIncassoMachtiging"]["datum"])) {
             $incassomachtiging = (new IncassoMachtiging())
-                ->setDatum(new \DateTimeImmutable($data["eenmaligeIncassoMachtiging"]["datum"]));
+                ->setDatum(new DateTimeImmutable($data["eenmaligeIncassoMachtiging"]["datum"]));
 
             if ($data["eenmaligeIncassoMachtiging"]["kenmerk"] !== null) {
                 $incassomachtiging->setKenmerk($data["eenmaligeIncassoMachtiging"]["kenmerk"]);
