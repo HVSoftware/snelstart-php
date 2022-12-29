@@ -15,7 +15,7 @@ use SnelstartPHP\Request\V2\DocumentRequest;
 
 class DocumentRequestTest extends TestCase
 {
-    private $documentRequest;
+    private DocumentRequest $documentRequest;
 
     public function setUp(): void
     {

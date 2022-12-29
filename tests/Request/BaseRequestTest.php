@@ -14,7 +14,7 @@ use SnelstartPHP\Tests\stubs\SimpleRequestStub;
 
 class BaseRequestTest extends TestCase
 {
-    private $requestSerializer;
+    private RequestSerializerInterface $requestSerializer;
 
     public function setUp(): void
     {

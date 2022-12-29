@@ -11,12 +11,7 @@ use SnelstartPHP\Serializer\SnelstartRequestRequestSerializer;
 
 abstract class BaseRequest
 {
-    /**
-     * @var RequestSerializerInterface
-     */
-    protected $serializer;
-
-    public function __construct(?RequestSerializerInterface $serializer = null)
+    public function __construct(protected ?RequestSerializerInterface $serializer = null)
     {
         $this->serializer = $serializer ?? new SnelstartRequestRequestSerializer();
     }
