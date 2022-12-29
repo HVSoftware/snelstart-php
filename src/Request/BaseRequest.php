@@ -34,19 +34,25 @@ abstract class BaseRequest
             $methodExists = false;
             $methodName = null;
             $methodNames = [
-                "get" . \ucfirst($editableAttributeName),
-                "is" . \ucfirst($editableAttributeName),
+                "get" . ucfirst($editableAttributeName),
+                "is" . ucfirst($editableAttributeName),
             ];
 
             foreach ($methodNames as $methodName) {
-                if (\method_exists($object, $methodName)) {
+                if (method_exists($object, $methodName)) {
                     $methodExists = true;
                     break;
                 }
             }
 
             if (!$methodExists) {
-                \trigger_error(sprintf("There is no method (get or is) on object %s for property %s", get_class($object), $editableAttributeName), \E_USER_NOTICE);
+                trigger_error(
+                    sprintf(
+                        "There is no method (get or is) on object %s for property %s",
+                        get_class($object),
+                        $editableAttributeName,
+                    ),
+                );
                 continue;
             }
 
@@ -91,8 +97,8 @@ abstract class BaseRequest
                 throw new LogicException(
                     sprintf(
                         "You need to implement something to handle the serialization of '%s' (type: %s)",
-                        \get_class($value),
-                        \gettype($value)
+                        get_class($value),
+                        gettype($value)
                     )
                 );
             }
