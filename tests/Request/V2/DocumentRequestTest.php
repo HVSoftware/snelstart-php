@@ -34,7 +34,7 @@ class DocumentRequestTest extends TestCase
     {
         $uuid = Uuid::uuid4();
 
-        foreach (DocumentType::toArray() as $key => $value) {
+        foreach (DocumentType::toArray() as $value) {
             $documentType = new DocumentType($value);
             $expectedRequest = new Request("GET", "documenten/" . $documentType->getValue() . "/" . $uuid->toString());
 
