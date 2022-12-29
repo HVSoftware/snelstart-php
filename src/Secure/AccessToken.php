@@ -36,7 +36,7 @@ final class AccessToken implements \JsonSerializable
             throw new \InvalidArgumentException('Required option not passed: "access_token"');
         }
 
-        if (empty($options['expires_in']) || !is_numeric($options['expires_in'])) {
+        if (empty($options['expires_in']) || ! is_numeric($options['expires_in'])) {
             throw new \InvalidArgumentException('expires_in value must be an integer');
         }
 

@@ -55,7 +55,7 @@ final class ODataRequestData implements ODataRequestDataInterface
     {
         $this->filter = $filter;
 
-        if (!\in_array($mode, [ self::FILTER_MODE_OR, self::FILTER_MODE_AND ])) {
+        if (! \in_array($mode, [ self::FILTER_MODE_OR, self::FILTER_MODE_AND ])) {
             throw new \BadMethodCallException("We expected either 'and' or 'or'.");
         }
 
@@ -104,19 +104,19 @@ final class ODataRequestData implements ODataRequestDataInterface
     {
         $collection = [];
 
-        if (!empty($this->getFilter())) {
+        if (! empty($this->getFilter())) {
             $collection['$filter'] = implode(sprintf(" %s ", $this->filterMode), $this->getFilter());
         }
 
-        if (!empty($this->getTop())) {
+        if (! empty($this->getTop())) {
             $collection['$top'] = $this->getTop();
         }
 
-        if (!empty($this->getSkip())) {
+        if (! empty($this->getSkip())) {
             $collection['$skip'] = $this->getSkip();
         }
 
-        if (!empty($this->getApply())) {
+        if (! empty($this->getApply())) {
             $collection['$apply'] = $this->getApply();
         }
 

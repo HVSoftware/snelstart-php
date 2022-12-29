@@ -70,7 +70,7 @@ final class CachedAccessTokenConnection
             ->set($accessToken)
             ->expiresAfter($accessToken->getExpiresIn() - self::EXPIRES_AFTER_BUFFER);
 
-        if (!$this->cacheItemPool->save($cacheItem)) {
+        if (! $this->cacheItemPool->save($cacheItem)) {
             throw new \RuntimeException("Something went wrong trying to persist the access token into cache.");
         }
 

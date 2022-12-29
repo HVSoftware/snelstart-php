@@ -48,7 +48,7 @@ abstract class BaseRequest
                 }
             }
 
-            if (!$methodExists) {
+            if (! $methodExists) {
                 trigger_error(
                     sprintf(
                         "There is no method (get or is) on object %s for property %s",

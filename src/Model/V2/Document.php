@@ -99,7 +99,7 @@ final class Document extends SnelstartObject
 
     public static function createFromFile(\SplFileObject $file, UuidInterface $parentIdentifier): self
     {
-        if (!$file->isReadable()) {
+        if (! $file->isReadable()) {
             throw new \InvalidArgumentException("Given file is not readable");
         }
 

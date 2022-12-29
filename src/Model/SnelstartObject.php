@@ -68,7 +68,7 @@ abstract class SnelstartObject extends BaseObject
                 /**
                  * @psalm-suppress RedundantCondition
                  */
-                if ($editableAttribute !== "id" && $editableAttribute !== "url" && !$hydrated) {
+                if ($editableAttribute !== "id" && $editableAttribute !== "url" && ! $hydrated) {
                     $possibleMethodNames = [ "get{$editableAttribute}", $editableAttribute ];
 
                     foreach ($possibleMethodNames as $possibleMethodName) {

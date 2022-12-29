@@ -62,11 +62,11 @@ final class RelatieMapper extends AbstractMapper
             )
         );
 
-        if (!empty($data["incassoSoort"])) {
+        if (! empty($data["incassoSoort"])) {
             $relatie->setIncassoSoort(new Type\Incassosoort($data["incassoSoort"]));
         }
 
-        if (!empty($data["aanmaningSoort"])) {
+        if (! empty($data["aanmaningSoort"])) {
             $relatie->setAanmaningsoort(new Type\Aanmaningsoort($data["aanmaningSoort"]));
         }
 
@@ -78,11 +78,11 @@ final class RelatieMapper extends AbstractMapper
             $relatie->setFactuurkorting($this->getMoney($data["factuurkorting"]));
         }
 
-        if (!empty($data["vestigingsAdres"])) {
+        if (! empty($data["vestigingsAdres"])) {
             $relatie->setVestigingsAdres($adresMapper->mapAdresToSnelstartObject($data["vestigingsAdres"]));
         }
 
-        if (!empty($data["correspondentieAdres"])) {
+        if (! empty($data["correspondentieAdres"])) {
             $relatie->setCorrespondentieAdres($adresMapper->mapAdresToSnelstartObject($data["correspondentieAdres"]));
         }
 

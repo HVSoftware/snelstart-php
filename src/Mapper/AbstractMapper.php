@@ -68,7 +68,7 @@ abstract class AbstractMapper
         } else if (substr($key, -2, 2) === "On" || strpos($key, "datum") !== false) {
             $value = \DateTimeImmutable::createFromFormat(Snelstart::DATETIME_FORMAT, $value);
 
-            if (!$value) {
+            if (! $value) {
                 $value = null;
             }
 

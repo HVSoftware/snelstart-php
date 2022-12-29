@@ -75,7 +75,6 @@
 
         <exclude name="Generic.Formatting.MultipleStatementAlignment.NotSame" />
         <exclude name="Generic.Arrays.ArrayIndent.KeyIncorrect" />
-        <exclude name="Generic.Formatting.SpaceAfterNot.Incorrect" />
         <exclude name="Generic.PHP.ForbiddenFunctions.Found" />
 
         <exclude name="PSR2.Namespaces.UseDeclaration.MultipleDeclarations" />

@@ -86,11 +86,20 @@ abstract class BaseConnection implements ConnectionInterface
         $client = $this->getClient();
 
         try {
-            if (!$request->hasHeader(self::SUBSCRIPTION_HEADER_NAME)) {
+            if (! $request->hasHeader(self::SUBSCRIPTION_HEADER_NAME)) {
                 $request = $this->setOrReplaceSubscriptionKeyInRequest($request, $this->subscriptionKey->getPrimary());
             }
 
-            $this->preRequestValidation($request = $request->withHeader("Authorization", sprintf("%s %s", $this->accessToken->getTokenType(), $this->accessToken->getAccessToken())));
+            $this->preRequestValidation(
+                $request = $request->withHeader(
+                    "Authorization",
+                    sprintf(
+                        "%s %s",
+                        $this->accessToken->getTokenType(),
+                        $this->accessToken->getAccessToken(),
+                    )
+                )
+            );
             $this->numRetries++;
 
             if ($this->logger !== null) {
