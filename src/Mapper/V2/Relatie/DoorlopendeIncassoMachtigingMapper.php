@@ -24,7 +24,7 @@ final class DoorlopendeIncassoMachtigingMapper extends AbstractMapper
     {
         $data = empty($data) ? $this->responseData : $data;
         /**
- * @var DoorlopendeIncassoMachtiging $object 
+ * @var DoorlopendeIncassoMachtiging $object
 */
         $object = $this->mapArrayDataToModel($doorlopendeIncassoMachtiging, $data);
 
