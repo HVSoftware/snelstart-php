@@ -27,7 +27,7 @@ final class AccessTokenConnection implements ConnectionInterface
     ) {
         $this->client = $client ?? new Client(
             [
-            'base_uri'  =>  self::getEndpoint(),
+                'base_uri'  =>  self::getEndpoint(),
             ]
         );
     }

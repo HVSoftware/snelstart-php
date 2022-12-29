@@ -29,7 +29,7 @@ final class KostenplaatsRequest extends BaseRequest
     {
         return new Request(
             "POST", "kostenplaatsen", [
-            "Content-Type"  =>  "application/json"
+                "Content-Type"  =>  "application/json"
             ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($kostenplaats))
         );
     }
@@ -42,7 +42,7 @@ final class KostenplaatsRequest extends BaseRequest
 
         return new Request(
             "PUT", "kostenplaatsen/" . $kostenplaats->getId()->toString(), [
-            "Content-Type"  =>  "application/json"
+                "Content-Type"  =>  "application/json"
             ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($kostenplaats))
         );
     }
@@ -55,7 +55,7 @@ final class KostenplaatsRequest extends BaseRequest
 
         return new Request(
             "PUT", "kostenplaatsen/" . $kostenplaats->getId()->toString(), [
-            "Content-Type"  =>  "application/json"
+                "Content-Type"  =>  "application/json"
             ]
         );
     }

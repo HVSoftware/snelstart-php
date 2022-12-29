@@ -61,8 +61,8 @@ final class ArtikelRequest extends BaseRequest
         return http_build_query(
             array_filter(
                 [
-                "relatieId" =>  $relatieId,
-                "aantal"    =>  $aantal,
+                    "relatieId" =>  $relatieId,
+                    "aantal"    =>  $aantal,
                 ], static function ($value) {
                     return $value !== null;
                 }

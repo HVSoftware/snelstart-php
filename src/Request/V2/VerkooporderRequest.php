@@ -18,7 +18,7 @@ final class VerkooporderRequest extends BaseRequest
     {
         return new Request(
             "POST", "verkooporders", [
-            "Content-Type"  =>  "application/json"
+                "Content-Type"  =>  "application/json"
             ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($verkooporder))
         );
     }
