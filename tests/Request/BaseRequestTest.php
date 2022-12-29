@@ -57,7 +57,10 @@ final class BaseRequestTest extends TestCase
         $dateTime = new DateTimeImmutable();
         $money = Money::EUR(1000);
         $array = [
-            (new class extends SnelstartObject {})
+            (
+                new class extends SnelstartObject {
+                }
+            )
         ];
 
         $inputObject = new class($uuid, $money, $dateTime, $array) extends BaseObject {
