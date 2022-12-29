@@ -83,7 +83,6 @@ abstract class AbstractMapper
                 }
             }
         } catch (\TypeError $e) {
-
         }
 
         return $class;
