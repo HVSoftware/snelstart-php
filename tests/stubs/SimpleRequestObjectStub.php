@@ -36,4 +36,4 @@ class SimpleRequestObjectStub extends BaseObject {
     {
         return $this->booleanValue;
     }
-};
+}
