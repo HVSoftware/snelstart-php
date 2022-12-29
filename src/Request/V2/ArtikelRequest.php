@@ -21,7 +21,7 @@ final class ArtikelRequest extends BaseRequest
     public function findAll(
         ODataRequestDataInterface $ODataRequestData,
         ?Relatie $relatie = null,
-        ?int $aantal = null
+        ?int $aantal = null,
     ): RequestInterface {
         return new Request(
             "GET",
@@ -33,14 +33,14 @@ final class ArtikelRequest extends BaseRequest
         UuidInterface $id,
         ODataRequestDataInterface $ODataRequestData,
         ?Relatie $relatie = null,
-        ?int $aantal = null
+        ?int $aantal = null,
     ): RequestInterface {
         return new Request(
             "GET",
             sprintf(
                 "artikelen/%s/?%s",
                 $id->toString(),
-                $ODataRequestData->getHttpCompatibleQueryString() . '&' . $this->getQueryString($relatie, $aantal)
+                $ODataRequestData->getHttpCompatibleQueryString() . '&' . $this->getQueryString($relatie, $aantal),
             ),
         );
     }
@@ -66,7 +66,7 @@ final class ArtikelRequest extends BaseRequest
                 ], static function ($value) {
                     return $value !== null;
                 }
-            ), "", "&", \PHP_QUERY_RFC3986
+            ), "", "&", PHP_QUERY_RFC3986,
         );
     }
 }
