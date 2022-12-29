@@ -2,7 +2,9 @@
 
 namespace SnelstartPHP\Tests\Request;
 
+use DateTimeImmutable;
 use Money\Money;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
@@ -52,7 +54,7 @@ final class BaseRequestTest extends TestCase
     public function testIfSerializationIsCallingAllMethodsDependingOnInput()
     {
         $uuid = Uuid::uuid4();
-        $dateTime = new \DateTimeImmutable();
+        $dateTime = new DateTimeImmutable();
         $money = Money::EUR(1000);
         $array = [
             (new class extends SnelstartObject {})
