@@ -79,7 +79,6 @@
         <exclude name="PSR2.Files.EndFileNewline.NoneFound" />
         <exclude name="PSR2.ControlStructures.ElseIfDeclaration.NotAllowed" />
         <exclude name="PSR2.Methods.FunctionCallSignature.MultipleArguments" />
-        <exclude name="PSR2.Namespaces.UseDeclaration.SpaceAfterLastUse" />
 
         <exclude name="Squiz.WhiteSpace.ControlStructureSpacing.SpacingBeforeClose" />
         <exclude name="Squiz.Strings.DoubleQuoteUsage.NotRequired" />
