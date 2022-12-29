@@ -59,18 +59,18 @@ abstract class BaseRequest
 
             if ($value instanceof UuidInterface) {
                 $value = $this->serializer->uuidInterfaceToString($value);
-            } else if ($value instanceof \DateTimeInterface) {
+            } elseif ($value instanceof DateTimeInterface) {
                 $value = $this->serializer->dateTimeToString($value);
             } elseif ($value instanceof Money) {
                 $value = $this->serializer->moneyFormatToString($value);
-            } else if ($editableAttributeName === "id" && $value === null) {
+            } elseif ($editableAttributeName === "id" && $value === null) {
                 // Whenever 'id' equals null skip it.
                 $this->serializer->scalarValue($value);
                 continue;
-            } else if ($value instanceof \JsonSerializable || is_scalar($value) || $value === null) {
+            } elseif ($value instanceof JsonSerializable || is_scalar($value) || $value === null) {
                 // We accept simple values.
                 $value = $this->serializer->scalarValue($value);
-            } else if (is_array($value)) {
+            } elseif (is_array($value)) {
                 // If our value is an array and contains anything that is an instance of 'BaseObject'
                 // Try to serialize that again. Please note that this is done by reference.
                 foreach ($value as &$subValue) {
@@ -81,7 +81,7 @@ abstract class BaseRequest
 
                 // Else do nothing.
                 $value = $this->serializer->arrayValue($value);
-            } else if ($value instanceof SnelstartObject) {
+            } elseif ($value instanceof SnelstartObject) {
                 $editableSubAttributes = [];
 
                 if ($value->getId() !== null) {
@@ -90,10 +90,10 @@ abstract class BaseRequest
                 }
 
                 $value = $this->prepareAddOrEditRequestForSerialization($value, ...$editableSubAttributes);
-            } else if ($value instanceof BaseObject) {
+            } elseif ($value instanceof BaseObject) {
                 $value = $this->prepareAddOrEditRequestForSerialization($value);
             } else {
-                throw new \LogicException(
+                throw new LogicException(
                     sprintf(
                         "You need to implement something to handle the serialization of '%s' (type: %s)",
                         \get_class($value),
