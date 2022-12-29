@@ -2,8 +2,8 @@
 
 namespace SnelstartPHP\Model;
 
-use function \array_unique;
-use function \array_merge;
+use function array_unique;
+use function array_merge;
 
 abstract class BaseObject
 {

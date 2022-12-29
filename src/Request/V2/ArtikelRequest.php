@@ -6,8 +6,9 @@
 
 namespace SnelstartPHP\Request\V2;
 
-use function \http_build_query;
-use function \array_filter;
+use function http_build_query;
+use function array_filter;
+
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\RequestInterface;
 use Ramsey\Uuid\UuidInterface;

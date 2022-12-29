@@ -9,7 +9,7 @@ namespace SnelstartPHP\Mapper\V2;
 use Ramsey\Uuid\Uuid;
 use SnelstartPHP\Model\FactuurRelatie;
 use SnelstartPHP\Model\NaamWaarde;
-use function \array_map;
+use function array_map;
 use Psr\Http\Message\ResponseInterface;
 use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\EmailVersturen;

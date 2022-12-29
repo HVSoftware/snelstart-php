@@ -87,7 +87,6 @@
         <exclude name="PSR12.Classes.ClassInstantiation.MissingParentheses" />
         <exclude name="PSR12.Operators.OperatorSpacing.NoSpaceAfter" />
         <exclude name="PSR12.Operators.OperatorSpacing.NoSpaceBefore" />
-        <exclude name="PSR12.Files.ImportStatement.LeadingSlash" />
 
         <exclude name="Squiz.WhiteSpace.ControlStructureSpacing.SpacingBeforeClose" />
         <exclude name="Squiz.Strings.DoubleQuoteUsage.NotRequired" />
