@@ -143,7 +143,7 @@ final class BaseRequestTest extends TestCase
         $object::$editableAttributes = [ "simpleValue" ];
 
         $this->assertNotEmpty($object::getEditableAttributes());
-        $this->assertEquals($request->prepareAddOrEditRequestForSerialization($object), [ "simpleValue" => "test" ]);
+        $this->assertEquals([ "simpleValue" => "test" ], $request->prepareAddOrEditRequestForSerialization($object));
     }
 
     public function testNullValueRequestSerialization(): void
@@ -161,7 +161,7 @@ final class BaseRequestTest extends TestCase
         $object = new SimpleRequestObjectStub;
         $object::$editableAttributes = [ "integerValue" ];
 
-        $this->assertEquals($request->prepareAddOrEditRequestForSerialization($object), [ "integerValue" => 1 ]);
+        $this->assertEquals([ "integerValue" => 1 ], $request->prepareAddOrEditRequestForSerialization($object));
     }
 
     public function testBooleanValueRequestSerialization(): void
@@ -170,6 +170,6 @@ final class BaseRequestTest extends TestCase
         $object = new SimpleRequestObjectStub;
         $object::$editableAttributes = [ "booleanValue" ];
 
-        $this->assertEquals($request->prepareAddOrEditRequestForSerialization($object), [ "booleanValue" => false ]);
+        $this->assertEquals([ "booleanValue" => false ], $request->prepareAddOrEditRequestForSerialization($object));
     }
 }
