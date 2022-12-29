@@ -141,7 +141,7 @@ class DocumentRequestTest extends TestCase
     {
         $id = Uuid::uuid4();
         $document = (new Document())->setId($id);
-        $expected = new Request("POST", "documenten/" . $document->getId()->toString(), [
+        $expected = new Request("POST", "documenten/" . $document->getId()?->toString(), [
             "Content-Type"  =>  "application/json"
         ], json_encode([
             "id"                =>  $id->toString(),
@@ -162,7 +162,7 @@ class DocumentRequestTest extends TestCase
     {
         $id = Uuid::uuid4();
         $document = (new Document())->setId($id);
-        $expected = new Request("DELETE", "documenten/" . $document->getId()->toString(), [
+        $expected = new Request("DELETE", "documenten/" . $document->getId()?->toString(), [
             "Content-Type"  =>  "application/json"
         ]);
         $request = $this->documentRequest->deleteDocument($document);
