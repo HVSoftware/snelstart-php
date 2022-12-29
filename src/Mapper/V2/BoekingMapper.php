@@ -189,6 +189,7 @@ final class BoekingMapper extends AbstractMapper
         if (isset($data['relatie'])) {
             $verkoopfactuur->setRelatie(Relatie::createFromUUID(Uuid::fromString($data['relatie']['id'])));
         }
+
         if (isset($data['verkoopBoeking'])) {
             $verkoopfactuur->setVerkoopBoeking(
                 Verkoopboeking::createFromUUID(Uuid::fromString($data['verkoopBoeking']['id']))
@@ -198,12 +199,15 @@ final class BoekingMapper extends AbstractMapper
         if (isset($data['factuurDatum'])) {
             $verkoopfactuur->setFactuurDatum(new DateTimeImmutable($data['factuurDatum']));
         }
+
         if (isset($data['factuurBedrag'])) {
             $verkoopfactuur->setFactuurBedrag($this->getMoney($data['factuurBedrag']));
         }
+
         if (isset($data['openstaandSaldo'])) {
             $verkoopfactuur->setOpenstaandSaldo($this->getMoney($data['openstaandSaldo']));
         }
+
         if (isset($data['vervalDatum'])) {
             $verkoopfactuur->setVervalDatum(new DateTimeImmutable($data['vervalDatum']));
         }
@@ -224,6 +228,7 @@ final class BoekingMapper extends AbstractMapper
         if (isset($data['relatie'])) {
             $inkoopfactuur->setRelatie(Relatie::createFromUUID(Uuid::fromString($data['relatie']['id'])));
         }
+
         if (isset($data['inkoopBoeking'])) {
             $inkoopfactuur->setInkoopboeking(
                 Inkoopboeking::createFromUUID(Uuid::fromString($data['inkoopBoeking']['id']))
@@ -233,12 +238,15 @@ final class BoekingMapper extends AbstractMapper
         if (isset($data['factuurDatum'])) {
             $inkoopfactuur->setFactuurDatum(new DateTimeImmutable($data['factuurDatum']));
         }
+
         if (isset($data['factuurBedrag'])) {
             $inkoopfactuur->setFactuurBedrag($this->getMoney($data['factuurBedrag']));
         }
+
         if (isset($data['openstaandSaldo'])) {
             $inkoopfactuur->setOpenstaandSaldo($this->getMoney($data['openstaandSaldo']));
         }
+
         if (isset($data['vervalDatum'])) {
             $inkoopfactuur->setVervalDatum(new DateTimeImmutable($data['vervalDatum']));
         }
