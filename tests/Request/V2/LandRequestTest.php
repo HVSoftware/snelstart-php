@@ -7,7 +7,7 @@ use Ramsey\Uuid\Uuid;
 use SnelstartPHP\Request\V2\LandRequest;
 use PHPUnit\Framework\TestCase;
 
-class LandRequestTest extends TestCase
+final class LandRequestTest extends TestCase
 {
     private $landRequest;
 

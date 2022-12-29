@@ -12,7 +12,7 @@ use SnelstartPHP\Serializer\RequestSerializerInterface;
 use SnelstartPHP\Tests\stubs\SimpleRequestObjectStub;
 use SnelstartPHP\Tests\stubs\SimpleRequestStub;
 
-class BaseRequestTest extends TestCase
+final class BaseRequestTest extends TestCase
 {
     private RequestSerializerInterface $requestSerializer;
 

@@ -7,7 +7,7 @@ use SnelstartPHP\Model\Type\Relatiesoort;
 use SnelstartPHP\Request\ODataRequestData;
 use PHPUnit\Framework\TestCase;
 
-class ODataRequestDataTest extends TestCase
+final class ODataRequestDataTest extends TestCase
 {
     public function testODataRequestMerge()
     {

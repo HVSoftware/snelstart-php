@@ -13,7 +13,7 @@ use SnelstartPHP\Model\V2\Relatie;
 use SnelstartPHP\Model\V2\Verkoopboeking;
 use SnelstartPHP\Request\V2\DocumentRequest;
 
-class DocumentRequestTest extends TestCase
+final class DocumentRequestTest extends TestCase
 {
     private DocumentRequest $documentRequest;
 
