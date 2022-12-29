@@ -2,6 +2,9 @@
 
 namespace SnelstartPHP\Request;
 
+use DateTimeInterface;
+use JsonSerializable;
+use LogicException;
 use Money\Money;
 use Ramsey\Uuid\UuidInterface;
 use SnelstartPHP\Model\BaseObject;
