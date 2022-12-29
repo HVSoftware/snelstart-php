@@ -13,7 +13,7 @@ abstract class SnelstartObject extends BaseObject
     /**
      * De publieke sleutel (public identifier, als uuid) dat uniek een object identificeert.
      */
-    protected UuidInterface $id;
+    protected UuidInterface|null $id = null;
 
     /**
      * Geeft de realtieve uri terug van het object waartoe de identifier behoort.
