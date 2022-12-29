@@ -72,8 +72,10 @@ abstract class SnelstartObject extends BaseObject
                     $possibleMethodNames = [ "get{$editableAttribute}", $editableAttribute ];
 
                     foreach ($possibleMethodNames as $possibleMethodName) {
-                        if (method_exists($this, $possibleMethodName) &&
-                            ($hydrated = $this->{$possibleMethodName}() !== null)) {
+                        if (
+                            method_exists($this, $possibleMethodName) &&
+                            ($hydrated = $this->{$possibleMethodName}() !== null)
+                        ) {
                             return true;
                         }
                     }

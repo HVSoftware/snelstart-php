@@ -38,7 +38,7 @@ final class GrootboekConnector extends BaseConnector
     public function findAll(
         ?ODataRequestDataInterface $ODataRequestData = null,
         bool $fetchAll = false,
-        iterable $previousResults = null
+        iterable $previousResults = null,
     ): iterable {
         $request = new Request\GrootboekRequest();
         $mapper = new Mapper\GrootboekMapper();
