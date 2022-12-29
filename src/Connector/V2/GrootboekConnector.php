@@ -7,8 +7,6 @@
 
 namespace SnelstartPHP\Connector\V2;
 
-use AppendIterator;
-use Iterator;
 use Ramsey\Uuid\UuidInterface;
 use SnelstartPHP\Connector\BaseConnector;
 use SnelstartPHP\Exception\SnelstartResourceNotFoundException;

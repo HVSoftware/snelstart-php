@@ -6,7 +6,6 @@
 
 namespace SnelstartPHP\Mapper\V2;
 
-use Money\Money;
 use Psr\Http\Message\ResponseInterface;
 use Ramsey\Uuid\Uuid;
 use SnelstartPHP\Mapper\AbstractMapper;
@@ -20,7 +19,6 @@ use SnelstartPHP\Model\V2\Verkoopfactuur;
 use SnelstartPHP\Model\V2\Verkooporder;
 use SnelstartPHP\Model\V2\VerkooporderRegel;
 use SnelstartPHP\Model\V2\Verkoopordersjabloon;
-use SnelstartPHP\Snelstart;
 
 final class VerkooporderMapper extends AbstractMapper
 {

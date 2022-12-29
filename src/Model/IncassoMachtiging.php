@@ -6,8 +6,6 @@
 
 namespace SnelstartPHP\Model;
 
-use Ramsey\Uuid\UuidInterface;
-
 final class IncassoMachtiging extends SnelstartObject
 {
     /**

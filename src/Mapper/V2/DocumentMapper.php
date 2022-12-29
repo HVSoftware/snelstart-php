@@ -7,7 +7,6 @@
 namespace SnelstartPHP\Mapper\V2;
 
 use Psr\Http\Message\ResponseInterface;
-use Ramsey\Uuid\Uuid;
 use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\V2\Document;
 

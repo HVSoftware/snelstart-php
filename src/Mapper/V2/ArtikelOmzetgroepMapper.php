@@ -7,15 +7,8 @@
 namespace SnelstartPHP\Mapper\V2;
 
 use Psr\Http\Message\ResponseInterface;
-use Ramsey\Uuid\Uuid;
 use SnelstartPHP\Mapper\AbstractMapper;
-use SnelstartPHP\Model\SnelstartObject;
-use SnelstartPHP\Model\Type\PrijsBepalingSoort;
-use SnelstartPHP\Model\V2\Artikel;
 use SnelstartPHP\Model\V2\ArtikelOmzetgroep;
-use SnelstartPHP\Model\V2\Prijsafspraak;
-use SnelstartPHP\Model\V2\Relatie;
-use SnelstartPHP\Model\V2\SubArtikel;
 
 final class ArtikelOmzetgroepMapper extends AbstractMapper
 {
