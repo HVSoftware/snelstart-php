@@ -47,10 +47,7 @@
         <exclude name="SlevomatCodingStandard.PHP.RequireExplicitAssertion.RequiredExplicitAssertion" />
         <exclude name="SlevomatCodingStandard.Namespaces.UseSpacing.IncorrectLinesCountAfterLastUse" />
         <exclude name="SlevomatCodingStandard.Namespaces.DisallowGroupUse.DisallowedGroupUse" />
-        <exclude name="SlevomatCodingStandard.Arrays.SingleLineArrayWhitespace.SpaceAfterArrayOpen" />
-        <exclude name="SlevomatCodingStandard.Arrays.SingleLineArrayWhitespace.SpaceBeforeArrayClose" />
         <exclude name="SlevomatCodingStandard.Namespaces.MultipleUsesPerLine.MultipleUsesPerLine" />
-        <exclude name="SlevomatCodingStandard.Namespaces.UselessAlias.UselessAlias" />
         <exclude name="SlevomatCodingStandard.ControlStructures.BlockControlStructureSpacing.IncorrectLinesCountAfterLastControlStructure" />
         <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingTraversableTypeHintSpecification" />
         <exclude name="SlevomatCodingStandard.ControlStructures.BlockControlStructureSpacing.IncorrectLinesCountAfterControlStructure" />

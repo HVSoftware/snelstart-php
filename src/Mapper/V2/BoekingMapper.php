@@ -26,7 +26,7 @@ use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\IncassoMachtiging;
 use SnelstartPHP\Model\Kostenplaats;
 use SnelstartPHP\Model\V2 as Model;
-use SnelstartPHP\Model\Type as Type;
+use SnelstartPHP\Model\Type;
 
 final class BoekingMapper extends AbstractMapper
 {

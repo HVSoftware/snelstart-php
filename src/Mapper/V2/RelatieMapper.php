@@ -13,7 +13,7 @@ use function array_map;
 use Psr\Http\Message\ResponseInterface;
 use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\EmailVersturen;
-use SnelstartPHP\Model\Type as Type;
+use SnelstartPHP\Model\Type;
 use SnelstartPHP\Model\V2 as Model;
 
 final class RelatieMapper extends AbstractMapper
