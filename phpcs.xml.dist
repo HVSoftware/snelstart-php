@@ -84,8 +84,6 @@
         <exclude name="PSR2.Namespaces.UseDeclaration.SpaceAfterLastUse" />
 
         <exclude name="PSR12.Classes.ClassInstantiation.MissingParentheses" />
-        <exclude name="PSR12.Operators.OperatorSpacing.NoSpaceAfter" />
-        <exclude name="PSR12.Operators.OperatorSpacing.NoSpaceBefore" />
 
         <exclude name="Squiz.WhiteSpace.ControlStructureSpacing.SpacingBeforeClose" />
         <exclude name="Squiz.Strings.DoubleQuoteUsage.NotRequired" />
