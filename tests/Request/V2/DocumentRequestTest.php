@@ -38,7 +38,10 @@ class DocumentRequestTest extends TestCase
             $documentType = new DocumentType($value);
             $expectedRequest = new Request("GET", "documenten/" . $documentType->getValue() . "/" . $uuid->toString());
 
-            $this->assertEquals($expectedRequest, $this->documentRequest->findByDocumentTypeAndParentIdentifier($documentType, $uuid));
+            $this->assertEquals(
+                $expectedRequest,
+                $this->documentRequest->findByDocumentTypeAndParentIdentifier($documentType, $uuid),
+            );
         }
     }
 
@@ -78,7 +81,10 @@ class DocumentRequestTest extends TestCase
         $request = $this->documentRequest->addInkoopBoekingDocument($document, $inkoopboeking);
 
         $this->assertEquals($expected->getUri(), $request->getUri());
-        $this->assertJsonStringEqualsJsonString($expected->getBody()->getContents(), $request->getBody()->getContents());
+        $this->assertJsonStringEqualsJsonString(
+            $expected->getBody()->getContents(),
+            $request->getBody()->getContents(),
+        );
     }
 
     public function testAddVerkoopBoekingDocument()
@@ -100,7 +106,10 @@ class DocumentRequestTest extends TestCase
         $request = $this->documentRequest->addVerkoopBoekingDocument($document, $verkoopboeking);
 
         $this->assertEquals($expected->getUri(), $request->getUri());
-        $this->assertJsonStringEqualsJsonString($expected->getBody()->getContents(), $request->getBody()->getContents());
+        $this->assertJsonStringEqualsJsonString(
+            $expected->getBody()->getContents(),
+            $request->getBody()->getContents(),
+        );
     }
 
     public function testAddRelatieDocument()
@@ -122,7 +131,10 @@ class DocumentRequestTest extends TestCase
         $request = $this->documentRequest->addRelatieDocument($document, $relatie);
 
         $this->assertEquals($expected->getUri(), $request->getUri());
-        $this->assertJsonStringEqualsJsonString($expected->getBody()->getContents(), $request->getBody()->getContents());
+        $this->assertJsonStringEqualsJsonString(
+            $expected->getBody()->getContents(),
+            $request->getBody()->getContents(),
+        );
     }
 
     public function testUpdateDocument()
@@ -140,7 +152,10 @@ class DocumentRequestTest extends TestCase
         $request = $this->documentRequest->updateDocument($document);
 
         $this->assertEquals($expected->getUri(), $request->getUri());
-        $this->assertJsonStringEqualsJsonString($expected->getBody()->getContents(), $request->getBody()->getContents());
+        $this->assertJsonStringEqualsJsonString(
+            $expected->getBody()->getContents(),
+            $request->getBody()->getContents(),
+        );
     }
 
     public function testDeleteDocument()
