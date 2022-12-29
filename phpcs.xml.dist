@@ -81,7 +81,6 @@
         <exclude name="PSR2.Methods.FunctionCallSignature.MultipleArguments" />
 
         <exclude name="Squiz.Strings.DoubleQuoteUsage.NotRequired" />
-        <exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing.SpacingAfterVariadic" />
         <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar" />
     </rule>
 
