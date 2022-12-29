@@ -25,31 +25,46 @@ final class BoekingMapper extends AbstractMapper
         return $this->mapInkoopboekingResult(new Model\Inkoopboeking());
     }
 
-    public function findVerkoopboeking(ResponseInterface $response): Model\Verkoopboeking
+    /**
+     * @throws Exception
+     */
+    public function findVerkoopboeking(ResponseInterface $response): Verkoopboeking
     {
         $this->setResponseData($response);
         return $this->mapVerkoopboekingResult(new Model\Verkoopboeking());
     }
 
-    public function findAllInkoopboekingen(ResponseInterface $response): \Generator
+    /**
+     * @throws Exception
+     */
+    public function findAllInkoopboekingen(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
         yield from $this->mapManyResultsToSubMappers(Model\Inkoopboeking::class);
     }
 
-    public function findAllInkoopfacturen(ResponseInterface $response): \Generator
+    /**
+     * @throws Exception
+     */
+    public function findAllInkoopfacturen(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
         return $this->mapManyResultsToSubMappers(Model\Inkoopfactuur::class);
     }
 
-    public function findAllVerkoopboekingen(ResponseInterface $response): \Generator
+    /**
+     * @throws Exception
+     */
+    public function findAllVerkoopboekingen(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
         yield from $this->mapManyResultsToSubMappers(Model\Verkoopboeking::class);
     }
 
-    public function findAllVerkoopfacturen(ResponseInterface $response): \Generator
+    /**
+     * @throws Exception
+     */
+    public function findAllVerkoopfacturen(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
         return $this->mapManyResultsToSubMappers(Model\Verkoopfactuur::class);
@@ -67,13 +82,19 @@ final class BoekingMapper extends AbstractMapper
         return $this->mapInkoopboekingResult(new Model\Inkoopboeking());
     }
 
-    public function updateVerkoopboeking(ResponseInterface $response): Model\Verkoopboeking
+    /**
+     * @throws Exception
+     */
+    public function updateVerkoopboeking(ResponseInterface $response): Verkoopboeking
     {
         $this->setResponseData($response);
         return $this->mapVerkoopboekingResult(new Model\Verkoopboeking());
     }
 
-    public function addVerkoopboeking(ResponseInterface $response): Model\Verkoopboeking
+    /**
+     * @throws Exception
+     */
+    public function addVerkoopboeking(ResponseInterface $response): Verkoopboeking
     {
         $this->setResponseData($response);
         return $this->mapVerkoopboekingResult(new Model\Verkoopboeking());
@@ -101,7 +122,10 @@ final class BoekingMapper extends AbstractMapper
         return $inkoopboeking;
     }
 
-    protected function mapVerkoopboekingResult(Model\Verkoopboeking $verkoopboeking, array $data = []): Model\Verkoopboeking
+    /**
+     * @throws Exception
+     */
+    protected function mapVerkoopboekingResult(Verkoopboeking $verkoopboeking, array $data = []): Verkoopboeking
     {
         $data = empty($data) ? $this->responseData : $data;
 
@@ -139,7 +163,10 @@ final class BoekingMapper extends AbstractMapper
         return $verkoopboeking;
     }
 
-    protected function mapVerkoopfactuurResult(Model\Verkoopfactuur $verkoopfactuur, array $data = []): Model\Verkoopfactuur
+    /**
+     * @throws Exception
+     */
+    protected function mapVerkoopfactuurResult(Verkoopfactuur $verkoopfactuur, array $data = []): Verkoopfactuur
     {
         $data = empty($data) ? $this->responseData : $data;
 
@@ -169,7 +196,10 @@ final class BoekingMapper extends AbstractMapper
         return $verkoopfactuur;
     }
 
-    protected function mapInkoopfactuurResult(Model\Inkoopfactuur $inkoopfactuur, array $data = []): Model\Inkoopfactuur
+    /**
+     * @throws Exception
+     */
+    protected function mapInkoopfactuurResult(Model\Inkoopfactuur $inkoopfactuur, array $data = []): Inkoopfactuur
     {
         $data = empty($data) ? $this->responseData : $data;
 
@@ -199,7 +229,10 @@ final class BoekingMapper extends AbstractMapper
         return $inkoopfactuur;
     }
 
-    protected function mapBoekingResult(Model\Boeking $boeking, array $data = []): Model\Boeking
+    /**
+     * @throws Exception
+     */
+    protected function mapBoekingResult(Boeking $boeking, array $data = []): Boeking
     {
         $data = empty($data) ? $this->responseData : $data;
 
@@ -276,7 +309,10 @@ final class BoekingMapper extends AbstractMapper
         return $boeking;
     }
 
-    public function mapManyResultsToSubMappers(string $className): \Generator
+    /**
+     * @throws Exception
+     */
+    public function mapManyResultsToSubMappers(string $className): Generator
     {
         foreach ($this->responseData as $boekingData) {
             if ($className === Model\Inkoopboeking::class) {
