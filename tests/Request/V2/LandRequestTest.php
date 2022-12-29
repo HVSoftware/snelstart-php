@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class LandRequestTest extends TestCase
 {
-    private $landRequest;
+    private LandRequest $landRequest;
 
     public function setUp(): void
     {
