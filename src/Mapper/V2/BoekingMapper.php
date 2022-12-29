@@ -8,6 +8,17 @@
 namespace SnelstartPHP\Mapper\V2;
 
 use DateTimeImmutable;
+use Exception;
+use Generator;
+use SnelstartPHP\Model\V2\Boeking;
+use SnelstartPHP\Model\V2\Boekingsregel;
+use SnelstartPHP\Model\V2\Document;
+use SnelstartPHP\Model\V2\Grootboek;
+use SnelstartPHP\Model\V2\Inkoopboeking;
+use SnelstartPHP\Model\V2\Inkoopfactuur;
+use SnelstartPHP\Model\V2\Relatie;
+use SnelstartPHP\Model\V2\Verkoopboeking;
+use SnelstartPHP\Model\V2\Verkoopfactuur;
 use function array_map;
 use Psr\Http\Message\ResponseInterface;
 use Ramsey\Uuid\Uuid;
@@ -19,10 +30,10 @@ use SnelstartPHP\Model\Type as Type;
 
 final class BoekingMapper extends AbstractMapper
 {
-    public function findInkoopboeking(ResponseInterface $response): Model\Inkoopboeking
+    public function findInkoopboeking(ResponseInterface $response): Inkoopboeking
     {
         $this->setResponseData($response);
-        return $this->mapInkoopboekingResult(new Model\Inkoopboeking());
+        return $this->mapInkoopboekingResult(new Inkoopboeking());
     }
 
     /**
@@ -31,7 +42,7 @@ final class BoekingMapper extends AbstractMapper
     public function findVerkoopboeking(ResponseInterface $response): Verkoopboeking
     {
         $this->setResponseData($response);
-        return $this->mapVerkoopboekingResult(new Model\Verkoopboeking());
+        return $this->mapVerkoopboekingResult(new Verkoopboeking());
     }
 
     /**
@@ -40,7 +51,7 @@ final class BoekingMapper extends AbstractMapper
     public function findAllInkoopboekingen(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
-        yield from $this->mapManyResultsToSubMappers(Model\Inkoopboeking::class);
+        yield from $this->mapManyResultsToSubMappers(Inkoopboeking::class);
     }
 
     /**
@@ -49,7 +60,7 @@ final class BoekingMapper extends AbstractMapper
     public function findAllInkoopfacturen(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
-        return $this->mapManyResultsToSubMappers(Model\Inkoopfactuur::class);
+        return $this->mapManyResultsToSubMappers(Inkoopfactuur::class);
     }
 
     /**
@@ -58,7 +69,7 @@ final class BoekingMapper extends AbstractMapper
     public function findAllVerkoopboekingen(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
-        yield from $this->mapManyResultsToSubMappers(Model\Verkoopboeking::class);
+        yield from $this->mapManyResultsToSubMappers(Verkoopboeking::class);
     }
 
     /**
@@ -67,19 +78,19 @@ final class BoekingMapper extends AbstractMapper
     public function findAllVerkoopfacturen(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
-        return $this->mapManyResultsToSubMappers(Model\Verkoopfactuur::class);
+        return $this->mapManyResultsToSubMappers(Verkoopfactuur::class);
     }
 
-    public function addInkoopboeking(ResponseInterface $response): Model\Inkoopboeking
+    public function addInkoopboeking(ResponseInterface $response): Inkoopboeking
     {
         $this->setResponseData($response);
-        return $this->mapInkoopboekingResult(new Model\Inkoopboeking());
+        return $this->mapInkoopboekingResult(new Inkoopboeking());
     }
 
-    public function updateInkoopboeking(ResponseInterface $response): Model\Inkoopboeking
+    public function updateInkoopboeking(ResponseInterface $response): Inkoopboeking
     {
         $this->setResponseData($response);
-        return $this->mapInkoopboekingResult(new Model\Inkoopboeking());
+        return $this->mapInkoopboekingResult(new Inkoopboeking());
     }
 
     /**
@@ -88,7 +99,7 @@ final class BoekingMapper extends AbstractMapper
     public function updateVerkoopboeking(ResponseInterface $response): Verkoopboeking
     {
         $this->setResponseData($response);
-        return $this->mapVerkoopboekingResult(new Model\Verkoopboeking());
+        return $this->mapVerkoopboekingResult(new Verkoopboeking());
     }
 
     /**
@@ -97,26 +108,26 @@ final class BoekingMapper extends AbstractMapper
     public function addVerkoopboeking(ResponseInterface $response): Verkoopboeking
     {
         $this->setResponseData($response);
-        return $this->mapVerkoopboekingResult(new Model\Verkoopboeking());
+        return $this->mapVerkoopboekingResult(new Verkoopboeking());
     }
 
-    protected function mapDocumentResult(array $data = []): Model\Document
+    protected function mapDocumentResult(array $data = []): Document
     {
         $data = empty($data) ? $this->responseData : $data;
-        return $this->mapArrayDataToModel(new Model\Document(), $data);
+        return $this->mapArrayDataToModel(new Document(), $data);
     }
 
-    protected function mapInkoopboekingResult(Model\Inkoopboeking $inkoopboeking, array $data = []): Model\Inkoopboeking
+    protected function mapInkoopboekingResult(Inkoopboeking $inkoopboeking, array $data = []): Inkoopboeking
     {
         $data = empty($data) ? $this->responseData : $data;
 
         /**
-         * @var Model\Inkoopboeking $inkoopboeking
+         * @var Inkoopboeking $inkoopboeking
          */
         $inkoopboeking = $this->mapBoekingResult($inkoopboeking, $data);
 
         if (isset($data["leverancier"])) {
-            $inkoopboeking->setLeverancier(Model\Relatie::createFromUUID(Uuid::fromString($data["leverancier"]["id"])));
+            $inkoopboeking->setLeverancier(Relatie::createFromUUID(Uuid::fromString($data["leverancier"]["id"])));
         }
 
         return $inkoopboeking;
@@ -130,14 +141,14 @@ final class BoekingMapper extends AbstractMapper
         $data = empty($data) ? $this->responseData : $data;
 
         /**
-         * @var Model\Verkoopboeking $verkoopboeking
+         * @var Verkoopboeking $verkoopboeking
          */
         $verkoopboeking = $this->mapBoekingResult($verkoopboeking, $data);
 
         if (isset($data["klant"])) {
-            $verkoopboeking->setKlant(Model\Relatie::createFromUUID(Uuid::fromString($data["klant"]["id"])));
-        } else if (isset($data["relatie"])) {
-            $verkoopboeking->setKlant(Model\Relatie::createFromUUID(Uuid::fromString($data["relatie"]["id"])));
+            $verkoopboeking->setKlant(Relatie::createFromUUID(Uuid::fromString($data["klant"]["id"])));
+        } elseif (isset($data["relatie"])) {
+            $verkoopboeking->setKlant(Relatie::createFromUUID(Uuid::fromString($data["relatie"]["id"])));
         }
 
         if (isset($data["doorlopendeIncassoMachtiging"]["id"])) {
@@ -174,10 +185,12 @@ final class BoekingMapper extends AbstractMapper
         $verkoopfactuur = $this->mapArrayDataToModel($verkoopfactuur, $data);
 
         if (isset($data['relatie'])) {
-            $verkoopfactuur->setRelatie(Model\Relatie::createFromUUID(Uuid::fromString($data['relatie']['id'])));
+            $verkoopfactuur->setRelatie(Relatie::createFromUUID(Uuid::fromString($data['relatie']['id'])));
         }
         if (isset($data['verkoopBoeking'])) {
-            $verkoopfactuur->setVerkoopBoeking(Model\Verkoopboeking::createFromUUID(Uuid::fromString($data['verkoopBoeking']['id'])));
+            $verkoopfactuur->setVerkoopBoeking(
+                Verkoopboeking::createFromUUID(Uuid::fromString($data['verkoopBoeking']['id']))
+            );
         }
 
         if (isset($data['factuurDatum'])) {
@@ -207,10 +220,12 @@ final class BoekingMapper extends AbstractMapper
         $inkoopfactuur = $this->mapArrayDataToModel($inkoopfactuur, $data);
 
         if (isset($data['relatie'])) {
-            $inkoopfactuur->setRelatie(Model\Relatie::createFromUUID(Uuid::fromString($data['relatie']['id'])));
+            $inkoopfactuur->setRelatie(Relatie::createFromUUID(Uuid::fromString($data['relatie']['id'])));
         }
         if (isset($data['inkoopBoeking'])) {
-            $inkoopfactuur->setInkoopboeking(Model\Inkoopboeking::createFromUUID(Uuid::fromString($data['inkoopBoeking']['id'])));
+            $inkoopfactuur->setInkoopboeking(
+                Inkoopboeking::createFromUUID(Uuid::fromString($data['inkoopBoeking']['id']))
+            );
         }
 
         if (isset($data['factuurDatum'])) {
@@ -237,20 +252,20 @@ final class BoekingMapper extends AbstractMapper
         $data = empty($data) ? $this->responseData : $data;
 
         /**
-         * @var Model\Boeking $boeking
+         * @var Boeking $boeking
          */
         $boeking = $this->mapArrayDataToModel($boeking, $data);
 
         if (isset($data["modifiedOn"])) {
-            $boeking->setModifiedOn(new \DateTimeImmutable($data["modifiedOn"]));
+            $boeking->setModifiedOn(new DateTimeImmutable($data["modifiedOn"]));
         }
 
         if (isset($data["factuurDatum"])) {
-            $boeking->setFactuurdatum(new \DateTimeImmutable($data["factuurDatum"]));
+            $boeking->setFactuurdatum(new DateTimeImmutable($data["factuurDatum"]));
         }
 
         if (isset($data["vervalDatum"])) {
-            $boeking->setVervaldatum(new \DateTimeImmutable($data["vervalDatum"]));
+            $boeking->setVervaldatum(new DateTimeImmutable($data["vervalDatum"]));
         }
 
         if (isset($data["factuurBedrag"])) {
@@ -260,8 +275,8 @@ final class BoekingMapper extends AbstractMapper
         if (isset($data["boekingsregels"])) {
             $boeking->setBoekingsregels(
                 ...array_map(
-                    function (array $boekingsregel): Model\Boekingsregel {
-                        $boekingsregelObject = (new Model\Boekingsregel())
+                    function (array $boekingsregel): Boekingsregel {
+                        $boekingsregelObject = (new Boekingsregel())
                             ->setBedrag($this->getMoney($boekingsregel["bedrag"]))
                             ->setBtwSoort(new Type\BtwSoort($boekingsregel["btwSoort"]));
 
@@ -271,7 +286,9 @@ final class BoekingMapper extends AbstractMapper
 
                         if (isset($boekingsregel["grootboek"])) {
                             $boekingsregelObject
-                            ->setGrootboek(Model\Grootboek::createFromUUID(Uuid::fromString($boekingsregel["grootboek"]["id"])));
+                            ->setGrootboek(
+                                Grootboek::createFromUUID(Uuid::fromString($boekingsregel["grootboek"]["id"]))
+                            );
                         }
 
                         if (isset($boekingsregel["kostenplaats"])) {
@@ -303,7 +320,6 @@ final class BoekingMapper extends AbstractMapper
             foreach ($data["documents"] as $document) {
                 $boeking->addDocument($this->mapDocumentResult($document));
             }
-
         }
 
         return $boeking;
