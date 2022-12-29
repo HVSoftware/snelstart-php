@@ -18,14 +18,31 @@ use SnelstartPHP\Request\ODataRequestDataInterface;
 
 final class ArtikelRequest extends BaseRequest
 {
-    public function findAll(ODataRequestDataInterface $ODataRequestData, ?Relatie $relatie = null, ?int $aantal = null): RequestInterface
-    {
-        return new Request("GET", "artikelen?" . $ODataRequestData->getHttpCompatibleQueryString() . '&' . $this->getQueryString($relatie, $aantal));
+    public function findAll(
+        ODataRequestDataInterface $ODataRequestData,
+        ?Relatie $relatie = null,
+        ?int $aantal = null
+    ): RequestInterface {
+        return new Request(
+            "GET",
+            "artikelen?" . $ODataRequestData->getHttpCompatibleQueryString() . '&' . $this->getQueryString($relatie, $aantal)
+        );
     }
 
-    public function find(UuidInterface $id, ODataRequestDataInterface $ODataRequestData, ?Relatie $relatie = null, ?int $aantal = null): RequestInterface
-    {
-        return new Request("GET", sprintf("artikelen/%s/?%s", $id->toString(), $ODataRequestData->getHttpCompatibleQueryString() . '&' . $this->getQueryString($relatie, $aantal)));
+    public function find(
+        UuidInterface $id,
+        ODataRequestDataInterface $ODataRequestData,
+        ?Relatie $relatie = null,
+        ?int $aantal = null
+    ): RequestInterface {
+        return new Request(
+            "GET",
+            sprintf(
+                "artikelen/%s/?%s",
+                $id->toString(),
+                $ODataRequestData->getHttpCompatibleQueryString() . '&' . $this->getQueryString($relatie, $aantal)
+            ),
+        );
     }
 
     public function getCustomFields(UuidInterface $id): RequestInterface
