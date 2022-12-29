@@ -14,15 +14,13 @@ use SnelstartPHP\Utils;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
-use SnelstartPHP\Exception\{
-    ExpiredAccessTokenException,
-    IncompleteRequestException,
-    MaxRetriesReachedException,
-    RateLimitException,
-    SnelstartApiAccessDeniedException,
-    SnelstartApiErrorException,
-    SnelstartResourceNotFoundException
-};
+use SnelstartPHP\Exception\ExpiredAccessTokenException;
+use SnelstartPHP\Exception\IncompleteRequestException;
+use SnelstartPHP\Exception\MaxRetriesReachedException;
+use SnelstartPHP\Exception\RateLimitException;
+use SnelstartPHP\Exception\SnelstartApiAccessDeniedException;
+use SnelstartPHP\Exception\SnelstartApiErrorException;
+use SnelstartPHP\Exception\SnelstartResourceNotFoundException;
 
 abstract class BaseConnection implements ConnectionInterface
 {
