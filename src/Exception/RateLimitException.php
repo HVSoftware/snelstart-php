@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Exception;
 
-use Throwable;
 use RuntimeException;
+use Throwable;
 
 final class RateLimitException extends RuntimeException
 {

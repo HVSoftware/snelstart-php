@@ -9,10 +9,10 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Mapper\V2;
 
+use Generator;
 use Psr\Http\Message\ResponseInterface;
 use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\Land;
-use Generator;
 
 final class LandMapper extends AbstractMapper
 {

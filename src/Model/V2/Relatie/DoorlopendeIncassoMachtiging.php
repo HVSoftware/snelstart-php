@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Model\V2\Relatie;
 
+use DateTimeImmutable;
 use SnelstartPHP\Model\SnelstartObject;
 use SnelstartPHP\Model\V2\Relatie;
-use DateTimeImmutable;
 
 final class DoorlopendeIncassoMachtiging extends SnelstartObject
 {

@@ -13,6 +13,13 @@ namespace SnelstartPHP\Mapper\V2;
 use DateTimeImmutable;
 use Exception;
 use Generator;
+use Psr\Http\Message\ResponseInterface;
+use Ramsey\Uuid\Uuid;
+use SnelstartPHP\Mapper\AbstractMapper;
+use SnelstartPHP\Model\IncassoMachtiging;
+use SnelstartPHP\Model\Kostenplaats;
+use SnelstartPHP\Model\Type;
+use SnelstartPHP\Model\V2 as Model;
 use SnelstartPHP\Model\V2\Boeking;
 use SnelstartPHP\Model\V2\Boekingsregel;
 use SnelstartPHP\Model\V2\Document;
@@ -23,13 +30,6 @@ use SnelstartPHP\Model\V2\Relatie;
 use SnelstartPHP\Model\V2\Verkoopboeking;
 use SnelstartPHP\Model\V2\Verkoopfactuur;
 use function array_map;
-use Psr\Http\Message\ResponseInterface;
-use Ramsey\Uuid\Uuid;
-use SnelstartPHP\Mapper\AbstractMapper;
-use SnelstartPHP\Model\IncassoMachtiging;
-use SnelstartPHP\Model\Kostenplaats;
-use SnelstartPHP\Model\V2 as Model;
-use SnelstartPHP\Model\Type;
 
 final class BoekingMapper extends AbstractMapper
 {

@@ -9,15 +9,15 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Mapper;
 
+use DateTimeImmutable;
 use Money\Money;
 use Psr\Http\Message\ResponseInterface;
 use Ramsey\Uuid\Uuid;
 use SnelstartPHP\Model\SnelstartObject;
 use SnelstartPHP\Snelstart;
 use SnelstartPHP\Utils;
-use const E_USER_DEPRECATED;
-use DateTimeImmutable;
 use TypeError;
+use const E_USER_DEPRECATED;
 
 abstract class AbstractMapper
 {

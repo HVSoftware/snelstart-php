@@ -16,8 +16,8 @@ use SnelstartPHP\Exception\SnelstartResourceNotFoundException;
 use SnelstartPHP\Mapper\V2 as Mapper;
 use SnelstartPHP\Model\V2 as Model;
 use SnelstartPHP\Request\ODataRequestData;
-use SnelstartPHP\Request\V2 as Request;
 use SnelstartPHP\Request\ODataRequestDataInterface;
+use SnelstartPHP\Request\V2 as Request;
 
 final class GrootboekConnector extends BaseConnector
 {

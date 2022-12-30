@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Model\V2;
 
+use DateTimeInterface;
 use Money\Money;
 use SnelstartPHP\Model\BaseObject;
 use SnelstartPHP\Model\Type\PrijsBepalingSoort;
-use DateTimeInterface;
 
 final class Prijsafspraak extends BaseObject
 {

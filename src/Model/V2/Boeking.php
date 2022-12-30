@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Model\V2;
 
+use DateTimeInterface;
 use Money\Money;
 use SnelstartPHP\Model\SnelstartObject;
-use DateTimeInterface;
 
 abstract class Boeking extends SnelstartObject
 {

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Model;
 
-use function array_unique;
 use function array_merge;
+use function array_unique;
 
 abstract class BaseObject
 {

@@ -9,15 +9,14 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Request\V2;
 
-use function http_build_query;
-use function array_filter;
-
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\RequestInterface;
 use Ramsey\Uuid\UuidInterface;
 use SnelstartPHP\Model\V2\Relatie;
 use SnelstartPHP\Request\BaseRequest;
 use SnelstartPHP\Request\ODataRequestDataInterface;
+use function array_filter;
+use function http_build_query;
 
 final class ArtikelRequest extends BaseRequest
 {
@@ -28,7 +27,10 @@ final class ArtikelRequest extends BaseRequest
     ): RequestInterface {
         return new Request(
             "GET",
-            "artikelen?" . $ODataRequestData->getHttpCompatibleQueryString() . '&' . $this->getQueryString($relatie, $aantal),
+            "artikelen?" . $ODataRequestData->getHttpCompatibleQueryString() . '&' . $this->getQueryString(
+                $relatie,
+                $aantal,
+            ),
         );
     }
 

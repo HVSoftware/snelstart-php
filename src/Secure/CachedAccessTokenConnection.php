@@ -9,13 +9,13 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Secure;
 
+use GuzzleHttp\Exception\GuzzleException;
+use InvalidArgumentException;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Log\LoggerInterface;
-use SnelstartPHP\Secure\BearerToken\BearerTokenInterface;
 use RuntimeException;
+use SnelstartPHP\Secure\BearerToken\BearerTokenInterface;
 use function spl_object_hash;
-use InvalidArgumentException;
-use GuzzleHttp\Exception\GuzzleException;
 
 final class CachedAccessTokenConnection
 {

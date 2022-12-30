@@ -12,8 +12,8 @@ namespace SnelstartPHP\Secure;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\ServerException;
-use SnelstartPHP\Utils;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
@@ -24,8 +24,8 @@ use SnelstartPHP\Exception\RateLimitException;
 use SnelstartPHP\Exception\SnelstartApiAccessDeniedException;
 use SnelstartPHP\Exception\SnelstartApiErrorException;
 use SnelstartPHP\Exception\SnelstartResourceNotFoundException;
+use SnelstartPHP\Utils;
 use function GuzzleHttp\json_decode;
-use GuzzleHttp\Exception\GuzzleException;
 
 abstract class BaseConnection implements ConnectionInterface
 {

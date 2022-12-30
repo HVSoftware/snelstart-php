@@ -9,16 +9,16 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Mapper\V2;
 
-use Ramsey\Uuid\Uuid;
-use SnelstartPHP\Model\FactuurRelatie;
-use SnelstartPHP\Model\NaamWaarde;
-use function array_map;
+use Generator;
 use Psr\Http\Message\ResponseInterface;
+use Ramsey\Uuid\Uuid;
 use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\EmailVersturen;
+use SnelstartPHP\Model\FactuurRelatie;
+use SnelstartPHP\Model\NaamWaarde;
 use SnelstartPHP\Model\Type;
 use SnelstartPHP\Model\V2 as Model;
-use Generator;
+use function array_map;
 
 final class RelatieMapper extends AbstractMapper
 {

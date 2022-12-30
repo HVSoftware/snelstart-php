@@ -10,10 +10,10 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Request;
 
-use SnelstartPHP\Snelstart;
-use function in_array;
 use BadMethodCallException;
+use SnelstartPHP\Snelstart;
 use function http_build_query;
+use function in_array;
 use const PHP_QUERY_RFC3986;
 
 final class ODataRequestData implements ODataRequestDataInterface

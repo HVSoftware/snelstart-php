@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Model\V2;
 
+use DateTimeImmutable;
 use Money\Money;
 use SnelstartPHP\Model\Adres;
 use SnelstartPHP\Model\IncassoMachtiging;
@@ -17,7 +18,6 @@ use SnelstartPHP\Model\SnelstartObject;
 use SnelstartPHP\Model\Type\ProcesStatus;
 use SnelstartPHP\Model\Type\VerkooporderBtwIngave;
 use SnelstartPHP\Snelstart;
-use DateTimeImmutable;
 
 final class Verkooporder extends SnelstartObject
 {

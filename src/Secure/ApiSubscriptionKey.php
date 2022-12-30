@@ -11,9 +11,9 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Secure;
 
-use IteratorAggregate;
-use Iterator;
 use ArrayIterator;
+use Iterator;
+use IteratorAggregate;
 
 final class ApiSubscriptionKey implements IteratorAggregate
 {

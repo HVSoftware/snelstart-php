@@ -10,9 +10,9 @@ declare(strict_types=1);
 namespace SnelstartPHP\Model;
 
 use Ramsey\Uuid\UuidInterface;
-use function array_unique;
-use function array_merge;
 use TypeError;
+use function array_merge;
+use function array_unique;
 
 abstract class SnelstartObject extends BaseObject
 {

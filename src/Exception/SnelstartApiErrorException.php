@@ -9,8 +9,8 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Exception;
 
-use RuntimeException;
 use Countable;
+use RuntimeException;
 use function count;
 use function json_encode;
 

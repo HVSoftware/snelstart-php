@@ -10,6 +10,8 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Connector\V2;
 
+use DateTime;
+use Exception;
 use Ramsey\Uuid\UuidInterface;
 use SnelstartPHP\Connector\BaseConnector;
 use SnelstartPHP\Exception\PreValidationException;
@@ -19,8 +21,6 @@ use SnelstartPHP\Model\V2 as Model;
 use SnelstartPHP\Request\ODataRequestData;
 use SnelstartPHP\Request\ODataRequestDataInterface;
 use SnelstartPHP\Request\V2 as Request;
-use DateTime;
-use Exception;
 
 final class BoekingConnector extends BaseConnector
 {

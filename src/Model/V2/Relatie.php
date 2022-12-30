@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Model\V2;
 
+use DateTimeInterface;
 use Money\Money;
 use SnelstartPHP\Model\Adres;
 use SnelstartPHP\Model\EmailVersturen;
@@ -16,7 +17,6 @@ use SnelstartPHP\Model\FactuurRelatie;
 use SnelstartPHP\Model\NaamWaarde;
 use SnelstartPHP\Model\SnelstartObject;
 use SnelstartPHP\Model\Type as Types;
-use DateTimeInterface;
 
 final class Relatie extends SnelstartObject
 {

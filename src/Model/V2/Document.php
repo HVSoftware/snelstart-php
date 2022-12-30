@@ -9,10 +9,10 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Model\V2;
 
+use InvalidArgumentException;
 use Ramsey\Uuid\UuidInterface;
 use SnelstartPHP\Model\SnelstartObject;
 use SplFileObject;
-use InvalidArgumentException;
 
 final class Document extends SnelstartObject
 {

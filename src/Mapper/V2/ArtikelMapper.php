@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Mapper\V2;
 
+use DateTimeImmutable;
+use Generator;
 use Psr\Http\Message\ResponseInterface;
 use Ramsey\Uuid\Uuid;
 use SnelstartPHP\Mapper\AbstractMapper;
@@ -18,8 +20,6 @@ use SnelstartPHP\Model\V2\ArtikelOmzetgroep;
 use SnelstartPHP\Model\V2\Prijsafspraak;
 use SnelstartPHP\Model\V2\Relatie;
 use SnelstartPHP\Model\V2\SubArtikel;
-use Generator;
-use DateTimeImmutable;
 
 final class ArtikelMapper extends AbstractMapper
 {

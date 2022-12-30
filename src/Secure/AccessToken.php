@@ -9,11 +9,11 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Secure;
 
-use SnelstartPHP\Secure\BearerToken\BearerTokenInterface;
-use JsonSerializable;
-use InvalidArgumentException;
 use DateTime;
 use DateTimeZone;
+use InvalidArgumentException;
+use JsonSerializable;
+use SnelstartPHP\Secure\BearerToken\BearerTokenInterface;
 
 final class AccessToken implements JsonSerializable
 {

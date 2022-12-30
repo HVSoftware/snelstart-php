@@ -10,14 +10,13 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Mapper\V2;
 
-use function array_map;
-
+use Generator;
 use Psr\Http\Message\ResponseInterface;
 use SnelstartPHP\Mapper\AbstractMapper;
-use SnelstartPHP\Model\V2 as Model;
 use SnelstartPHP\Model\Type\Grootboekfunctie;
 use SnelstartPHP\Model\Type\Rekeningcode;
-use Generator;
+use SnelstartPHP\Model\V2 as Model;
+use function array_map;
 
 final class GrootboekMapper extends AbstractMapper
 {

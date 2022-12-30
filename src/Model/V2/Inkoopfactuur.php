@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Model\V2;
 
+use DateTimeImmutable;
 use Money\Money;
 use SnelstartPHP\Model\SnelstartObject;
-use DateTimeImmutable;
 
 final class Inkoopfactuur extends SnelstartObject
 {

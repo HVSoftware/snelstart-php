@@ -9,10 +9,10 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Model\V2;
 
+use DateTimeInterface;
 use Money\Money;
 use SnelstartPHP\Exception\PreValidationException;
 use SnelstartPHP\Model\SnelstartObject;
-use DateTimeInterface;
 
 final class Artikel extends SnelstartObject
 {

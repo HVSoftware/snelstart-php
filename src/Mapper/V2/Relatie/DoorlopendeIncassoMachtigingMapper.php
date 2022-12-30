@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Mapper\V2\Relatie;
 
+use DateTimeImmutable;
+use Exception;
+use Generator;
 use Psr\Http\Message\ResponseInterface;
 use Ramsey\Uuid\Uuid;
 use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\V2\Relatie;
 use SnelstartPHP\Model\V2\Relatie\DoorlopendeIncassoMachtiging;
-use Generator;
-use DateTimeImmutable;
-use Exception;
 
 final class DoorlopendeIncassoMachtigingMapper extends AbstractMapper
 {

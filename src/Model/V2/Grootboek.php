@@ -9,10 +9,10 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Model\V2;
 
+use DateTimeInterface;
 use SnelstartPHP\Model\SnelstartObject;
 use SnelstartPHP\Model\Type\Grootboekfunctie;
 use SnelstartPHP\Model\Type\Rekeningcode;
-use DateTimeInterface;
 
 final class Grootboek extends SnelstartObject
 {

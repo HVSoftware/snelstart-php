@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Connector\V2;
 
-use SnelstartPHP\Request\V2\EchoRequest;
 use SnelstartPHP\Connector\BaseConnector;
+use SnelstartPHP\Request\V2\EchoRequest;
 
 final class EchoConnector extends BaseConnector
 {

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Serializer;
 
+use DateTimeInterface;
 use Money\Money;
 use Ramsey\Uuid\UuidInterface;
-use DateTimeInterface;
 
 interface RequestSerializerInterface
 {
