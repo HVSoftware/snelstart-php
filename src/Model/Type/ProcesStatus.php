@@ -13,7 +13,6 @@ use MyCLabs\Enum\Enum;
 
 /**
  * @psalm-immutable
- *
  * @method static ProcesStatus ORDER()
  * @method static ProcesStatus OFFERTE()
  * @method static ProcesStatus BEVESTIGING()

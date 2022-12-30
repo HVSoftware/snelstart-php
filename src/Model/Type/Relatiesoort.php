@@ -13,7 +13,6 @@ use MyCLabs\Enum\Enum;
 
 /**
  * @psalm-immutable
- *
  * @method static Relatiesoort LEVERANCIER()
  * @method static Relatiesoort KLANT()
  * @method static Relatiesoort EIGEN()

@@ -3,9 +3,10 @@
 declare(strict_types=1);
 
 /**
+ * @deprecated
+ *
  * @author     IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project    SnelstartApiPHP
- * @deprecated
  */
 
 namespace SnelstartPHP\Mapper\V2;

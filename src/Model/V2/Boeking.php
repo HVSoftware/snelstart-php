@@ -62,6 +62,7 @@ abstract class Boeking extends SnelstartObject
      * deze staan in de Btw-collectie.
      *
      * @see Boekingsregel
+     *
      * @var Boekingsregel[]
      */
     protected array $boekingsregels = [];
@@ -70,6 +71,7 @@ abstract class Boeking extends SnelstartObject
      * De af te dragen btw van de boeking per btw-tarief
      *
      * @see Btwregel
+     *
      * @var Btwregel[]|null
      */
     protected array|null $btw = null;

@@ -3,9 +3,10 @@
 declare(strict_types=1);
 
 /**
+ * @see     https://b2bapi-developer.snelstart.nl/odata
+ *
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
- * @see     https://b2bapi-developer.snelstart.nl/odata
  */
 
 namespace SnelstartPHP\Request;

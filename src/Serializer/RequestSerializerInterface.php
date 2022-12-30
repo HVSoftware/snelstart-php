@@ -17,9 +17,11 @@ interface RequestSerializerInterface
     public function moneyFormatToString(Money $money): string;
 
     /**
-     * @template     T
      * @psalm-param  T $value
+     *
      * @psalm-return T
+     *
+     * @template     T
      */
     public function scalarValue($value);
 

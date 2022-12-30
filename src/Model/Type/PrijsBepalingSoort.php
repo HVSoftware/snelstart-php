@@ -13,7 +13,6 @@ use MyCLabs\Enum\Enum;
 
 /**
  * @psalm-immutable
- *
  * @method static PrijsBepalingSoort NORMALEVERKOOPPRIJS()
  * @method static PrijsBepalingSoort ACTIEPRIJZENPERARTIKEL()
  * @method static PrijsBepalingSoort ACTIEPRIJZENPERARTIKELKORTINGSGROEP()

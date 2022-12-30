@@ -13,7 +13,6 @@ use MyCLabs\Enum\Enum;
 
 /**
  * @psalm-immutable
- *
  * @method static Incassosoort GEEN()
  * @method static Incassosoort CORE()
  * @method static Incassosoort B2B()

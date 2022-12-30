@@ -27,6 +27,7 @@ final class Relatie extends SnelstartObject
 
     /**
      * @see Types\Relatiesoort
+     *
      * @var Types\Relatiesoort[]|null
      */
     private array|null $relatiesoort = null;

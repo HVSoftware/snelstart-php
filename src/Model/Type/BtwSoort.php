@@ -13,7 +13,6 @@ use MyCLabs\Enum\Enum;
 
 /**
  * @psalm-immutable
- *
  * @method static BtwSoort GEEN()
  * @method static BtwSoort LAAG()
  * @method static BtwSoort HOOG()

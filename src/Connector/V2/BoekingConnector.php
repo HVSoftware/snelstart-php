@@ -3,9 +3,10 @@
 declare(strict_types=1);
 
 /**
+ * @deprecated
+ *
  * @author     IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project    SnelstartApiPHP
- * @deprecated
  */
 
 namespace SnelstartPHP\Connector\V2;
@@ -148,6 +149,7 @@ final class BoekingConnector extends BaseConnector
 
     /**
      * @return iterable<Model\Verkoopfactuur>
+     *
      * @throws Exception
      */
     public function findVerkoopfacturen(
