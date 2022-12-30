@@ -57,7 +57,7 @@ final class Boekingsregel extends BaseObject
         "btwSoort",
     ];
 
-    public function getOmschrijving(): ?string
+    public function getOmschrijving(): string|null
     {
         return $this->omschrijving;
     }
@@ -81,7 +81,7 @@ final class Boekingsregel extends BaseObject
         return $this;
     }
 
-    public function getKostenplaats(): ?Kostenplaats
+    public function getKostenplaats(): Kostenplaats|null
     {
         return $this->kostenplaats;
     }

@@ -69,12 +69,12 @@ final class DoorlopendeIncassoMachtiging extends SnelstartObject
         return $this;
     }
 
-    public function getOmschrijving(): ?string
+    public function getOmschrijving(): string|null
     {
         return $this->omschrijving;
     }
 
-    public function setOmschrijving(?string $omschrijving): DoorlopendeIncassoMachtiging
+    public function setOmschrijving(string|null $omschrijving): DoorlopendeIncassoMachtiging
     {
         $this->omschrijving = $omschrijving;
 
@@ -93,12 +93,12 @@ final class DoorlopendeIncassoMachtiging extends SnelstartObject
         return $this;
     }
 
-    public function getIntrekkingsDatum(): ?\DateTimeImmutable
+    public function getIntrekkingsDatum(): \DateTimeImmutable|null
     {
         return $this->intrekkingsDatum;
     }
 
-    public function setIntrekkingsDatum(?\DateTimeImmutable $intrekkingsDatum): DoorlopendeIncassoMachtiging
+    public function setIntrekkingsDatum(\DateTimeImmutable|null $intrekkingsDatum): DoorlopendeIncassoMachtiging
     {
         $this->intrekkingsDatum = $intrekkingsDatum;
 

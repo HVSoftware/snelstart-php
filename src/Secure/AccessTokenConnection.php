@@ -49,7 +49,7 @@ final class AccessTokenConnection implements ConnectionInterface
      *
      * @throws GuzzleException
      */
-    public function getToken(?BearerTokenInterface $bearerToken = null): AccessToken
+    public function getToken(BearerTokenInterface|null $bearerToken = null): AccessToken
     {
         $this->bearerToken = $bearerToken ?? $this->bearerToken;
 

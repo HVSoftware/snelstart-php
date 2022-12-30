@@ -105,7 +105,7 @@ final class Artikel extends SnelstartObject
         "vrijeVoorraad",
     ];
 
-    public function isHoofdartikel(): ?bool
+    public function isHoofdartikel(): bool|null
     {
         return $this->isHoofdartikel;
     }
@@ -125,12 +125,12 @@ final class Artikel extends SnelstartObject
         return $this;
     }
 
-    public function getPrijsafspraak(): ?Prijsafspraak
+    public function getPrijsafspraak(): Prijsafspraak|null
     {
         return $this->prijsafspraak;
     }
 
-    public function setPrijsafspraak(?Prijsafspraak $prijsafspraak): self
+    public function setPrijsafspraak(Prijsafspraak|null $prijsafspraak): self
     {
         $this->prijsafspraak = $prijsafspraak;
 
@@ -165,7 +165,7 @@ final class Artikel extends SnelstartObject
         return $this;
     }
 
-    public function getArtikelOmzetgroep(): ?ArtikelOmzetgroep
+    public function getArtikelOmzetgroep(): ArtikelOmzetgroep|null
     {
         return $this->artikelOmzetgroep;
     }
@@ -189,7 +189,7 @@ final class Artikel extends SnelstartObject
         return $this;
     }
 
-    public function getModifiedOn(): ?\DateTimeInterface
+    public function getModifiedOn(): \DateTimeInterface|null
     {
         return $this->modifiedOn;
     }
@@ -201,7 +201,7 @@ final class Artikel extends SnelstartObject
         return $this;
     }
 
-    public function isNonActief(): ?bool
+    public function isNonActief(): bool|null
     {
         return $this->isNonActief;
     }
@@ -213,7 +213,7 @@ final class Artikel extends SnelstartObject
         return $this;
     }
 
-    public function isVoorraadControle(): ?bool
+    public function isVoorraadControle(): bool|null
     {
         return $this->voorraadControle;
     }
@@ -225,7 +225,7 @@ final class Artikel extends SnelstartObject
         return $this;
     }
 
-    public function getTechnischeVoorraad(): ?float
+    public function getTechnischeVoorraad(): float|null
     {
         return $this->technischeVoorraad;
     }
@@ -237,7 +237,7 @@ final class Artikel extends SnelstartObject
         return $this;
     }
 
-    public function getVrijeVoorraad(): ?float
+    public function getVrijeVoorraad(): float|null
     {
         return $this->vrijeVoorraad;
     }

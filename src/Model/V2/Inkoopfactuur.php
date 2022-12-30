@@ -74,7 +74,7 @@ final class Inkoopfactuur extends SnelstartObject
         "factuurBedrag",
     ];
 
-    public function getInkoopboeking(): ?Inkoopboeking
+    public function getInkoopboeking(): Inkoopboeking|null
     {
         return $this->inkoopBoeking;
     }
@@ -86,7 +86,7 @@ final class Inkoopfactuur extends SnelstartObject
         return $this;
     }
 
-    public function getModifiedOn(): ?\DateTimeImmutable
+    public function getModifiedOn(): \DateTimeImmutable|null
     {
         return $this->modifiedOn;
     }
@@ -98,7 +98,7 @@ final class Inkoopfactuur extends SnelstartObject
         return $this;
     }
 
-    public function getOpenstaandSaldo(): ?Money
+    public function getOpenstaandSaldo(): Money|null
     {
         return $this->openstaandSaldo;
     }
@@ -110,7 +110,7 @@ final class Inkoopfactuur extends SnelstartObject
         return $this;
     }
 
-    public function getFactuurnummer(): ?string
+    public function getFactuurnummer(): string|null
     {
         return $this->factuurnummer;
     }
@@ -122,7 +122,7 @@ final class Inkoopfactuur extends SnelstartObject
         return $this;
     }
 
-    public function getVervalDatum(): ?\DateTimeImmutable
+    public function getVervalDatum(): \DateTimeImmutable|null
     {
         return $this->vervalDatum;
     }
@@ -134,7 +134,7 @@ final class Inkoopfactuur extends SnelstartObject
         return $this;
     }
 
-    public function getRelatie(): ?Relatie
+    public function getRelatie(): Relatie|null
     {
         return $this->relatie;
     }
@@ -146,7 +146,7 @@ final class Inkoopfactuur extends SnelstartObject
         return $this;
     }
 
-    public function getFactuurDatum(): ?\DateTimeImmutable
+    public function getFactuurDatum(): \DateTimeImmutable|null
     {
         return $this->factuurDatum;
     }
@@ -158,7 +158,7 @@ final class Inkoopfactuur extends SnelstartObject
         return $this;
     }
 
-    public function getFactuurBedrag(): ?Money
+    public function getFactuurBedrag(): Money|null
     {
         return $this->factuurBedrag;
     }

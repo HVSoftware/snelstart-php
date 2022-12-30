@@ -18,7 +18,7 @@ use SnelstartPHP\Model\V2 as Model;
 
 final class RelatieMapper extends AbstractMapper
 {
-    public function find(ResponseInterface $response): ?Model\Relatie
+    public function find(ResponseInterface $response): Model\Relatie|null
     {
         $this->setResponseData($response);
         return $this->mapResponseToRelatieModel(new Model\Relatie());

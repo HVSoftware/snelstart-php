@@ -18,7 +18,8 @@ final class Verkoopordersjabloon extends SnelstartObject
     private $omschrijving;
 
     /**
-     * Een vlag dat aangeeft of een sjabloon niet meer actief is binnen de administratie.\r\nIndien <see langword=\"true\" />, dan kan het sjabloon als \"verwijderd\" worden beschouwd.
+     * Een vlag dat aangeeft of een sjabloon niet meer actief is binnen de administratie.\r\nIndien
+     * <see langword=\"true\" />, dan kan het sjabloon als \"verwijderd\" worden beschouwd.
      *
      * @var bool|null
      */
@@ -27,12 +28,14 @@ final class Verkoopordersjabloon extends SnelstartObject
     /**
      * @var bool|null
      *
-     * Exclusief btw: In dat geval worden de verkoopprijzen in het verkoopscherm van SnelStart 12 en op de factuur exclusief btw weergegeven;
-     * Inclusief btw: In dat geval worden de verkoopprijzen in het verkoopscherm van SnelStart 12 en op de factuur inclusief btw weergegeven
+     * Exclusief btw: In dat geval worden de verkoopprijzen in het verkoopscherm van SnelStart 12 en op de factuur
+     * exclusief btw weergegeven;
+     * Inclusief btw: In dat geval worden de verkoopprijzen in het verkoopscherm van SnelStart 12 en op de factuur
+     * inclusief btw weergegeven
      */
     private $prijsIngaveExclusiefBtw;
 
-    public function getOmschrijving(): ?string
+    public function getOmschrijving(): string|null
     {
         return $this->omschrijving;
     }
@@ -44,7 +47,7 @@ final class Verkoopordersjabloon extends SnelstartObject
         return $this;
     }
 
-    public function getNonactief(): ?bool
+    public function getNonactief(): bool|null
     {
         return $this->nonactief;
     }
@@ -56,7 +59,7 @@ final class Verkoopordersjabloon extends SnelstartObject
         return $this;
     }
 
-    public function getPrijsIngaveExclusiefBtw(): ?bool
+    public function getPrijsIngaveExclusiefBtw(): bool|null
     {
         return $this->prijsIngaveExclusiefBtw;
     }

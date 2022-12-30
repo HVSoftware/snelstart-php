@@ -11,8 +11,12 @@ use Psr\Log\LoggerInterface;
 
 final class V2Connector extends BaseConnection
 {
-    public function __construct(ApiSubscriptionKey $subscriptionKey, AccessToken $accessToken, ?LoggerInterface $logger = null, ?ClientInterface $client = null)
-    {
+    public function __construct(
+        ApiSubscriptionKey $subscriptionKey,
+        AccessToken $accessToken,
+        LoggerInterface|null $logger = null,
+        ClientInterface|null $client = null
+    ) {
         $this->subscriptionKey = $subscriptionKey;
 
         if ($client !== null) {

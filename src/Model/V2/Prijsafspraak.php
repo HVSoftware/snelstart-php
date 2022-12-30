@@ -63,12 +63,12 @@ final class Prijsafspraak extends BaseObject
      */
     public static $editableAttributes = [];
 
-    public function getRelatie(): ?Relatie
+    public function getRelatie(): Relatie|null
     {
         return $this->relatie;
     }
 
-    public function setRelatie(?Relatie $relatie): self
+    public function setRelatie(Relatie|null $relatie): self
     {
         $this->relatie = $relatie;
 
@@ -147,24 +147,24 @@ final class Prijsafspraak extends BaseObject
         return $this;
     }
 
-    public function getDatumVanaf(): ?\DateTimeInterface
+    public function getDatumVanaf(): \DateTimeInterface|null
     {
         return $this->datumVanaf;
     }
 
-    public function setDatumVanaf(?\DateTimeInterface $datumVanaf): self
+    public function setDatumVanaf(\DateTimeInterface|null $datumVanaf): self
     {
         $this->datumVanaf = $datumVanaf;
 
         return $this;
     }
 
-    public function getDatumTotEnMet(): ?\DateTimeInterface
+    public function getDatumTotEnMet(): \DateTimeInterface|null
     {
         return $this->datumTotEnMet;
     }
 
-    public function setDatumTotEnMet(?\DateTimeInterface $datumTotEnMet): self
+    public function setDatumTotEnMet(\DateTimeInterface|null $datumTotEnMet): self
     {
         $this->datumTotEnMet = $datumTotEnMet;
 

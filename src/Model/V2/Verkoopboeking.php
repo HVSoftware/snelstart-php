@@ -50,12 +50,17 @@ final class Verkoopboeking extends Boeking
 
     public static function getEditableAttributes(): array
     {
-        return \array_unique(
-            \array_merge(parent::$editableAttributes, parent::getEditableAttributes(), static::$editableAttributes, self::$editableAttributes)
+        return array_unique(
+            array_merge(
+                parent::$editableAttributes,
+                parent::getEditableAttributes(),
+                Verkoopboeking::$editableAttributes,
+                self::$editableAttributes,
+            )
         );
     }
 
-    public function getKlant(): ?Relatie
+    public function getKlant(): Relatie|null
     {
         return $this->klant;
     }
@@ -67,7 +72,7 @@ final class Verkoopboeking extends Boeking
         return $this;
     }
 
-    public function getBetalingstermijn(): ?int
+    public function getBetalingstermijn(): int|null
     {
         return $this->betalingstermijn;
     }
@@ -79,24 +84,24 @@ final class Verkoopboeking extends Boeking
         return $this;
     }
 
-    public function getEenmaligeIncassoMachtiging(): ?IncassoMachtiging
+    public function getEenmaligeIncassoMachtiging(): IncassoMachtiging|null
     {
         return $this->eenmaligeIncassoMachtiging;
     }
 
-    public function setEenmaligeIncassoMachtiging(?IncassoMachtiging $eenmaligeIncassoMachtiging): self
+    public function setEenmaligeIncassoMachtiging(IncassoMachtiging|null $eenmaligeIncassoMachtiging): self
     {
         $this->eenmaligeIncassoMachtiging = $eenmaligeIncassoMachtiging;
 
         return $this;
     }
 
-    public function getDoorlopendeIncassoMachtiging(): ?IncassoMachtiging
+    public function getDoorlopendeIncassoMachtiging(): IncassoMachtiging|null
     {
         return $this->doorlopendeIncassoMachtiging;
     }
 
-    public function setDoorlopendeIncassoMachtiging(?IncassoMachtiging $doorlopendeIncassoMachtiging): self
+    public function setDoorlopendeIncassoMachtiging(IncassoMachtiging|null $doorlopendeIncassoMachtiging): self
     {
         $this->doorlopendeIncassoMachtiging = $doorlopendeIncassoMachtiging;
 

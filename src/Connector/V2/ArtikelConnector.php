@@ -16,14 +16,20 @@ use SnelstartPHP\Request\V2 as Request;
 
 final class ArtikelConnector extends BaseConnector
 {
-    public function find(UuidInterface $id, ?ODataRequestData $ODataRequestData = null, ?Model\Relatie $relatie = null, ?int $aantal = null): ?Model\Artikel
-    {
+    public function find(
+        UuidInterface $id,
+        ODataRequestData|null $ODataRequestData = null,
+        Model\Relatie|null $relatie = null,
+        int|null $aantal = null
+    ): Model\Artikel|null {
         $artikelRequest = new Request\ArtikelRequest();
         $artikelMapper = new Mapper\ArtikelMapper();
         $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
 
         try {
-            return $artikelMapper->find($this->connection->doRequest($artikelRequest->find($id, $ODataRequestData, $relatie, $aantal)));
+            return $artikelMapper->find(
+                $this->connection->doRequest($artikelRequest->find($id, $ODataRequestData, $relatie, $aantal))
+            );
         } catch (SnelstartResourceNotFoundException $e) {
             return null;
         }
@@ -32,14 +38,22 @@ final class ArtikelConnector extends BaseConnector
     /**
      * @return iterable<Model\Artikel>
      */
-    public function findAll(?ODataRequestData $ODataRequestData = null, bool $fetchAll = false, iterable $previousResults = null, ?Model\Relatie $relatie = null, ?int $aantal = null): iterable
-    {
+    public function findAll(
+        ODataRequestData|null $ODataRequestData = null,
+        bool $fetchAll = false,
+        iterable $previousResults = null,
+        Model\Relatie|null $relatie = null,
+        int|null $aantal = null
+    ): iterable {
         $artikelRequest = new Request\ArtikelRequest();
         $artikelMapper = new Mapper\ArtikelMapper();
         $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
         $hasItems = false;
 
-        foreach ($artikelMapper->findAll($this->connection->doRequest($artikelRequest->findAll($ODataRequestData, $relatie, $aantal))) as $artikel) {
+        foreach ($artikelMapper->findAll(
+            $this->connection->doRequest($artikelRequest->findAll($ODataRequestData, $relatie, $aantal))
+        ) as $artikel
+        ) {
             $hasItems = true;
             yield $artikel;
         }

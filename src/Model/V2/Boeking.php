@@ -112,24 +112,24 @@ abstract class Boeking extends SnelstartObject
         "documents",
     ];
 
-    public function getModifiedOn(): ?\DateTimeInterface
+    public function getModifiedOn(): \DateTimeInterface|null
     {
         return $this->modifiedOn;
     }
 
-    public function setModifiedOn(?\DateTimeInterface $modifiedOn): self
+    public function setModifiedOn(\DateTimeInterface|null $modifiedOn): self
     {
         $this->modifiedOn = $modifiedOn;
 
         return $this;
     }
 
-    public function getBoekstuk(): ?string
+    public function getBoekstuk(): string|null
     {
         return $this->boekstuk;
     }
 
-    public function setBoekstuk(?string $boekstuk): self
+    public function setBoekstuk(string|null $boekstuk): self
     {
         $this->boekstuk = $boekstuk;
 
@@ -160,24 +160,24 @@ abstract class Boeking extends SnelstartObject
         return $this;
     }
 
-    public function getFactuurdatum(): ?\DateTimeInterface
+    public function getFactuurdatum(): \DateTimeInterface|null
     {
         return $this->factuurDatum;
     }
 
-    public function setFactuurdatum(?\DateTimeInterface $factuurDatum): self
+    public function setFactuurdatum(\DateTimeInterface|null $factuurDatum): self
     {
         $this->factuurDatum = $factuurDatum;
 
         return $this;
     }
 
-    public function getVervaldatum(): ?\DateTimeInterface
+    public function getVervaldatum(): \DateTimeInterface|null
     {
         return $this->vervalDatum;
     }
 
-    public function setVervaldatum(?\DateTimeInterface $vervalDatum): self
+    public function setVervaldatum(\DateTimeInterface|null $vervalDatum): self
     {
         $this->vervalDatum = $vervalDatum;
 
@@ -196,12 +196,12 @@ abstract class Boeking extends SnelstartObject
         return $this;
     }
 
-    public function getOmschrijving(): ?string
+    public function getOmschrijving(): string|null
     {
         return $this->omschrijving;
     }
 
-    public function setOmschrijving(?string $omschrijving): self
+    public function setOmschrijving(string|null $omschrijving): self
     {
         $this->omschrijving = $omschrijving;
 

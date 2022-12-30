@@ -16,7 +16,7 @@ use SnelstartPHP\Request\V2 as Request;
 
 final class KostenplaatsConnector extends BaseConnector
 {
-    public function find(UuidInterface $id): ?Kostenplaats
+    public function find(UuidInterface $id): Kostenplaats|null
     {
         $request = new Request\KostenplaatsRequest();
         $mapper = new Mapper\KostenplaatsMapper();

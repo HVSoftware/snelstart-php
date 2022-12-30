@@ -20,7 +20,8 @@ final class VerkooporderRegel extends BaseObject
     private $artikel;
 
     /**
-     * De omschrijving van de verkooporderregel. Indien dit veld leeg is dan wordt de omschrijving van het artikel in dit veld gezet.
+     * De omschrijving van de verkooporderregel. Indien dit veld leeg is dan wordt de omschrijving van het artikel in
+     * dit veld gezet.
      *
      * @var string|null
      */
@@ -60,7 +61,7 @@ final class VerkooporderRegel extends BaseObject
         "totaal",
     ];
 
-    public function getArtikel(): ?Artikel
+    public function getArtikel(): Artikel|null
     {
         return $this->artikel;
     }
@@ -76,7 +77,7 @@ final class VerkooporderRegel extends BaseObject
         return $this;
     }
 
-    public function getOmschrijving(): ?string
+    public function getOmschrijving(): string|null
     {
         return $this->omschrijving;
     }
@@ -88,7 +89,7 @@ final class VerkooporderRegel extends BaseObject
         return $this;
     }
 
-    public function getStuksprijs(): ?Money
+    public function getStuksprijs(): Money|null
     {
         return $this->stuksprijs;
     }
@@ -124,7 +125,7 @@ final class VerkooporderRegel extends BaseObject
         return $this;
     }
 
-    public function getTotaal(): ?Money
+    public function getTotaal(): Money|null
     {
         return $this->totaal ?? new Money("0", Snelstart::getCurrency());
     }

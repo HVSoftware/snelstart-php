@@ -16,7 +16,7 @@ use SnelstartPHP\Request\V2\LandRequest;
 
 final class LandConnector extends BaseConnector
 {
-    public function find(UuidInterface $id): ?Land
+    public function find(UuidInterface $id): Land|null
     {
         try {
             $mapper = new LandMapper();

@@ -20,8 +20,8 @@ final class ArtikelRequest extends BaseRequest
 {
     public function findAll(
         ODataRequestDataInterface $ODataRequestData,
-        ?Relatie $relatie = null,
-        ?int $aantal = null,
+        Relatie|null $relatie = null,
+        int|null $aantal = null,
     ): RequestInterface {
         return new Request(
             "GET",
@@ -32,8 +32,8 @@ final class ArtikelRequest extends BaseRequest
     public function find(
         UuidInterface $id,
         ODataRequestDataInterface $ODataRequestData,
-        ?Relatie $relatie = null,
-        ?int $aantal = null,
+        Relatie|null $relatie = null,
+        int|null $aantal = null,
     ): RequestInterface {
         return new Request(
             "GET",
@@ -50,7 +50,7 @@ final class ArtikelRequest extends BaseRequest
         return new Request("GET", sprintf("artikelen/%s/customFields", $id->toString()));
     }
 
-    protected function getQueryString(?Relatie $relatie = null, ?int $aantal = null): string
+    protected function getQueryString(Relatie|null $relatie = null, int|null $aantal = null): string
     {
         $relatieId = null;
 

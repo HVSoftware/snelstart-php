@@ -18,7 +18,7 @@ use SnelstartPHP\Request\ODataRequestDataInterface;
 
 final class GrootboekConnector extends BaseConnector
 {
-    public function find(UuidInterface $id): ?Model\Grootboek
+    public function find(UuidInterface $id): Model\Grootboek|null
     {
         try {
             $mapper = new Mapper\GrootboekMapper();
@@ -34,7 +34,7 @@ final class GrootboekConnector extends BaseConnector
      * @return iterable<Model\Grootboek>
      */
     public function findAll(
-        ?ODataRequestDataInterface $ODataRequestData = null,
+        ODataRequestDataInterface|null $ODataRequestData = null,
         bool $fetchAll = false,
         iterable $previousResults = null,
     ): iterable {
@@ -61,7 +61,7 @@ final class GrootboekConnector extends BaseConnector
         yield from $this->findAll($ODataRequestData, true, []);
     }
 
-    public function findByNumber(string $number): ?Model\Grootboek
+    public function findByNumber(string $number): Model\Grootboek|null
     {
         $criteria = (new ODataRequestData())->setFilter(
             [sprintf("Nummer eq %s", $number)]

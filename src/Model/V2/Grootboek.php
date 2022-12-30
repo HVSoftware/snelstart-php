@@ -69,19 +69,19 @@ final class Grootboek extends SnelstartObject
      */
     private $rgsCode = [];
 
-    public function getModifiedOn(): ?\DateTimeInterface
+    public function getModifiedOn(): \DateTimeInterface|null
     {
         return $this->modifiedOn;
     }
 
-    public function setModifiedOn(?\DateTimeInterface $modifiedOn): Grootboek
+    public function setModifiedOn(\DateTimeInterface|null $modifiedOn): Grootboek
     {
         $this->modifiedOn = $modifiedOn;
 
         return $this;
     }
 
-    public function getOmschrijving(): ?string
+    public function getOmschrijving(): string|null
     {
         return $this->omschrijving;
     }

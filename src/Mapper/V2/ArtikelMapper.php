@@ -18,7 +18,7 @@ use SnelstartPHP\Model\V2\SubArtikel;
 
 final class ArtikelMapper extends AbstractMapper
 {
-    public function find(ResponseInterface $response): ?Artikel
+    public function find(ResponseInterface $response): Artikel|null
     {
         $this->setResponseData($response);
         return $this->mapResponseToArtikelModel(new Artikel());
@@ -64,7 +64,9 @@ final class ArtikelMapper extends AbstractMapper
         }
 
         if (isset($data["artikelOmzetgroep"])) {
-            $artikel->setArtikelOmzetgroep(ArtikelOmzetgroep::createFromUUID(Uuid::fromString($data["artikelOmzetgroep"]["id"])));
+            $artikel->setArtikelOmzetgroep(
+                ArtikelOmzetgroep::createFromUUID(Uuid::fromString($data["artikelOmzetgroep"]["id"]))
+            );
         }
 
         foreach ($data["subartikelen"] ?? [] as $subArtikel) {

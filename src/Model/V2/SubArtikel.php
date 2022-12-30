@@ -28,7 +28,7 @@ final class SubArtikel extends SnelstartObject
         "aantal",
     ];
 
-    public function getArtikelcode(): ?string
+    public function getArtikelcode(): string|null
     {
         return $this->artikelcode;
     }
@@ -40,7 +40,7 @@ final class SubArtikel extends SnelstartObject
         return $this;
     }
 
-    public function getAantal(): ?float
+    public function getAantal(): float|null
     {
         return $this->aantal;
     }

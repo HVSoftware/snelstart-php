@@ -15,7 +15,7 @@ use SnelstartPHP\Request\V2\ArtikelOmzetgroepRequest;
 
 final class ArtikelOmzetgroepConnector extends BaseConnector
 {
-    public function find(UuidInterface $id): ?ArtikelOmzetgroep
+    public function find(UuidInterface $id): ArtikelOmzetgroep|null
     {
         try {
             $mapper = new ArtikelOmzetgroepMapper();

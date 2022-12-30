@@ -37,8 +37,11 @@ final class CachedAccessTokenConnection
      */
     private const EXPIRES_AFTER_BUFFER = 60;
 
-    public function __construct(AccessTokenConnection $accessTokenConnection, CacheItemPoolInterface $cacheItemPool, ?LoggerInterface $logger = null)
-    {
+    public function __construct(
+        AccessTokenConnection $accessTokenConnection,
+        CacheItemPoolInterface $cacheItemPool,
+        LoggerInterface|null $logger = null
+    ) {
         $this->connection = $accessTokenConnection;
         $this->cacheItemPool = $cacheItemPool;
         $this->logger = $logger;
@@ -49,7 +52,7 @@ final class CachedAccessTokenConnection
      * @throws \InvalidArgumentException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function getToken(?BearerTokenInterface $bearerToken = null): AccessToken
+    public function getToken(BearerTokenInterface|null $bearerToken = null): AccessToken
     {
         $cacheItem = $this->cacheItemPool->getItem($this->getItemKey());
 

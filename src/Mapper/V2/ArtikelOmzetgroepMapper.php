@@ -12,7 +12,7 @@ use SnelstartPHP\Model\V2\ArtikelOmzetgroep;
 
 final class ArtikelOmzetgroepMapper extends AbstractMapper
 {
-    public function find(ResponseInterface $response): ?ArtikelOmzetgroep
+    public function find(ResponseInterface $response): ArtikelOmzetgroep|null
     {
         $this->setResponseData($response);
         return $this->mapResponseToArtikelOmzetgroepModel(new ArtikelOmzetgroep());
@@ -27,8 +27,10 @@ final class ArtikelOmzetgroepMapper extends AbstractMapper
         }
     }
 
-    protected function mapResponseToArtikelOmzetgroepModel(ArtikelOmzetgroep $artikelOmzetgroep, array $data = []): ArtikelOmzetgroep
-    {
+    protected function mapResponseToArtikelOmzetgroepModel(
+        ArtikelOmzetgroep $artikelOmzetgroep,
+        array $data = []
+    ): ArtikelOmzetgroep {
         $data = empty($data) ? $this->responseData : $data;
 
         /**

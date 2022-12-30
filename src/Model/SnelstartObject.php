@@ -26,7 +26,7 @@ abstract class SnelstartObject extends BaseObject
 
     public static $editableAttributes = ['id'];
 
-    public function getId(): ?UuidInterface
+    public function getId(): UuidInterface|null
     {
         return $this->id;
     }
@@ -38,7 +38,7 @@ abstract class SnelstartObject extends BaseObject
         return $this;
     }
 
-    public function getUri(): ?string
+    public function getUri(): string|null
     {
         return $this->uri;
     }

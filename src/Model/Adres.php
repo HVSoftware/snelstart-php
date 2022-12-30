@@ -55,60 +55,60 @@ final class Adres extends BaseObject
         "land",
     ];
 
-    public function getContactpersoon(): ?string
+    public function getContactpersoon(): string|null
     {
         return $this->contactpersoon;
     }
 
-    public function setContactpersoon(?string $contactpersoon): self
+    public function setContactpersoon(string|null $contactpersoon): self
     {
         $this->contactpersoon = $contactpersoon;
 
         return $this;
     }
 
-    public function getStraat(): ?string
+    public function getStraat(): string|null
     {
         return $this->straat;
     }
 
-    public function setStraat(?string $straat): self
+    public function setStraat(string|null $straat): self
     {
         $this->straat = $straat;
 
         return $this;
     }
 
-    public function getPostcode(): ?string
+    public function getPostcode(): string|null
     {
         return $this->postcode;
     }
 
-    public function setPostcode(?string $postcode): self
+    public function setPostcode(string|null $postcode): self
     {
         $this->postcode = $postcode;
 
         return $this;
     }
 
-    public function getPlaats(): ?string
+    public function getPlaats(): string|null
     {
         return $this->plaats;
     }
 
-    public function setPlaats(?string $plaats): self
+    public function setPlaats(string|null $plaats): self
     {
         $this->plaats = $plaats;
 
         return $this;
     }
 
-    public function getLand(): ?Land
+    public function getLand(): Land|null
     {
         return $this->land;
     }
 
-    public function setLand(?Land $land): self
+    public function setLand(Land|null $land): self
     {
         $this->land = $land;
 

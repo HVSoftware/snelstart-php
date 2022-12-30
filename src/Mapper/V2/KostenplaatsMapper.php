@@ -12,7 +12,7 @@ use SnelstartPHP\Model\Kostenplaats;
 
 final class KostenplaatsMapper extends AbstractMapper
 {
-    public function find(ResponseInterface $response): ?Kostenplaats
+    public function find(ResponseInterface $response): Kostenplaats|null
     {
         return $this->mapSimpleResponse($response);
     }

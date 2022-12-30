@@ -46,7 +46,7 @@ final class Document extends SnelstartObject
         "fileName",
     ];
 
-    public function getContent(): ?string
+    public function getContent(): string|null
     {
         return $this->content;
     }
@@ -61,7 +61,7 @@ final class Document extends SnelstartObject
         return $this;
     }
 
-    public function getParentIdentifier(): ?UuidInterface
+    public function getParentIdentifier(): UuidInterface|null
     {
         return $this->parentIdentifier;
     }
@@ -73,7 +73,7 @@ final class Document extends SnelstartObject
         return $this;
     }
 
-    public function getFileName(): ?string
+    public function getFileName(): string|null
     {
         return $this->fileName;
     }
@@ -85,7 +85,7 @@ final class Document extends SnelstartObject
         return $this;
     }
 
-    public function isReadOnly(): ?bool
+    public function isReadOnly(): bool|null
     {
         return $this->readOnly;
     }

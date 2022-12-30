@@ -16,7 +16,7 @@ final class FactuurRelatie extends BaseObject
     private UuidInterface $id;
 
     /**
-     * Geeft de realtieve uri terug van het object waartoe de identifier behoort.
+     * Geeft de relatieve uri terug van het object waartoe de identifier behoort.
      */
     private string $uri;
 
@@ -34,7 +34,7 @@ final class FactuurRelatie extends BaseObject
         return $this;
     }
 
-    public function getUri(): ?string
+    public function getUri(): string|null
     {
         return $this->uri;
     }

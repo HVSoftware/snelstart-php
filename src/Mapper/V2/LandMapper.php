@@ -12,7 +12,7 @@ use SnelstartPHP\Model\Land;
 
 final class LandMapper extends AbstractMapper
 {
-    public function find(ResponseInterface $response): ?Land
+    public function find(ResponseInterface $response): Land|null
     {
         $this->setResponseData($response);
         return $this->mapArrayDataToModel(new Land());

@@ -23,7 +23,7 @@ abstract class AbstractMapper
     /**
      * @deprecated This will be deprecated starting from April 1st 2020
      */
-    final public function __construct(?ResponseInterface $response = null)
+    final public function __construct(ResponseInterface|null $response = null)
     {
         if ($response !== null) {
             @trigger_error("This will be deprecated starting from April 1st 2020", \E_USER_DEPRECATED);
@@ -65,7 +65,7 @@ abstract class AbstractMapper
         if ($key === "id" && is_string($value)) {
             $value = Uuid::fromString($value);
             $customSet = true;
-        } else if (substr($key, -2, 2) === "On" || strpos($key, "datum") !== false) {
+        } elseif (substr($key, -2, 2) === "On" || strpos($key, "datum") !== false) {
             $value = \DateTimeImmutable::createFromFormat(Snelstart::DATETIME_FORMAT, $value);
 
             if (! $value) {

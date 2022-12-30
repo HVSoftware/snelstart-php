@@ -12,7 +12,7 @@ use SnelstartPHP\Model\V2\Document;
 
 final class DocumentMapper extends AbstractMapper
 {
-    public function find(ResponseInterface $response): ?Document
+    public function find(ResponseInterface $response): Document|null
     {
         $this->setResponseData($response);
         return $this->mapResponseToDocumentInstance();

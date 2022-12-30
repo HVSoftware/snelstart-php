@@ -33,24 +33,24 @@ final class ArtikelOmzetgroep extends SnelstartObject
         "omschrijving",
     ];
 
-    public function getNummer(): ?int
+    public function getNummer(): int|null
     {
         return $this->nummer;
     }
 
-    public function setNummer(?int $nummer): self
+    public function setNummer(int|null $nummer): self
     {
         $this->nummer = $nummer;
 
         return $this;
     }
 
-    public function getOmschrijving(): ?string
+    public function getOmschrijving(): string|null
     {
         return $this->omschrijving;
     }
 
-    public function setOmschrijving(?string $omschrijving): self
+    public function setOmschrijving(string|null $omschrijving): self
     {
         if ($omschrijving !== null && mb_strlen($omschrijving) > 50) {
             throw PreValidationException::textLengthException(mb_strlen($omschrijving), 50);

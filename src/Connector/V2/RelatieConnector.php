@@ -19,7 +19,7 @@ use SnelstartPHP\Request\V2 as Request;
 
 final class RelatieConnector extends BaseConnector
 {
-    public function find(UuidInterface $id): ?Model\Relatie
+    public function find(UuidInterface $id): Model\Relatie|null
     {
         try {
             $mapper = new Mapper\RelatieMapper();
@@ -36,14 +36,19 @@ final class RelatieConnector extends BaseConnector
         $mapper = new Mapper\Relatie\DoorlopendeIncassoMachtigingMapper();
         $request = new Request\RelatieRequest();
 
-        return iterator_to_array($mapper->findByRelatie($this->connection->doRequest($request->findDoorlopendeIncassoMachtigingen($id))));
+        return iterator_to_array(
+            $mapper->findByRelatie($this->connection->doRequest($request->findDoorlopendeIncassoMachtigingen($id)))
+        );
     }
 
     /**
      * @return iterable<Model\Relatie>
      */
-    public function findAll(?ODataRequestDataInterface $ODataRequestData = null, bool $fetchAll = false, ?iterable $previousResults = null): iterable
-    {
+    public function findAll(
+        ODataRequestDataInterface|null $ODataRequestData = null,
+        bool $fetchAll = false,
+        iterable|null $previousResults = null
+    ): iterable {
         $mapper = new Mapper\RelatieMapper();
         $request = new Request\RelatieRequest();
         $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
@@ -71,13 +76,16 @@ final class RelatieConnector extends BaseConnector
      * @return       Model\Relatie[]
      * @psalm-return iterable<int, Model\Relatie>
      */
-    public function findAllLeveranciers(?ODataRequestDataInterface $ODataRequestData = null, bool $fetchAll = false, ?iterable $previousResults = null): iterable
-    {
+    public function findAllLeveranciers(
+        ODataRequestDataInterface|null $ODataRequestData = null,
+        bool $fetchAll = false,
+        iterable|null $previousResults = null
+    ): iterable {
         $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
 
-        if (\method_exists($ODataRequestData, "setFilter")) {
+        if (method_exists($ODataRequestData, "setFilter")) {
             $ODataRequestData->setFilter(
-                \array_merge(
+                array_merge(
                     $ODataRequestData->getFilter(),
                     [sprintf("Relatiesoort/any(soort:soort eq '%s')", Relatiesoort::LEVERANCIER()->getValue())]
                 )
@@ -91,13 +99,16 @@ final class RelatieConnector extends BaseConnector
      * @return       Model\Relatie[]|iterable
      * @psalm-return iterable<int, Model\Relatie>
      */
-    public function findAllKlanten(?ODataRequestDataInterface $ODataRequestData = null, bool $fetchAll = false, ?iterable $previousResults = null): iterable
-    {
+    public function findAllKlanten(
+        ODataRequestDataInterface|null $ODataRequestData = null,
+        bool $fetchAll = false,
+        iterable|null $previousResults = null
+    ): iterable {
         $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
 
-        if (\method_exists($ODataRequestData, "setFilter")) {
+        if (method_exists($ODataRequestData, "setFilter")) {
             $ODataRequestData->setFilter(
-                \array_merge(
+                array_merge(
                     $ODataRequestData->getFilter(),
                     [sprintf("Relatiesoort/any(soort:soort eq '%s')", Relatiesoort::KLANT()->getValue())]
                 )

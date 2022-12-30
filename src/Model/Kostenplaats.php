@@ -16,7 +16,8 @@ final class Kostenplaats extends SnelstartObject
     private $omschrijving;
 
     /**
-     * Een vlag dat aangeeft of een kostenplaats niet meer actief is binnen de administratie.\r\nIndien <see langword=\"true\" />, dan kan er niet geboekt worden op de kostenplaats.
+     * Een vlag dat aangeeft of een kostenplaats niet meer actief is binnen de administratie.\r\nIndien
+     * <see langword=\"true\" />, dan kan er niet geboekt worden op de kostenplaats.
      *
      * @var bool
      */
@@ -38,7 +39,7 @@ final class Kostenplaats extends SnelstartObject
         "nummer",
     ];
 
-    public function getOmschrijving(): ?string
+    public function getOmschrijving(): string|null
     {
         return $this->omschrijving;
     }
@@ -50,7 +51,7 @@ final class Kostenplaats extends SnelstartObject
         return $this;
     }
 
-    public function isNonactief(): ?bool
+    public function isNonactief(): bool|null
     {
         return $this->nonactief;
     }
@@ -62,7 +63,7 @@ final class Kostenplaats extends SnelstartObject
         return $this;
     }
 
-    public function getNummer(): ?int
+    public function getNummer(): int|null
     {
         return $this->nummer;
     }

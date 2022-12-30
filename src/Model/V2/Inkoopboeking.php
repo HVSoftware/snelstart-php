@@ -30,7 +30,7 @@ final class Inkoopboeking extends Boeking
         );
     }
 
-    public function getLeverancier(): ?Relatie
+    public function getLeverancier(): Relatie|null
     {
         return $this->leverancier;
     }
