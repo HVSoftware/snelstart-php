@@ -26,7 +26,7 @@ final class KostenplaatsConnector extends BaseConnector
 
         try {
             return $mapper->find($this->connection->doRequest($request->find($id)));
-        } catch (SnelstartResourceNotFoundException $e) {
+        } catch (SnelstartResourceNotFoundException) {
             return null;
         }
     }

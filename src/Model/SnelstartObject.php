@@ -86,7 +86,7 @@ abstract class SnelstartObject extends BaseObject
                         }
                     }
                 }
-            } catch (TypeError $e) {
+            } catch (TypeError) {
             }
         }
 

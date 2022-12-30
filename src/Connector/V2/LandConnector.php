@@ -27,7 +27,7 @@ final class LandConnector extends BaseConnector
             $request = new LandRequest();
 
             return $mapper->find($this->connection->doRequest($request->find($id)));
-        } catch (SnelstartResourceNotFoundException $e) {
+        } catch (SnelstartResourceNotFoundException) {
             return null;
         }
     }

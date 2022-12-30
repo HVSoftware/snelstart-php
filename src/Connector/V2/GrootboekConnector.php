@@ -31,7 +31,7 @@ final class GrootboekConnector extends BaseConnector
             $request = new Request\GrootboekRequest();
 
             return $mapper->find($this->connection->doRequest($request->find($id)));
-        } catch (SnelstartResourceNotFoundException $e) {
+        } catch (SnelstartResourceNotFoundException) {
             return null;
         }
     }

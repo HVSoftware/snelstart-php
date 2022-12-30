@@ -101,7 +101,7 @@ abstract class AbstractMapper
                     $class->{$methodName}($value);
                 }
             }
-        } catch (TypeError $e) {
+        } catch (TypeError) {
         }
 
         return $class;

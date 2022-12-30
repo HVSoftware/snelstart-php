@@ -34,7 +34,7 @@ final class BoekingConnector extends BaseConnector
             return $boekingMapper->findInkoopboeking(
                 $this->connection->doRequest($boekingRequest->findInkoopboeking($uuid)),
             );
-        } catch (SnelstartResourceNotFoundException $e) {
+        } catch (SnelstartResourceNotFoundException) {
             return null;
         }
     }
@@ -140,7 +140,7 @@ final class BoekingConnector extends BaseConnector
             return $boekingMapper->findVerkoopboeking(
                 $this->connection->doRequest($boekingRequest->findVerkoopboeking($uuid)),
             );
-        } catch (SnelstartResourceNotFoundException $e) {
+        } catch (SnelstartResourceNotFoundException) {
             return null;
         }
     }

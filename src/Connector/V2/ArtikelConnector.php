@@ -33,7 +33,7 @@ final class ArtikelConnector extends BaseConnector
             return $artikelMapper->find(
                 $this->connection->doRequest($artikelRequest->find($id, $ODataRequestData, $relatie, $aantal)),
             );
-        } catch (SnelstartResourceNotFoundException $e) {
+        } catch (SnelstartResourceNotFoundException) {
             return null;
         }
     }

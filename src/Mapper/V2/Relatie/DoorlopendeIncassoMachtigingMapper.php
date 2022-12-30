@@ -40,7 +40,7 @@ final class DoorlopendeIncassoMachtigingMapper extends AbstractMapper
         if (isset($data["afsluitDatum"])) {
             try {
                 $object->setAfsluitDatum(new DateTimeImmutable($data["afsluitDatum"]));
-            } catch (Exception $e) {
+            } catch (Exception) {
                 // This is caused by an invalid date format.
             }
         }
@@ -48,7 +48,7 @@ final class DoorlopendeIncassoMachtigingMapper extends AbstractMapper
         if (isset($data["intrekkingsDatum"])) {
             try {
                 $object->setIntrekkingsDatum(new DateTimeImmutable($data["intrekkingsDatum"]));
-            } catch (Exception $e) {
+            } catch (Exception) {
                 // This is caused by an invalid date format.
             }
         }

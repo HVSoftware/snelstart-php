@@ -25,7 +25,7 @@ final class ArtikelOmzetgroepConnector extends BaseConnector
             $request = new ArtikelOmzetgroepRequest();
 
             return $mapper->find($this->connection->doRequest($request->find($id)));
-        } catch (SnelstartResourceNotFoundException $e) {
+        } catch (SnelstartResourceNotFoundException) {
             return null;
         }
     }
