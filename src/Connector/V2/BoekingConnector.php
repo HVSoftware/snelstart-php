@@ -57,6 +57,7 @@ final class BoekingConnector extends BaseConnector
             ) as $inkoopboeking
         ) {
             $hasItems = true;
+
             yield $inkoopboeking;
         }
 
@@ -167,6 +168,7 @@ final class BoekingConnector extends BaseConnector
             ) as $verkoopboeking
         ) {
             $hasItems = true;
+
             yield $verkoopboeking;
         }
 

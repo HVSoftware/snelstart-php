@@ -30,6 +30,7 @@ final class VerkooporderMapper extends AbstractMapper
     public function add(ResponseInterface $response): Verkooporder
     {
         $this->setResponseData($response);
+
         return $this->map(new Verkooporder());
     }
 

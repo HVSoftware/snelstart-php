@@ -41,6 +41,7 @@ final class KostenplaatsMapper extends AbstractMapper
     private function mapSimpleResponse(ResponseInterface $response): Kostenplaats
     {
         $this->setResponseData($response);
+
         return $this->mapArrayDataToModel(new Kostenplaats());
     }
 }

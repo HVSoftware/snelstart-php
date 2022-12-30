@@ -26,24 +26,28 @@ final class RelatieMapper extends AbstractMapper
     public function find(ResponseInterface $response): Model\Relatie|null
     {
         $this->setResponseData($response);
+
         return $this->mapResponseToRelatieModel(new Model\Relatie());
     }
 
     public function findAll(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
+
         yield from $this->mapManyResultsToSubMappers();
     }
 
     public function add(ResponseInterface $response): Model\Relatie
     {
         $this->setResponseData($response);
+
         return $this->mapResponseToRelatieModel(new Model\Relatie());
     }
 
     public function update(ResponseInterface $response): Model\Relatie
     {
         $this->setResponseData($response);
+
         return $this->mapResponseToRelatieModel(new Model\Relatie());
     }
 

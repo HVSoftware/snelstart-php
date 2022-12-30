@@ -52,18 +52,21 @@ abstract class BaseConnection implements ConnectionInterface
     public function setClient(ClientInterface $client): self
     {
         $this->client = $client;
+
         return $this;
     }
 
     public function setAccessToken(AccessToken $accessToken): self
     {
         $this->accessToken = $accessToken;
+
         return $this;
     }
 
     public function setLogger(LoggerInterface $logger): self
     {
         $this->logger = $logger;
+
         return $this;
     }
 

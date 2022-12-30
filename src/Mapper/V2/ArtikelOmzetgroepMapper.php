@@ -19,6 +19,7 @@ final class ArtikelOmzetgroepMapper extends AbstractMapper
     public function find(ResponseInterface $response): ArtikelOmzetgroep|null
     {
         $this->setResponseData($response);
+
         return $this->mapResponseToArtikelOmzetgroepModel(new ArtikelOmzetgroep());
     }
 

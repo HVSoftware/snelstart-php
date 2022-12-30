@@ -18,18 +18,21 @@ final class DocumentMapper extends AbstractMapper
     public function find(ResponseInterface $response): Document|null
     {
         $this->setResponseData($response);
+
         return $this->mapResponseToDocumentInstance();
     }
 
     public function update(ResponseInterface $response): Document
     {
         $this->setResponseData($response);
+
         return $this->mapResponseToDocumentInstance();
     }
 
     public function add(ResponseInterface $response): Document
     {
         $this->setResponseData($response);
+
         return $this->mapResponseToDocumentInstance();
     }
 
@@ -41,6 +44,7 @@ final class DocumentMapper extends AbstractMapper
          * @var Document $document
          */
         $document = $this->mapArrayDataToModel(new Document(), $data);
+
         return $document;
     }
 }

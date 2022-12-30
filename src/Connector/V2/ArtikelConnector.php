@@ -59,6 +59,7 @@ final class ArtikelConnector extends BaseConnector
             ) as $artikel
         ) {
             $hasItems = true;
+
             yield $artikel;
         }
 

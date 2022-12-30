@@ -26,24 +26,28 @@ final class ArtikelMapper extends AbstractMapper
     public function find(ResponseInterface $response): Artikel|null
     {
         $this->setResponseData($response);
+
         return $this->mapResponseToArtikelModel(new Artikel());
     }
 
     public function findAll(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
+
         yield from $this->mapManyResultsToSubMappers();
     }
 
     public function add(ResponseInterface $response): Artikel
     {
         $this->setResponseData($response);
+
         return $this->mapResponseToArtikelModel(new Artikel());
     }
 
     public function update(ResponseInterface $response): Artikel
     {
         $this->setResponseData($response);
+
         return $this->mapResponseToArtikelModel(new Artikel());
     }
 

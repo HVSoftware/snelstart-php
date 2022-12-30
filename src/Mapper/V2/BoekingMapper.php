@@ -37,6 +37,7 @@ final class BoekingMapper extends AbstractMapper
     public function findInkoopboeking(ResponseInterface $response): Inkoopboeking
     {
         $this->setResponseData($response);
+
         return $this->mapInkoopboekingResult(new Inkoopboeking());
     }
 
@@ -46,6 +47,7 @@ final class BoekingMapper extends AbstractMapper
     public function findVerkoopboeking(ResponseInterface $response): Verkoopboeking
     {
         $this->setResponseData($response);
+
         return $this->mapVerkoopboekingResult(new Verkoopboeking());
     }
 
@@ -55,6 +57,7 @@ final class BoekingMapper extends AbstractMapper
     public function findAllInkoopboekingen(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
+
         yield from $this->mapManyResultsToSubMappers(Inkoopboeking::class);
     }
 
@@ -64,6 +67,7 @@ final class BoekingMapper extends AbstractMapper
     public function findAllInkoopfacturen(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
+
         return $this->mapManyResultsToSubMappers(Inkoopfactuur::class);
     }
 
@@ -73,6 +77,7 @@ final class BoekingMapper extends AbstractMapper
     public function findAllVerkoopboekingen(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
+
         yield from $this->mapManyResultsToSubMappers(Verkoopboeking::class);
     }
 
@@ -82,18 +87,21 @@ final class BoekingMapper extends AbstractMapper
     public function findAllVerkoopfacturen(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
+
         return $this->mapManyResultsToSubMappers(Verkoopfactuur::class);
     }
 
     public function addInkoopboeking(ResponseInterface $response): Inkoopboeking
     {
         $this->setResponseData($response);
+
         return $this->mapInkoopboekingResult(new Inkoopboeking());
     }
 
     public function updateInkoopboeking(ResponseInterface $response): Inkoopboeking
     {
         $this->setResponseData($response);
+
         return $this->mapInkoopboekingResult(new Inkoopboeking());
     }
 
@@ -103,6 +111,7 @@ final class BoekingMapper extends AbstractMapper
     public function updateVerkoopboeking(ResponseInterface $response): Verkoopboeking
     {
         $this->setResponseData($response);
+
         return $this->mapVerkoopboekingResult(new Verkoopboeking());
     }
 
@@ -112,12 +121,14 @@ final class BoekingMapper extends AbstractMapper
     public function addVerkoopboeking(ResponseInterface $response): Verkoopboeking
     {
         $this->setResponseData($response);
+
         return $this->mapVerkoopboekingResult(new Verkoopboeking());
     }
 
     protected function mapDocumentResult(array $data = []): Document
     {
         $data = empty($data) ? $this->responseData : $data;
+
         return $this->mapArrayDataToModel(new Document(), $data);
     }
 

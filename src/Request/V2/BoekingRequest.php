@@ -101,6 +101,7 @@ final class BoekingRequest extends BaseRequest
         }
 
         @trigger_error(sprintf("Please use %s", DocumentRequest::class), E_USER_DEPRECATED);
+
         return (new DocumentRequest($this->serializer))->addVerkoopBoekingDocument($document, $verkoopboeking);
     }
 }

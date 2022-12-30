@@ -64,6 +64,7 @@ final class RelatieConnector extends BaseConnector
 
         foreach ($mapper->findAll($this->connection->doRequest($request->findAll($ODataRequestData))) as $relatie) {
             $hasItems = true;
+
             yield $relatie;
         }
 

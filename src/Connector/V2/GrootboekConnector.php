@@ -50,6 +50,7 @@ final class GrootboekConnector extends BaseConnector
 
         foreach ($mapper->findAll($this->connection->doRequest($request->findAll($ODataRequestData))) as $grootboek) {
             $hasItems = true;
+
             yield $grootboek;
         }
 

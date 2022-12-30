@@ -45,6 +45,7 @@ abstract class AbstractMapper
     {
         if ($response !== null) {
             @trigger_error("This will be deprecated starting from April 1st 2020", E_USER_DEPRECATED);
+
             return static::fromResponse($response);
         }
     }

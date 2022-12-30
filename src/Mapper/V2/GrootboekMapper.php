@@ -24,12 +24,14 @@ final class GrootboekMapper extends AbstractMapper
     public function find(ResponseInterface $response): Model\Grootboek
     {
         $this->setResponseData($response);
+
         return $this->mapResultToGrootboekModel(new Model\Grootboek());
     }
 
     public function findAll(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
+
         yield from $this->mapManyResultsToSubMappers();
     }
 
