@@ -44,7 +44,7 @@ final class ArtikelConnector extends BaseConnector
     public function findAll(
         ODataRequestData|null $ODataRequestData = null,
         bool $fetchAll = false,
-        iterable $previousResults = null,
+        iterable|null $previousResults = null,
         Model\Relatie|null $relatie = null,
         int|null $aantal = null,
     ): iterable {

@@ -17,7 +17,7 @@ final class RateLimitException extends RuntimeException
     public function __construct(
         $message = "Rate Limit for the API has been reached",
         $code = 0,
-        Throwable $previous = null,
+        Throwable|null $previous = null,
     ) {
         parent::__construct($message, $code, $previous);
     }

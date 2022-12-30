@@ -44,7 +44,7 @@ final class BoekingConnector extends BaseConnector
     public function findInkoopfacturen(
         ODataRequestDataInterface|null $ODataRequestData = null,
         bool $fetchAll = false,
-        iterable $previousResults = null,
+        iterable|null $previousResults = null,
     ): iterable {
         $factuurRequest = new Request\FactuurRequest();
         $boekingMapper = new Mapper\BoekingMapper();
@@ -152,7 +152,7 @@ final class BoekingConnector extends BaseConnector
     public function findVerkoopfacturen(
         ODataRequestDataInterface|null $ODataRequestData = null,
         bool $fetchAll = false,
-        iterable $previousResults = null,
+        iterable|null $previousResults = null,
     ): iterable {
         $factuurRequest = new Request\FactuurRequest();
         $boekingMapper = new Mapper\BoekingMapper();
