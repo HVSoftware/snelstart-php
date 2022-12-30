@@ -14,6 +14,7 @@ use SnelstartPHP\Exception\PreValidationException;
 use SnelstartPHP\Model\V2 as Model;
 use SnelstartPHP\Request\BaseRequest;
 use SnelstartPHP\Request\ODataRequestDataInterface;
+use function GuzzleHttp\json_encode;
 
 final class GrootboekRequest extends BaseRequest
 {
@@ -32,7 +33,7 @@ final class GrootboekRequest extends BaseRequest
         return new Request(
             "POST", "grootboeken", [
                 "Content-Type"  =>  "application/json"
-            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($grootboek))
+            ], json_encode($this->prepareAddOrEditRequestForSerialization($grootboek))
         );
     }
 
@@ -45,7 +46,7 @@ final class GrootboekRequest extends BaseRequest
         return new Request(
             "PUT", "grootboeken/" . $grootboek->getId()->toString(), [
                 "Content-Type"  =>  "application/json"
-            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($grootboek))
+            ], json_encode($this->prepareAddOrEditRequestForSerialization($grootboek))
         );
     }
 }

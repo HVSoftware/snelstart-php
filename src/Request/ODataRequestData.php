@@ -8,6 +8,10 @@
 namespace SnelstartPHP\Request;
 
 use SnelstartPHP\Snelstart;
+use function in_array;
+use BadMethodCallException;
+use function http_build_query;
+use const PHP_QUERY_RFC3986;
 
 final class ODataRequestData implements ODataRequestDataInterface
 {
@@ -55,8 +59,8 @@ final class ODataRequestData implements ODataRequestDataInterface
     {
         $this->filter = $filter;
 
-        if (! \in_array($mode, [self::FILTER_MODE_OR, self::FILTER_MODE_AND])) {
-            throw new \BadMethodCallException("We expected either 'and' or 'or'.");
+        if (! in_array($mode, [self::FILTER_MODE_OR, self::FILTER_MODE_AND])) {
+            throw new BadMethodCallException("We expected either 'and' or 'or'.");
         }
 
         $this->filterMode = $mode;
@@ -124,6 +128,6 @@ final class ODataRequestData implements ODataRequestDataInterface
             return "";
         }
 
-        return \http_build_query($collection, "", "&", \PHP_QUERY_RFC3986);
+        return http_build_query($collection, "", "&", PHP_QUERY_RFC3986);
     }
 }

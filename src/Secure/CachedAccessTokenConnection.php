@@ -9,6 +9,10 @@ namespace SnelstartPHP\Secure;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Log\LoggerInterface;
 use SnelstartPHP\Secure\BearerToken\BearerTokenInterface;
+use RuntimeException;
+use function spl_object_hash;
+use InvalidArgumentException;
+use GuzzleHttp\Exception\GuzzleException;
 
 final class CachedAccessTokenConnection
 {
@@ -40,7 +44,7 @@ final class CachedAccessTokenConnection
     public function __construct(
         AccessTokenConnection $accessTokenConnection,
         CacheItemPoolInterface $cacheItemPool,
-        LoggerInterface|null $logger = null
+        LoggerInterface|null $logger = null,
     ) {
         $this->connection = $accessTokenConnection;
         $this->cacheItemPool = $cacheItemPool;
@@ -48,9 +52,9 @@ final class CachedAccessTokenConnection
     }
 
     /**
-     * @throws \RuntimeException
-     * @throws \InvalidArgumentException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws RuntimeException
+     * @throws InvalidArgumentException
+     * @throws GuzzleException
      */
     public function getToken(BearerTokenInterface|null $bearerToken = null): AccessToken
     {
@@ -74,7 +78,7 @@ final class CachedAccessTokenConnection
             ->expiresAfter($accessToken->getExpiresIn() - self::EXPIRES_AFTER_BUFFER);
 
         if (! $this->cacheItemPool->save($cacheItem)) {
-            throw new \RuntimeException("Something went wrong trying to persist the access token into cache.");
+            throw new RuntimeException("Something went wrong trying to persist the access token into cache.");
         }
 
         return $accessToken;
@@ -82,6 +86,6 @@ final class CachedAccessTokenConnection
 
     protected function getItemKey(): string
     {
-        return self::CACHE_ITEM_PREFIX . \spl_object_hash($this) . random_int(0, 99);
+        return self::CACHE_ITEM_PREFIX . spl_object_hash($this) . random_int(0, 99);
     }
 }

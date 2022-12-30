@@ -6,12 +6,24 @@
 
 namespace SnelstartPHP\Exception;
 
-final class SnelstartApiErrorException extends \RuntimeException
+use RuntimeException;
+use Countable;
+use function count;
+use function json_encode;
+
+final class SnelstartApiErrorException extends RuntimeException
 {
     public static function handleError(array $body): self
     {
         if (isset($body["modelState"])) {
-            $errorMessages = [sprintf("%d validation failures occurred.", is_array($body["modelState"]) || $body["modelState"] instanceof \Countable ? \count($body["modelState"]) : 0)];
+            $errorMessages = [
+                sprintf(
+                    "%d validation failures occurred.",
+                    is_array(
+                        $body["modelState"]
+                    ) || $body["modelState"] instanceof Countable ? count($body["modelState"]) : 0
+                )
+            ];
 
             foreach ($body["modelState"] as $field => $modelStateErrors) {
                 $errorMessages[] = $field . ": ";
@@ -39,6 +51,6 @@ final class SnelstartApiErrorException extends \RuntimeException
             return new static($body["Message"] ?? $body["message"], 400);
         }
 
-        throw new static("Unknown exception. Message body: " . \json_encode($body), 400);
+        throw new static("Unknown exception. Message body: " . json_encode($body), 400);
     }
 }

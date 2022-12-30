@@ -8,10 +8,12 @@ use Psr\Http\Message\ResponseInterface;
 use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\V2 as Model;
 use SnelstartPHP\Model\Type;
+use Generator;
+use DateTimeImmutable;
 
 final class BtwTariefMapper extends AbstractMapper
 {
-    public function findAll(ResponseInterface $response): \Generator
+    public function findAll(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
 
@@ -19,8 +21,8 @@ final class BtwTariefMapper extends AbstractMapper
             yield (new Model\BtwTarief())
                 ->setBtwSoort(new Type\BtwSoort($data["btwSoort"]))
                 ->setBtwPercentage((float) $data['btwPercentage'])
-                ->setDatumVanaf(new \DateTimeImmutable($data["datumVanaf"]))
-                ->setDatumTotEnMet(new \DateTimeImmutable($data["datumTotEnMet"]));
+                ->setDatumVanaf(new DateTimeImmutable($data["datumVanaf"]))
+                ->setDatumTotEnMet(new DateTimeImmutable($data["datumTotEnMet"]));
         }
     }
 }

@@ -14,6 +14,7 @@ use SnelstartPHP\Model\SnelstartObject;
 use SnelstartPHP\Model\Type\ProcesStatus;
 use SnelstartPHP\Model\Type\VerkooporderBtwIngave;
 use SnelstartPHP\Snelstart;
+use DateTimeImmutable;
 
 final class Verkooporder extends SnelstartObject
 {
@@ -40,14 +41,14 @@ final class Verkooporder extends SnelstartObject
     /**
      * Het tijdstip waarop de verkooporder voor het laatst is gewijzigd.
      *
-     * @var \DateTimeImmutable|null
+     * @var DateTimeImmutable|null
      */
     private $modifiedOn;
 
     /**
      * De orderdatum.
      *
-     * @var \DateTimeImmutable|null
+     * @var DateTimeImmutable|null
      */
     private $datum;
 
@@ -183,7 +184,7 @@ final class Verkooporder extends SnelstartObject
             array_merge(
                 parent::$editableAttributes,
                 parent::getEditableAttributes(),
-                Verkooporder::$editableAttributes,
+                self::$editableAttributes,
                 self::$editableAttributes
             )
         );
@@ -225,24 +226,24 @@ final class Verkooporder extends SnelstartObject
         return $this;
     }
 
-    public function getModifiedOn(): \DateTimeImmutable|null
+    public function getModifiedOn(): DateTimeImmutable|null
     {
         return $this->modifiedOn;
     }
 
-    public function setModifiedOn(\DateTimeImmutable $modifiedOn): self
+    public function setModifiedOn(DateTimeImmutable $modifiedOn): self
     {
         $this->modifiedOn = $modifiedOn;
 
         return $this;
     }
 
-    public function getDatum(): \DateTimeImmutable|null
+    public function getDatum(): DateTimeImmutable|null
     {
         return $this->datum;
     }
 
-    public function setDatum(\DateTimeImmutable $datum): self
+    public function setDatum(DateTimeImmutable $datum): self
     {
         $this->datum = $datum;
 

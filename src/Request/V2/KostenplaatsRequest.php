@@ -12,6 +12,7 @@ use Ramsey\Uuid\UuidInterface;
 use SnelstartPHP\Exception\PreValidationException;
 use SnelstartPHP\Model\Kostenplaats;
 use SnelstartPHP\Request\BaseRequest;
+use function GuzzleHttp\json_encode;
 
 final class KostenplaatsRequest extends BaseRequest
 {
@@ -30,7 +31,7 @@ final class KostenplaatsRequest extends BaseRequest
         return new Request(
             "POST", "kostenplaatsen", [
                 "Content-Type"  =>  "application/json"
-            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($kostenplaats))
+            ], json_encode($this->prepareAddOrEditRequestForSerialization($kostenplaats))
         );
     }
 
@@ -43,7 +44,7 @@ final class KostenplaatsRequest extends BaseRequest
         return new Request(
             "PUT", "kostenplaatsen/" . $kostenplaats->getId()->toString(), [
                 "Content-Type"  =>  "application/json"
-            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($kostenplaats))
+            ], json_encode($this->prepareAddOrEditRequestForSerialization($kostenplaats))
         );
     }
 

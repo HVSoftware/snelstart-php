@@ -7,6 +7,8 @@
 
 namespace SnelstartPHP\Secure\BearerToken;
 
+use InvalidArgumentException;
+
 final class PasswordBearerToken implements BearerTokenInterface
 {
     /**
@@ -27,7 +29,9 @@ final class PasswordBearerToken implements BearerTokenInterface
         $koppelsleutelParts = explode(":", base64_decode($koppelsleutel));
 
         if (count($koppelsleutelParts) !== 2) {
-            throw new \InvalidArgumentException(sprintf("We expected 2 items while decoding this but we got %d", count($koppelsleutelParts)));
+            throw new InvalidArgumentException(
+                sprintf("We expected 2 items while decoding this but we got %d", count($koppelsleutelParts))
+            );
         }
 
         $this->username = $koppelsleutelParts[0];

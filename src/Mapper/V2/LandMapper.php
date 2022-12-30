@@ -9,6 +9,7 @@ namespace SnelstartPHP\Mapper\V2;
 use Psr\Http\Message\ResponseInterface;
 use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\Land;
+use Generator;
 
 final class LandMapper extends AbstractMapper
 {
@@ -18,7 +19,7 @@ final class LandMapper extends AbstractMapper
         return $this->mapArrayDataToModel(new Land());
     }
 
-    public function findAll(ResponseInterface $response): \Generator
+    public function findAll(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
 

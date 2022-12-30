@@ -14,6 +14,7 @@ use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\V2 as Model;
 use SnelstartPHP\Model\Type\Grootboekfunctie;
 use SnelstartPHP\Model\Type\Rekeningcode;
+use Generator;
 
 final class GrootboekMapper extends AbstractMapper
 {
@@ -23,7 +24,7 @@ final class GrootboekMapper extends AbstractMapper
         return $this->mapResultToGrootboekModel(new Model\Grootboek());
     }
 
-    public function findAll(ResponseInterface $response): \Generator
+    public function findAll(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
         yield from $this->mapManyResultsToSubMappers();
@@ -59,7 +60,7 @@ final class GrootboekMapper extends AbstractMapper
         return $grootboek;
     }
 
-    protected function mapManyResultsToSubMappers(): \Generator
+    protected function mapManyResultsToSubMappers(): Generator
     {
         foreach ($this->responseData as $grootboekData) {
             yield $this->mapResultToGrootboekModel(new Model\Grootboek(), $grootboekData);

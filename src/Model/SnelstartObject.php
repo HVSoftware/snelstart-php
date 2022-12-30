@@ -7,6 +7,9 @@
 namespace SnelstartPHP\Model;
 
 use Ramsey\Uuid\UuidInterface;
+use function array_unique;
+use function array_merge;
+use TypeError;
 
 abstract class SnelstartObject extends BaseObject
 {
@@ -52,7 +55,7 @@ abstract class SnelstartObject extends BaseObject
 
     public static function getEditableAttributes(): array
     {
-        return \array_unique(\array_merge(static::$editableAttributes, self::$editableAttributes));
+        return array_unique(array_merge(static::$editableAttributes, self::$editableAttributes));
     }
 
     /**
@@ -80,7 +83,7 @@ abstract class SnelstartObject extends BaseObject
                         }
                     }
                 }
-            } catch (\TypeError $e) {
+            } catch (TypeError $e) {
             }
         }
 

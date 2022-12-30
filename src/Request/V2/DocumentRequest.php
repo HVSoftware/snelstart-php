@@ -12,6 +12,7 @@ use SnelstartPHP\Model\V2\Inkoopboeking;
 use SnelstartPHP\Model\V2\Relatie;
 use SnelstartPHP\Model\V2\Verkoopboeking;
 use SnelstartPHP\Request\BaseRequest;
+use function GuzzleHttp\json_encode;
 
 final class DocumentRequest extends BaseRequest
 {
@@ -73,7 +74,7 @@ final class DocumentRequest extends BaseRequest
             'PUT',
             'documenten/' . $document->getId()->toString(),
             ['Content-Type' => 'application/json'],
-            \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($document)),
+            json_encode($this->prepareAddOrEditRequestForSerialization($document)),
         );
     }
 
@@ -92,7 +93,7 @@ final class DocumentRequest extends BaseRequest
             'POST',
             sprintf('documenten/%s', $documentType->getValue()),
             ['Content-Type' => 'application/json'],
-            \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($document)),
+            json_encode($this->prepareAddOrEditRequestForSerialization($document)),
         );
     }
 }

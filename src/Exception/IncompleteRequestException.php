@@ -6,6 +6,8 @@
 
 namespace SnelstartPHP\Exception;
 
-final class IncompleteRequestException extends \LogicException
+use LogicException;
+
+final class IncompleteRequestException extends LogicException
 {
 }

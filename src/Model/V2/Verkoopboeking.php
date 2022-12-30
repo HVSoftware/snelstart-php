@@ -54,7 +54,7 @@ final class Verkoopboeking extends Boeking
             array_merge(
                 parent::$editableAttributes,
                 parent::getEditableAttributes(),
-                Verkoopboeking::$editableAttributes,
+                self::$editableAttributes,
                 self::$editableAttributes,
             )
         );

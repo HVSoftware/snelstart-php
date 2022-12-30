@@ -21,6 +21,8 @@ use SnelstartPHP\Exception\RateLimitException;
 use SnelstartPHP\Exception\SnelstartApiAccessDeniedException;
 use SnelstartPHP\Exception\SnelstartApiErrorException;
 use SnelstartPHP\Exception\SnelstartResourceNotFoundException;
+use function GuzzleHttp\json_decode;
+use GuzzleHttp\Exception\GuzzleException;
 
 abstract class BaseConnection implements ConnectionInterface
 {
@@ -77,7 +79,7 @@ abstract class BaseConnection implements ConnectionInterface
     /**
      * @throws RateLimitException
      * @throws MaxRetriesReachedException
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function doRequest(RequestInterface $request): ResponseInterface
     {
@@ -114,7 +116,12 @@ abstract class BaseConnection implements ConnectionInterface
 
             return $response;
         } catch (ServerException $serverException) {
-            throw new SnelstartResourceNotFoundException($serverException->getMessage(), $serverException->getRequest(), $serverException->getResponse(), $serverException);
+            throw new SnelstartResourceNotFoundException(
+                $serverException->getMessage(),
+                $serverException->getRequest(),
+                $serverException->getResponse(),
+                $serverException,
+            );
         } catch (ClientException $clientException) {
             $response = $clientException->getResponse();
 
@@ -149,7 +156,7 @@ abstract class BaseConnection implements ConnectionInterface
                 $body = (string) $response->getBody();
 
                 if ($body !== '') {
-                    $body = \GuzzleHttp\json_decode($body, true);
+                    $body = json_decode($body, true);
                 }
 
                 throw new SnelstartResourceNotFoundException(
@@ -162,12 +169,21 @@ abstract class BaseConnection implements ConnectionInterface
 
             if ($response->getStatusCode() === 429) {
                 // We received another 429 on the secondary key. Throw a different exception.
-                if (in_array($this->subscriptionKey->getSecondary(), $request->getHeader(self::SUBSCRIPTION_HEADER_NAME), true)) {
+                if (
+                    in_array(
+                        $this->subscriptionKey->getSecondary(),
+                        $request->getHeader(self::SUBSCRIPTION_HEADER_NAME),
+                        true,
+                    )
+                ) {
                     throw new MaxRetriesReachedException();
                 }
 
                 // API Rate Limit reached
-                $request = $this->setOrReplaceSubscriptionKeyInRequest($request, $this->subscriptionKey->getSecondary());
+                $request = $this->setOrReplaceSubscriptionKeyInRequest(
+                    $request,
+                    $this->subscriptionKey->getSecondary(),
+                );
             }
 
             return $this->doRequest($request);
@@ -182,7 +198,12 @@ abstract class BaseConnection implements ConnectionInterface
     protected function preRequestValidation(RequestInterface $request): void
     {
         if ($this->numRetries === self::MAX_RETRIES) {
-            throw new MaxRetriesReachedException(sprintf("We tried to reach Snelstart %d times without luck. Retry later.", self::MAX_RETRIES));
+            throw new MaxRetriesReachedException(
+                sprintf(
+                    "We tried to reach Snelstart %d times without luck. Retry later.",
+                    self::MAX_RETRIES,
+                )
+            );
         }
 
         if ($this->accessToken->isExpired()) {

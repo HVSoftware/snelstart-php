@@ -7,8 +7,12 @@
 namespace SnelstartPHP\Secure;
 
 use SnelstartPHP\Secure\BearerToken\BearerTokenInterface;
+use JsonSerializable;
+use InvalidArgumentException;
+use DateTime;
+use DateTimeZone;
 
-final class AccessToken implements \JsonSerializable
+final class AccessToken implements JsonSerializable
 {
     /**
      * @var string
@@ -33,11 +37,11 @@ final class AccessToken implements \JsonSerializable
     public function __construct(array $options, BearerTokenInterface $bearerToken)
     {
         if (empty($options['access_token'])) {
-            throw new \InvalidArgumentException('Required option not passed: "access_token"');
+            throw new InvalidArgumentException('Required option not passed: "access_token"');
         }
 
         if (empty($options['expires_in']) || ! is_numeric($options['expires_in'])) {
-            throw new \InvalidArgumentException('expires_in value must be an integer');
+            throw new InvalidArgumentException('expires_in value must be an integer');
         }
 
         $this->bearerToken = $bearerToken;
@@ -50,7 +54,7 @@ final class AccessToken implements \JsonSerializable
 
     private function getCurrentUtcTimestamp(): int
     {
-        return (new \DateTime('now', new \DateTimeZone('UTC')))->getTimestamp();
+        return (new DateTime('now', new DateTimeZone('UTC')))->getTimestamp();
     }
 
     public function getExpiresIn(): int

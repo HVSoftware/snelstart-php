@@ -6,6 +6,8 @@
 
 namespace SnelstartPHP\Model;
 
+use DateTimeInterface;
+
 final class IncassoMachtiging extends SnelstartObject
 {
     /**
@@ -25,7 +27,7 @@ final class IncassoMachtiging extends SnelstartObject
      * De datum van de incassomachtiging
      * Deze is verplicht bij een eenmalige machtiging.
      *
-     * @var \DateTimeInterface
+     * @var DateTimeInterface
      */
     private $datum;
 
@@ -53,12 +55,12 @@ final class IncassoMachtiging extends SnelstartObject
         return $this;
     }
 
-    public function getDatum(): \DateTimeInterface
+    public function getDatum(): DateTimeInterface
     {
         return $this->datum;
     }
 
-    public function setDatum(\DateTimeInterface $datum): IncassoMachtiging
+    public function setDatum(DateTimeInterface $datum): IncassoMachtiging
     {
         $this->datum = $datum;
 

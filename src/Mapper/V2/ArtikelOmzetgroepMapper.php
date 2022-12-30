@@ -9,6 +9,7 @@ namespace SnelstartPHP\Mapper\V2;
 use Psr\Http\Message\ResponseInterface;
 use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\V2\ArtikelOmzetgroep;
+use Generator;
 
 final class ArtikelOmzetgroepMapper extends AbstractMapper
 {
@@ -18,7 +19,7 @@ final class ArtikelOmzetgroepMapper extends AbstractMapper
         return $this->mapResponseToArtikelOmzetgroepModel(new ArtikelOmzetgroep());
     }
 
-    public function findAll(ResponseInterface $response): \Generator
+    public function findAll(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
 
@@ -29,7 +30,7 @@ final class ArtikelOmzetgroepMapper extends AbstractMapper
 
     protected function mapResponseToArtikelOmzetgroepModel(
         ArtikelOmzetgroep $artikelOmzetgroep,
-        array $data = []
+        array $data = [],
     ): ArtikelOmzetgroep {
         $data = empty($data) ? $this->responseData : $data;
 
@@ -44,7 +45,7 @@ final class ArtikelOmzetgroepMapper extends AbstractMapper
     /**
      * Map many results to the mapper.
      */
-    protected function mapManyResultsToSubMappers(): \Generator
+    protected function mapManyResultsToSubMappers(): Generator
     {
         foreach ($this->responseData as $artikelOmzetgroepData) {
             yield $this->mapResponseToArtikelOmzetgroepModel(new ArtikelOmzetgroep(), $artikelOmzetgroepData);

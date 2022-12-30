@@ -6,6 +6,8 @@
 
 namespace SnelstartPHP\Exception;
 
-final class MaxRetriesReachedException extends \RuntimeException
+use RuntimeException;
+
+final class MaxRetriesReachedException extends RuntimeException
 {
 }

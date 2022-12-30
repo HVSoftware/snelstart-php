@@ -13,13 +13,14 @@ use SnelstartPHP\Model\FactuurRelatie;
 use SnelstartPHP\Model\NaamWaarde;
 use SnelstartPHP\Model\SnelstartObject;
 use SnelstartPHP\Model\Type as Types;
+use DateTimeInterface;
 
 final class Relatie extends SnelstartObject
 {
     /**
      * Datum waarop de gegevens van deze relatie zijn aangepast
      *
-     * @var \DateTimeInterface|null
+     * @var DateTimeInterface|null
      */
     private $modifiedOn;
 
@@ -267,12 +268,12 @@ final class Relatie extends SnelstartObject
         "extraVeldenKlant",
     ];
 
-    public function getModifiedOn(): \DateTimeInterface|null
+    public function getModifiedOn(): DateTimeInterface|null
     {
         return $this->modifiedOn;
     }
 
-    public function setModifiedOn(\DateTimeInterface|null $modifiedOn): self
+    public function setModifiedOn(DateTimeInterface|null $modifiedOn): self
     {
         $this->modifiedOn = $modifiedOn;
 

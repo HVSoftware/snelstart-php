@@ -15,7 +15,7 @@ final class V2Connector extends BaseConnection
         ApiSubscriptionKey $subscriptionKey,
         AccessToken $accessToken,
         LoggerInterface|null $logger = null,
-        ClientInterface|null $client = null
+        ClientInterface|null $client = null,
     ) {
         $this->subscriptionKey = $subscriptionKey;
 

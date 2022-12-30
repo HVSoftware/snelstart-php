@@ -20,7 +20,7 @@ final class ArtikelConnector extends BaseConnector
         UuidInterface $id,
         ODataRequestData|null $ODataRequestData = null,
         Model\Relatie|null $relatie = null,
-        int|null $aantal = null
+        int|null $aantal = null,
     ): Model\Artikel|null {
         $artikelRequest = new Request\ArtikelRequest();
         $artikelMapper = new Mapper\ArtikelMapper();
@@ -43,16 +43,17 @@ final class ArtikelConnector extends BaseConnector
         bool $fetchAll = false,
         iterable $previousResults = null,
         Model\Relatie|null $relatie = null,
-        int|null $aantal = null
+        int|null $aantal = null,
     ): iterable {
         $artikelRequest = new Request\ArtikelRequest();
         $artikelMapper = new Mapper\ArtikelMapper();
         $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
         $hasItems = false;
 
-        foreach ($artikelMapper->findAll(
-            $this->connection->doRequest($artikelRequest->findAll($ODataRequestData, $relatie, $aantal))
-        ) as $artikel
+        foreach (
+            $artikelMapper->findAll(
+                $this->connection->doRequest($artikelRequest->findAll($ODataRequestData, $relatie, $aantal))
+            ) as $artikel
         ) {
             $hasItems = true;
             yield $artikel;

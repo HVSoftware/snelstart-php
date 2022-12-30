@@ -6,6 +6,8 @@
 
 namespace SnelstartPHP\Exception;
 
-final class ExpiredAccessTokenException extends \LogicException
+use LogicException;
+
+final class ExpiredAccessTokenException extends LogicException
 {
 }

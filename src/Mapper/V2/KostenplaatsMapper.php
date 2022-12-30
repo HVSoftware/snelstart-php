@@ -9,6 +9,7 @@ namespace SnelstartPHP\Mapper\V2;
 use Psr\Http\Message\ResponseInterface;
 use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\Kostenplaats;
+use Generator;
 
 final class KostenplaatsMapper extends AbstractMapper
 {
@@ -17,7 +18,7 @@ final class KostenplaatsMapper extends AbstractMapper
         return $this->mapSimpleResponse($response);
     }
 
-    public function findAll(ResponseInterface $response): \Generator
+    public function findAll(ResponseInterface $response): Generator
     {
         foreach ($this->setResponseData($response)->responseData as $kostenplaats) {
             yield $this->mapArrayDataToModel(new Kostenplaats(), $kostenplaats);

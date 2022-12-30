@@ -15,6 +15,7 @@ use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\EmailVersturen;
 use SnelstartPHP\Model\Type;
 use SnelstartPHP\Model\V2 as Model;
+use Generator;
 
 final class RelatieMapper extends AbstractMapper
 {
@@ -24,7 +25,7 @@ final class RelatieMapper extends AbstractMapper
         return $this->mapResponseToRelatieModel(new Model\Relatie());
     }
 
-    public function findAll(ResponseInterface $response): \Generator
+    public function findAll(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
         yield from $this->mapManyResultsToSubMappers();
@@ -129,7 +130,7 @@ final class RelatieMapper extends AbstractMapper
     /**
      * Map many results to the mapper.
      */
-    protected function mapManyResultsToSubMappers(): \Generator
+    protected function mapManyResultsToSubMappers(): Generator
     {
         foreach ($this->responseData as $relatieData) {
             yield $this->mapResponseToRelatieModel(new Model\Relatie(), $relatieData);

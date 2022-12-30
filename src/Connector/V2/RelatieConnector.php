@@ -47,7 +47,7 @@ final class RelatieConnector extends BaseConnector
     public function findAll(
         ODataRequestDataInterface|null $ODataRequestData = null,
         bool $fetchAll = false,
-        iterable|null $previousResults = null
+        iterable|null $previousResults = null,
     ): iterable {
         $mapper = new Mapper\RelatieMapper();
         $request = new Request\RelatieRequest();
@@ -79,7 +79,7 @@ final class RelatieConnector extends BaseConnector
     public function findAllLeveranciers(
         ODataRequestDataInterface|null $ODataRequestData = null,
         bool $fetchAll = false,
-        iterable|null $previousResults = null
+        iterable|null $previousResults = null,
     ): iterable {
         $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
 
@@ -102,7 +102,7 @@ final class RelatieConnector extends BaseConnector
     public function findAllKlanten(
         ODataRequestDataInterface|null $ODataRequestData = null,
         bool $fetchAll = false,
-        iterable|null $previousResults = null
+        iterable|null $previousResults = null,
     ): iterable {
         $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
 

@@ -8,7 +8,11 @@
 
 namespace SnelstartPHP\Secure;
 
-final class ApiSubscriptionKey implements \IteratorAggregate
+use IteratorAggregate;
+use Iterator;
+use ArrayIterator;
+
+final class ApiSubscriptionKey implements IteratorAggregate
 {
     /**
      * @var array
@@ -36,8 +40,8 @@ final class ApiSubscriptionKey implements \IteratorAggregate
         return $this->keys;
     }
 
-    public function getIterator(): \Iterator
+    public function getIterator(): Iterator
     {
-        return new \ArrayIterator($this->getKeys());
+        return new ArrayIterator($this->getKeys());
     }
 }

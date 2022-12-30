@@ -16,6 +16,7 @@ use SnelstartPHP\Model\V2 as Model;
 use SnelstartPHP\Request\ODataRequestData;
 use SnelstartPHP\Request\ODataRequestDataInterface;
 use SnelstartPHP\Request\V2 as Request;
+use DateTime;
 
 final class BoekingConnector extends BaseConnector
 {
@@ -39,14 +40,17 @@ final class BoekingConnector extends BaseConnector
     public function findInkoopfacturen(
         ODataRequestDataInterface|null $ODataRequestData = null,
         bool $fetchAll = false,
-        iterable $previousResults = null
+        iterable $previousResults = null,
     ): iterable {
         $factuurRequest = new Request\FactuurRequest();
         $boekingMapper = new Mapper\BoekingMapper();
         $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
         $hasItems = false;
 
-        foreach ($boekingMapper->findAllInkoopfacturen($this->connection->doRequest($factuurRequest->findInkoopfacturen($ODataRequestData))) as $inkoopboeking) {
+        foreach ($boekingMapper->findAllInkoopfacturen(
+            $this->connection->doRequest($factuurRequest->findInkoopfacturen($ODataRequestData))
+        ) as $inkoopboeking
+        ) {
             $hasItems = true;
             yield $inkoopboeking;
         }
@@ -80,7 +84,7 @@ final class BoekingConnector extends BaseConnector
 
     public function addInkoopboekingDocument(
         Model\Inkoopboeking $inkoopboeking,
-        Model\Document $document
+        Model\Document $document,
     ): Model\Document {
         if ($inkoopboeking->getId() === null) {
             throw PreValidationException::shouldHaveAnIdException();
@@ -138,18 +142,24 @@ final class BoekingConnector extends BaseConnector
 
     /**
      * @return iterable<Model\Verkoopfactuur>
+     * @throws \Exception
      */
     public function findVerkoopfacturen(
         ODataRequestDataInterface|null $ODataRequestData = null,
         bool $fetchAll = false,
-        iterable $previousResults = null
+        iterable $previousResults = null,
     ): iterable {
         $factuurRequest = new Request\FactuurRequest();
         $boekingMapper = new Mapper\BoekingMapper();
         $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
         $hasItems = false;
 
-        foreach ($boekingMapper->findAllVerkoopfacturen($this->connection->doRequest($factuurRequest->findVerkoopfacturen($ODataRequestData))) as $verkoopboeking) {
+        foreach ($boekingMapper->findAllVerkoopfacturen(
+            $this->connection->doRequest(
+                $factuurRequest->findVerkoopfacturen($ODataRequestData)
+            )
+        ) as $verkoopboeking
+        ) {
             $hasItems = true;
             yield $verkoopboeking;
         }
@@ -175,7 +185,7 @@ final class BoekingConnector extends BaseConnector
 
         if ($verkoopboeking->getVervaldatum() !== null && $verkoopboeking->getBetalingstermijn() === null) {
             $verkoopboeking->setBetalingstermijn(
-                (int) (new \DateTime())->diff($verkoopboeking->getVervaldatum())->format("%a")
+                (int) (new DateTime())->diff($verkoopboeking->getVervaldatum())->format("%a")
             );
         }
 
@@ -189,7 +199,7 @@ final class BoekingConnector extends BaseConnector
 
     public function addVerkoopboekingDocument(
         Model\Verkoopboeking $verkoopboeking,
-        Model\Document $document
+        Model\Document $document,
     ): Model\Document {
         if ($verkoopboeking->getId() === null) {
             throw PreValidationException::shouldHaveAnIdException();

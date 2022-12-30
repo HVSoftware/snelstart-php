@@ -15,6 +15,8 @@ use SnelstartPHP\Model\V2\ArtikelOmzetgroep;
 use SnelstartPHP\Model\V2\Prijsafspraak;
 use SnelstartPHP\Model\V2\Relatie;
 use SnelstartPHP\Model\V2\SubArtikel;
+use Generator;
+use DateTimeImmutable;
 
 final class ArtikelMapper extends AbstractMapper
 {
@@ -24,7 +26,7 @@ final class ArtikelMapper extends AbstractMapper
         return $this->mapResponseToArtikelModel(new Artikel());
     }
 
-    public function findAll(ResponseInterface $response): \Generator
+    public function findAll(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
         yield from $this->mapManyResultsToSubMappers();
@@ -92,20 +94,20 @@ final class ArtikelMapper extends AbstractMapper
             $prijsafspraak->setArtikel(Artikel::createFromUUID(Uuid::fromString($data["artikel"]["id"])));
         }
 
-        return $prijsafspraak->setDatum(new \DateTimeImmutable($data["datum"]))
+        return $prijsafspraak->setDatum(new DateTimeImmutable($data["datum"]))
             ->setAantal($data["aantal"])
             ->setKorting($data["korting"])
             ->setVerkoopprijs($this->getMoney($data["verkoopprijs"]))
             ->setBasisprijs($this->getMoney($data["basisprijs"]))
-            ->setDatumVanaf($data["datumVanaf"] !== null ? new \DateTimeImmutable($data["datumVanaf"]) : null)
-            ->setDatumTotEnMet($data["datumTotEnMet"] !== null ? new \DateTimeImmutable($data["datumTotEnMet"]) : null)
+            ->setDatumVanaf($data["datumVanaf"] !== null ? new DateTimeImmutable($data["datumVanaf"]) : null)
+            ->setDatumTotEnMet($data["datumTotEnMet"] !== null ? new DateTimeImmutable($data["datumTotEnMet"]) : null)
             ->setPrijsBepalingSoort(new PrijsBepalingSoort($data["prijsBepalingSoort"]));
     }
 
     /**
      * Map many results to the mapper.
      */
-    protected function mapManyResultsToSubMappers(): \Generator
+    protected function mapManyResultsToSubMappers(): Generator
     {
         foreach ($this->responseData as $artikelData) {
             yield $this->mapResponseToArtikelModel(new Artikel(), $artikelData);

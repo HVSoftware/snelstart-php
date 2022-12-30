@@ -6,6 +6,7 @@ namespace SnelstartPHP\Model\V2\Relatie;
 
 use SnelstartPHP\Model\SnelstartObject;
 use SnelstartPHP\Model\V2\Relatie;
+use DateTimeImmutable;
 
 final class DoorlopendeIncassoMachtiging extends SnelstartObject
 {
@@ -15,7 +16,7 @@ final class DoorlopendeIncassoMachtiging extends SnelstartObject
     private $kenmerk;
 
     /**
-     * @var \DateTimeImmutable
+     * @var DateTimeImmutable
      */
     private $afsluitDatum;
 
@@ -30,7 +31,7 @@ final class DoorlopendeIncassoMachtiging extends SnelstartObject
     private $klant;
 
     /**
-     * @var \DateTimeImmutable|null
+     * @var DateTimeImmutable|null
      */
     private $intrekkingsDatum;
 
@@ -57,12 +58,12 @@ final class DoorlopendeIncassoMachtiging extends SnelstartObject
         return $this;
     }
 
-    public function getAfsluitDatum(): \DateTimeImmutable
+    public function getAfsluitDatum(): DateTimeImmutable
     {
         return $this->afsluitDatum;
     }
 
-    public function setAfsluitDatum(\DateTimeImmutable $afsluitDatum): DoorlopendeIncassoMachtiging
+    public function setAfsluitDatum(DateTimeImmutable $afsluitDatum): DoorlopendeIncassoMachtiging
     {
         $this->afsluitDatum = $afsluitDatum;
 
@@ -93,12 +94,12 @@ final class DoorlopendeIncassoMachtiging extends SnelstartObject
         return $this;
     }
 
-    public function getIntrekkingsDatum(): \DateTimeImmutable|null
+    public function getIntrekkingsDatum(): DateTimeImmutable|null
     {
         return $this->intrekkingsDatum;
     }
 
-    public function setIntrekkingsDatum(\DateTimeImmutable|null $intrekkingsDatum): DoorlopendeIncassoMachtiging
+    public function setIntrekkingsDatum(DateTimeImmutable|null $intrekkingsDatum): DoorlopendeIncassoMachtiging
     {
         $this->intrekkingsDatum = $intrekkingsDatum;
 

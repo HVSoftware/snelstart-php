@@ -5,6 +5,7 @@ namespace SnelstartPHP\Serializer;
 use Money\Money;
 use Ramsey\Uuid\UuidInterface;
 use SnelstartPHP\Snelstart;
+use DateTimeInterface;
 
 final class SnelstartRequestRequestSerializer implements RequestSerializerInterface
 {
@@ -13,7 +14,7 @@ final class SnelstartRequestRequestSerializer implements RequestSerializerInterf
         return $uuid->toString();
     }
 
-    public function dateTimeToString(\DateTimeInterface $dateTime): string
+    public function dateTimeToString(DateTimeInterface $dateTime): string
     {
         return $dateTime->format(Snelstart::DATETIME_FORMAT);
     }

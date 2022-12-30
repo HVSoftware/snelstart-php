@@ -12,6 +12,9 @@ use Ramsey\Uuid\Uuid;
 use SnelstartPHP\Model\SnelstartObject;
 use SnelstartPHP\Snelstart;
 use SnelstartPHP\Utils;
+use const E_USER_DEPRECATED;
+use DateTimeImmutable;
+use TypeError;
 
 abstract class AbstractMapper
 {
@@ -26,7 +29,7 @@ abstract class AbstractMapper
     final public function __construct(ResponseInterface|null $response = null)
     {
         if ($response !== null) {
-            @trigger_error("This will be deprecated starting from April 1st 2020", \E_USER_DEPRECATED);
+            @trigger_error("This will be deprecated starting from April 1st 2020", E_USER_DEPRECATED);
             return static::fromResponse($response);
         }
     }
@@ -66,7 +69,7 @@ abstract class AbstractMapper
             $value = Uuid::fromString($value);
             $customSet = true;
         } elseif (substr($key, -2, 2) === "On" || strpos($key, "datum") !== false) {
-            $value = \DateTimeImmutable::createFromFormat(Snelstart::DATETIME_FORMAT, $value);
+            $value = DateTimeImmutable::createFromFormat(Snelstart::DATETIME_FORMAT, $value);
 
             if (! $value) {
                 $value = null;
@@ -82,7 +85,7 @@ abstract class AbstractMapper
                     $class->{$methodName}($value);
                 }
             }
-        } catch (\TypeError $e) {
+        } catch (TypeError $e) {
         }
 
         return $class;
