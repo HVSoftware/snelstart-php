@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace SnelstartPHP\Mapper\V2\Relatie;
 
 use DateTimeImmutable;
-use Exception;
 use Generator;
 use Psr\Http\Message\ResponseInterface;
 use Ramsey\Uuid\Uuid;
 use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\V2\Relatie;
 use SnelstartPHP\Model\V2\Relatie\DoorlopendeIncassoMachtiging;
+use Throwable;
 
 use function assert;
 
@@ -40,7 +40,7 @@ final class DoorlopendeIncassoMachtigingMapper extends AbstractMapper
         if (isset($data["afsluitDatum"])) {
             try {
                 $object->setAfsluitDatum(new DateTimeImmutable($data["afsluitDatum"]));
-            } catch (Exception) {
+            } catch (Throwable) {
                 // This is caused by an invalid date format.
             }
         }
@@ -48,7 +48,7 @@ final class DoorlopendeIncassoMachtigingMapper extends AbstractMapper
         if (isset($data["intrekkingsDatum"])) {
             try {
                 $object->setIntrekkingsDatum(new DateTimeImmutable($data["intrekkingsDatum"]));
-            } catch (Exception) {
+            } catch (Throwable) {
                 // This is caused by an invalid date format.
             }
         }
