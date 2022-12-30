@@ -10,30 +10,18 @@ use SnelstartPHP\Model\Type\BtwSoort;
 
 final class BtwTarief extends BaseObject
 {
-    /**
-     * @var BtwSoort
-     */
-    private $btwSoort;
+    private BtwSoort $btwSoort;
 
-    /**
-     * @var float
-     */
-    private $btwPercentage;
+    private float $btwPercentage;
 
-    /**
-     * @var DateTimeImmutable
-     */
-    private $datumVanaf;
+    private DateTimeImmutable $datumVanaf;
 
-    /**
-     * @var DateTimeImmutable
-     */
-    private $datumTotEnMet;
+    private DateTimeImmutable $datumTotEnMet;
 
     /**
      * @var string[]
      */
-    public static $editableAttributes = [];
+    public static array $editableAttributes = [];
 
     public function getBtwSoort(): BtwSoort
     {

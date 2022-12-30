@@ -16,22 +16,18 @@ final class ArtikelOmzetgroep extends SnelstartObject
 {
     /**
      * Omzetgroep nummer
-     *
-     * @var int|null
      */
-    private $nummer;
+    private int|null $nummer = null;
 
     /**
      * Omschrijving van de omzetgroep
-     *
-     * @var string|null
      */
-    private $omschrijving;
+    private string|null $omschrijving = null;
 
     /**
      * @var string[]
      */
-    public static $editableAttributes = [
+    public static array $editableAttributes = [
         "nummer",
         "omschrijving",
     ];

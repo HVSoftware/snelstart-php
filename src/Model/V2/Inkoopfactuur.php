@@ -12,62 +12,45 @@ final class Inkoopfactuur extends SnelstartObject
 {
     /**
      * De inkoopboeking bij de factuur
-     *
-     * @var Inkoopboeking|null
      */
-    private $inkoopBoeking;
+    private Inkoopboeking|null $inkoopBoeking = null;
 
     /**
      * Het tijdstip waarop de inkoopfactuur voor het laatst is gewijzigd.
-     *
-     * @var DateTimeImmutable|null
      */
-    private $modifiedOn;
+    private DateTimeImmutable|null $modifiedOn = null;
 
     /**
      * Het openstaand saldo van de inkoopfactuur. Deze wordt alleen bij uitlezen gevuld
-     *
-     * @var Money|null
      */
-    private $openstaandSaldo;
+    private Money|null $openstaandSaldo = null;
 
     /**
      * Het factuurnummer.
-     *
-     * @var string|null
      */
-    private $factuurnummer;
+    private string|null $factuurnummer = null;
 
     /**
      * Het tijdstip waarop de factuur is of zal vervallen
-     *
-     * @var DateTimeImmutable|null
      */
-    private $vervalDatum;
+    private DateTimeImmutable|null $vervalDatum = null;
 
-    /**
-     * @var Relatie|null
-     */
-    private $relatie;
+    private Relatie|null $relatie = null;
 
     /**
      * De datum waarop de factuur is aangemaakt
-     *
-     * @var DateTimeImmutable|null
      */
-    private $factuurDatum;
+    private DateTimeImmutable|null $factuurDatum = null;
 
     /**
      * Het totaal bedrag van de factuur
-     *
-     * @var Money|null
      */
-    private $factuurBedrag;
+    private Money|null $factuurBedrag = null;
 
     /**
      * @var string[]
      */
-    public static $editableAttributes = [
+    public static array $editableAttributes = [
         "inkoopBoeking",
         "openstaandSaldo",
         "factuurnummer",

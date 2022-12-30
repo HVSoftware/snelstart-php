@@ -18,33 +18,25 @@ final class Document extends SnelstartObject
 {
     /**
      * De inhoud van de bijlage.
-     *
-     * @var string
      */
-    protected $content;
+    protected string|null $content = null;
 
     /**
      * De public identifier van de gekoppelde parent.
-     *
-     * @var UuidInterface
      */
-    protected $parentIdentifier;
+    protected UuidInterface|null $parentIdentifier = null;
 
     /**
      * De naam van de bijlage.
-     *
-     * @var string
      */
-    protected $fileName;
+    protected string|null $fileName = null;
 
     /**
      * De bijlage is alleen-lezen.
-     *
-     * @var bool
      */
-    protected $readOnly;
+    protected bool $readOnly;
 
-    public static $editableAttributes = [
+    public static array $editableAttributes = [
         "id",
         "parentIdentifier",
         "content",

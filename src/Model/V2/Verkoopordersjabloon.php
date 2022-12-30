@@ -15,18 +15,14 @@ final class Verkoopordersjabloon extends SnelstartObject
 {
     /**
      * De omschrijving van het sjabloon.
-     *
-     * @var string|null
      */
-    private $omschrijving;
+    private string|null $omschrijving = null;
 
     /**
      * Een vlag dat aangeeft of een sjabloon niet meer actief is binnen de administratie.\r\nIndien
      * <see langword=\"true\" />, dan kan het sjabloon als \"verwijderd\" worden beschouwd.
-     *
-     * @var bool|null
      */
-    private $nonactief;
+    private bool|null $nonactief = null;
 
     /**
      * @var bool|null
@@ -36,7 +32,7 @@ final class Verkoopordersjabloon extends SnelstartObject
      * Inclusief btw: In dat geval worden de verkoopprijzen in het verkoopscherm van SnelStart 12 en op de factuur
      * inclusief btw weergegeven
      */
-    private $prijsIngaveExclusiefBtw;
+    private bool|null $prijsIngaveExclusiefBtw = null;
 
     public function getOmschrijving(): string|null
     {

@@ -20,7 +20,7 @@ final class ApiSubscriptionKey implements IteratorAggregate
     /**
      * @var array
      */
-    private $keys = [];
+    private array $keys = [];
 
     public function __construct(string $primaryKey, string $secondaryKey)
     {

@@ -13,10 +13,7 @@ use SnelstartPHP\Secure\ConnectionInterface;
 
 abstract class BaseConnector
 {
-    /**
-     * @var ConnectionInterface
-     */
-    protected $connection;
+    protected ConnectionInterface $connection;
 
     public function __construct(ConnectionInterface $provider)
     {

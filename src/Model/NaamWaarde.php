@@ -6,17 +6,11 @@ namespace SnelstartPHP\Model;
 
 final class NaamWaarde extends BaseObject
 {
-    /**
-     * @var string
-     */
-    private $naam;
+    private string $naam;
 
-    /**
-     * @var mixed
-     */
-    private $waarde;
+    private mixed $waarde;
 
-    public static $editableAttributes = [
+    public static array $editableAttributes = [
         "naam",
         "waarde",
     ];

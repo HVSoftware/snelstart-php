@@ -13,24 +13,18 @@ final class Land extends SnelstartObject
 {
     /**
      * De naam van het land.
-     *
-     * @var string
      */
-    private $naam;
+    private string $naam;
 
     /**
      * De ISO code van het land.
-     *
-     * @var string
      */
-    private $landcodeISO;
+    private string $landcodeISO;
 
     /**
      * De code van het land.
-     *
-     * @var string
      */
-    private $landcode;
+    private string $landcode;
 
     public function getNaam(): string
     {

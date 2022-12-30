@@ -14,15 +14,9 @@ use InvalidArgumentException;
 
 final class PasswordBearerToken implements BearerTokenInterface
 {
-    /**
-     * @var string
-     */
-    private $username;
+    private string $username;
 
-    /**
-     * @var string
-     */
-    private $password;
+    private string $password;
 
     /**
      * The variable $koppelsleutel is according to the specs base64 encoded. Decode it and look for a ':'.

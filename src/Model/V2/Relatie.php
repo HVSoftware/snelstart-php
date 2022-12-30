@@ -22,221 +22,151 @@ final class Relatie extends SnelstartObject
 {
     /**
      * Datum waarop de gegevens van deze relatie zijn aangepast
-     *
-     * @var DateTimeInterface|null
      */
-    private $modifiedOn;
+    private DateTimeInterface|null $modifiedOn = null;
 
     /**
      * @see Types\Relatiesoort
      * @var Types\Relatiesoort[]|null
      */
-    private $relatiesoort;
+    private array|null $relatiesoort = null;
 
     /**
      * Het relatienummer
-     *
-     * @var int|null
      */
-    private $relatiecode = 0;
+    private int|null $relatiecode = 0;
 
     /**
      * De volledige naam van de relatie.
-     *
-     * @var string|null
      */
-    private $naam;
+    private string|null $naam = null;
 
-    /**
-     * @var Adres|null
-     */
-    private $vestigingsAdres;
+    private Adres|null $vestigingsAdres = null;
 
-    /**
-     * @var Adres|null
-     */
-    private $correspondentieAdres;
+    private Adres|null $correspondentieAdres = null;
 
     /**
      * Het telefoonnummer van de relatie.
-     *
-     * @var string|null
      */
-    private $telefoon;
+    private string|null $telefoon = null;
 
     /**
      * Het mobiele nummer van de relatie.
-     *
-     * @var string|null
      */
-    private $mobieleTelefoon;
+    private string|null $mobieleTelefoon = null;
 
     /**
      * Het hoofd-emailadres van de relatie.
-     *
-     * @var string|null
      */
-    private $email;
+    private string|null $email = null;
 
     /**
      * Het BTW-nummer van de relatie.
-     *
-     * @var string|null
      */
-    private $btwNummer;
+    private string|null $btwNummer = null;
 
     /**
      * De standaard factuurkorting die aan deze relatie wordt gegeven (optioneel).
-     *
-     * @var Money|null
      */
-    private $factuurkorting;
+    private Money|null $factuurkorting = null;
 
-    /**
-     * @var int
-     */
-    private $krediettermijn = 0;
+    private int $krediettermijn = 0;
 
     /**
      * Geeft true terug als Types\IncassoSoort Core of B2B is.
      * Dit veld komt overeen met het veld Betaalopdracht in SnelStart Desktop
      *
      * @see Types\Incassosoort
-     * @var bool
      */
-    private $bankieren = false;
+    private bool $bankieren = false;
 
     /**
      * Een vlag dat aangeeft of een relatie niet meer actief is binnen de administratie.
      * Indien true, dan kan de relatie als "verwijderd" worden beschouwd.
-     *
-     * @var bool
      */
-    private $nonactief = false;
+    private bool $nonactief = false;
 
     /**
      * Het standaard kredietlimiet (in €) van aan deze relatie wordt gegeven (optioneel).
-     *
-     * @var Money|null
      */
-    private $kredietLimiet;
+    private Money|null $kredietLimiet = null;
 
-    /**
-     * @var string|null
-     */
-    private $memo;
+    private string|null $memo = null;
 
     /**
      * Het nummer van de Kamer van Koophandel van de relatie.
-     *
-     * @var string|null
      */
-    private $kvkNummer;
+    private string|null $kvkNummer = null;
 
     /**
      * De URL van de website van de relatie.
-     *
-     * @var string|null
      */
-    private $websiteUrl;
+    private string|null $websiteUrl = null;
 
     /**
      * Het soort aanmaning dat van toepassing is op de relatie (optioneel).
      *
      * @see Types\Aanmaningsoort
-     * @var Types\Aanmaningsoort|null
      */
-    private $aanmaningsoort;
+    private Types\Aanmaningsoort|null $aanmaningsoort = null;
 
     /**
      * De emailgegevens voor het versturen van offertes.
-     *
-     * @var EmailVersturen|null
      */
-    private $offerteEmailVersturen;
+    private EmailVersturen|null $offerteEmailVersturen = null;
 
     /**
      * De emailgegevens voor het versturen van bevestigingen.
-     *
-     * @var EmailVersturen|null
      */
-    private $bevestigingsEmailVersturen;
+    private EmailVersturen|null $bevestigingsEmailVersturen = null;
 
     /**
      * De emailgegevens voor het versturen van facturen.
-     *
-     * @var EmailVersturen|null
      */
-    private $factuurEmailVersturen;
+    private EmailVersturen|null $factuurEmailVersturen = null;
 
     /**
      * De emailgegevens voor het versturen van aanmaningen.
-     *
-     * @var EmailVersturen|null
      */
-    private $aanmaningEmailVersturen;
+    private EmailVersturen|null $aanmaningEmailVersturen = null;
 
     /**
      * De emailgegevens voor het versturen van offerte aanvragen.
-     *
-     * @var EmailVersturen|null
      */
-    private $offerteAanvraagEmailVersturen;
+    private EmailVersturen|null $offerteAanvraagEmailVersturen = null;
 
     /**
      * De emailgegevens voor het versturen van bestellingen.
-     *
-     * @var EmailVersturen|null
      */
-    private $bestellingEmailVersturen;
+    private EmailVersturen|null $bestellingEmailVersturen = null;
 
     /**
      * Een vlag dat aangeeft of een UBL-bestand als bijlage bij een email moet worden toegevoegd bij het versturen van
      * facturen.
-     *
-     * @var bool
      */
-    private $ublBestandAlsBijlage = true;
+    private bool $ublBestandAlsBijlage = true;
 
-    /**
-     * @var string|null
-     */
-    private $iban;
+    private string|null $iban = null;
 
-    /**
-     * @var string|null
-     */
-    private $bic;
+    private string|null $bic = null;
 
-    /**
-     * @var Types\Incassosoort|null
-     */
-    private $incassoSoort;
+    private Types\Incassosoort|null $incassoSoort = null;
 
-    /**
-     * @var string|null
-     */
-    private $inkoopBoekingenUri;
+    private string|null $inkoopBoekingenUri = null;
 
-    /**
-     * @var string|null
-     */
-    private $verkoopBoekingenUri;
+    private string|null $verkoopBoekingenUri = null;
 
-    /**
-     * @var FactuurRelatie|null
-     */
-    private $factuurRelatie;
+    private FactuurRelatie|null $factuurRelatie = null;
 
     /**
      * @var NaamWaarde[]
      */
-    private $extraVeldenKlant = [];
+    private array $extraVeldenKlant = [];
 
     /**
      * @var string[]
      */
-    public static $editableAttributes = [
+    public static array $editableAttributes = [
         "id",
         "modifiedOn",
         "relatiesoort",

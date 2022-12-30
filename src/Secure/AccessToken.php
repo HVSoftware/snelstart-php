@@ -17,27 +17,13 @@ use DateTimeZone;
 
 final class AccessToken implements JsonSerializable
 {
-    /**
-     * @var string
-     */
-    protected $accessToken;
+    protected string $accessToken;
 
-    /**
-     * @var string
-     */
-    protected $tokenType;
+    protected string $tokenType;
 
-    /**
-     * @var int
-     */
-    protected $expires;
+    protected int $expires;
 
-    /**
-     * @var BearerTokenInterface
-     */
-    protected $bearerToken;
-
-    public function __construct(array $options, BearerTokenInterface $bearerToken)
+    public function __construct(array $options, protected BearerTokenInterface $bearerToken)
     {
         if (empty($options['access_token'])) {
             throw new InvalidArgumentException('Required option not passed: "access_token"');
@@ -47,7 +33,6 @@ final class AccessToken implements JsonSerializable
             throw new InvalidArgumentException('expires_in value must be an integer');
         }
 
-        $this->bearerToken = $bearerToken;
         $this->accessToken = $options['access_token'];
         $this->tokenType = $options['token_type'] ?? 'bearer';
         $this->expires = $options['expires_in'] !== 0

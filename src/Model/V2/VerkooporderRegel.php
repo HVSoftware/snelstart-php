@@ -17,45 +17,30 @@ final class VerkooporderRegel extends BaseObject
 {
     /**
      * Een container voor artikel informatie.
-     *
-     * @var Artikel|null
      */
-    private $artikel;
+    private Artikel|null $artikel = null;
 
     /**
      * De omschrijving van de verkooporderregel. Indien dit veld leeg is dan wordt de omschrijving van het artikel in
      * dit veld gezet.
-     *
-     * @var string|null
      */
-    private $omschrijving;
+    private string|null $omschrijving = null;
 
     /**
      * Stuksprijs van het artikel.
-     *
-     * @var Money|null
      */
-    private $stuksprijs;
+    private Money|null $stuksprijs = null;
 
-    /**
-     * @var float
-     */
-    private $aantal = 0;
+    private float $aantal = 0;
 
-    /**
-     * @var float
-     */
-    private $kortingsPercentage = 0;
+    private float $kortingsPercentage = 0;
 
-    /**
-     * @var Money|null
-     */
-    private $totaal;
+    private Money|null $totaal = null;
 
     /**
      * @var string[]
      */
-    public static $editableAttributes = [
+    public static array $editableAttributes = [
         "artikel",
         "omschrijving",
         "stuksprijs",

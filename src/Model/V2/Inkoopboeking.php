@@ -19,7 +19,7 @@ final class Inkoopboeking extends Boeking
     /**
      * @var string[]
      */
-    public static $editableAttributes = ['leverancier'];
+    public static array $editableAttributes = ['leverancier'];
 
     public static function getEditableAttributes(): array
     {

@@ -21,27 +21,18 @@ final class ODataRequestData implements ODataRequestDataInterface
     /**
      * @var array
      */
-    private $filter = [];
+    private array $filter = [];
 
     /**
      * @var array
      */
-    private $apply = [];
+    private array $apply = [];
 
-    /**
-     * @var int
-     */
-    private $top = Snelstart::MAX_RESULTS;
+    private int $top = Snelstart::MAX_RESULTS;
 
-    /**
-     * @var int
-     */
-    private $skip = 0;
+    private int $skip = 0;
 
-    /**
-     * @var string
-     */
-    private $filterMode = self::FILTER_MODE_AND;
+    private string $filterMode = self::FILTER_MODE_AND;
 
     /**
      * Use 'or' when combining multiple filters.

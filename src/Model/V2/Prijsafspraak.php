@@ -11,60 +11,30 @@ use DateTimeInterface;
 
 final class Prijsafspraak extends BaseObject
 {
-    /**
-     * @var Relatie|null
-     */
-    private $relatie;
+    private Relatie|null $relatie = null;
 
-    /**
-     * @var Artikel
-     */
-    private $artikel;
+    private Artikel $artikel;
 
-    /**
-     * @var DateTimeInterface
-     */
-    private $datum;
+    private DateTimeInterface $datum;
 
-    /**
-     * @var double
-     */
-    private $aantal;
+    private float $aantal;
 
-    /**
-     * @var double
-     */
-    private $korting;
+    private float $korting;
 
-    /**
-     * @var Money
-     */
-    private $verkoopprijs;
+    private Money $verkoopprijs;
 
-    /**
-     * @var Money
-     */
-    private $basisprijs;
+    private Money $basisprijs;
 
-    /**
-     * @var DateTimeInterface|null
-     */
-    private $datumVanaf;
+    private DateTimeInterface|null $datumVanaf = null;
 
-    /**
-     * @var DateTimeInterface|null
-     */
-    private $datumTotEnMet;
+    private DateTimeInterface|null $datumTotEnMet = null;
 
-    /**
-     * @var PrijsBepalingSoort
-     */
-    private $prijsBepalingSoort;
+    private PrijsBepalingSoort $prijsBepalingSoort;
 
     /**
      * @var string[]
      */
-    public static $editableAttributes = [];
+    public static array $editableAttributes = [];
 
     public function getRelatie(): Relatie|null
     {

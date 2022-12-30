@@ -19,20 +19,7 @@ use GuzzleHttp\Exception\GuzzleException;
 
 final class CachedAccessTokenConnection
 {
-    /**
-     * @var AccessTokenConnection
-     */
-    private $connection;
-
-    /**
-     * @var CacheItemPoolInterface
-     */
-    private $cacheItemPool;
-
-    /**
-     * @var LoggerInterface|null
-     */
-    private $logger;
+    private AccessTokenConnection $connection;
 
     /**
      * Prefix to use to store the access token.
@@ -46,12 +33,10 @@ final class CachedAccessTokenConnection
 
     public function __construct(
         AccessTokenConnection $accessTokenConnection,
-        CacheItemPoolInterface $cacheItemPool,
-        LoggerInterface|null $logger = null,
+        private CacheItemPoolInterface $cacheItemPool,
+        private LoggerInterface|null $logger = null,
     ) {
         $this->connection = $accessTokenConnection;
-        $this->cacheItemPool = $cacheItemPool;
-        $this->logger = $logger;
     }
 
     /**

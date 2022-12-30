@@ -15,36 +15,28 @@ final class Verkoopboeking extends Boeking
 {
     /**
      * De klant/debiteur aan wie de factuur is gericht.
-     *
-     * @var Relatie|null
      */
-    private $klant;
+    private Relatie|null $klant = null;
 
     /**
      * De betalingstermijn (in dagen) van de verkoopboeking.
-     *
-     * @var int|null
      */
-    private $betalingstermijn;
+    private int|null $betalingstermijn = null;
 
     /**
      * De (optionele) eenmalige incassomachtiging waarmee deze factuur kan worden geïncasseerd.
-     *
-     * @var IncassoMachtiging|null
      */
-    private $eenmaligeIncassoMachtiging;
+    private IncassoMachtiging|null $eenmaligeIncassoMachtiging = null;
 
     /**
      * De (optionele) doorlopende incassomachtiging waarmee deze factuur kan worden geïncasseerd.
-     *
-     * @var IncassoMachtiging|null
      */
-    private $doorlopendeIncassoMachtiging;
+    private IncassoMachtiging|null $doorlopendeIncassoMachtiging = null;
 
     /**
      * @var string[]
      */
-    public static $editableAttributes = [
+    public static array $editableAttributes = [
         "klant",
         "betalingstermijn",
         "eenmaligeIncassoMachtiging",

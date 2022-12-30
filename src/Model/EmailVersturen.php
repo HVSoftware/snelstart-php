@@ -13,26 +13,20 @@ final class EmailVersturen extends BaseObject
 {
     /**
      * Geeft aan (lezen/schrijven) of er email moet worden verstuurd.
-     *
-     * @var bool
      */
-    private $shouldSend = false;
+    private bool $shouldSend = false;
 
     /**
      * Het email adres waarnaar email moeten worden verstuurd.
-     *
-     * @var string|null
      */
-    private $email;
+    private string|null $email = null;
 
     /**
      * Het (optionele) email adres waarnaar email moeten worden ge-Cc-eed.
-     *
-     * @var string|null
      */
-    private $ccEmail;
+    private string|null $ccEmail = null;
 
-    public static $editableAttributes = [
+    public static array $editableAttributes = [
         "shouldSend",
         "email",
         "ccEmail"

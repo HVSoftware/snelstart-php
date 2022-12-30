@@ -13,44 +13,34 @@ final class Adres extends BaseObject
 {
     /**
      * De volledige naam van de contactpersoon op dit adres.
-     *
-     * @var string|null
      */
-    protected $contactpersoon;
+    protected string|null $contactpersoon = null;
 
     /**
      * De straatnaam (inclusief huisnummer).
-     *
-     * @var string|null
      */
-    protected $straat;
+    protected string|null $straat = null;
 
     /**
      * De postcode van het adres.
-     *
-     * @var string|null
      */
-    protected $postcode;
+    protected string|null $postcode = null;
 
     /**
      * De plaatsnaam van het adres.
-     *
-     * @var string|null
      */
-    protected $plaats;
+    protected string|null $plaats = null;
 
     /**
      * De Id van het land waartoe dit adres behoord.
      * Indien niets is opgegeven is dit standaard "Nederland".
-     *
-     * @var Land|null
      */
-    protected $land;
+    protected Land|null $land = null;
 
     /**
      * @var string[]
      */
-    public static $editableAttributes = [
+    public static array $editableAttributes = [
         "contactpersoon",
         "straat",
         "postcode",

@@ -16,17 +16,13 @@ final class RgsCode extends BaseObject
 {
     /**
      * Rgs versie
-     *
-     * @var string
      */
-    private $versie;
+    private string $versie;
 
     /**
      * Rgs code
-     *
-     * @var string
      */
-    private $rgsCode;
+    private string $rgsCode;
 
     public function __construct(string $versie, string $rgsCode)
     {

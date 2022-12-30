@@ -17,64 +17,45 @@ abstract class Boeking extends SnelstartObject
 {
     /**
      * Het tijdstip waarop het grootboek is aangemaakt of voor het laatst is gewijzigd
-     *
-     * @var DateTimeInterface|null
      */
-    protected $modifiedOn;
+    protected DateTimeInterface|null $modifiedOn = null;
 
     /**
      * Het boekstuknummer van de boeking.
-     *
-     * @var string|null
      */
-    protected $boekstuk;
+    protected string|null $boekstuk = null;
 
     /**
      * Geeft aan of deze boeking is aangepast door de accountant.
-     *
-     * @var bool
      */
-    protected $gewijzigdDoorAccountant = false;
+    protected bool $gewijzigdDoorAccountant = false;
 
     /**
      * Deze boeking verdient speciale aandacht, in SnelStart wordt dit visueel benadrukt.
-     *
-     * @var bool
      */
-    protected $markering = false;
+    protected bool $markering = false;
 
     /**
      * De datum van de factuur, dit is ook de datum waarop de boeking wordt geboekt.
-     *
-     * @var DateTimeInterface|null
      */
-    protected $factuurDatum;
+    protected DateTimeInterface|null $factuurDatum = null;
 
     /**
      * Het tijdstip waarop de factuur is of zal vervallen
-     *
-     * @var DateTimeInterface|null
      */
-    protected $vervalDatum;
+    protected DateTimeInterface|null $vervalDatum = null;
 
     /**
      * De factuurnummer van de boeking.
-     *
-     * @var string
      */
-    protected $factuurnummer;
+    protected string $factuurnummer;
 
     /**
      * De omschrijving van de boeking.
-     *
-     * @var string|null
      */
-    protected $omschrijving;
+    protected string|null $omschrijving = null;
 
-    /**
-     * @var Money
-     */
-    protected $factuurbedrag;
+    protected Money $factuurbedrag;
 
     /**
      * De omzetregels van de boeking. De btw-bedragen staan hier niet in,
@@ -83,7 +64,7 @@ abstract class Boeking extends SnelstartObject
      * @see Boekingsregel
      * @var Boekingsregel[]
      */
-    protected $boekingsregels = [];
+    protected array $boekingsregels = [];
 
     /**
      * De af te dragen btw van de boeking per btw-tarief
@@ -91,17 +72,17 @@ abstract class Boeking extends SnelstartObject
      * @see Btwregel
      * @var Btwregel[]|null
      */
-    protected $btw;
+    protected array|null $btw = null;
 
     /**
      * @var Document[]
      */
-    protected $documents = [];
+    protected array $documents = [];
 
     /**
      * @var string[]
      */
-    public static $editableAttributes = [
+    public static array $editableAttributes = [
         "id",
         "boekstuk",
         "gewijzigdDoorAccountant",

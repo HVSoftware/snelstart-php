@@ -30,7 +30,7 @@ abstract class SnelstartObject extends BaseObject
     {
     }
 
-    public static $editableAttributes = ['id'];
+    public static array $editableAttributes = ['id'];
 
     public function getId(): UuidInterface|null
     {

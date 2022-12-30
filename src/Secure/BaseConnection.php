@@ -29,35 +29,20 @@ use GuzzleHttp\Exception\GuzzleException;
 
 abstract class BaseConnection implements ConnectionInterface
 {
-    /**
-     * @var ApiSubscriptionKey
-     */
-    protected $subscriptionKey;
+    protected ApiSubscriptionKey $subscriptionKey;
 
-    /**
-     * @var AccessToken
-     */
-    protected $accessToken;
+    protected AccessToken $accessToken;
 
-    /**
-     * @var LoggerInterface|null
-     */
-    protected $logger;
+    protected LoggerInterface|null $logger = null;
 
-    /**
-     * @var ClientInterface|null
-     */
-    protected $client;
+    protected ClientInterface|null $client = null;
 
     /**
      * Maximum amount of times to retry in case of failure like a timeout.
      */
     protected const MAX_RETRIES = 3;
 
-    /**
-     * @var int
-     */
-    private $numRetries = 0;
+    private int $numRetries = 0;
 
     private const SUBSCRIPTION_HEADER_NAME = "Ocp-Apim-Subscription-Key";
 

@@ -13,20 +13,14 @@ use SnelstartPHP\Model\SnelstartObject;
 
 final class SubArtikel extends SnelstartObject
 {
-    /**
-     * @var string|null
-     */
-    private $artikelcode;
+    private string|null $artikelcode = null;
 
-    /**
-     * @var float|null
-     */
-    private $aantal;
+    private float|null $aantal = null;
 
     /**
      * @var string[]
      */
-    public static $editableAttributes = [
+    public static array $editableAttributes = [
         "artikelcode",
         "aantal",
     ];

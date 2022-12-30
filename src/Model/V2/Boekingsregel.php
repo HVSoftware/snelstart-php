@@ -18,41 +18,31 @@ final class Boekingsregel extends BaseObject
 {
     /**
      * De omschrijving van de boekingsregel.
-     *
-     * @var string|null
      */
-    private $omschrijving;
+    private string|null $omschrijving = null;
 
     /**
      * De grootboekrekening waarop de mutatie (omzet) wordt geboekt.
-     *
-     * @var Grootboek
      */
-    private $grootboek;
+    private Grootboek $grootboek;
 
     /**
      * De kostenplaats waarop deze mutatie (omzet) is geregistreerd.
-     *
-     * @var Kostenplaats|null
      */
-    private $kostenplaats;
+    private Kostenplaats|null $kostenplaats = null;
 
     /**
      * Het omzetbedrag van de regel, exclusief btw.
-     *
-     * @var Money
      */
-    private $bedrag;
+    private Money $bedrag;
 
     /**
      * Mag leeg worden gelaten of met de juiste waarde worden ingevuld behalve als de grootboek een
      * grootboekfunctie 30 (Inkopen kosten alle btwtarieven) of 34 (inkopen vraagposten) heeft.
-     *
-     * @var BtwSoort
      */
-    private $btwSoort;
+    private BtwSoort $btwSoort;
 
-    public static $editableAttributes = [
+    public static array $editableAttributes = [
         "omschrijving",
         "grootboek",
         "kostenplaats",

@@ -12,7 +12,7 @@ abstract class BaseObject
     /**
      * @var string[]
      */
-    public static $editableAttributes = [];
+    public static array $editableAttributes = [];
 
     public static function getEditableAttributes(): array
     {

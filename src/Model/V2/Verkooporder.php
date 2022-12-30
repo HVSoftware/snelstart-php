@@ -21,143 +21,96 @@ use DateTimeImmutable;
 
 final class Verkooporder extends SnelstartObject
 {
-    /**
-     * @var Relatie|null
-     */
-    private $relatie;
+    private Relatie|null $relatie = null;
 
     /**
      * Status van de order. Als deze niet is opgegeven wordt de default waarde order gebruikt. Contantbon en Factuur
      * zijn niet beschikbaar
-     *
-     * @var ProcesStatus|null
      */
-    private $procesStatus;
+    private ProcesStatus|null $procesStatus = null;
 
     /**
      * Het ordernummer.
-     *
-     * @var int|null
      */
-    private $nummer;
+    private int|null $nummer = null;
 
     /**
      * Het tijdstip waarop de verkooporder voor het laatst is gewijzigd.
-     *
-     * @var DateTimeImmutable|null
      */
-    private $modifiedOn;
+    private DateTimeImmutable|null $modifiedOn = null;
 
     /**
      * De orderdatum.
-     *
-     * @var DateTimeImmutable|null
      */
-    private $datum;
+    private DateTimeImmutable|null $datum = null;
 
     /**
      * De krediettermijn (in dagen) van de verkooporder.
      * Indien dit veld leeg is dan wordt het krediettermijn van de klant gebruikt.
-     *
-     * @var int|null
      */
-    private $krediettermijn;
+    private int|null $krediettermijn = null;
 
     /**
      * De omschrijving van de order.
-     *
-     * @var string|null
      */
-    private $omschrijving;
+    private string|null $omschrijving = null;
 
     /**
      * Het betalingskenmerk van de order.
-     *
-     * @var string|null
      */
-    private $betalingskenmerk;
+    private string|null $betalingskenmerk = null;
 
     /**
      * De incassomachtiging.
-     *
-     * @var IncassoMachtiging|null
      */
-    private $incassomachtiging;
+    private IncassoMachtiging|null $incassomachtiging = null;
 
     /**
      * Het afleveradres
-     *
-     * @var Adres|null
      */
-    private $afleveradres;
+    private Adres|null $afleveradres = null;
 
     /**
      * Een container voor adres informatie.
-     *
-     * @var Adres|null
      */
-    private $factuuradres;
+    private Adres|null $factuuradres = null;
 
-    /**
-     * @var VerkooporderBtwIngave|null
-     */
-    private $verkooporderBtwIngaveModel;
+    private VerkooporderBtwIngave|null $verkooporderBtwIngaveModel = null;
 
-    /**
-     * @var Kostenplaats|null
-     */
-    private $kostenplaats;
+    private Kostenplaats|null $kostenplaats = null;
 
     /**
      * @var VerkooporderRegel[]|null
      */
-    private $regels;
+    private array|null $regels = null;
 
-    /**
-     * @var string|null
-     */
-    private $memo;
+    private string|null $memo = null;
 
     /**
      * De orderreferentie van een verkooporder. Deze wordt in de e-factuur en in de factuur als PDF opgenomen
-     *
-     * @var string|null
      */
-    private $orderreferentie;
+    private string|null $orderreferentie = null;
 
-    /**
-     * @var Money|null
-     */
-    private $factuurkorting;
+    private Money|null $factuurkorting = null;
 
     /**
      * Verkoopfactuur identifier
-     *
-     * @var Verkoopfactuur|null
      */
-    private $verkoopfactuur;
+    private Verkoopfactuur|null $verkoopfactuur = null;
 
     /**
      * Het te gebruiken sjaboon voor deze verkooporden. Dit veld is optioneel
-     *
-     * @var Verkoopordersjabloon|null
      */
-    private $verkoopordersjabloon;
+    private Verkoopordersjabloon|null $verkoopordersjabloon = null;
 
-    /**
-     * @var Money|null
-     */
-    private $totaalExclusiefBtw;
+    private Money|null $totaalExclusiefBtw = null;
 
-    /**
-     * @var Money|null
-     */
-    private $totaalInclusiefBtw;
+    private Money|null $totaalInclusiefBtw = null;
 
     /**
      * @var string[]
      */
-    public static $editableAttributes = [
+    public static array $editableAttributes = [
         "relatie",
         "procesStatus",
         "nummer",

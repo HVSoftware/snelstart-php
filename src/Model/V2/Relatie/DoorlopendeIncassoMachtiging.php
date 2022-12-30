@@ -10,35 +10,20 @@ use DateTimeImmutable;
 
 final class DoorlopendeIncassoMachtiging extends SnelstartObject
 {
-    /**
-     * @var string
-     */
-    private $kenmerk;
+    private string $kenmerk;
 
-    /**
-     * @var DateTimeImmutable
-     */
-    private $afsluitDatum;
+    private DateTimeImmutable $afsluitDatum;
 
-    /**
-     * @var string|null
-     */
-    private $omschrijving;
+    private string|null $omschrijving = null;
 
-    /**
-     * @var Relatie $klant
-     */
-    private $klant;
+    private Relatie $klant;
 
-    /**
-     * @var DateTimeImmutable|null
-     */
-    private $intrekkingsDatum;
+    private DateTimeImmutable|null $intrekkingsDatum = null;
 
     /**
      * @var string[]
      */
-    public static $editableAttributes = [
+    public static array $editableAttributes = [
         "kenmerk",
         "afsluitDatum",
         "omschrijving",

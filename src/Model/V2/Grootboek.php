@@ -18,60 +18,46 @@ final class Grootboek extends SnelstartObject
 {
     /**
      * Het tijdstip waarop het grootboek is aangemaakt of voor het laatst is gewijzigd
-     *
-     * @var DateTimeInterface|null
      */
-    private $modifiedOn;
+    private DateTimeInterface|null $modifiedOn = null;
 
     /**
      * De omschrijving van het grootboek.
-     *
-     * @var string|null
      */
-    private $omschrijving;
+    private string|null $omschrijving = null;
 
     /**
      * Kostenplaats wel of niet verplicht bij het boeken.
-     *
-     * @var bool
      */
-    private $kostenplaatsVerplicht;
+    private bool $kostenplaatsVerplicht;
 
     /**
      * Rekening code van het grootboek.
-     *
-     * @var Rekeningcode
      */
-    private $rekeningCode;
+    private Rekeningcode $rekeningCode;
 
     /**
      * Een vlag dat aangeeft of het grootboek niet meer actief is binnen de administratie.
      * Indien true, dan kan het grootboek als "verwijderd" worden beschouwd.
-     *
-     * @var bool
      */
-    private $nonactief;
+    private bool $nonactief;
 
     /**
      * Het nummer van het grootboek.
-     *
-     * @var int
      */
-    private $nummer;
+    private int $nummer;
 
     /**
      * De grootboekfunctie van het grootboek.
-     *
-     * @var Grootboekfunctie
      */
-    private $grootboekfunctie;
+    private Grootboekfunctie $grootboekfunctie;
 
     /**
      * RgsCodes
      *
      * @var RgsCode[]
      */
-    private $rgsCode = [];
+    private array $rgsCode = [];
 
     public function getModifiedOn(): DateTimeInterface|null
     {

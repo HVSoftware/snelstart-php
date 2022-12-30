@@ -24,7 +24,7 @@ abstract class AbstractMapper
     /**
      * @var array
      */
-    protected $responseData = [];
+    protected array $responseData = [];
 
     /**
      * @deprecated This will be deprecated starting from April 1st 2020

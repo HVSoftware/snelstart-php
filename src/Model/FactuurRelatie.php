@@ -23,7 +23,7 @@ final class FactuurRelatie extends BaseObject
      */
     private string $uri;
 
-    public static $editableAttributes = ['id'];
+    public static array $editableAttributes = ['id'];
 
     public function getId(): UuidInterface
     {

@@ -16,86 +16,50 @@ use DateTimeInterface;
 
 final class Artikel extends SnelstartObject
 {
-    /**
-     * @var bool|null
-     */
-    private $isHoofdartikel;
+    private bool|null $isHoofdartikel = null;
 
     /**
      * @var SubArtikel[]
      */
-    private $subArtikelen = [];
+    private array $subArtikelen = [];
 
-    /**
-     * @var Prijsafspraak|null
-     */
-    private $prijsafspraak;
+    private Prijsafspraak|null $prijsafspraak = null;
 
-    /**
-     * @var string
-     */
-    private $artikelcode;
+    private string $artikelcode;
 
-    /**
-     * @var string
-     */
-    private $omschrijving;
+    private string $omschrijving;
 
     /**
      * Een container voor atrikel omzet groep informatie.
-     *
-     * @var ArtikelOmzetgroep
      */
-    private $artikelOmzetgroep;
+    private ArtikelOmzetgroep $artikelOmzetgroep;
 
-    /**
-     * @var Money
-     */
-    private $inkoopprijs;
+    private Money $inkoopprijs;
 
-    /**
-     * @var Money
-     */
-    private $verkoopprijs;
+    private Money $verkoopprijs;
 
-    /**
-     * @var string
-     */
-    private $eenheid;
+    private string $eenheid;
 
-    /**
-     * @var DateTimeInterface
-     */
-    private $modifiedOn;
+    private DateTimeInterface $modifiedOn;
 
     /**
      * Een vlag dat aangeeft of een artikel niet meer actief is binnen de administratie.
-     *
-     * @var bool
      */
-    private $isNonActief;
+    private bool $isNonActief;
 
     /**
      * Een vlag dat aangeeft of voor een artikel wel of geen voorraad wordt bijgehouden.
-     *
-     * @var bool
      */
-    private $voorraadControle;
+    private bool $voorraadControle;
 
-    /**
-     * @var float
-     */
-    private $technischeVoorraad;
+    private float $technischeVoorraad;
 
-    /**
-     * @var float
-     */
-    private $vrijeVoorraad;
+    private float $vrijeVoorraad;
 
     /**
      * @var string[]
      */
-    public static $editableAttributes = [
+    public static array $editableAttributes = [
         "artikelcode",
         "omschrijving",
         "artikelOmzetgroep",
