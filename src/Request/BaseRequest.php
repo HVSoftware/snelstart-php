@@ -54,7 +54,7 @@ abstract class BaseRequest
                 trigger_error(
                     sprintf(
                         "There is no method (get or is) on object %s for property %s",
-                        get_class($object),
+                        $object::class,
                         $editableAttributeName,
                     ),
                 );
@@ -104,7 +104,7 @@ abstract class BaseRequest
                 throw new LogicException(
                     sprintf(
                         "You need to implement something to handle the serialization of '%s' (type: %s)",
-                        get_class($value),
+                        $value::class,
                         gettype($value),
                     ),
                 );

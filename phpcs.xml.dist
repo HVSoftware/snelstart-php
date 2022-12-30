@@ -43,7 +43,6 @@
         <exclude name="SlevomatCodingStandard.ControlStructures.RequireNullCoalesceEqualOperator.RequiredNullCoalesceEqualOperator" />
         <exclude name="SlevomatCodingStandard.Exceptions.RequireNonCapturingCatch.NonCapturingCatchRequired" />
         <exclude name="SlevomatCodingStandard.Exceptions.ReferenceThrowableOnly.ReferencedGeneralException" />
-        <exclude name="SlevomatCodingStandard.Classes.ModernClassNameReference.ClassNameReferencedViaFunctionCall" />
         <exclude name="SlevomatCodingStandard.ControlStructures.DisallowYodaComparison.DisallowedYodaComparison" />
         <exclude name="SlevomatCodingStandard.Classes.SuperfluousAbstractClassNaming.SuperfluousPrefix" />
         <exclude name="SlevomatCodingStandard.Commenting.DocCommentSpacing.IncorrectOrderOfAnnotationsGroup" />
