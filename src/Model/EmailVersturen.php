@@ -29,7 +29,7 @@ final class EmailVersturen extends BaseObject
     public static array $editableAttributes = [
         "shouldSend",
         "email",
-        "ccEmail"
+        "ccEmail",
     ];
 
     public function __construct(bool $shouldSend, string|null $email = null, string|null $ccEmail = null)

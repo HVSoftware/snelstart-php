@@ -129,9 +129,7 @@ abstract class BaseConnection implements ConnectionInterface
 
                 if ($this->logger !== null) {
                     $this->logger->error(
-                        "[Connection] " . $jsonBody, [
-                            "exception" =>  $clientException
-                        ],
+                        "[Connection] " . $jsonBody, ["exception" => $clientException],
                     );
                 }
 

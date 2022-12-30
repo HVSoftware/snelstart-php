@@ -33,9 +33,10 @@ final class KostenplaatsRequest extends BaseRequest
     public function add(Kostenplaats $kostenplaats): RequestInterface
     {
         return new Request(
-            "POST", "kostenplaatsen", [
-                "Content-Type"  =>  "application/json"
-            ], json_encode($this->prepareAddOrEditRequestForSerialization($kostenplaats)),
+            "POST",
+            "kostenplaatsen",
+            ["Content-Type" => "application/json"],
+            json_encode($this->prepareAddOrEditRequestForSerialization($kostenplaats)),
         );
     }
 
@@ -46,9 +47,10 @@ final class KostenplaatsRequest extends BaseRequest
         }
 
         return new Request(
-            "PUT", "kostenplaatsen/" . $kostenplaats->getId()->toString(), [
-                "Content-Type"  =>  "application/json"
-            ], json_encode($this->prepareAddOrEditRequestForSerialization($kostenplaats)),
+            "PUT",
+            "kostenplaatsen/" . $kostenplaats->getId()->toString(),
+            ["Content-Type" => "application/json"],
+            json_encode($this->prepareAddOrEditRequestForSerialization($kostenplaats)),
         );
     }
 
@@ -59,9 +61,7 @@ final class KostenplaatsRequest extends BaseRequest
         }
 
         return new Request(
-            "PUT", "kostenplaatsen/" . $kostenplaats->getId()->toString(), [
-                "Content-Type"  =>  "application/json"
-            ],
+            "PUT", "kostenplaatsen/" . $kostenplaats->getId()->toString(), ["Content-Type" => "application/json"],
         );
     }
 }

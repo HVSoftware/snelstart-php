@@ -22,9 +22,10 @@ final class VerkooporderRequest extends BaseRequest
     public function add(Verkooporder $verkooporder): RequestInterface
     {
         return new Request(
-            "POST", "verkooporders", [
-                "Content-Type"  =>  "application/json"
-            ], json_encode($this->prepareAddOrEditRequestForSerialization($verkooporder)),
+            "POST",
+            "verkooporders",
+            ["Content-Type" => "application/json"],
+            json_encode($this->prepareAddOrEditRequestForSerialization($verkooporder)),
         );
     }
 

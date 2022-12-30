@@ -32,9 +32,10 @@ final class BoekingRequest extends BaseRequest
     public function addInkoopboeking(Model\Inkoopboeking $inkoopboeking): RequestInterface
     {
         return new Request(
-            "POST", "inkoopboekingen", [
-                "Content-Type"  =>  "application/json"
-            ], json_encode($this->prepareAddOrEditRequestForSerialization($inkoopboeking)),
+            "POST",
+            "inkoopboekingen",
+            ["Content-Type" => "application/json"],
+            json_encode($this->prepareAddOrEditRequestForSerialization($inkoopboeking)),
         );
     }
 
@@ -45,18 +46,20 @@ final class BoekingRequest extends BaseRequest
         }
 
         return new Request(
-            "PUT", "inkoopboekingen/" . $inkoopboeking->getId()->toString(), [
-                "Content-Type"  =>  "application/json"
-            ], json_encode($this->prepareAddOrEditRequestForSerialization($inkoopboeking)),
+            "PUT",
+            "inkoopboekingen/" . $inkoopboeking->getId()->toString(),
+            ["Content-Type" => "application/json"],
+            json_encode($this->prepareAddOrEditRequestForSerialization($inkoopboeking)),
         );
     }
 
     public function addVerkoopboeking(Model\Verkoopboeking $verkoopboeking): RequestInterface
     {
         return new Request(
-            "POST", "verkoopboekingen", [
-                "Content-Type"  =>  "application/json"
-            ], json_encode($this->prepareAddOrEditRequestForSerialization($verkoopboeking)),
+            "POST",
+            "verkoopboekingen",
+            ["Content-Type" => "application/json"],
+            json_encode($this->prepareAddOrEditRequestForSerialization($verkoopboeking)),
         );
     }
 
@@ -67,9 +70,10 @@ final class BoekingRequest extends BaseRequest
         }
 
         return new Request(
-            "PUT", "verkoopboekingen/" . $verkoopboeking->getId()->toString(), [
-                "Content-Type"  =>  "application/json"
-            ], json_encode($this->prepareAddOrEditRequestForSerialization($verkoopboeking)),
+            "PUT",
+            "verkoopboekingen/" . $verkoopboeking->getId()->toString(),
+            ["Content-Type" => "application/json"],
+            json_encode($this->prepareAddOrEditRequestForSerialization($verkoopboeking)),
         );
     }
 
