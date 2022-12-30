@@ -36,7 +36,7 @@ final class Utils
         int $options = 0,
     ): float|object|array|bool|int|string|null {
         $data = json_decode($json, $assoc, $depth, $options);
-        if (JSON_ERROR_NONE !== json_last_error()) {
+        if (json_last_error() !== JSON_ERROR_NONE) {
             throw new InvalidArgumentException('json_decode error: ' . json_last_error_msg());
         }
 
