@@ -63,7 +63,7 @@ final class ArtikelRequest extends BaseRequest
     {
         $relatieId = null;
 
-        if ($relatie !== null && $relatie->getId() !== null) {
+        if ($relatie?->getId() !== null) {
             $relatieId = $relatie->getId()->toString();
         }
 
