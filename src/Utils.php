@@ -19,6 +19,8 @@ final class Utils
      *
      * Wrapper for json_decode that throws when an error occurs.
      *
+     * @link https://www.php.net/manual/en/function.json-decode.php
+     *
      * @param string $json    JSON data to parse
      * @param bool   $assoc   When true, returned objects will be converted
      *                        into associative arrays.
@@ -26,8 +28,6 @@ final class Utils
      * @param int    $options Bitmask of JSON decode options.
      *
      * @throws InvalidArgumentException if the JSON cannot be decoded.
-     *
-     * @link https://www.php.net/manual/en/function.json-decode.php
      */
     public static function jsonDecode(
         string $json,
