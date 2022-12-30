@@ -72,7 +72,8 @@ final class VerkooporderMapper extends AbstractMapper
                     ->setAantal($data["aantal"])
                     ->setKortingsPercentage($data["kortingsPercentage"])
                     ->setTotaal($this->getMoney($data["totaal"]));
-            }, $data["regels"],
+            },
+            $data["regels"],
         );
 
         $verkooporder->setRegels(...$regels);

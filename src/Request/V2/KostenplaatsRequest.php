@@ -61,7 +61,9 @@ final class KostenplaatsRequest extends BaseRequest
         }
 
         return new Request(
-            "PUT", "kostenplaatsen/" . $kostenplaats->getId()->toString(), ["Content-Type" => "application/json"],
+            "PUT",
+            "kostenplaatsen/" . $kostenplaats->getId()->toString(),
+            ["Content-Type" => "application/json"],
         );
     }
 }

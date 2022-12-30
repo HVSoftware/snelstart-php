@@ -40,7 +40,6 @@
         <exclude name="Generic.PHP.ForbiddenFunctions.Found" />
 
         <exclude name="PSR2.Files.EndFileNewline.NoneFound" />
-        <exclude name="PSR2.Methods.FunctionCallSignature.MultipleArguments" />
 
         <exclude name="Squiz.Strings.DoubleQuoteUsage.NotRequired" />
         <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar" />

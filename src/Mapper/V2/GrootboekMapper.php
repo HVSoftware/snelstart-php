@@ -57,7 +57,8 @@ final class GrootboekMapper extends AbstractMapper
                 ...array_map(
                     static function (array $rgsCode) {
                         return new Model\RgsCode($rgsCode["versie"], $rgsCode["rgsCode"]);
-                    }, $data["rgsCode"],
+                    },
+                    $data["rgsCode"],
                 ),
             );
         }

@@ -72,10 +72,14 @@ final class ArtikelRequest extends BaseRequest
                 [
                     "relatieId" =>  $relatieId,
                     "aantal"    =>  $aantal,
-                ], static function ($value) {
+                ],
+                static function ($value) {
                     return $value !== null;
                 },
-            ), "", "&", PHP_QUERY_RFC3986,
+            ),
+            "",
+            "&",
+            PHP_QUERY_RFC3986,
         );
     }
 }

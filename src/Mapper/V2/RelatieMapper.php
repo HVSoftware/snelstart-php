@@ -66,7 +66,8 @@ final class RelatieMapper extends AbstractMapper
             ...array_map(
                 static function (string $relatiesoort) {
                     return new Type\Relatiesoort($relatiesoort);
-                }, $data["relatiesoort"],
+                },
+                $data["relatiesoort"],
             ),
         );
 
@@ -108,7 +109,8 @@ final class RelatieMapper extends AbstractMapper
                     return (new NaamWaarde())
                         ->setNaam($extraVeldKlant["naam"])
                         ->setWaarde($extraVeldKlant["waarde"]);
-                }, $data["extraVeldenKlant"],
+                },
+                $data["extraVeldenKlant"],
             );
 
             $relatie->setExtraVeldenKlant(...$extraVeldenKlant);

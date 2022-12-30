@@ -297,7 +297,8 @@ final class BoekingMapper extends AbstractMapper
                         }
 
                         return $boekingsregelObject;
-                    }, $data["boekingsregels"],
+                    },
+                    $data["boekingsregels"],
                 ),
             );
         }
@@ -310,7 +311,8 @@ final class BoekingMapper extends AbstractMapper
                             new Type\BtwRegelSoort($btw["btwSoort"]),
                             $this->getMoney($btw["btwBedrag"]),
                         );
-                    }, $data["btw"],
+                    },
+                    $data["btw"],
                 ),
             );
         }

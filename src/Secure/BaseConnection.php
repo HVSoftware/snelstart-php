@@ -98,7 +98,8 @@ abstract class BaseConnection implements ConnectionInterface
 
             if ($this->logger !== null) {
                 $this->logger->debug(
-                    "[Connection] About to send a request with the following specs", [
+                    "[Connection] About to send a request with the following specs",
+                    [
                         "method"    =>  $request->getMethod(),
                         "uri"       =>  (string) $request->getUri(),
                     ],
@@ -129,7 +130,8 @@ abstract class BaseConnection implements ConnectionInterface
 
                 if ($this->logger !== null) {
                     $this->logger->error(
-                        "[Connection] " . $jsonBody, ["exception" => $clientException],
+                        "[Connection] " . $jsonBody,
+                        ["exception" => $clientException],
                     );
                 }
 
