@@ -35,7 +35,7 @@ final class KostenplaatsConnector extends BaseConnector
     public function findAll(): iterable
     {
         yield from (new Mapper\KostenplaatsMapper())->findAll(
-            $this->connection->doRequest((new Request\KostenplaatsRequest())->findAll())
+            $this->connection->doRequest((new Request\KostenplaatsRequest())->findAll()),
         );
     }
 
@@ -46,7 +46,7 @@ final class KostenplaatsConnector extends BaseConnector
         }
 
         return (new Mapper\KostenplaatsMapper())->add(
-            $this->connection->doRequest((new Request\KostenplaatsRequest())->add($kostenplaats))
+            $this->connection->doRequest((new Request\KostenplaatsRequest())->add($kostenplaats)),
         );
     }
 
@@ -57,7 +57,7 @@ final class KostenplaatsConnector extends BaseConnector
         }
 
         return (new Mapper\KostenplaatsMapper())->update(
-            $this->connection->doRequest((new Request\KostenplaatsRequest())->update($kostenplaats))
+            $this->connection->doRequest((new Request\KostenplaatsRequest())->update($kostenplaats)),
         );
     }
 
@@ -68,7 +68,7 @@ final class KostenplaatsConnector extends BaseConnector
         }
 
         (new Mapper\KostenplaatsMapper())->delete(
-            $this->connection->doRequest((new Request\KostenplaatsRequest())->delete($kostenplaats))
+            $this->connection->doRequest((new Request\KostenplaatsRequest())->delete($kostenplaats)),
         );
     }
 }
