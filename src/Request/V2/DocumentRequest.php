@@ -53,7 +53,7 @@ final class DocumentRequest extends BaseRequest
 
         return $this->fromDocumentType(
             $document->setParentIdentifier($inkoopboeking->getId()),
-            DocumentType::INKOOPBOEKINGEN()
+            DocumentType::INKOOPBOEKINGEN(),
         );
     }
 

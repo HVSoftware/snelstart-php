@@ -40,7 +40,7 @@ final class RelatieRequest extends BaseRequest
         return new Request(
             "POST", "relaties", [
                 "Content-Type"  =>  "application/json"
-            ], json_encode($this->prepareAddOrEditRequestForSerialization($relatie))
+            ], json_encode($this->prepareAddOrEditRequestForSerialization($relatie)),
         );
     }
 
@@ -53,7 +53,7 @@ final class RelatieRequest extends BaseRequest
         return new Request(
             "PUT", "relaties/" . $relatie->getId()->toString(), [
                 "Content-Type"  =>  "application/json"
-            ], json_encode($this->prepareAddOrEditRequestForSerialization($relatie))
+            ], json_encode($this->prepareAddOrEditRequestForSerialization($relatie)),
         );
     }
 }

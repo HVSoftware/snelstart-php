@@ -23,9 +23,9 @@ final class SnelstartApiErrorException extends RuntimeException
                 sprintf(
                     "%d validation failures occurred.",
                     is_array(
-                        $body["modelState"]
-                    ) || $body["modelState"] instanceof Countable ? count($body["modelState"]) : 0
-                )
+                        $body["modelState"],
+                    ) || $body["modelState"] instanceof Countable ? count($body["modelState"]) : 0,
+                ),
             ];
 
             foreach ($body["modelState"] as $field => $modelStateErrors) {

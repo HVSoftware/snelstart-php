@@ -28,7 +28,7 @@ final class ArtikelRequest extends BaseRequest
     ): RequestInterface {
         return new Request(
             "GET",
-            "artikelen?" . $ODataRequestData->getHttpCompatibleQueryString() . '&' . $this->getQueryString($relatie, $aantal)
+            "artikelen?" . $ODataRequestData->getHttpCompatibleQueryString() . '&' . $this->getQueryString($relatie, $aantal),
         );
     }
 
@@ -68,7 +68,7 @@ final class ArtikelRequest extends BaseRequest
                     "aantal"    =>  $aantal,
                 ], static function ($value) {
                     return $value !== null;
-                }
+                },
             ), "", "&", PHP_QUERY_RFC3986,
         );
     }

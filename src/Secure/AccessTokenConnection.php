@@ -31,7 +31,7 @@ final class AccessTokenConnection implements ConnectionInterface
         $this->client = $client ?? new Client(
             [
                 'base_uri'  =>  self::getEndpoint(),
-            ]
+            ],
         );
     }
 
@@ -60,7 +60,7 @@ final class AccessTokenConnection implements ConnectionInterface
             sprintf(
                 "[AccessToken] Trying to obtain an access token with token type '%s'",
                 get_class($this->bearerToken),
-            )
+            ),
         );
 
         $request = new Request(
@@ -74,7 +74,7 @@ final class AccessTokenConnection implements ConnectionInterface
 
         return new AccessToken(
             Utils::jsonDecode($response->getBody()->getContents(), true),
-            $this->bearerToken
+            $this->bearerToken,
         );
     }
 

@@ -23,7 +23,7 @@ final class VerkooporderRequest extends BaseRequest
         return new Request(
             "POST", "verkooporders", [
                 "Content-Type"  =>  "application/json"
-            ], json_encode($this->prepareAddOrEditRequestForSerialization($verkooporder))
+            ], json_encode($this->prepareAddOrEditRequestForSerialization($verkooporder)),
         );
     }
 

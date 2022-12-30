@@ -33,7 +33,7 @@ final class PasswordBearerToken implements BearerTokenInterface
 
         if (count($koppelsleutelParts) !== 2) {
             throw new InvalidArgumentException(
-                sprintf("We expected 2 items while decoding this but we got %d", count($koppelsleutelParts))
+                sprintf("We expected 2 items while decoding this but we got %d", count($koppelsleutelParts)),
             );
         }
 

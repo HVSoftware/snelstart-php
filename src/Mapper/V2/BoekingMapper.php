@@ -156,7 +156,7 @@ final class BoekingMapper extends AbstractMapper
 
         if (isset($data["doorlopendeIncassoMachtiging"]["id"])) {
             $doorlopendeIncassoMachtiging = IncassoMachtiging::createFromUUID(
-                Uuid::fromString($data["doorlopendeIncassoMachtiging"]["id"])
+                Uuid::fromString($data["doorlopendeIncassoMachtiging"]["id"]),
             );
             $verkoopboeking->setDoorlopendeIncassoMachtiging($doorlopendeIncassoMachtiging);
         }
@@ -195,7 +195,7 @@ final class BoekingMapper extends AbstractMapper
 
         if (isset($data['verkoopBoeking'])) {
             $verkoopfactuur->setVerkoopBoeking(
-                Verkoopboeking::createFromUUID(Uuid::fromString($data['verkoopBoeking']['id']))
+                Verkoopboeking::createFromUUID(Uuid::fromString($data['verkoopBoeking']['id'])),
             );
         }
 
@@ -234,7 +234,7 @@ final class BoekingMapper extends AbstractMapper
 
         if (isset($data['inkoopBoeking'])) {
             $inkoopfactuur->setInkoopboeking(
-                Inkoopboeking::createFromUUID(Uuid::fromString($data['inkoopBoeking']['id']))
+                Inkoopboeking::createFromUUID(Uuid::fromString($data['inkoopBoeking']['id'])),
             );
         }
 
@@ -300,19 +300,19 @@ final class BoekingMapper extends AbstractMapper
                         if (isset($boekingsregel["grootboek"])) {
                             $boekingsregelObject
                             ->setGrootboek(
-                                Grootboek::createFromUUID(Uuid::fromString($boekingsregel["grootboek"]["id"]))
+                                Grootboek::createFromUUID(Uuid::fromString($boekingsregel["grootboek"]["id"])),
                             );
                         }
 
                         if (isset($boekingsregel["kostenplaats"])) {
                             $boekingsregelObject->setKostenplaats(
-                                Kostenplaats::createFromUUID(Uuid::fromString($boekingsregel["kostenplaats"]["id"]))
+                                Kostenplaats::createFromUUID(Uuid::fromString($boekingsregel["kostenplaats"]["id"])),
                             );
                         }
 
                         return $boekingsregelObject;
-                    }, $data["boekingsregels"]
-                )
+                    }, $data["boekingsregels"],
+                ),
             );
         }
 
@@ -322,10 +322,10 @@ final class BoekingMapper extends AbstractMapper
                     function (array $btw): Model\Btwregel {
                         return new Model\Btwregel(
                             new Type\BtwRegelSoort($btw["btwSoort"]),
-                            $this->getMoney($btw["btwBedrag"])
+                            $this->getMoney($btw["btwBedrag"]),
                         );
-                    }, $data["btw"]
-                )
+                    }, $data["btw"],
+                ),
             );
         }
 

@@ -30,7 +30,7 @@ final class BoekingRequest extends BaseRequest
         return new Request(
             "POST", "inkoopboekingen", [
                 "Content-Type"  =>  "application/json"
-            ], json_encode($this->prepareAddOrEditRequestForSerialization($inkoopboeking))
+            ], json_encode($this->prepareAddOrEditRequestForSerialization($inkoopboeking)),
         );
     }
 
@@ -43,7 +43,7 @@ final class BoekingRequest extends BaseRequest
         return new Request(
             "PUT", "inkoopboekingen/" . $inkoopboeking->getId()->toString(), [
                 "Content-Type"  =>  "application/json"
-            ], json_encode($this->prepareAddOrEditRequestForSerialization($inkoopboeking))
+            ], json_encode($this->prepareAddOrEditRequestForSerialization($inkoopboeking)),
         );
     }
 
@@ -52,7 +52,7 @@ final class BoekingRequest extends BaseRequest
         return new Request(
             "POST", "verkoopboekingen", [
                 "Content-Type"  =>  "application/json"
-            ], json_encode($this->prepareAddOrEditRequestForSerialization($verkoopboeking))
+            ], json_encode($this->prepareAddOrEditRequestForSerialization($verkoopboeking)),
         );
     }
 
@@ -65,7 +65,7 @@ final class BoekingRequest extends BaseRequest
         return new Request(
             "PUT", "verkoopboekingen/" . $verkoopboeking->getId()->toString(), [
                 "Content-Type"  =>  "application/json"
-            ], json_encode($this->prepareAddOrEditRequestForSerialization($verkoopboeking))
+            ], json_encode($this->prepareAddOrEditRequestForSerialization($verkoopboeking)),
         );
     }
 

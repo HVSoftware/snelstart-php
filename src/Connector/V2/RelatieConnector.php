@@ -40,7 +40,7 @@ final class RelatieConnector extends BaseConnector
         $request = new Request\RelatieRequest();
 
         return iterator_to_array(
-            $mapper->findByRelatie($this->connection->doRequest($request->findDoorlopendeIncassoMachtigingen($id)))
+            $mapper->findByRelatie($this->connection->doRequest($request->findDoorlopendeIncassoMachtigingen($id))),
         );
     }
 
@@ -90,8 +90,8 @@ final class RelatieConnector extends BaseConnector
             $ODataRequestData->setFilter(
                 array_merge(
                     $ODataRequestData->getFilter(),
-                    [sprintf("Relatiesoort/any(soort:soort eq '%s')", Relatiesoort::LEVERANCIER()->getValue())]
-                )
+                    [sprintf("Relatiesoort/any(soort:soort eq '%s')", Relatiesoort::LEVERANCIER()->getValue())],
+                ),
             );
         }
 
@@ -113,8 +113,8 @@ final class RelatieConnector extends BaseConnector
             $ODataRequestData->setFilter(
                 array_merge(
                     $ODataRequestData->getFilter(),
-                    [sprintf("Relatiesoort/any(soort:soort eq '%s')", Relatiesoort::KLANT()->getValue())]
-                )
+                    [sprintf("Relatiesoort/any(soort:soort eq '%s')", Relatiesoort::KLANT()->getValue())],
+                ),
             );
         }
 

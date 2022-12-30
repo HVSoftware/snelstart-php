@@ -100,8 +100,8 @@ abstract class BaseConnection implements ConnectionInterface
                         "%s %s",
                         $this->accessToken->getTokenType(),
                         $this->accessToken->getAccessToken(),
-                    )
-                )
+                    ),
+                ),
             );
             $this->numRetries++;
 
@@ -110,7 +110,7 @@ abstract class BaseConnection implements ConnectionInterface
                     "[Connection] About to send a request with the following specs", [
                         "method"    =>  $request->getMethod(),
                         "uri"       =>  (string) $request->getUri(),
-                    ]
+                    ],
                 );
             }
 
@@ -140,7 +140,7 @@ abstract class BaseConnection implements ConnectionInterface
                     $this->logger->error(
                         "[Connection] " . $jsonBody, [
                             "exception" =>  $clientException
-                        ]
+                        ],
                     );
                 }
 
@@ -166,7 +166,7 @@ abstract class BaseConnection implements ConnectionInterface
                     $body["Message"] ?? "Resource not found",
                     $request,
                     $response,
-                    $clientException
+                    $clientException,
                 );
             }
 
@@ -205,7 +205,7 @@ abstract class BaseConnection implements ConnectionInterface
                 sprintf(
                     "We tried to reach Snelstart %d times without luck. Retry later.",
                     self::MAX_RETRIES,
-                )
+                ),
             );
         }
 
@@ -234,7 +234,7 @@ abstract class BaseConnection implements ConnectionInterface
                 [
                     'base_uri'  =>  static::getEndpoint(),
                     'timeout'   =>  60,
-                ]
+                ],
             );
         }
 

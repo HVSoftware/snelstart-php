@@ -188,8 +188,8 @@ final class Verkooporder extends SnelstartObject
                 parent::$editableAttributes,
                 parent::getEditableAttributes(),
                 self::$editableAttributes,
-                self::$editableAttributes
-            )
+                self::$editableAttributes,
+            ),
         );
     }
 

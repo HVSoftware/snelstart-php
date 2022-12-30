@@ -59,7 +59,7 @@ final class Verkoopboeking extends Boeking
                 parent::getEditableAttributes(),
                 self::$editableAttributes,
                 self::$editableAttributes,
-            )
+            ),
         );
     }
 

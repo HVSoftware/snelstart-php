@@ -28,7 +28,7 @@ final class Inkoopboeking extends Boeking
                 parent::$editableAttributes,
                 parent::getEditableAttributes(),
                 self::$editableAttributes,
-                self::$editableAttributes
+                self::$editableAttributes,
             ),
         );
     }

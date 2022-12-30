@@ -31,7 +31,7 @@ final class BoekingConnector extends BaseConnector
 
         try {
             return $boekingMapper->findInkoopboeking(
-                $this->connection->doRequest($boekingRequest->findInkoopboeking($uuid))
+                $this->connection->doRequest($boekingRequest->findInkoopboeking($uuid)),
             );
         } catch (SnelstartResourceNotFoundException $e) {
             return null;
@@ -53,7 +53,7 @@ final class BoekingConnector extends BaseConnector
 
         foreach (
             $boekingMapper->findAllInkoopfacturen(
-                $this->connection->doRequest($factuurRequest->findInkoopfacturen($ODataRequestData))
+                $this->connection->doRequest($factuurRequest->findInkoopfacturen($ODataRequestData)),
             ) as $inkoopboeking
         ) {
             $hasItems = true;
@@ -83,7 +83,7 @@ final class BoekingConnector extends BaseConnector
         $boekingRequest = new Request\BoekingRequest();
 
         return $boekingMapper->addInkoopboeking(
-            $this->connection->doRequest($boekingRequest->addInkoopboeking($inkoopboeking))
+            $this->connection->doRequest($boekingRequest->addInkoopboeking($inkoopboeking)),
         );
     }
 
@@ -99,7 +99,7 @@ final class BoekingConnector extends BaseConnector
         $documentRequest = new Request\DocumentRequest();
 
         return $documentMapper->add(
-            $this->connection->doRequest($documentRequest->addInkoopBoekingDocument($document, $inkoopboeking))
+            $this->connection->doRequest($documentRequest->addInkoopBoekingDocument($document, $inkoopboeking)),
         );
     }
 
@@ -113,7 +113,7 @@ final class BoekingConnector extends BaseConnector
         $boekingRequest = new Request\BoekingRequest();
 
         return $boekingMapper->updateInkoopboeking(
-            $this->connection->doRequest($boekingRequest->updateInkoopboeking($inkoopboeking))
+            $this->connection->doRequest($boekingRequest->updateInkoopboeking($inkoopboeking)),
         );
     }
 
@@ -127,7 +127,7 @@ final class BoekingConnector extends BaseConnector
         $boekingRequest = new Request\BoekingRequest();
 
         return $boekingMapper->updateVerkoopboeking(
-            $this->connection->doRequest($boekingRequest->updateVerkoopboeking($verkoopboeking))
+            $this->connection->doRequest($boekingRequest->updateVerkoopboeking($verkoopboeking)),
         );
     }
 
@@ -138,7 +138,7 @@ final class BoekingConnector extends BaseConnector
 
         try {
             return $boekingMapper->findVerkoopboeking(
-                $this->connection->doRequest($boekingRequest->findVerkoopboeking($uuid))
+                $this->connection->doRequest($boekingRequest->findVerkoopboeking($uuid)),
             );
         } catch (SnelstartResourceNotFoundException $e) {
             return null;
@@ -162,8 +162,8 @@ final class BoekingConnector extends BaseConnector
         foreach (
             $boekingMapper->findAllVerkoopfacturen(
                 $this->connection->doRequest(
-                    $factuurRequest->findVerkoopfacturen($ODataRequestData)
-                )
+                    $factuurRequest->findVerkoopfacturen($ODataRequestData),
+                ),
             ) as $verkoopboeking
         ) {
             $hasItems = true;
@@ -191,7 +191,7 @@ final class BoekingConnector extends BaseConnector
 
         if ($verkoopboeking->getVervaldatum() !== null && $verkoopboeking->getBetalingstermijn() === null) {
             $verkoopboeking->setBetalingstermijn(
-                (int) (new DateTime())->diff($verkoopboeking->getVervaldatum())->format("%a")
+                (int) (new DateTime())->diff($verkoopboeking->getVervaldatum())->format("%a"),
             );
         }
 
@@ -199,7 +199,7 @@ final class BoekingConnector extends BaseConnector
         $boekingRequest = new Request\BoekingRequest();
 
         return $boekingMapper->addVerkoopboeking(
-            $this->connection->doRequest($boekingRequest->addVerkoopboeking($verkoopboeking))
+            $this->connection->doRequest($boekingRequest->addVerkoopboeking($verkoopboeking)),
         );
     }
 
@@ -215,7 +215,7 @@ final class BoekingConnector extends BaseConnector
         $documentRequest = new Request\DocumentRequest();
 
         return $documentMapper->add(
-            $this->connection->doRequest($documentRequest->addVerkoopBoekingDocument($document, $verkoopboeking))
+            $this->connection->doRequest($documentRequest->addVerkoopBoekingDocument($document, $verkoopboeking)),
         );
     }
 }

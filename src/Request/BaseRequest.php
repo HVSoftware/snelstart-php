@@ -105,8 +105,8 @@ abstract class BaseRequest
                     sprintf(
                         "You need to implement something to handle the serialization of '%s' (type: %s)",
                         get_class($value),
-                        gettype($value)
-                    )
+                        gettype($value),
+                    ),
                 );
             }
 

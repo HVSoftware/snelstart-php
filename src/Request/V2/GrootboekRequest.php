@@ -36,7 +36,7 @@ final class GrootboekRequest extends BaseRequest
         return new Request(
             "POST", "grootboeken", [
                 "Content-Type"  =>  "application/json"
-            ], json_encode($this->prepareAddOrEditRequestForSerialization($grootboek))
+            ], json_encode($this->prepareAddOrEditRequestForSerialization($grootboek)),
         );
     }
 
@@ -49,7 +49,7 @@ final class GrootboekRequest extends BaseRequest
         return new Request(
             "PUT", "grootboeken/" . $grootboek->getId()->toString(), [
                 "Content-Type"  =>  "application/json"
-            ], json_encode($this->prepareAddOrEditRequestForSerialization($grootboek))
+            ], json_encode($this->prepareAddOrEditRequestForSerialization($grootboek)),
         );
     }
 }

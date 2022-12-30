@@ -45,7 +45,7 @@ final class VerkooporderMapper extends AbstractMapper
 
         if ($data["incassomachtiging"] !== null) {
             $verkooporder->setIncassomachtiging(
-                IncassoMachtiging::createFromUUID(Uuid::fromString($data["incassomachtiging"]["id"]))
+                IncassoMachtiging::createFromUUID(Uuid::fromString($data["incassomachtiging"]["id"])),
             );
         }
 
@@ -70,7 +70,7 @@ final class VerkooporderMapper extends AbstractMapper
                     ->setAantal($data["aantal"])
                     ->setKortingsPercentage($data["kortingsPercentage"])
                     ->setTotaal($this->getMoney($data["totaal"]));
-            }, $data["regels"]
+            }, $data["regels"],
         );
 
         $verkooporder->setRegels(...$regels);
@@ -93,13 +93,13 @@ final class VerkooporderMapper extends AbstractMapper
 
         if ($data["verkoopordersjabloon"] !== null) {
             $verkooporder->setVerkoopordersjabloon(
-                Verkoopordersjabloon::createFromUUID(Uuid::fromString($data["verkoopordersjabloon"]["id"]))
+                Verkoopordersjabloon::createFromUUID(Uuid::fromString($data["verkoopordersjabloon"]["id"])),
             );
         }
 
         if ($data["verkooporderBtwIngaveModel"] !== null) {
             $verkooporder->setVerkooporderBtwIngaveModel(
-                VerkooporderBtwIngave::from($data["verkooporderBtwIngaveModel"])
+                VerkooporderBtwIngave::from($data["verkooporderBtwIngaveModel"]),
             );
         }
 

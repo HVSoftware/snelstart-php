@@ -31,7 +31,7 @@ final class ArtikelConnector extends BaseConnector
 
         try {
             return $artikelMapper->find(
-                $this->connection->doRequest($artikelRequest->find($id, $ODataRequestData, $relatie, $aantal))
+                $this->connection->doRequest($artikelRequest->find($id, $ODataRequestData, $relatie, $aantal)),
             );
         } catch (SnelstartResourceNotFoundException $e) {
             return null;
@@ -55,7 +55,7 @@ final class ArtikelConnector extends BaseConnector
 
         foreach (
             $artikelMapper->findAll(
-                $this->connection->doRequest($artikelRequest->findAll($ODataRequestData, $relatie, $aantal))
+                $this->connection->doRequest($artikelRequest->findAll($ODataRequestData, $relatie, $aantal)),
             ) as $artikel
         ) {
             $hasItems = true;

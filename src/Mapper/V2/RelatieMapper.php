@@ -62,8 +62,8 @@ final class RelatieMapper extends AbstractMapper
             ... array_map(
                 static function (string $relatiesoort) {
                     return new Type\Relatiesoort($relatiesoort);
-                }, $data["relatiesoort"]
-            )
+                }, $data["relatiesoort"],
+            ),
         );
 
         if (! empty($data["incassoSoort"])) {
@@ -94,7 +94,7 @@ final class RelatieMapper extends AbstractMapper
             $relatie->setFactuurRelatie(
                 (new FactuurRelatie())
                     ->setId(Uuid::fromString($data["factuurRelatie"]["id"]))
-                    ->setUri($data["factuurRelatie"]["uri"])
+                    ->setUri($data["factuurRelatie"]["uri"]),
             );
         }
 
@@ -104,7 +104,7 @@ final class RelatieMapper extends AbstractMapper
                     return (new NaamWaarde())
                         ->setNaam($extraVeldKlant["naam"])
                         ->setWaarde($extraVeldKlant["waarde"]);
-                }, $data["extraVeldenKlant"]
+                }, $data["extraVeldenKlant"],
             );
 
             $relatie->setExtraVeldenKlant(... $extraVeldenKlant);
@@ -126,7 +126,7 @@ final class RelatieMapper extends AbstractMapper
         return new EmailVersturen(
             $emailVersturen["shouldSend"],
             $emailVersturen["email"],
-            $emailVersturen["ccEmail"]
+            $emailVersturen["ccEmail"],
         );
     }
 

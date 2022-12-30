@@ -70,7 +70,7 @@ final class ArtikelMapper extends AbstractMapper
 
         if (isset($data["artikelOmzetgroep"])) {
             $artikel->setArtikelOmzetgroep(
-                ArtikelOmzetgroep::createFromUUID(Uuid::fromString($data["artikelOmzetgroep"]["id"]))
+                ArtikelOmzetgroep::createFromUUID(Uuid::fromString($data["artikelOmzetgroep"]["id"])),
             );
         }
 
@@ -78,7 +78,7 @@ final class ArtikelMapper extends AbstractMapper
             $artikel->addSubArtikel(
                 SubArtikel::createFromUUID($subArtikel["id"])
                     ->setAantal($subArtikel["aantal"])
-                    ->setArtikelcode($subArtikel["artikelcode"])
+                    ->setArtikelcode($subArtikel["artikelcode"]),
             );
         }
 
