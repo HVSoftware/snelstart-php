@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SnelstartPHP\Request\V2;
 
 use GuzzleHttp\Psr7\Request;
@@ -72,7 +74,7 @@ final class BoekingRequest extends BaseRequest
      */
     public function addAttachmentToInkoopboeking(
         Model\Inkoopboeking $inkoopboeking,
-        Model\Document $document
+        Model\Document $document,
     ): RequestInterface {
         if ($inkoopboeking->getId() === null) {
             throw PreValidationException::shouldHaveAnIdException();
@@ -88,7 +90,7 @@ final class BoekingRequest extends BaseRequest
      */
     public function addAttachmentToVerkoopboeking(
         Model\Verkoopboeking $verkoopboeking,
-        Model\Document $document
+        Model\Document $document,
     ): RequestInterface {
         if ($verkoopboeking->getId() === null) {
             throw PreValidationException::shouldHaveAnIdException();

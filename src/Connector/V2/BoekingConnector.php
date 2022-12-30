@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author     IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project    SnelstartApiPHP
@@ -17,6 +20,7 @@ use SnelstartPHP\Request\ODataRequestData;
 use SnelstartPHP\Request\ODataRequestDataInterface;
 use SnelstartPHP\Request\V2 as Request;
 use DateTime;
+use Exception;
 
 final class BoekingConnector extends BaseConnector
 {
@@ -47,9 +51,10 @@ final class BoekingConnector extends BaseConnector
         $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
         $hasItems = false;
 
-        foreach ($boekingMapper->findAllInkoopfacturen(
-            $this->connection->doRequest($factuurRequest->findInkoopfacturen($ODataRequestData))
-        ) as $inkoopboeking
+        foreach (
+            $boekingMapper->findAllInkoopfacturen(
+                $this->connection->doRequest($factuurRequest->findInkoopfacturen($ODataRequestData))
+            ) as $inkoopboeking
         ) {
             $hasItems = true;
             yield $inkoopboeking;
@@ -142,7 +147,7 @@ final class BoekingConnector extends BaseConnector
 
     /**
      * @return iterable<Model\Verkoopfactuur>
-     * @throws \Exception
+     * @throws Exception
      */
     public function findVerkoopfacturen(
         ODataRequestDataInterface|null $ODataRequestData = null,
@@ -154,11 +159,12 @@ final class BoekingConnector extends BaseConnector
         $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
         $hasItems = false;
 
-        foreach ($boekingMapper->findAllVerkoopfacturen(
-            $this->connection->doRequest(
-                $factuurRequest->findVerkoopfacturen($ODataRequestData)
-            )
-        ) as $verkoopboeking
+        foreach (
+            $boekingMapper->findAllVerkoopfacturen(
+                $this->connection->doRequest(
+                    $factuurRequest->findVerkoopfacturen($ODataRequestData)
+                )
+            ) as $verkoopboeking
         ) {
             $hasItems = true;
             yield $verkoopboeking;

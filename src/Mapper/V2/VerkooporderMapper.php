@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -41,7 +44,9 @@ final class VerkooporderMapper extends AbstractMapper
             ->setProcesStatus(new ProcesStatus($data["procesStatus"]));
 
         if ($data["incassomachtiging"] !== null) {
-            $verkooporder->setIncassomachtiging(IncassoMachtiging::createFromUUID(Uuid::fromString($data["incassomachtiging"]["id"])));
+            $verkooporder->setIncassomachtiging(
+                IncassoMachtiging::createFromUUID(Uuid::fromString($data["incassomachtiging"]["id"]))
+            );
         }
 
         if ($data["afleveradres"] !== null) {
@@ -87,11 +92,15 @@ final class VerkooporderMapper extends AbstractMapper
         }
 
         if ($data["verkoopordersjabloon"] !== null) {
-            $verkooporder->setVerkoopordersjabloon(Verkoopordersjabloon::createFromUUID(Uuid::fromString($data["verkoopordersjabloon"]["id"])));
+            $verkooporder->setVerkoopordersjabloon(
+                Verkoopordersjabloon::createFromUUID(Uuid::fromString($data["verkoopordersjabloon"]["id"]))
+            );
         }
 
         if ($data["verkooporderBtwIngaveModel"] !== null) {
-            $verkooporder->setVerkooporderBtwIngaveModel(VerkooporderBtwIngave::from($data["verkooporderBtwIngaveModel"]));
+            $verkooporder->setVerkooporderBtwIngaveModel(
+                VerkooporderBtwIngave::from($data["verkooporderBtwIngaveModel"])
+            );
         }
 
         return $verkooporder;

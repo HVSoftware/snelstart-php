@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SnelstartPHP\Model\V2;
 
 use Money\Money;

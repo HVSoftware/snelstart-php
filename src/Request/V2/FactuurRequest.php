@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SnelstartPHP\Request\V2;
 
 use GuzzleHttp\Psr7\Request;

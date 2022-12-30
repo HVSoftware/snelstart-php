@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  OptiWise Technologies B.V. <info@optiwise.nl>
  * @project SnelstartApiPHP
