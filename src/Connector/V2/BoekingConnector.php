@@ -48,7 +48,7 @@ final class BoekingConnector extends BaseConnector
     ): iterable {
         $factuurRequest = new Request\FactuurRequest();
         $boekingMapper = new Mapper\BoekingMapper();
-        $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
+        $ODataRequestData ??= new ODataRequestData();
         $hasItems = false;
 
         foreach (
@@ -157,7 +157,7 @@ final class BoekingConnector extends BaseConnector
     ): iterable {
         $factuurRequest = new Request\FactuurRequest();
         $boekingMapper = new Mapper\BoekingMapper();
-        $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
+        $ODataRequestData ??= new ODataRequestData();
         $hasItems = false;
 
         foreach (

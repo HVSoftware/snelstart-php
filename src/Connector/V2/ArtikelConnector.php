@@ -27,7 +27,7 @@ final class ArtikelConnector extends BaseConnector
     ): Model\Artikel|null {
         $artikelRequest = new Request\ArtikelRequest();
         $artikelMapper = new Mapper\ArtikelMapper();
-        $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
+        $ODataRequestData ??= new ODataRequestData();
 
         try {
             return $artikelMapper->find(
@@ -50,7 +50,7 @@ final class ArtikelConnector extends BaseConnector
     ): iterable {
         $artikelRequest = new Request\ArtikelRequest();
         $artikelMapper = new Mapper\ArtikelMapper();
-        $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
+        $ODataRequestData ??= new ODataRequestData();
         $hasItems = false;
 
         foreach (

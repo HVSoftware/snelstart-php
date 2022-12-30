@@ -59,7 +59,7 @@ final class RelatieConnector extends BaseConnector
     ): iterable {
         $mapper = new Mapper\RelatieMapper();
         $request = new Request\RelatieRequest();
-        $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
+        $ODataRequestData ??= new ODataRequestData();
         $hasItems = false;
 
         foreach ($mapper->findAll($this->connection->doRequest($request->findAll($ODataRequestData))) as $relatie) {
@@ -90,7 +90,7 @@ final class RelatieConnector extends BaseConnector
         bool $fetchAll = false,
         iterable|null $previousResults = null,
     ): iterable {
-        $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
+        $ODataRequestData ??= new ODataRequestData();
 
         if (method_exists($ODataRequestData, "setFilter")) {
             $ODataRequestData->setFilter(
@@ -113,7 +113,7 @@ final class RelatieConnector extends BaseConnector
         bool $fetchAll = false,
         iterable|null $previousResults = null,
     ): iterable {
-        $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
+        $ODataRequestData ??= new ODataRequestData();
 
         if (method_exists($ODataRequestData, "setFilter")) {
             $ODataRequestData->setFilter(

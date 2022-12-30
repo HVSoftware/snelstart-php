@@ -45,7 +45,7 @@ final class GrootboekConnector extends BaseConnector
     ): iterable {
         $request = new Request\GrootboekRequest();
         $mapper = new Mapper\GrootboekMapper();
-        $ODataRequestData = $ODataRequestData ?? new ODataRequestData();
+        $ODataRequestData ??= new ODataRequestData();
         $hasItems = false;
 
         foreach ($mapper->findAll($this->connection->doRequest($request->findAll($ODataRequestData))) as $grootboek) {
