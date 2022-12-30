@@ -13,6 +13,7 @@ use InvalidArgumentException;
 use Ramsey\Uuid\UuidInterface;
 use SnelstartPHP\Model\SnelstartObject;
 use SplFileObject;
+
 use function base64_encode;
 
 final class Document extends SnelstartObject

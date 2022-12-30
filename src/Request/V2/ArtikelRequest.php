@@ -15,9 +15,11 @@ use Ramsey\Uuid\UuidInterface;
 use SnelstartPHP\Model\V2\Relatie;
 use SnelstartPHP\Request\BaseRequest;
 use SnelstartPHP\Request\ODataRequestDataInterface;
+
 use function array_filter;
 use function http_build_query;
 use function sprintf;
+
 use const PHP_QUERY_RFC3986;
 
 final class ArtikelRequest extends BaseRequest

@@ -20,6 +20,7 @@ use Psr\Log\LoggerInterface;
 use SnelstartPHP\Exception\SnelstartApiAccessDeniedException;
 use SnelstartPHP\Secure\BearerToken\BearerTokenInterface;
 use SnelstartPHP\Utils;
+
 use function get_class;
 use function http_build_query;
 use function sprintf;

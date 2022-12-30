@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace SnelstartPHP\Model\V2;
 
 use SnelstartPHP\Model\IncassoMachtiging;
+
 use function array_merge;
 use function array_unique;
 

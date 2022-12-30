@@ -18,6 +18,7 @@ use SnelstartPHP\Model\FactuurRelatie;
 use SnelstartPHP\Model\NaamWaarde;
 use SnelstartPHP\Model\Type;
 use SnelstartPHP\Model\V2 as Model;
+
 use function array_map;
 
 final class RelatieMapper extends AbstractMapper

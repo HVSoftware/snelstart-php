@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace SnelstartPHP\Exception;
 
 use RuntimeException;
+
 use function sprintf;
 
 final class PreValidationException extends RuntimeException

@@ -16,6 +16,7 @@ use SnelstartPHP\Exception\PreValidationException;
 use SnelstartPHP\Model\V2 as Model;
 use SnelstartPHP\Request\BaseRequest;
 use SnelstartPHP\Request\ODataRequestDataInterface;
+
 use function GuzzleHttp\json_encode;
 
 final class RelatieRequest extends BaseRequest

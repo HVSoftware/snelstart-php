@@ -18,6 +18,7 @@ use SnelstartPHP\Model\V2 as Model;
 use SnelstartPHP\Request\ODataRequestData;
 use SnelstartPHP\Request\ODataRequestDataInterface;
 use SnelstartPHP\Request\V2 as Request;
+
 use function sprintf;
 
 final class GrootboekConnector extends BaseConnector

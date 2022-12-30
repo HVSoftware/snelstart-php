@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace SnelstartPHP\Secure\BearerToken;
 
 use InvalidArgumentException;
+
 use function base64_decode;
 use function count;
 use function explode;

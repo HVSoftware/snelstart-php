@@ -29,6 +29,7 @@ use SnelstartPHP\Model\V2\Inkoopfactuur;
 use SnelstartPHP\Model\V2\Relatie;
 use SnelstartPHP\Model\V2\Verkoopboeking;
 use SnelstartPHP\Model\V2\Verkoopfactuur;
+
 use function array_map;
 
 final class BoekingMapper extends AbstractMapper

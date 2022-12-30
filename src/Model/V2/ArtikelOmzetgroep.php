@@ -11,6 +11,7 @@ namespace SnelstartPHP\Model\V2;
 
 use SnelstartPHP\Exception\PreValidationException;
 use SnelstartPHP\Model\SnelstartObject;
+
 use function mb_strlen;
 
 final class ArtikelOmzetgroep extends SnelstartObject

@@ -12,6 +12,7 @@ namespace SnelstartPHP\Connector\V2;
 
 use SnelstartPHP\Connector\BaseConnector;
 use SnelstartPHP\Request\V2\EchoRequest;
+
 use function str_replace;
 
 final class EchoConnector extends BaseConnector

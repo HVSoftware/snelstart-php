@@ -25,6 +25,7 @@ use SnelstartPHP\Exception\SnelstartApiAccessDeniedException;
 use SnelstartPHP\Exception\SnelstartApiErrorException;
 use SnelstartPHP\Exception\SnelstartResourceNotFoundException;
 use SnelstartPHP\Utils;
+
 use function GuzzleHttp\json_decode;
 use function in_array;
 use function sprintf;

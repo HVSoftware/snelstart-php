@@ -13,6 +13,7 @@ use SnelstartPHP\Model\BaseObject;
 use SnelstartPHP\Model\SnelstartObject;
 use SnelstartPHP\Serializer\RequestSerializerInterface;
 use SnelstartPHP\Serializer\SnelstartRequestRequestSerializer;
+
 use function count;
 use function gettype;
 use function is_array;

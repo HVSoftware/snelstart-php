@@ -16,6 +16,7 @@ use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\Type\Grootboekfunctie;
 use SnelstartPHP\Model\Type\Rekeningcode;
 use SnelstartPHP\Model\V2 as Model;
+
 use function array_map;
 
 final class GrootboekMapper extends AbstractMapper
