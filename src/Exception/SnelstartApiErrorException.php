@@ -12,7 +12,10 @@ namespace SnelstartPHP\Exception;
 use Countable;
 use RuntimeException;
 use function count;
+use function implode;
+use function is_array;
 use function json_encode;
+use function sprintf;
 
 final class SnelstartApiErrorException extends RuntimeException
 {

@@ -5,6 +5,10 @@ declare(strict_types=1);
 namespace SnelstartPHP;
 
 use GuzzleHttp\Exception\InvalidArgumentException;
+use function json_decode;
+use function json_last_error;
+use function json_last_error_msg;
+use const JSON_ERROR_NONE;
 
 final class Utils
 {

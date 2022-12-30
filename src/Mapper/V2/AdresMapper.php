@@ -14,6 +14,9 @@ use SnelstartPHP\Exception\InvalidMapperDataException;
 use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\Adres;
 use SnelstartPHP\Model\Land;
+use function array_diff;
+use function array_keys;
+use function count;
 
 final class AdresMapper extends AbstractMapper
 {

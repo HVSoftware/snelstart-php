@@ -11,6 +11,10 @@ declare(strict_types=1);
 namespace SnelstartPHP\Secure\BearerToken;
 
 use InvalidArgumentException;
+use function base64_decode;
+use function count;
+use function explode;
+use function sprintf;
 
 final class PasswordBearerToken implements BearerTokenInterface
 {

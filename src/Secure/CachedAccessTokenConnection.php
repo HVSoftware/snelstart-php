@@ -15,6 +15,7 @@ use Psr\Cache\CacheItemPoolInterface;
 use Psr\Log\LoggerInterface;
 use RuntimeException;
 use SnelstartPHP\Secure\BearerToken\BearerTokenInterface;
+use function random_int;
 use function spl_object_hash;
 
 final class CachedAccessTokenConnection

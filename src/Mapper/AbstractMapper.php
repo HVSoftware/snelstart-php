@@ -17,6 +17,16 @@ use SnelstartPHP\Model\SnelstartObject;
 use SnelstartPHP\Snelstart;
 use SnelstartPHP\Utils;
 use TypeError;
+use function floatval;
+use function intval;
+use function is_null;
+use function is_scalar;
+use function is_string;
+use function method_exists;
+use function strpos;
+use function substr;
+use function trigger_error;
+use function ucfirst;
 use const E_USER_DEPRECATED;
 
 abstract class AbstractMapper

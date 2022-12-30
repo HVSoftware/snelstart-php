@@ -22,6 +22,7 @@ use SnelstartPHP\Model\V2\Verkoopfactuur;
 use SnelstartPHP\Model\V2\Verkooporder;
 use SnelstartPHP\Model\V2\VerkooporderRegel;
 use SnelstartPHP\Model\V2\Verkoopordersjabloon;
+use function array_map;
 
 final class VerkooporderMapper extends AbstractMapper
 {

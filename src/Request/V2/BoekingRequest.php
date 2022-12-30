@@ -11,6 +11,8 @@ use SnelstartPHP\Exception\PreValidationException;
 use SnelstartPHP\Model\V2 as Model;
 use SnelstartPHP\Request\BaseRequest;
 use function GuzzleHttp\json_encode;
+use function sprintf;
+use function trigger_error;
 use const E_USER_DEPRECATED;
 
 final class BoekingRequest extends BaseRequest

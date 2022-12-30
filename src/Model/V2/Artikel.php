@@ -13,6 +13,7 @@ use DateTimeInterface;
 use Money\Money;
 use SnelstartPHP\Exception\PreValidationException;
 use SnelstartPHP\Model\SnelstartObject;
+use function mb_strlen;
 
 final class Artikel extends SnelstartObject
 {

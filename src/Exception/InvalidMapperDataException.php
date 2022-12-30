@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace SnelstartPHP\Exception;
 
 use LogicException;
+use function implode;
+use function sprintf;
 
 final class InvalidMapperDataException extends LogicException
 {

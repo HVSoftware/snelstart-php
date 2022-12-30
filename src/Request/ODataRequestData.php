@@ -13,7 +13,9 @@ namespace SnelstartPHP\Request;
 use BadMethodCallException;
 use SnelstartPHP\Snelstart;
 use function http_build_query;
+use function implode;
 use function in_array;
+use function sprintf;
 use const PHP_QUERY_RFC3986;
 
 final class ODataRequestData implements ODataRequestDataInterface

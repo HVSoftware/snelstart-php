@@ -9,6 +9,9 @@ declare(strict_types=1);
 
 namespace SnelstartPHP\Model\V2;
 
+use function array_merge;
+use function array_unique;
+
 final class Inkoopboeking extends Boeking
 {
     /**

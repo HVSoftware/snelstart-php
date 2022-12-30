@@ -13,6 +13,7 @@ use Ramsey\Uuid\UuidInterface;
 use TypeError;
 use function array_merge;
 use function array_unique;
+use function method_exists;
 
 abstract class SnelstartObject extends BaseObject
 {

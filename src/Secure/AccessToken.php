@@ -14,6 +14,7 @@ use DateTimeZone;
 use InvalidArgumentException;
 use JsonSerializable;
 use SnelstartPHP\Secure\BearerToken\BearerTokenInterface;
+use function is_numeric;
 
 final class AccessToken implements JsonSerializable
 {

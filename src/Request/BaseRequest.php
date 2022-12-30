@@ -13,6 +13,14 @@ use SnelstartPHP\Model\BaseObject;
 use SnelstartPHP\Model\SnelstartObject;
 use SnelstartPHP\Serializer\RequestSerializerInterface;
 use SnelstartPHP\Serializer\SnelstartRequestRequestSerializer;
+use function count;
+use function gettype;
+use function is_array;
+use function is_scalar;
+use function method_exists;
+use function sprintf;
+use function trigger_error;
+use function ucfirst;
 
 abstract class BaseRequest
 {
