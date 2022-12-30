@@ -59,7 +59,7 @@ final class RelatieMapper extends AbstractMapper
         $adresMapper = new AdresMapper();
 
         $relatie->setRelatiesoort(
-            ... array_map(
+            ...array_map(
                 static function (string $relatiesoort) {
                     return new Type\Relatiesoort($relatiesoort);
                 }, $data["relatiesoort"],
@@ -107,7 +107,7 @@ final class RelatieMapper extends AbstractMapper
                 }, $data["extraVeldenKlant"],
             );
 
-            $relatie->setExtraVeldenKlant(... $extraVeldenKlant);
+            $relatie->setExtraVeldenKlant(...$extraVeldenKlant);
         }
 
         $relatie->setOfferteEmailVersturen($this->mapEmailVersturenField($data["offerteEmailVersturen"]))

@@ -52,7 +52,7 @@ final class GrootboekMapper extends AbstractMapper
 
         if (isset($data["rgsCode"])) {
             $grootboek->setRgsCode(
-                ... array_map(
+                ...array_map(
                     static function (array $rgsCode) {
                         return new Model\RgsCode($rgsCode["versie"], $rgsCode["rgsCode"]);
                     }, $data["rgsCode"],
