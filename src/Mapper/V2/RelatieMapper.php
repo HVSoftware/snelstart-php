@@ -20,6 +20,7 @@ use SnelstartPHP\Model\Type;
 use SnelstartPHP\Model\V2 as Model;
 
 use function array_map;
+use function assert;
 
 final class RelatieMapper extends AbstractMapper
 {
@@ -57,10 +58,8 @@ final class RelatieMapper extends AbstractMapper
     public function mapResponseToRelatieModel(Model\Relatie $relatie, array $data = []): Model\Relatie
     {
         $data = empty($data) ? $this->responseData : $data;
-        /**
-         * @var Model\Relatie $relatie
-         */
         $relatie = $this->mapArrayDataToModel($relatie, $data);
+        assert($relatie instanceof Model\Relatie);
         $adresMapper = new AdresMapper();
 
         $relatie->setRelatiesoort(

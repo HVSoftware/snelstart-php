@@ -14,6 +14,8 @@ use Psr\Http\Message\ResponseInterface;
 use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\V2\ArtikelOmzetgroep;
 
+use function assert;
+
 final class ArtikelOmzetgroepMapper extends AbstractMapper
 {
     public function find(ResponseInterface $response): ArtikelOmzetgroep|null
@@ -38,10 +40,8 @@ final class ArtikelOmzetgroepMapper extends AbstractMapper
     ): ArtikelOmzetgroep {
         $data = empty($data) ? $this->responseData : $data;
 
-        /**
-         * @var ArtikelOmzetgroep $artikelOmzetgroep
-         */
         $artikelOmzetgroep = $this->mapArrayDataToModel($artikelOmzetgroep, $data);
+        assert($artikelOmzetgroep instanceof ArtikelOmzetgroep);
 
         return $artikelOmzetgroep;
     }

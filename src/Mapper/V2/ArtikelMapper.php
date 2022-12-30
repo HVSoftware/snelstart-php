@@ -21,6 +21,8 @@ use SnelstartPHP\Model\V2\Prijsafspraak;
 use SnelstartPHP\Model\V2\Relatie;
 use SnelstartPHP\Model\V2\SubArtikel;
 
+use function assert;
+
 final class ArtikelMapper extends AbstractMapper
 {
     public function find(ResponseInterface $response): Artikel|null
@@ -55,10 +57,8 @@ final class ArtikelMapper extends AbstractMapper
     {
         $data = empty($data) ? $this->responseData : $data;
 
-        /**
-         * @var Artikel $artikel
-         */
         $artikel = $this->mapArrayDataToModel($artikel, $data);
+        assert($artikel instanceof Artikel);
 
         if (isset($data["prijsafspraak"])) {
             $artikel->setPrijsAfspraak($this->mapPrijsAfspraakToArtikelInstance($data["prijsafspraak"]));

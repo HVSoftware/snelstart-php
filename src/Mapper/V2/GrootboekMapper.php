@@ -18,6 +18,7 @@ use SnelstartPHP\Model\Type\Rekeningcode;
 use SnelstartPHP\Model\V2 as Model;
 
 use function array_map;
+use function assert;
 
 final class GrootboekMapper extends AbstractMapper
 {
@@ -39,10 +40,8 @@ final class GrootboekMapper extends AbstractMapper
     {
         $data = empty($data) ? $this->responseData : $data;
 
-        /**
-         * @var Model\Grootboek $grootboek
-         */
         $grootboek = $this->mapArrayDataToModel($grootboek, $data);
+        assert($grootboek instanceof Model\Grootboek);
 
         if (isset($data["rekeningCode"])) {
             $grootboek->setRekeningCode(new Rekeningcode($data["rekeningCode"]));

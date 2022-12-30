@@ -13,6 +13,8 @@ use Psr\Http\Message\ResponseInterface;
 use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\V2\Document;
 
+use function assert;
+
 final class DocumentMapper extends AbstractMapper
 {
     public function find(ResponseInterface $response): Document|null
@@ -40,10 +42,8 @@ final class DocumentMapper extends AbstractMapper
     {
         $data = empty($data) ? $this->responseData : $data;
 
-        /**
-         * @var Document $document
-         */
         $document = $this->mapArrayDataToModel(new Document(), $data);
+        assert($document instanceof Document);
 
         return $document;
     }

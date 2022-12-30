@@ -24,6 +24,7 @@ use SnelstartPHP\Model\V2\VerkooporderRegel;
 use SnelstartPHP\Model\V2\Verkoopordersjabloon;
 
 use function array_map;
+use function assert;
 
 final class VerkooporderMapper extends AbstractMapper
 {
@@ -39,10 +40,8 @@ final class VerkooporderMapper extends AbstractMapper
         $data = empty($data) ? $this->responseData : $data;
         $adresMapper = new AdresMapper();
 
-        /**
-         * @var Verkooporder $verkooporder
-         */
         $verkooporder = $this->mapArrayDataToModel($verkooporder, $data);
+        assert($verkooporder instanceof Verkooporder);
         $verkooporder->setRelatie(Relatie::createFromUUID(Uuid::fromString($data["relatie"]["id"])))
             ->setProcesStatus(new ProcesStatus($data["procesStatus"]));
 

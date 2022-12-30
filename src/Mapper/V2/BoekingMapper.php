@@ -31,6 +31,7 @@ use SnelstartPHP\Model\V2\Verkoopboeking;
 use SnelstartPHP\Model\V2\Verkoopfactuur;
 
 use function array_map;
+use function assert;
 
 final class BoekingMapper extends AbstractMapper
 {
@@ -136,10 +137,8 @@ final class BoekingMapper extends AbstractMapper
     {
         $data = empty($data) ? $this->responseData : $data;
 
-        /**
-         * @var Inkoopboeking $inkoopboeking
-         */
         $inkoopboeking = $this->mapBoekingResult($inkoopboeking, $data);
+        assert($inkoopboeking instanceof Inkoopboeking);
 
         if (isset($data["leverancier"])) {
             $inkoopboeking->setLeverancier(Relatie::createFromUUID(Uuid::fromString($data["leverancier"]["id"])));
@@ -155,10 +154,8 @@ final class BoekingMapper extends AbstractMapper
     {
         $data = empty($data) ? $this->responseData : $data;
 
-        /**
-         * @var Verkoopboeking $verkoopboeking
-         */
         $verkoopboeking = $this->mapBoekingResult($verkoopboeking, $data);
+        assert($verkoopboeking instanceof Verkoopboeking);
 
         if (isset($data["klant"])) {
             $verkoopboeking->setKlant(Relatie::createFromUUID(Uuid::fromString($data["klant"]["id"])));
@@ -276,10 +273,8 @@ final class BoekingMapper extends AbstractMapper
     {
         $data = empty($data) ? $this->responseData : $data;
 
-        /**
-         * @var Boeking $boeking
-         */
         $boeking = $this->mapArrayDataToModel($boeking, $data);
+        assert($boeking instanceof Boeking);
 
         if (isset($data["modifiedOn"])) {
             $boeking->setModifiedOn(new DateTimeImmutable($data["modifiedOn"]));

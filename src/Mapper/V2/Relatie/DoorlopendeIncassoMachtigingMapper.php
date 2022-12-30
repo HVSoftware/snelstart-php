@@ -13,6 +13,8 @@ use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\V2\Relatie;
 use SnelstartPHP\Model\V2\Relatie\DoorlopendeIncassoMachtiging;
 
+use function assert;
+
 final class DoorlopendeIncassoMachtigingMapper extends AbstractMapper
 {
     public function findByRelatie(ResponseInterface $response): Generator
@@ -32,10 +34,8 @@ final class DoorlopendeIncassoMachtigingMapper extends AbstractMapper
         array $data = [],
     ): DoorlopendeIncassoMachtiging {
         $data = empty($data) ? $this->responseData : $data;
-        /**
- * @var DoorlopendeIncassoMachtiging $object
-*/
         $object = $this->mapArrayDataToModel($doorlopendeIncassoMachtiging, $data);
+        assert($object instanceof DoorlopendeIncassoMachtiging);
 
         if (isset($data["afsluitDatum"])) {
             try {
