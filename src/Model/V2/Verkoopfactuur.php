@@ -52,9 +52,7 @@ final class Verkoopfactuur extends SnelstartObject
      */
     private Money|null $factuurBedrag = null;
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     public static array $editableAttributes = [
         "verkoopBoeking",
         "openstaandSaldo",

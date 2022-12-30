@@ -33,14 +33,10 @@ use const E_USER_DEPRECATED;
 
 abstract class AbstractMapper
 {
-    /**
-     * @var array
-     */
+    /** @var array */
     protected array $responseData = [];
 
-    /**
-     * @deprecated This will be deprecated starting from April 1st 2020
-     */
+    /** @deprecated This will be deprecated starting from April 1st 2020 */
     final public function __construct(ResponseInterface|null $response = null)
     {
         if ($response !== null) {

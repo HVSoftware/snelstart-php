@@ -20,9 +20,7 @@ final class DoorlopendeIncassoMachtiging extends SnelstartObject
 
     private DateTimeImmutable|null $intrekkingsDatum = null;
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     public static array $editableAttributes = [
         "kenmerk",
         "afsluitDatum",

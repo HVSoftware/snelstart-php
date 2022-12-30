@@ -32,9 +32,7 @@ final class LandConnector extends BaseConnector
         }
     }
 
-    /**
-     * @return iterable<Land>
-     */
+    /** @return iterable<Land> */
     public function findAll(): iterable
     {
         $mapper = new LandMapper();

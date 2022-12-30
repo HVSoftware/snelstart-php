@@ -20,9 +20,7 @@ final class Artikel extends SnelstartObject
 {
     private bool|null $isHoofdartikel = null;
 
-    /**
-     * @var SubArtikel[]
-     */
+    /** @var SubArtikel[] */
     private array $subArtikelen = [];
 
     private Prijsafspraak|null $prijsafspraak = null;
@@ -58,9 +56,7 @@ final class Artikel extends SnelstartObject
 
     private float $vrijeVoorraad;
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     public static array $editableAttributes = [
         "artikelcode",
         "omschrijving",
@@ -80,9 +76,7 @@ final class Artikel extends SnelstartObject
         return $this->isHoofdartikel;
     }
 
-    /**
-     * @return SubArtikel[]
-     */
+    /** @return SubArtikel[] */
     public function getSubArtikelen(): iterable
     {
         return $this->subArtikelen;

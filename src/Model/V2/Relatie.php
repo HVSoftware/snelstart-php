@@ -159,14 +159,10 @@ final class Relatie extends SnelstartObject
 
     private FactuurRelatie|null $factuurRelatie = null;
 
-    /**
-     * @var NaamWaarde[]
-     */
+    /** @var NaamWaarde[] */
     private array $extraVeldenKlant = [];
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     public static array $editableAttributes = [
         "id",
         "modifiedOn",
@@ -214,17 +210,13 @@ final class Relatie extends SnelstartObject
         return $this;
     }
 
-    /**
-     * @return Types\Relatiesoort[]
-     */
+    /** @return Types\Relatiesoort[] */
     public function getRelatiesoort(): array
     {
         return $this->relatiesoort ?? [];
     }
 
-    /**
-     * @param Types\Relatiesoort[] $relatiesoort
-     */
+    /** @param Types\Relatiesoort[] $relatiesoort */
     public function setRelatiesoort(Types\Relatiesoort ...$relatiesoort): self
     {
         $this->relatiesoort = $relatiesoort;

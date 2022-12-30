@@ -9,9 +9,7 @@ use function array_unique;
 
 abstract class BaseObject
 {
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     public static array $editableAttributes = [];
 
     public static function getEditableAttributes(): array

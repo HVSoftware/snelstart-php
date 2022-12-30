@@ -30,9 +30,7 @@ final class ArtikelOmzetgroepConnector extends BaseConnector
         }
     }
 
-    /**
-     * @return iterable<ArtikelOmzetgroep>
-     */
+    /** @return iterable<ArtikelOmzetgroep> */
     public function findAll(): iterable
     {
         $mapper = new ArtikelOmzetgroepMapper();

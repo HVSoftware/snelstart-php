@@ -18,9 +18,7 @@ final class BtwTarief extends BaseObject
 
     private DateTimeImmutable $datumTotEnMet;
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     public static array $editableAttributes = [];
 
     public function getBtwSoort(): BtwSoort
@@ -28,9 +26,7 @@ final class BtwTarief extends BaseObject
         return $this->btwSoort;
     }
 
-    /**
-     * @return $this
-     */
+    /** @return $this */
     public function setBtwSoort(BtwSoort $btwSoort): self
     {
         $this->btwSoort = $btwSoort;
@@ -43,9 +39,7 @@ final class BtwTarief extends BaseObject
         return $this->btwPercentage;
     }
 
-    /**
-     * @return $this
-     */
+    /** @return $this */
     public function setBtwPercentage(float $btwPercentage): self
     {
         $this->btwPercentage = $btwPercentage;
@@ -58,9 +52,7 @@ final class BtwTarief extends BaseObject
         return $this->datumVanaf;
     }
 
-    /**
-     * @return $this
-     */
+    /** @return $this */
     public function setDatumVanaf(DateTimeImmutable $datumVanaf): self
     {
         $this->datumVanaf = $datumVanaf;
@@ -73,9 +65,7 @@ final class BtwTarief extends BaseObject
         return $this->datumTotEnMet;
     }
 
-    /**
-     * @return $this
-     */
+    /** @return $this */
     public function setDatumTotEnMet(DateTimeImmutable $datumTotEnMet): self
     {
         $this->datumTotEnMet = $datumTotEnMet;

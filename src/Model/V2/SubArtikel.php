@@ -17,9 +17,7 @@ final class SubArtikel extends SnelstartObject
 
     private float|null $aantal = null;
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     public static array $editableAttributes = [
         "artikelcode",
         "aantal",

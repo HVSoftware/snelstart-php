@@ -36,9 +36,7 @@ final class GrootboekConnector extends BaseConnector
         }
     }
 
-    /**
-     * @return iterable<Model\Grootboek>
-     */
+    /** @return iterable<Model\Grootboek> */
     public function findAll(
         ODataRequestDataInterface|null $ODataRequestData = null,
         bool $fetchAll = false,

@@ -43,9 +43,7 @@ final class BoekingMapper extends AbstractMapper
         return $this->mapInkoopboekingResult(new Inkoopboeking());
     }
 
-    /**
-     * @throws Exception
-     */
+    /** @throws Exception */
     public function findVerkoopboeking(ResponseInterface $response): Verkoopboeking
     {
         $this->setResponseData($response);
@@ -53,9 +51,7 @@ final class BoekingMapper extends AbstractMapper
         return $this->mapVerkoopboekingResult(new Verkoopboeking());
     }
 
-    /**
-     * @throws Exception
-     */
+    /** @throws Exception */
     public function findAllInkoopboekingen(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
@@ -63,9 +59,7 @@ final class BoekingMapper extends AbstractMapper
         yield from $this->mapManyResultsToSubMappers(Inkoopboeking::class);
     }
 
-    /**
-     * @throws Exception
-     */
+    /** @throws Exception */
     public function findAllInkoopfacturen(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
@@ -73,9 +67,7 @@ final class BoekingMapper extends AbstractMapper
         return $this->mapManyResultsToSubMappers(Inkoopfactuur::class);
     }
 
-    /**
-     * @throws Exception
-     */
+    /** @throws Exception */
     public function findAllVerkoopboekingen(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
@@ -83,9 +75,7 @@ final class BoekingMapper extends AbstractMapper
         yield from $this->mapManyResultsToSubMappers(Verkoopboeking::class);
     }
 
-    /**
-     * @throws Exception
-     */
+    /** @throws Exception */
     public function findAllVerkoopfacturen(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
@@ -107,9 +97,7 @@ final class BoekingMapper extends AbstractMapper
         return $this->mapInkoopboekingResult(new Inkoopboeking());
     }
 
-    /**
-     * @throws Exception
-     */
+    /** @throws Exception */
     public function updateVerkoopboeking(ResponseInterface $response): Verkoopboeking
     {
         $this->setResponseData($response);
@@ -117,9 +105,7 @@ final class BoekingMapper extends AbstractMapper
         return $this->mapVerkoopboekingResult(new Verkoopboeking());
     }
 
-    /**
-     * @throws Exception
-     */
+    /** @throws Exception */
     public function addVerkoopboeking(ResponseInterface $response): Verkoopboeking
     {
         $this->setResponseData($response);
@@ -148,9 +134,7 @@ final class BoekingMapper extends AbstractMapper
         return $inkoopboeking;
     }
 
-    /**
-     * @throws Exception
-     */
+    /** @throws Exception */
     protected function mapVerkoopboekingResult(Verkoopboeking $verkoopboeking, array $data = []): Verkoopboeking
     {
         $data = empty($data) ? $this->responseData : $data;
@@ -189,9 +173,7 @@ final class BoekingMapper extends AbstractMapper
         return $verkoopboeking;
     }
 
-    /**
-     * @throws Exception
-     */
+    /** @throws Exception */
     protected function mapVerkoopfactuurResult(Verkoopfactuur $verkoopfactuur, array $data = []): Verkoopfactuur
     {
         $data = empty($data) ? $this->responseData : $data;
@@ -228,9 +210,7 @@ final class BoekingMapper extends AbstractMapper
         return $verkoopfactuur;
     }
 
-    /**
-     * @throws Exception
-     */
+    /** @throws Exception */
     protected function mapInkoopfactuurResult(Model\Inkoopfactuur $inkoopfactuur, array $data = []): Inkoopfactuur
     {
         $data = empty($data) ? $this->responseData : $data;
@@ -267,9 +247,7 @@ final class BoekingMapper extends AbstractMapper
         return $inkoopfactuur;
     }
 
-    /**
-     * @throws Exception
-     */
+    /** @throws Exception */
     protected function mapBoekingResult(Boeking $boeking, array $data = []): Boeking
     {
         $data = empty($data) ? $this->responseData : $data;
@@ -346,9 +324,7 @@ final class BoekingMapper extends AbstractMapper
         return $boeking;
     }
 
-    /**
-     * @throws Exception
-     */
+    /** @throws Exception */
     public function mapManyResultsToSubMappers(string $className): Generator
     {
         foreach ($this->responseData as $boekingData) {

@@ -27,9 +27,7 @@ final class Kostenplaats extends SnelstartObject
      */
     private int $nummer;
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     public static array $editableAttributes = [
         "omschrijving",
         "nonactief",

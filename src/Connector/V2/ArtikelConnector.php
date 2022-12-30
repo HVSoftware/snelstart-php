@@ -38,9 +38,7 @@ final class ArtikelConnector extends BaseConnector
         }
     }
 
-    /**
-     * @return iterable<Model\Artikel>
-     */
+    /** @return iterable<Model\Artikel> */
     public function findAll(
         ODataRequestData|null $ODataRequestData = null,
         bool $fetchAll = false,

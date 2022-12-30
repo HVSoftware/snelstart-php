@@ -21,9 +21,7 @@ use function count;
 
 final class AdresMapper extends AbstractMapper
 {
-    /**
-     * @throws InvalidMapperDataException
-     */
+    /** @throws InvalidMapperDataException */
     public function mapAdresToSnelstartObject(array $data): Adres
     {
         $mandatoryParameters = ["contactpersoon", "straat", "postcode", "plaats", "land"];

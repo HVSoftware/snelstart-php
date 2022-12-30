@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-/**
- * @author IntoWebDevelopment <info@intowebdevelopment.nl>
- */
+/** @author IntoWebDevelopment <info@intowebdevelopment.nl> */
 
 namespace SnelstartPHP\Model\Type;
 

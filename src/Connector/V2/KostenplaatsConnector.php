@@ -31,12 +31,12 @@ final class KostenplaatsConnector extends BaseConnector
         }
     }
 
-    /**
-     * @return iterable<Kostenplaats>
-     */
+    /** @return iterable<Kostenplaats> */
     public function findAll(): iterable
     {
-        yield from (new Mapper\KostenplaatsMapper())->findAll($this->connection->doRequest((new Request\KostenplaatsRequest())->findAll()));
+        yield from (new Mapper\KostenplaatsMapper())->findAll(
+            $this->connection->doRequest((new Request\KostenplaatsRequest())->findAll())
+        );
     }
 
     public function add(Kostenplaats $kostenplaats): Kostenplaats
@@ -45,7 +45,9 @@ final class KostenplaatsConnector extends BaseConnector
             throw PreValidationException::unexpectedIdException();
         }
 
-        return (new Mapper\KostenplaatsMapper())->add($this->connection->doRequest((new Request\KostenplaatsRequest())->add($kostenplaats)));
+        return (new Mapper\KostenplaatsMapper())->add(
+            $this->connection->doRequest((new Request\KostenplaatsRequest())->add($kostenplaats))
+        );
     }
 
     public function update(Kostenplaats $kostenplaats): Kostenplaats
@@ -54,7 +56,9 @@ final class KostenplaatsConnector extends BaseConnector
             throw PreValidationException::shouldHaveAnIdException();
         }
 
-        return (new Mapper\KostenplaatsMapper())->update($this->connection->doRequest((new Request\KostenplaatsRequest())->update($kostenplaats)));
+        return (new Mapper\KostenplaatsMapper())->update(
+            $this->connection->doRequest((new Request\KostenplaatsRequest())->update($kostenplaats))
+        );
     }
 
     public function delete(Kostenplaats $kostenplaats): void
@@ -63,6 +67,8 @@ final class KostenplaatsConnector extends BaseConnector
             throw PreValidationException::shouldHaveAnIdException();
         }
 
-        (new Mapper\KostenplaatsMapper())->delete($this->connection->doRequest((new Request\KostenplaatsRequest())->delete($kostenplaats)));
+        (new Mapper\KostenplaatsMapper())->delete(
+            $this->connection->doRequest((new Request\KostenplaatsRequest())->delete($kostenplaats))
+        );
     }
 }

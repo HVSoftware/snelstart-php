@@ -39,9 +39,7 @@ final class BoekingConnector extends BaseConnector
         }
     }
 
-    /**
-     * @return iterable<Model\Inkoopfactuur>
-     */
+    /** @return iterable<Model\Inkoopfactuur> */
     public function findInkoopfacturen(
         ODataRequestDataInterface|null $ODataRequestData = null,
         bool $fetchAll = false,

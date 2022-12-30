@@ -76,14 +76,10 @@ abstract class Boeking extends SnelstartObject
      */
     protected array|null $btw = null;
 
-    /**
-     * @var Document[]
-     */
+    /** @var Document[] */
     protected array $documents = [];
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     public static array $editableAttributes = [
         "id",
         "boekstuk",

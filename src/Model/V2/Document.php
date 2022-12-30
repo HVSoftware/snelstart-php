@@ -50,9 +50,7 @@ final class Document extends SnelstartObject
         return $this->content;
     }
 
-    /**
-     * @param string $content Should contain base64 encoded data
-     */
+    /** @param string $content Should contain base64 encoded data */
     public function setContent(string $content): self
     {
         $this->content = $content;

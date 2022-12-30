@@ -39,9 +39,7 @@ final class AccessTokenConnection implements ConnectionInterface
         );
     }
 
-    /**
-     * @throws GuzzleException
-     */
+    /** @throws GuzzleException */
     public function doRequest(RequestInterface $request): ResponseInterface
     {
         try {

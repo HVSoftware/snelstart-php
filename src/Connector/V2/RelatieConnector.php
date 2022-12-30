@@ -49,9 +49,7 @@ final class RelatieConnector extends BaseConnector
         );
     }
 
-    /**
-     * @return iterable<Model\Relatie>
-     */
+    /** @return iterable<Model\Relatie> */
     public function findAll(
         ODataRequestDataInterface|null $ODataRequestData = null,
         bool $fetchAll = false,

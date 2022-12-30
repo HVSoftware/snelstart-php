@@ -17,9 +17,7 @@ use IteratorAggregate;
 
 final class ApiSubscriptionKey implements IteratorAggregate
 {
-    /**
-     * @var array
-     */
+    /** @var array */
     private array $keys = [];
 
     public function __construct(string $primaryKey, string $secondaryKey)

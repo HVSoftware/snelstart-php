@@ -77,9 +77,7 @@ final class BoekingRequest extends BaseRequest
         );
     }
 
-    /**
-     * @deprecated Please see DocumentRequest
-     */
+    /** @deprecated Please see DocumentRequest */
     public function addAttachmentToInkoopboeking(
         Model\Inkoopboeking $inkoopboeking,
         Model\Document $document,
@@ -93,9 +91,7 @@ final class BoekingRequest extends BaseRequest
         return (new DocumentRequest($this->serializer))->addInkoopBoekingDocument($document, $inkoopboeking);
     }
 
-    /**
-     * @deprecated Please see DocumentRequest
-     */
+    /** @deprecated Please see DocumentRequest */
     public function addAttachmentToVerkoopboeking(
         Model\Verkoopboeking $verkoopboeking,
         Model\Document $document,

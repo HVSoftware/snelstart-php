@@ -37,9 +37,7 @@ final class VerkooporderRegel extends BaseObject
 
     private Money|null $totaal = null;
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     public static array $editableAttributes = [
         "artikel",
         "omschrijving",

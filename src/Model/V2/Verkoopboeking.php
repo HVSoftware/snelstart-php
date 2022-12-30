@@ -36,9 +36,7 @@ final class Verkoopboeking extends Boeking
      */
     private IncassoMachtiging|null $doorlopendeIncassoMachtiging = null;
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     public static array $editableAttributes = [
         "klant",
         "betalingstermijn",

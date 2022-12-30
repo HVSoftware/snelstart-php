@@ -47,9 +47,7 @@ final class Inkoopfactuur extends SnelstartObject
      */
     private Money|null $factuurBedrag = null;
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     public static array $editableAttributes = [
         "inkoopBoeking",
         "openstaandSaldo",

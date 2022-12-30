@@ -31,9 +31,7 @@ final class Prijsafspraak extends BaseObject
 
     private PrijsBepalingSoort $prijsBepalingSoort;
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     public static array $editableAttributes = [];
 
     public function getRelatie(): Relatie|null

@@ -26,9 +26,7 @@ final class ArtikelOmzetgroep extends SnelstartObject
      */
     private string|null $omschrijving = null;
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     public static array $editableAttributes = [
         "nummer",
         "omschrijving",

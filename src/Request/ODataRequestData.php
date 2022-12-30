@@ -23,14 +23,10 @@ use const PHP_QUERY_RFC3986;
 
 final class ODataRequestData implements ODataRequestDataInterface
 {
-    /**
-     * @var array
-     */
+    /** @var array */
     private array $filter = [];
 
-    /**
-     * @var array
-     */
+    /** @var array */
     private array $apply = [];
 
     private int $top = Snelstart::MAX_RESULTS;

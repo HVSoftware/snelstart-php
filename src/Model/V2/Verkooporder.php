@@ -82,9 +82,7 @@ final class Verkooporder extends SnelstartObject
 
     private Kostenplaats|null $kostenplaats = null;
 
-    /**
-     * @var VerkooporderRegel[]|null
-     */
+    /** @var VerkooporderRegel[]|null */
     private array|null $regels = null;
 
     private string|null $memo = null;
@@ -110,9 +108,7 @@ final class Verkooporder extends SnelstartObject
 
     private Money|null $totaalInclusiefBtw = null;
 
-    /**
-     * @var string[]
-     */
+    /** @var string[] */
     public static array $editableAttributes = [
         "relatie",
         "procesStatus",
@@ -305,9 +301,7 @@ final class Verkooporder extends SnelstartObject
         return $this;
     }
 
-    /**
-     * @return VerkooporderRegel[]
-     */
+    /** @return VerkooporderRegel[] */
     public function getRegels(): iterable|null
     {
         return $this->regels;
