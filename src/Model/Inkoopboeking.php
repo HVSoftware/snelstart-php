@@ -4,7 +4,7 @@
  * @project SnelstartApiPHP
  */
 
-namespace SnelstartPHP\Model\V2;
+namespace SnelstartPHP\Model;
 
 final class Inkoopboeking extends Boeking
 {
