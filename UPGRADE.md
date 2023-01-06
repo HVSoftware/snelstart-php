@@ -78,13 +78,13 @@ $connection = new \SnelstartPHP\Secure\V2Connector(
     $accessToken
 );
 
-$boekingConnector = new \SnelstartPHP\Connector\V2\BoekingConnector($connection);
-$grootboekConnector = new \SnelstartPHP\Connector\V2\GrootboekConnector($connection);
-$leverancierConnector = new \SnelstartPHP\Connector\V2\RelatieConnector($connection);
+$boekingConnector = new \SnelstartPHP\Connector\BoekingConnector($connection);
+$grootboekConnector = new \SnelstartPHP\Connector\GrootboekConnector($connection);
+$leverancierConnector = new \SnelstartPHP\Connector\RelatieConnector($connection);
 $leverancier = null;
 
 /**
- * @var \SnelstartPHP\Model\V2\Relatie $leverancier
+ * @var \SnelstartPHP\Model\Relatie $leverancier
  */
 foreach ($leverancierConnector->findAllLeveranciers() as $leverancier) {
     break;
@@ -100,7 +100,7 @@ $invoiceAmountIncl = \Money\Money::EUR(1210);
 // 21% tax
 $invoiceAmountExcl = $invoiceAmountIncl->divide(121)->multiply(100);
 
-$inkoopboeking = new \SnelstartPHP\Model\V2\Inkoopboeking();
+$inkoopboeking = new \SnelstartPHP\Model\Inkoopboeking();
 $inkoopboeking->setLeverancier($leverancier)
     ->setFactuurdatum(new \DateTimeImmutable())
     ->setFactuurnummer("inkoop-factuur-1")

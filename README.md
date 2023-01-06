@@ -40,10 +40,10 @@ _Please note that there is also a class named `SnelstartPHP\Secure\CachedAccessT
 We implemented the `EchoConnector` to test to see if you are authenticated.
 
 ## Fetch data
-For an example see ``var/doc/v2/inkoopboeking_find_all.php``
+For an example see ``var/doc/inkoopboeking_find_all.php``
 
 ## Add data
-For an example see ``var/doc/v2/inkoopboeking_add.php``
+For an example see ``var/doc/inkoopboeking_add.php``
 
 ## Supported resources
 Not all resources are currently implemented. Feel free to create a pull request.
