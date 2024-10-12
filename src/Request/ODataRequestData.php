@@ -1,40 +1,39 @@
 <?php
+
+declare(strict_types=1);
+
 /**
+ * @see     https://b2bapi-developer.snelstart.nl/odata
+ *
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
- * @see     https://b2bapi-developer.snelstart.nl/odata
  */
 
 namespace SnelstartPHP\Request;
 
+use BadMethodCallException;
 use SnelstartPHP\Snelstart;
+
+use function http_build_query;
+use function implode;
+use function in_array;
+use function sprintf;
+
+use const PHP_QUERY_RFC3986;
 
 final class ODataRequestData implements ODataRequestDataInterface
 {
-    /**
-     * @var array
-     */
-    private $filter = [];
+    /** @var array */
+    private array $filter = [];
 
-    /**
-     * @var array
-     */
-    private $apply = [];
+    /** @var array */
+    private array $apply = [];
 
-    /**
-     * @var int
-     */
-    private $top = Snelstart::MAX_RESULTS;
+    private int $top = Snelstart::MAX_RESULTS;
 
-    /**
-     * @var int
-     */
-    private $skip = 0;
+    private int $skip = 0;
 
-    /**
-     * @var string
-     */
-    private $filterMode = self::FILTER_MODE_AND;
+    private string $filterMode = self::FILTER_MODE_AND;
 
     /**
      * Use 'or' when combining multiple filters.
@@ -55,8 +54,8 @@ final class ODataRequestData implements ODataRequestDataInterface
     {
         $this->filter = $filter;
 
-        if (!\in_array($mode, [ self::FILTER_MODE_OR, self::FILTER_MODE_AND ])) {
-            throw new \BadMethodCallException("We expected either 'and' or 'or'.");
+        if (! in_array($mode, [self::FILTER_MODE_OR, self::FILTER_MODE_AND])) {
+            throw new BadMethodCallException("We expected either 'and' or 'or'.");
         }
 
         $this->filterMode = $mode;
@@ -104,19 +103,19 @@ final class ODataRequestData implements ODataRequestDataInterface
     {
         $collection = [];
 
-        if (!empty($this->getFilter())) {
+        if (! empty($this->getFilter())) {
             $collection['$filter'] = implode(sprintf(" %s ", $this->filterMode), $this->getFilter());
         }
 
-        if (!empty($this->getTop())) {
+        if (! empty($this->getTop())) {
             $collection['$top'] = $this->getTop();
         }
 
-        if (!empty($this->getSkip())) {
+        if (! empty($this->getSkip())) {
             $collection['$skip'] = $this->getSkip();
         }
 
-        if (!empty($this->getApply())) {
+        if (! empty($this->getApply())) {
             $collection['$apply'] = $this->getApply();
         }
 
@@ -124,6 +123,6 @@ final class ODataRequestData implements ODataRequestDataInterface
             return "";
         }
 
-        return \http_build_query($collection, "", "&", \PHP_QUERY_RFC3986);
+        return http_build_query($collection, "", "&", PHP_QUERY_RFC3986);
     }
 }

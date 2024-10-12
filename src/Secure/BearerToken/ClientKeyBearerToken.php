@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -8,14 +11,8 @@ namespace SnelstartPHP\Secure\BearerToken;
 
 final class ClientKeyBearerToken implements BearerTokenInterface
 {
-    /**
-     * @var string
-     */
-    private $clientKey;
-
-    public function __construct(string $clientKey)
+    public function __construct(private string $clientKey)
     {
-        $this->clientKey = $clientKey;
     }
 
     public function getFormParams(): array

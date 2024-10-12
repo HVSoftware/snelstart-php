@@ -2,7 +2,9 @@
 
 namespace SnelstartPHP\Tests\Request;
 
+use DateTimeImmutable;
 use Money\Money;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
@@ -12,9 +14,9 @@ use SnelstartPHP\Serializer\RequestSerializerInterface;
 use SnelstartPHP\Tests\stubs\SimpleRequestObjectStub;
 use SnelstartPHP\Tests\stubs\SimpleRequestStub;
 
-class BaseRequestTest extends TestCase
+final class BaseRequestTest extends TestCase
 {
-    private $requestSerializer;
+    private RequestSerializerInterface|MockObject $requestSerializer;
 
     public function setUp(): void
     {
@@ -52,10 +54,13 @@ class BaseRequestTest extends TestCase
     public function testIfSerializationIsCallingAllMethodsDependingOnInput()
     {
         $uuid = Uuid::uuid4();
-        $dateTime = new \DateTimeImmutable();
+        $dateTime = new DateTimeImmutable();
         $money = Money::EUR(1000);
         $array = [
-            (new class extends SnelstartObject {})
+            (
+                new class extends SnelstartObject {
+                }
+            )
         ];
 
         $inputObject = new class($uuid, $money, $dateTime, $array) extends BaseObject {
@@ -138,7 +143,7 @@ class BaseRequestTest extends TestCase
         $object::$editableAttributes = [ "simpleValue" ];
 
         $this->assertNotEmpty($object::getEditableAttributes());
-        $this->assertEquals($request->prepareAddOrEditRequestForSerialization($object), [ "simpleValue" => "test" ]);
+        $this->assertEquals([ "simpleValue" => "test" ], $request->prepareAddOrEditRequestForSerialization($object));
     }
 
     public function testNullValueRequestSerialization(): void
@@ -156,7 +161,7 @@ class BaseRequestTest extends TestCase
         $object = new SimpleRequestObjectStub;
         $object::$editableAttributes = [ "integerValue" ];
 
-        $this->assertEquals($request->prepareAddOrEditRequestForSerialization($object), [ "integerValue" => 1 ]);
+        $this->assertEquals([ "integerValue" => 1 ], $request->prepareAddOrEditRequestForSerialization($object));
     }
 
     public function testBooleanValueRequestSerialization(): void
@@ -165,6 +170,6 @@ class BaseRequestTest extends TestCase
         $object = new SimpleRequestObjectStub;
         $object::$editableAttributes = [ "booleanValue" ];
 
-        $this->assertEquals($request->prepareAddOrEditRequestForSerialization($object), [ "booleanValue" => false ]);
+        $this->assertEquals([ "booleanValue" => false ], $request->prepareAddOrEditRequestForSerialization($object));
     }
 }

@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -6,41 +9,32 @@
 
 namespace SnelstartPHP\Secure;
 
+use DateTime;
+use DateTimeZone;
+use InvalidArgumentException;
+use JsonSerializable;
 use SnelstartPHP\Secure\BearerToken\BearerTokenInterface;
 
-final class AccessToken implements \JsonSerializable
+use function is_numeric;
+
+final class AccessToken implements JsonSerializable
 {
-    /**
-     * @var string
-     */
-    protected $accessToken;
+    protected string $accessToken;
 
-    /**
-     * @var string
-     */
-    protected $tokenType;
+    protected string $tokenType;
 
-    /**
-     * @var int
-     */
-    protected $expires;
+    protected int $expires;
 
-    /**
-     * @var BearerTokenInterface
-     */
-    protected $bearerToken;
-
-    public function __construct(array $options, BearerTokenInterface $bearerToken)
+    public function __construct(array $options, protected BearerTokenInterface $bearerToken)
     {
         if (empty($options['access_token'])) {
-            throw new \InvalidArgumentException('Required option not passed: "access_token"');
+            throw new InvalidArgumentException('Required option not passed: "access_token"');
         }
 
-        if (empty($options['expires_in']) || !is_numeric($options['expires_in'])) {
-            throw new \InvalidArgumentException('expires_in value must be an integer');
+        if (empty($options['expires_in']) || ! is_numeric($options['expires_in'])) {
+            throw new InvalidArgumentException('expires_in value must be an integer');
         }
 
-        $this->bearerToken = $bearerToken;
         $this->accessToken = $options['access_token'];
         $this->tokenType = $options['token_type'] ?? 'bearer';
         $this->expires = $options['expires_in'] !== 0
@@ -50,7 +44,7 @@ final class AccessToken implements \JsonSerializable
 
     private function getCurrentUtcTimestamp(): int
     {
-        return (new \DateTime('now', new \DateTimeZone('UTC')))->getTimestamp();
+        return (new DateTime('now', new DateTimeZone('UTC')))->getTimestamp();
     }
 
     public function getExpiresIn(): int

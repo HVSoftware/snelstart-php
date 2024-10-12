@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -7,32 +10,31 @@
 namespace SnelstartPHP\Model;
 
 use Ramsey\Uuid\UuidInterface;
+use TypeError;
+
+use function array_merge;
+use function array_unique;
+use function method_exists;
 
 abstract class SnelstartObject extends BaseObject
 {
     /**
      * De publieke sleutel (public identifier, als uuid) dat uniek een object identificeert.
-     *
-     * @var UuidInterface
      */
-    protected $id;
+    protected UuidInterface|null $id = null;
 
     /**
      * Geeft de realtieve uri terug van het object waartoe de identifier behoort.
-     *
-     * @var string
      */
-    protected $uri;
+    protected string $uri;
 
     final public function __construct()
     {
     }
 
-    public static $editableAttributes = [
-        "id"
-    ];
+    public static array $editableAttributes = ['id'];
 
-    public function getId(): ?UuidInterface
+    public function getId(): UuidInterface|null
     {
         return $this->id;
     }
@@ -44,7 +46,7 @@ abstract class SnelstartObject extends BaseObject
         return $this;
     }
 
-    public function getUri(): ?string
+    public function getUri(): string|null
     {
         return $this->uri;
     }
@@ -58,7 +60,7 @@ abstract class SnelstartObject extends BaseObject
 
     public static function getEditableAttributes(): array
     {
-        return \array_unique(\array_merge(static::$editableAttributes, self::$editableAttributes));
+        return array_unique(array_merge(static::$editableAttributes, self::$editableAttributes));
     }
 
     /**
@@ -71,19 +73,20 @@ abstract class SnelstartObject extends BaseObject
 
         foreach (static::getEditableAttributes() as $editableAttribute) {
             try {
-                /**
- * @psalm-suppress RedundantCondition 
-*/
-                if ($editableAttribute !== "id" && $editableAttribute !== "url" && !$hydrated) {
-                    $possibleMethodNames = [ "get{$editableAttribute}", $editableAttribute ];
+                /** @psalm-suppress RedundantCondition */
+                if ($editableAttribute !== "id" && $editableAttribute !== "url" && ! $hydrated) {
+                    $possibleMethodNames = ["get{$editableAttribute}", $editableAttribute];
 
                     foreach ($possibleMethodNames as $possibleMethodName) {
-                        if (method_exists($this, $possibleMethodName) && ($hydrated = $this->{$possibleMethodName}() !== null)) {
+                        if (
+                            method_exists($this, $possibleMethodName) &&
+                            ($hydrated = $this->{$possibleMethodName}() !== null)
+                        ) {
                             return true;
                         }
                     }
                 }
-            } catch (\TypeError $e) {
+            } catch (TypeError) {
             }
         }
 

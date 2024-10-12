@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -6,30 +9,32 @@
 
 namespace SnelstartPHP\Model\V2;
 
+use function array_merge;
+use function array_unique;
+
 final class Inkoopboeking extends Boeking
 {
     /**
      * De leverancier/crediteur van wie de factuur afkomstig is.
-     *
-     * @var Relatie
      */
-    private $leverancier;
+    private Relatie $leverancier;
 
-    /**
-     * @var string[]
-     */
-    public static $editableAttributes = [
-        "leverancier",
-    ];
+    /** @var string[] */
+    public static array $editableAttributes = ['leverancier'];
 
     public static function getEditableAttributes(): array
     {
-        return \array_unique(
-            \array_merge(parent::$editableAttributes, parent::getEditableAttributes(), static::$editableAttributes, self::$editableAttributes)
+        return array_unique(
+            array_merge(
+                parent::$editableAttributes,
+                parent::getEditableAttributes(),
+                self::$editableAttributes,
+                self::$editableAttributes,
+            ),
         );
     }
 
-    public function getLeverancier(): ?Relatie
+    public function getLeverancier(): Relatie|null
     {
         return $this->leverancier;
     }

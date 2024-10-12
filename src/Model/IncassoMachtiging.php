@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -6,30 +9,23 @@
 
 namespace SnelstartPHP\Model;
 
-use Ramsey\Uuid\UuidInterface;
+use DateTimeInterface;
 
 final class IncassoMachtiging extends SnelstartObject
 {
-    /**
-     * @var string
-     */
-    private $kenmerk;
+    private string $kenmerk;
 
     /**
      * De omschrijving van de incassomachtiging.
      * Deze is verplicht bij een eenmalige machtiging.
-     *
-     * @var string
      */
-    private $omschrijving;
+    private string $omschrijving;
 
     /**
      * De datum van de incassomachtiging
      * Deze is verplicht bij een eenmalige machtiging.
-     *
-     * @var \DateTimeInterface
      */
-    private $datum;
+    private DateTimeInterface $datum;
 
     public function getKenmerk(): string
     {
@@ -55,12 +51,12 @@ final class IncassoMachtiging extends SnelstartObject
         return $this;
     }
 
-    public function getDatum(): \DateTimeInterface
+    public function getDatum(): DateTimeInterface
     {
         return $this->datum;
     }
 
-    public function setDatum(\DateTimeInterface $datum): IncassoMachtiging
+    public function setDatum(DateTimeInterface $datum): IncassoMachtiging
     {
         $this->datum = $datum;
 

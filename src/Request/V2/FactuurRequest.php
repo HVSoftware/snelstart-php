@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SnelstartPHP\Request\V2;
 
 use GuzzleHttp\Psr7\Request;
@@ -8,6 +10,8 @@ use SnelstartPHP\Exception\PreValidationException;
 use SnelstartPHP\Model\V2\Inkoopfactuur;
 use SnelstartPHP\Model\V2\Verkoopfactuur;
 use SnelstartPHP\Request\ODataRequestDataInterface;
+
+use function sprintf;
 
 final class FactuurRequest
 {
@@ -18,27 +22,27 @@ final class FactuurRequest
         }
 
         return new Request(
-            "GET", "inkoopfacturen/" . $inkoopfactuur->getId()->toString(), [
-            "Content-Type"  =>  "application/json",
-            ]
+            'GET',
+            'inkoopfacturen/' . $inkoopfactuur->getId()->toString(),
+            ['Content-Type' => 'application/json'],
         );
     }
 
     public function findInkoopfacturen(ODataRequestDataInterface $ODataRequestData): RequestInterface
     {
         return new Request(
-            "GET", "inkoopfacturen?" . $ODataRequestData->getHttpCompatibleQueryString(), [
-            "Content-Type"  =>  "application/json"
-            ]
+            'GET',
+            'inkoopfacturen?' . $ODataRequestData->getHttpCompatibleQueryString(),
+            ['Content-Type' => 'application/json'],
         );
     }
 
     public function findVerkoopfacturen(ODataRequestDataInterface $ODataRequestData): RequestInterface
     {
         return new Request(
-            "GET", "verkoopfacturen?" . $ODataRequestData->getHttpCompatibleQueryString(), [
-            "Content-Type"  =>  "application/json"
-            ]
+            'GET',
+            'verkoopfacturen?' . $ODataRequestData->getHttpCompatibleQueryString(),
+            ['Content-Type' => 'application/json'],
         );
     }
 
@@ -49,9 +53,9 @@ final class FactuurRequest
         }
 
         return new Request(
-            "GET", "verkoopfacturen/" . $verkoopfactuur->getId()->toString(), [
-            "Content-Type"  =>  "application/json",
-            ]
+            'GET',
+            'verkoopfacturen/' . $verkoopfactuur->getId()->toString(),
+            ['Content-Type' => 'application/json'],
         );
     }
 
@@ -61,6 +65,6 @@ final class FactuurRequest
             throw PreValidationException::shouldHaveAnIdException();
         }
 
-        return new Request("GET", sprintf("verkoopfacturen/%s/ubl", $verkoopfactuur->getId()->toString()));
+        return new Request('GET', sprintf('verkoopfacturen/%s/ubl', $verkoopfactuur->getId()->toString()));
     }
 }

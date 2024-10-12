@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -6,27 +9,39 @@
 
 namespace SnelstartPHP\Mapper;
 
+use DateTimeImmutable;
 use Money\Money;
 use Psr\Http\Message\ResponseInterface;
 use Ramsey\Uuid\Uuid;
 use SnelstartPHP\Model\SnelstartObject;
 use SnelstartPHP\Snelstart;
 use SnelstartPHP\Utils;
+use TypeError;
+
+use function floatval;
+use function intval;
+use function is_null;
+use function is_scalar;
+use function is_string;
+use function method_exists;
+use function strpos;
+use function substr;
+use function trigger_error;
+use function ucfirst;
+
+use const E_USER_DEPRECATED;
 
 abstract class AbstractMapper
 {
-    /**
-     * @var array
-     */
-    protected $responseData = [];
+    /** @var array */
+    protected array $responseData = [];
 
-    /**
-     * @deprecated This will be deprecated starting from April 1st 2020
-     */
-    final public function __construct(?ResponseInterface $response = null)
+    /** @deprecated This will be deprecated starting from April 1st 2020 */
+    final public function __construct(ResponseInterface|null $response = null)
     {
         if ($response !== null) {
-            @trigger_error("This will be deprecated starting from April 1st 2020", \E_USER_DEPRECATED);
+            @trigger_error("This will be deprecated starting from April 1st 2020", E_USER_DEPRECATED);
+
             return static::fromResponse($response);
         }
     }
@@ -34,9 +49,11 @@ abstract class AbstractMapper
     /**
      * Map the array data to the given class.
      *
-     * @template     T of SnelstartObject
      * @psalm-param  T $class
+     *
      * @psalm-return T
+     *
+     * @template     T of SnelstartObject
      */
     protected function mapArrayDataToModel(SnelstartObject $class, array $data = []): SnelstartObject
     {
@@ -53,9 +70,11 @@ abstract class AbstractMapper
     }
 
     /**
-     * @template     T of SnelstartObject
      * @psalm-param  T $class
+     *
      * @psalm-return T
+     *
+     * @template     T of SnelstartObject
      */
     protected function setDataToModel(SnelstartObject $class, string $key, $value): SnelstartObject
     {
@@ -65,10 +84,10 @@ abstract class AbstractMapper
         if ($key === "id" && is_string($value)) {
             $value = Uuid::fromString($value);
             $customSet = true;
-        } else if (substr($key, -2, 2) === "On" || strpos($key, "datum") !== false) {
-            $value = \DateTimeImmutable::createFromFormat(Snelstart::DATETIME_FORMAT, $value);
+        } elseif (substr($key, -2, 2) === "On" || strpos($key, "datum") !== false) {
+            $value = DateTimeImmutable::createFromFormat(Snelstart::DATETIME_FORMAT, $value);
 
-            if (!$value) {
+            if (! $value) {
                 $value = null;
             }
 
@@ -82,8 +101,7 @@ abstract class AbstractMapper
                     $class->{$methodName}($value);
                 }
             }
-        } catch (\TypeError $e) {
-
+        } catch (TypeError) {
         }
 
         return $class;

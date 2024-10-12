@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -6,99 +9,78 @@
 
 namespace SnelstartPHP\Model\V2;
 
+use DateTimeInterface;
 use Money\Money;
-use SnelstartPHP\Exception\BookingNotInBalanceException;
 use SnelstartPHP\Model\SnelstartObject;
 
 abstract class Boeking extends SnelstartObject
 {
     /**
      * Het tijdstip waarop het grootboek is aangemaakt of voor het laatst is gewijzigd
-     *
-     * @var \DateTimeInterface|null
      */
-    protected $modifiedOn;
+    protected DateTimeInterface|null $modifiedOn = null;
 
     /**
      * Het boekstuknummer van de boeking.
-     *
-     * @var string|null
      */
-    protected $boekstuk;
+    protected string|null $boekstuk = null;
 
     /**
      * Geeft aan of deze boeking is aangepast door de accountant.
-     *
-     * @var bool
      */
-    protected $gewijzigdDoorAccountant = false;
+    protected bool $gewijzigdDoorAccountant = false;
 
     /**
      * Deze boeking verdient speciale aandacht, in SnelStart wordt dit visueel benadrukt.
-     *
-     * @var bool
      */
-    protected $markering = false;
+    protected bool $markering = false;
 
     /**
      * De datum van de factuur, dit is ook de datum waarop de boeking wordt geboekt.
-     *
-     * @var \DateTimeInterface|null
      */
-    protected $factuurDatum;
+    protected DateTimeInterface|null $factuurDatum = null;
 
     /**
      * Het tijdstip waarop de factuur is of zal vervallen
-     *
-     * @var \DateTimeInterface|null
      */
-    protected $vervalDatum;
+    protected DateTimeInterface|null $vervalDatum = null;
 
     /**
      * De factuurnummer van de boeking.
-     *
-     * @var string
      */
-    protected $factuurnummer;
+    protected string $factuurnummer;
 
     /**
      * De omschrijving van de boeking.
-     *
-     * @var string|null
      */
-    protected $omschrijving;
+    protected string|null $omschrijving = null;
 
-    /**
-     * @var Money
-     */
-    protected $factuurbedrag;
+    protected Money $factuurbedrag;
 
     /**
      * De omzetregels van de boeking. De btw-bedragen staan hier niet in,
      * deze staan in de Btw-collectie.
      *
      * @see Boekingsregel
+     *
      * @var Boekingsregel[]
      */
-    protected $boekingsregels = [];
+    protected array $boekingsregels = [];
 
     /**
      * De af te dragen btw van de boeking per btw-tarief
      *
      * @see Btwregel
+     *
      * @var Btwregel[]|null
      */
-    protected $btw;
+    protected array|null $btw = null;
 
-    /**
-     * @var Document[]
-     */
-    protected $documents = [];
+    /** @var Document[] */
+    protected array $documents = [];
 
-    /**
-     * @var string[]
-     */
-    public static $editableAttributes = [
+    /** @var string[] */
+    public static array $editableAttributes = [
         "id",
         "boekstuk",
         "gewijzigdDoorAccountant",
@@ -113,24 +95,24 @@ abstract class Boeking extends SnelstartObject
         "documents",
     ];
 
-    public function getModifiedOn(): ?\DateTimeInterface
+    public function getModifiedOn(): DateTimeInterface|null
     {
         return $this->modifiedOn;
     }
 
-    public function setModifiedOn(?\DateTimeInterface $modifiedOn): self
+    public function setModifiedOn(DateTimeInterface|null $modifiedOn): self
     {
         $this->modifiedOn = $modifiedOn;
 
         return $this;
     }
 
-    public function getBoekstuk(): ?string
+    public function getBoekstuk(): string|null
     {
         return $this->boekstuk;
     }
 
-    public function setBoekstuk(?string $boekstuk): self
+    public function setBoekstuk(string|null $boekstuk): self
     {
         $this->boekstuk = $boekstuk;
 
@@ -161,24 +143,24 @@ abstract class Boeking extends SnelstartObject
         return $this;
     }
 
-    public function getFactuurdatum(): ?\DateTimeInterface
+    public function getFactuurdatum(): DateTimeInterface|null
     {
         return $this->factuurDatum;
     }
 
-    public function setFactuurdatum(?\DateTimeInterface $factuurDatum): self
+    public function setFactuurdatum(DateTimeInterface|null $factuurDatum): self
     {
         $this->factuurDatum = $factuurDatum;
 
         return $this;
     }
 
-    public function getVervaldatum(): ?\DateTimeInterface
+    public function getVervaldatum(): DateTimeInterface|null
     {
         return $this->vervalDatum;
     }
 
-    public function setVervaldatum(?\DateTimeInterface $vervalDatum): self
+    public function setVervaldatum(DateTimeInterface|null $vervalDatum): self
     {
         $this->vervalDatum = $vervalDatum;
 
@@ -197,12 +179,12 @@ abstract class Boeking extends SnelstartObject
         return $this;
     }
 
-    public function getOmschrijving(): ?string
+    public function getOmschrijving(): string|null
     {
         return $this->omschrijving;
     }
 
-    public function setOmschrijving(?string $omschrijving): self
+    public function setOmschrijving(string|null $omschrijving): self
     {
         $this->omschrijving = $omschrijving;
 

@@ -5,11 +5,12 @@ namespace SnelstartPHP\Tests\stubs;
 use Ramsey\Uuid\UuidInterface;
 use SnelstartPHP\Model\BaseObject;
 
-class SimpleRequestObjectStub extends BaseObject {
-    private $simpleValue = "test";
-    private $nullValue = null;
-    private $integerValue = 1;
-    private $booleanValue = false;
+class SimpleRequestObjectStub extends BaseObject
+{
+    private string $simpleValue = "test";
+    private ?string $nullValue = null;
+    private int $integerValue = 1;
+    private bool $booleanValue = false;
     private $id;
 
     public function getId(): UuidInterface
@@ -36,4 +37,4 @@ class SimpleRequestObjectStub extends BaseObject {
     {
         return $this->booleanValue;
     }
-};
+}

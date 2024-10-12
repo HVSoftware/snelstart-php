@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  OptiWise Technologies B.V. <info@optiwise.nl>
  * @project SnelstartApiPHP
@@ -6,92 +9,55 @@
 
 namespace SnelstartPHP\Model\V2;
 
+use DateTimeInterface;
 use Money\Money;
 use SnelstartPHP\Exception\PreValidationException;
 use SnelstartPHP\Model\SnelstartObject;
 
+use function mb_strlen;
+
 final class Artikel extends SnelstartObject
 {
-    /**
-     * @var bool|null
-     */
-    private $isHoofdartikel;
+    private bool|null $isHoofdartikel = null;
 
-    /**
-     * @var SubArtikel[]
-     */
-    private $subArtikelen = [];
+    /** @var SubArtikel[] */
+    private array $subArtikelen = [];
 
-    /**
-     * @var Prijsafspraak|null
-     */
-    private $prijsafspraak;
+    private Prijsafspraak|null $prijsafspraak = null;
 
-    /**
-     * @var string
-     */
-    private $artikelcode;
+    private string $artikelcode;
 
-    /**
-     * @var string
-     */
-    private $omschrijving;
+    private string $omschrijving;
 
     /**
      * Een container voor atrikel omzet groep informatie.
-     *
-     * @var ArtikelOmzetgroep
      */
-    private $artikelOmzetgroep;
+    private ArtikelOmzetgroep $artikelOmzetgroep;
 
-    /**
-     * @var Money
-     */
-    private $inkoopprijs;
+    private Money $inkoopprijs;
 
-    /**
-     * @var Money
-     */
-    private $verkoopprijs;
+    private Money $verkoopprijs;
 
-    /**
-     * @var string
-     */
-    private $eenheid;
+    private string $eenheid;
 
-    /**
-     * @var \DateTimeInterface
-     */
-    private $modifiedOn;
+    private DateTimeInterface $modifiedOn;
 
     /**
      * Een vlag dat aangeeft of een artikel niet meer actief is binnen de administratie.
-     *
-     * @var bool
      */
-    private $isNonActief;
+    private bool $isNonActief;
 
     /**
      * Een vlag dat aangeeft of voor een artikel wel of geen voorraad wordt bijgehouden.
-     *
-     * @var bool
      */
-    private $voorraadControle;
+    private bool $voorraadControle;
 
-    /**
-     * @var float
-     */
-    private $technischeVoorraad;
+    private float $technischeVoorraad;
 
-    /**
-     * @var float
-     */
-    private $vrijeVoorraad;
+    private float $vrijeVoorraad;
 
-    /**
-     * @var string[]
-     */
-    public static $editableAttributes = [
+    /** @var string[] */
+    public static array $editableAttributes = [
         "artikelcode",
         "omschrijving",
         "artikelOmzetgroep",
@@ -105,14 +71,12 @@ final class Artikel extends SnelstartObject
         "vrijeVoorraad",
     ];
 
-    public function isHoofdartikel(): ?bool
+    public function isHoofdartikel(): bool|null
     {
         return $this->isHoofdartikel;
     }
 
-    /**
-     * @return SubArtikel[]
-     */
+    /** @return SubArtikel[] */
     public function getSubArtikelen(): iterable
     {
         return $this->subArtikelen;
@@ -125,12 +89,12 @@ final class Artikel extends SnelstartObject
         return $this;
     }
 
-    public function getPrijsafspraak(): ?Prijsafspraak
+    public function getPrijsafspraak(): Prijsafspraak|null
     {
         return $this->prijsafspraak;
     }
 
-    public function setPrijsafspraak(?Prijsafspraak $prijsafspraak): self
+    public function setPrijsafspraak(Prijsafspraak|null $prijsafspraak): self
     {
         $this->prijsafspraak = $prijsafspraak;
 
@@ -165,7 +129,7 @@ final class Artikel extends SnelstartObject
         return $this;
     }
 
-    public function getArtikelOmzetgroep(): ?ArtikelOmzetgroep
+    public function getArtikelOmzetgroep(): ArtikelOmzetgroep|null
     {
         return $this->artikelOmzetgroep;
     }
@@ -189,19 +153,19 @@ final class Artikel extends SnelstartObject
         return $this;
     }
 
-    public function getModifiedOn(): ?\DateTimeInterface
+    public function getModifiedOn(): DateTimeInterface|null
     {
         return $this->modifiedOn;
     }
 
-    public function setModifiedOn(\DateTimeInterface $modifiedOn): self
+    public function setModifiedOn(DateTimeInterface $modifiedOn): self
     {
         $this->modifiedOn = $modifiedOn;
 
         return $this;
     }
 
-    public function isNonActief(): ?bool
+    public function isNonActief(): bool|null
     {
         return $this->isNonActief;
     }
@@ -213,7 +177,7 @@ final class Artikel extends SnelstartObject
         return $this;
     }
 
-    public function isVoorraadControle(): ?bool
+    public function isVoorraadControle(): bool|null
     {
         return $this->voorraadControle;
     }
@@ -225,7 +189,7 @@ final class Artikel extends SnelstartObject
         return $this;
     }
 
-    public function getTechnischeVoorraad(): ?float
+    public function getTechnischeVoorraad(): float|null
     {
         return $this->technischeVoorraad;
     }
@@ -237,7 +201,7 @@ final class Artikel extends SnelstartObject
         return $this;
     }
 
-    public function getVrijeVoorraad(): ?float
+    public function getVrijeVoorraad(): float|null
     {
         return $this->vrijeVoorraad;
     }

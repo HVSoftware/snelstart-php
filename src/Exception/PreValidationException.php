@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -6,7 +9,11 @@
 
 namespace SnelstartPHP\Exception;
 
-final class PreValidationException extends \RuntimeException
+use RuntimeException;
+
+use function sprintf;
+
+final class PreValidationException extends RuntimeException
 {
     public static function textLengthException(int $current, int $max): self
     {

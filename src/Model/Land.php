@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -10,24 +13,18 @@ final class Land extends SnelstartObject
 {
     /**
      * De naam van het land.
-     *
-     * @var string
      */
-    private $naam;
+    private string $naam;
 
     /**
      * De ISO code van het land.
-     *
-     * @var string
      */
-    private $landcodeISO;
+    private string $landcodeISO;
 
     /**
      * De code van het land.
-     *
-     * @var string
      */
-    private $landcode;
+    private string $landcode;
 
     public function getNaam(): string
     {

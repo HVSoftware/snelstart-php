@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -10,35 +13,28 @@ final class Kostenplaats extends SnelstartObject
 {
     /**
      * De omschrijving van de kostenplaats.
-     *
-     * @var string
      */
-    private $omschrijving;
+    private string $omschrijving;
 
     /**
-     * Een vlag dat aangeeft of een kostenplaats niet meer actief is binnen de administratie.\r\nIndien <see langword=\"true\" />, dan kan er niet geboekt worden op de kostenplaats.
-     *
-     * @var bool
+     * Een vlag dat aangeeft of een kostenplaats niet meer actief is binnen de administratie.\r\nIndien
+     * <see langword=\"true\" />, dan kan er niet geboekt worden op de kostenplaats.
      */
-    private $nonactief;
+    private bool $nonactief;
 
     /**
      * Het nummer van de kostenplaats.
-     *
-     * @var int
      */
-    private $nummer;
+    private int $nummer;
 
-    /**
-     * @var string[]
-     */
-    public static $editableAttributes = [
+    /** @var string[] */
+    public static array $editableAttributes = [
         "omschrijving",
         "nonactief",
         "nummer",
     ];
 
-    public function getOmschrijving(): ?string
+    public function getOmschrijving(): string|null
     {
         return $this->omschrijving;
     }
@@ -50,7 +46,7 @@ final class Kostenplaats extends SnelstartObject
         return $this;
     }
 
-    public function isNonactief(): ?bool
+    public function isNonactief(): bool|null
     {
         return $this->nonactief;
     }
@@ -62,7 +58,7 @@ final class Kostenplaats extends SnelstartObject
         return $this;
     }
 
-    public function getNummer(): ?int
+    public function getNummer(): int|null
     {
         return $this->nummer;
     }

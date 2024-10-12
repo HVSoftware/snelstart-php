@@ -1,42 +1,27 @@
 <?php
+
 declare(strict_types=1);
 
 namespace SnelstartPHP\Model\V2\Relatie;
 
+use DateTimeImmutable;
 use SnelstartPHP\Model\SnelstartObject;
 use SnelstartPHP\Model\V2\Relatie;
 
 final class DoorlopendeIncassoMachtiging extends SnelstartObject
 {
-    /**
-     * @var string
-     */
-    private $kenmerk;
+    private string $kenmerk;
 
-    /**
-     * @var \DateTimeImmutable
-     */
-    private $afsluitDatum;
+    private DateTimeImmutable $afsluitDatum;
 
-    /**
-     * @var string|null
-     */
-    private $omschrijving;
+    private string|null $omschrijving = null;
 
-    /**
-     * @var Relatie $klant
-     */
-    private $klant;
+    private Relatie $klant;
 
-    /**
-     * @var \DateTimeImmutable|null
-     */
-    private $intrekkingsDatum;
+    private DateTimeImmutable|null $intrekkingsDatum = null;
 
-    /**
-     * @var string[]
-     */
-    public static $editableAttributes = [
+    /** @var string[] */
+    public static array $editableAttributes = [
         "kenmerk",
         "afsluitDatum",
         "omschrijving",
@@ -56,24 +41,24 @@ final class DoorlopendeIncassoMachtiging extends SnelstartObject
         return $this;
     }
 
-    public function getAfsluitDatum(): \DateTimeImmutable
+    public function getAfsluitDatum(): DateTimeImmutable
     {
         return $this->afsluitDatum;
     }
 
-    public function setAfsluitDatum(\DateTimeImmutable $afsluitDatum): DoorlopendeIncassoMachtiging
+    public function setAfsluitDatum(DateTimeImmutable $afsluitDatum): DoorlopendeIncassoMachtiging
     {
         $this->afsluitDatum = $afsluitDatum;
 
         return $this;
     }
 
-    public function getOmschrijving(): ?string
+    public function getOmschrijving(): string|null
     {
         return $this->omschrijving;
     }
 
-    public function setOmschrijving(?string $omschrijving): DoorlopendeIncassoMachtiging
+    public function setOmschrijving(string|null $omschrijving): DoorlopendeIncassoMachtiging
     {
         $this->omschrijving = $omschrijving;
 
@@ -92,12 +77,12 @@ final class DoorlopendeIncassoMachtiging extends SnelstartObject
         return $this;
     }
 
-    public function getIntrekkingsDatum(): ?\DateTimeImmutable
+    public function getIntrekkingsDatum(): DateTimeImmutable|null
     {
         return $this->intrekkingsDatum;
     }
 
-    public function setIntrekkingsDatum(?\DateTimeImmutable $intrekkingsDatum): DoorlopendeIncassoMachtiging
+    public function setIntrekkingsDatum(DateTimeImmutable|null $intrekkingsDatum): DoorlopendeIncassoMachtiging
     {
         $this->intrekkingsDatum = $intrekkingsDatum;
 

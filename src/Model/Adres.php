@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -10,44 +13,32 @@ final class Adres extends BaseObject
 {
     /**
      * De volledige naam van de contactpersoon op dit adres.
-     *
-     * @var string|null
      */
-    protected $contactpersoon;
+    protected string|null $contactpersoon = null;
 
     /**
      * De straatnaam (inclusief huisnummer).
-     *
-     * @var string|null
      */
-    protected $straat;
+    protected string|null $straat = null;
 
     /**
      * De postcode van het adres.
-     *
-     * @var string|null
      */
-    protected $postcode;
+    protected string|null $postcode = null;
 
     /**
      * De plaatsnaam van het adres.
-     *
-     * @var string|null
      */
-    protected $plaats;
+    protected string|null $plaats = null;
 
     /**
      * De Id van het land waartoe dit adres behoord.
      * Indien niets is opgegeven is dit standaard "Nederland".
-     *
-     * @var Land|null
      */
-    protected $land;
+    protected Land|null $land = null;
 
-    /**
-     * @var string[]
-     */
-    public static $editableAttributes = [
+    /** @var string[] */
+    public static array $editableAttributes = [
         "contactpersoon",
         "straat",
         "postcode",
@@ -55,60 +46,60 @@ final class Adres extends BaseObject
         "land",
     ];
 
-    public function getContactpersoon(): ?string
+    public function getContactpersoon(): string|null
     {
         return $this->contactpersoon;
     }
 
-    public function setContactpersoon(?string $contactpersoon): self
+    public function setContactpersoon(string|null $contactpersoon): self
     {
         $this->contactpersoon = $contactpersoon;
 
         return $this;
     }
 
-    public function getStraat(): ?string
+    public function getStraat(): string|null
     {
         return $this->straat;
     }
 
-    public function setStraat(?string $straat): self
+    public function setStraat(string|null $straat): self
     {
         $this->straat = $straat;
 
         return $this;
     }
 
-    public function getPostcode(): ?string
+    public function getPostcode(): string|null
     {
         return $this->postcode;
     }
 
-    public function setPostcode(?string $postcode): self
+    public function setPostcode(string|null $postcode): self
     {
         $this->postcode = $postcode;
 
         return $this;
     }
 
-    public function getPlaats(): ?string
+    public function getPlaats(): string|null
     {
         return $this->plaats;
     }
 
-    public function setPlaats(?string $plaats): self
+    public function setPlaats(string|null $plaats): self
     {
         $this->plaats = $plaats;
 
         return $this;
     }
 
-    public function getLand(): ?Land
+    public function getLand(): Land|null
     {
         return $this->land;
     }
 
-    public function setLand(?Land $land): self
+    public function setLand(Land|null $land): self
     {
         $this->land = $land;
 

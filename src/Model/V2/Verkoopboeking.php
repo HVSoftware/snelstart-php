@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -8,40 +11,33 @@ namespace SnelstartPHP\Model\V2;
 
 use SnelstartPHP\Model\IncassoMachtiging;
 
+use function array_merge;
+use function array_unique;
+
 final class Verkoopboeking extends Boeking
 {
     /**
      * De klant/debiteur aan wie de factuur is gericht.
-     *
-     * @var Relatie|null
      */
-    private $klant;
+    private Relatie|null $klant = null;
 
     /**
      * De betalingstermijn (in dagen) van de verkoopboeking.
-     *
-     * @var int|null
      */
-    private $betalingstermijn;
+    private int|null $betalingstermijn = null;
 
     /**
      * De (optionele) eenmalige incassomachtiging waarmee deze factuur kan worden geïncasseerd.
-     *
-     * @var IncassoMachtiging|null
      */
-    private $eenmaligeIncassoMachtiging;
+    private IncassoMachtiging|null $eenmaligeIncassoMachtiging = null;
 
     /**
      * De (optionele) doorlopende incassomachtiging waarmee deze factuur kan worden geïncasseerd.
-     *
-     * @var IncassoMachtiging|null
      */
-    private $doorlopendeIncassoMachtiging;
+    private IncassoMachtiging|null $doorlopendeIncassoMachtiging = null;
 
-    /**
-     * @var string[]
-     */
-    public static $editableAttributes = [
+    /** @var string[] */
+    public static array $editableAttributes = [
         "klant",
         "betalingstermijn",
         "eenmaligeIncassoMachtiging",
@@ -50,12 +46,17 @@ final class Verkoopboeking extends Boeking
 
     public static function getEditableAttributes(): array
     {
-        return \array_unique(
-            \array_merge(parent::$editableAttributes, parent::getEditableAttributes(), static::$editableAttributes, self::$editableAttributes)
+        return array_unique(
+            array_merge(
+                parent::$editableAttributes,
+                parent::getEditableAttributes(),
+                self::$editableAttributes,
+                self::$editableAttributes,
+            ),
         );
     }
 
-    public function getKlant(): ?Relatie
+    public function getKlant(): Relatie|null
     {
         return $this->klant;
     }
@@ -67,7 +68,7 @@ final class Verkoopboeking extends Boeking
         return $this;
     }
 
-    public function getBetalingstermijn(): ?int
+    public function getBetalingstermijn(): int|null
     {
         return $this->betalingstermijn;
     }
@@ -79,24 +80,24 @@ final class Verkoopboeking extends Boeking
         return $this;
     }
 
-    public function getEenmaligeIncassoMachtiging(): ?IncassoMachtiging
+    public function getEenmaligeIncassoMachtiging(): IncassoMachtiging|null
     {
         return $this->eenmaligeIncassoMachtiging;
     }
 
-    public function setEenmaligeIncassoMachtiging(?IncassoMachtiging $eenmaligeIncassoMachtiging): self
+    public function setEenmaligeIncassoMachtiging(IncassoMachtiging|null $eenmaligeIncassoMachtiging): self
     {
         $this->eenmaligeIncassoMachtiging = $eenmaligeIncassoMachtiging;
 
         return $this;
     }
 
-    public function getDoorlopendeIncassoMachtiging(): ?IncassoMachtiging
+    public function getDoorlopendeIncassoMachtiging(): IncassoMachtiging|null
     {
         return $this->doorlopendeIncassoMachtiging;
     }
 
-    public function setDoorlopendeIncassoMachtiging(?IncassoMachtiging $doorlopendeIncassoMachtiging): self
+    public function setDoorlopendeIncassoMachtiging(IncassoMachtiging|null $doorlopendeIncassoMachtiging): self
     {
         $this->doorlopendeIncassoMachtiging = $doorlopendeIncassoMachtiging;
 

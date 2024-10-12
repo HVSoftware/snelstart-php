@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -14,44 +17,28 @@ final class VerkooporderRegel extends BaseObject
 {
     /**
      * Een container voor artikel informatie.
-     *
-     * @var Artikel|null
      */
-    private $artikel;
+    private Artikel|null $artikel = null;
 
     /**
-     * De omschrijving van de verkooporderregel. Indien dit veld leeg is dan wordt de omschrijving van het artikel in dit veld gezet.
-     *
-     * @var string|null
+     * De omschrijving van de verkooporderregel. Indien dit veld leeg is dan wordt de omschrijving van het artikel in
+     * dit veld gezet.
      */
-    private $omschrijving;
+    private string|null $omschrijving = null;
 
     /**
      * Stuksprijs van het artikel.
-     *
-     * @var Money|null
      */
-    private $stuksprijs;
+    private Money|null $stuksprijs = null;
 
-    /**
-     * @var float
-     */
-    private $aantal = 0;
+    private float $aantal = 0;
 
-    /**
-     * @var float
-     */
-    private $kortingsPercentage = 0;
+    private float $kortingsPercentage = 0;
 
-    /**
-     * @var Money|null
-     */
-    private $totaal;
+    private Money|null $totaal = null;
 
-    /**
-     * @var string[]
-     */
-    public static $editableAttributes = [
+    /** @var string[] */
+    public static array $editableAttributes = [
         "artikel",
         "omschrijving",
         "stuksprijs",
@@ -60,7 +47,7 @@ final class VerkooporderRegel extends BaseObject
         "totaal",
     ];
 
-    public function getArtikel(): ?Artikel
+    public function getArtikel(): Artikel|null
     {
         return $this->artikel;
     }
@@ -76,7 +63,7 @@ final class VerkooporderRegel extends BaseObject
         return $this;
     }
 
-    public function getOmschrijving(): ?string
+    public function getOmschrijving(): string|null
     {
         return $this->omschrijving;
     }
@@ -88,7 +75,7 @@ final class VerkooporderRegel extends BaseObject
         return $this;
     }
 
-    public function getStuksprijs(): ?Money
+    public function getStuksprijs(): Money|null
     {
         return $this->stuksprijs;
     }
@@ -124,7 +111,7 @@ final class VerkooporderRegel extends BaseObject
         return $this;
     }
 
-    public function getTotaal(): ?Money
+    public function getTotaal(): Money|null
     {
         return $this->totaal ?? new Money("0", Snelstart::getCurrency());
     }

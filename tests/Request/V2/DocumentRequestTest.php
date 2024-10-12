@@ -13,9 +13,9 @@ use SnelstartPHP\Model\V2\Relatie;
 use SnelstartPHP\Model\V2\Verkoopboeking;
 use SnelstartPHP\Request\V2\DocumentRequest;
 
-class DocumentRequestTest extends TestCase
+final class DocumentRequestTest extends TestCase
 {
-    private $documentRequest;
+    private DocumentRequest $documentRequest;
 
     public function setUp(): void
     {
@@ -34,11 +34,14 @@ class DocumentRequestTest extends TestCase
     {
         $uuid = Uuid::uuid4();
 
-        foreach (DocumentType::toArray() as $key => $value) {
+        foreach (DocumentType::toArray() as $value) {
             $documentType = new DocumentType($value);
             $expectedRequest = new Request("GET", "documenten/" . $documentType->getValue() . "/" . $uuid->toString());
 
-            $this->assertEquals($expectedRequest, $this->documentRequest->findByDocumentTypeAndParentIdentifier($documentType, $uuid));
+            $this->assertEquals(
+                $expectedRequest,
+                $this->documentRequest->findByDocumentTypeAndParentIdentifier($documentType, $uuid),
+            );
         }
     }
 
@@ -78,7 +81,10 @@ class DocumentRequestTest extends TestCase
         $request = $this->documentRequest->addInkoopBoekingDocument($document, $inkoopboeking);
 
         $this->assertEquals($expected->getUri(), $request->getUri());
-        $this->assertJsonStringEqualsJsonString($expected->getBody()->getContents(), $request->getBody()->getContents());
+        $this->assertJsonStringEqualsJsonString(
+            $expected->getBody()->getContents(),
+            $request->getBody()->getContents(),
+        );
     }
 
     public function testAddVerkoopBoekingDocument()
@@ -100,7 +106,10 @@ class DocumentRequestTest extends TestCase
         $request = $this->documentRequest->addVerkoopBoekingDocument($document, $verkoopboeking);
 
         $this->assertEquals($expected->getUri(), $request->getUri());
-        $this->assertJsonStringEqualsJsonString($expected->getBody()->getContents(), $request->getBody()->getContents());
+        $this->assertJsonStringEqualsJsonString(
+            $expected->getBody()->getContents(),
+            $request->getBody()->getContents(),
+        );
     }
 
     public function testAddRelatieDocument()
@@ -122,14 +131,17 @@ class DocumentRequestTest extends TestCase
         $request = $this->documentRequest->addRelatieDocument($document, $relatie);
 
         $this->assertEquals($expected->getUri(), $request->getUri());
-        $this->assertJsonStringEqualsJsonString($expected->getBody()->getContents(), $request->getBody()->getContents());
+        $this->assertJsonStringEqualsJsonString(
+            $expected->getBody()->getContents(),
+            $request->getBody()->getContents(),
+        );
     }
 
     public function testUpdateDocument()
     {
         $id = Uuid::uuid4();
         $document = (new Document())->setId($id);
-        $expected = new Request("POST", "documenten/" . $document->getId()->toString(), [
+        $expected = new Request("POST", "documenten/" . $document->getId()?->toString(), [
             "Content-Type"  =>  "application/json"
         ], json_encode([
             "id"                =>  $id->toString(),
@@ -140,14 +152,17 @@ class DocumentRequestTest extends TestCase
         $request = $this->documentRequest->updateDocument($document);
 
         $this->assertEquals($expected->getUri(), $request->getUri());
-        $this->assertJsonStringEqualsJsonString($expected->getBody()->getContents(), $request->getBody()->getContents());
+        $this->assertJsonStringEqualsJsonString(
+            $expected->getBody()->getContents(),
+            $request->getBody()->getContents(),
+        );
     }
 
     public function testDeleteDocument()
     {
         $id = Uuid::uuid4();
         $document = (new Document())->setId($id);
-        $expected = new Request("DELETE", "documenten/" . $document->getId()->toString(), [
+        $expected = new Request("DELETE", "documenten/" . $document->getId()?->toString(), [
             "Content-Type"  =>  "application/json"
         ]);
         $request = $this->documentRequest->deleteDocument($document);

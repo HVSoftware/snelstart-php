@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -10,25 +13,17 @@ use SnelstartPHP\Model\SnelstartObject;
 
 final class SubArtikel extends SnelstartObject
 {
-    /**
-     * @var string|null
-     */
-    private $artikelcode;
+    private string|null $artikelcode = null;
 
-    /**
-     * @var float|null
-     */
-    private $aantal;
+    private float|null $aantal = null;
 
-    /**
-     * @var string[]
-     */
-    public static $editableAttributes = [
+    /** @var string[] */
+    public static array $editableAttributes = [
         "artikelcode",
         "aantal",
     ];
 
-    public function getArtikelcode(): ?string
+    public function getArtikelcode(): string|null
     {
         return $this->artikelcode;
     }
@@ -40,7 +35,7 @@ final class SubArtikel extends SnelstartObject
         return $this;
     }
 
-    public function getAantal(): ?float
+    public function getAantal(): float|null
     {
         return $this->aantal;
     }

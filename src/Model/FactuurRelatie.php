@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -12,21 +15,15 @@ final class FactuurRelatie extends BaseObject
 {
     /**
      * De publieke sleutel (public identifier, als uuid) dat uniek een object identificeert.
-     *
-     * @var UuidInterface
      */
-    private $id;
+    private UuidInterface $id;
 
     /**
-     * Geeft de realtieve uri terug van het object waartoe de identifier behoort.
-     *
-     * @var string
+     * Geeft de relatieve uri terug van het object waartoe de identifier behoort.
      */
-    private $uri;
+    private string $uri;
 
-    public static $editableAttributes = [
-        "id"
-    ];
+    public static array $editableAttributes = ['id'];
 
     public function getId(): UuidInterface
     {
@@ -40,10 +37,7 @@ final class FactuurRelatie extends BaseObject
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getUri(): ?string
+    public function getUri(): string|null
     {
         return $this->uri;
     }

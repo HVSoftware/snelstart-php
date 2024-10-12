@@ -1,8 +1,12 @@
 <?php
+
+declare(strict_types=1);
+
 /**
+ * @deprecated
+ *
  * @author     IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project    SnelstartApiPHP
- * @deprecated
  */
 
 namespace SnelstartPHP\Connector\V2;
@@ -16,21 +20,19 @@ use SnelstartPHP\Request\V2\LandRequest;
 
 final class LandConnector extends BaseConnector
 {
-    public function find(UuidInterface $id): ?Land
+    public function find(UuidInterface $id): Land|null
     {
         try {
             $mapper = new LandMapper();
             $request = new LandRequest();
 
             return $mapper->find($this->connection->doRequest($request->find($id)));
-        } catch (SnelstartResourceNotFoundException $e) {
+        } catch (SnelstartResourceNotFoundException) {
             return null;
         }
     }
 
-    /**
-     * @return iterable<Land>
-     */
+    /** @return iterable<Land> */
     public function findAll(): iterable
     {
         $mapper = new LandMapper();

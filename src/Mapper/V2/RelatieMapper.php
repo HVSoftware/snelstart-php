@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -6,39 +9,46 @@
 
 namespace SnelstartPHP\Mapper\V2;
 
-use Ramsey\Uuid\Uuid;
-use SnelstartPHP\Model\FactuurRelatie;
-use SnelstartPHP\Model\NaamWaarde;
-use function \array_map;
+use Generator;
 use Psr\Http\Message\ResponseInterface;
+use Ramsey\Uuid\Uuid;
 use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\EmailVersturen;
-use SnelstartPHP\Model\Type as Type;
+use SnelstartPHP\Model\FactuurRelatie;
+use SnelstartPHP\Model\NaamWaarde;
+use SnelstartPHP\Model\Type;
 use SnelstartPHP\Model\V2 as Model;
+
+use function array_map;
+use function assert;
 
 final class RelatieMapper extends AbstractMapper
 {
-    public function find(ResponseInterface $response): ?Model\Relatie
+    public function find(ResponseInterface $response): Model\Relatie|null
     {
         $this->setResponseData($response);
+
         return $this->mapResponseToRelatieModel(new Model\Relatie());
     }
 
-    public function findAll(ResponseInterface $response): \Generator
+    public function findAll(ResponseInterface $response): Generator
     {
         $this->setResponseData($response);
+
         yield from $this->mapManyResultsToSubMappers();
     }
 
     public function add(ResponseInterface $response): Model\Relatie
     {
         $this->setResponseData($response);
+
         return $this->mapResponseToRelatieModel(new Model\Relatie());
     }
 
     public function update(ResponseInterface $response): Model\Relatie
     {
         $this->setResponseData($response);
+
         return $this->mapResponseToRelatieModel(new Model\Relatie());
     }
 
@@ -48,25 +58,24 @@ final class RelatieMapper extends AbstractMapper
     public function mapResponseToRelatieModel(Model\Relatie $relatie, array $data = []): Model\Relatie
     {
         $data = empty($data) ? $this->responseData : $data;
-        /**
-         * @var Model\Relatie $relatie
-         */
         $relatie = $this->mapArrayDataToModel($relatie, $data);
+        assert($relatie instanceof Model\Relatie);
         $adresMapper = new AdresMapper();
 
         $relatie->setRelatiesoort(
-            ... array_map(
+            ...array_map(
                 static function (string $relatiesoort) {
                     return new Type\Relatiesoort($relatiesoort);
-                }, $data["relatiesoort"]
-            )
+                },
+                $data["relatiesoort"],
+            ),
         );
 
-        if (!empty($data["incassoSoort"])) {
+        if (! empty($data["incassoSoort"])) {
             $relatie->setIncassoSoort(new Type\Incassosoort($data["incassoSoort"]));
         }
 
-        if (!empty($data["aanmaningSoort"])) {
+        if (! empty($data["aanmaningSoort"])) {
             $relatie->setAanmaningsoort(new Type\Aanmaningsoort($data["aanmaningSoort"]));
         }
 
@@ -78,11 +87,11 @@ final class RelatieMapper extends AbstractMapper
             $relatie->setFactuurkorting($this->getMoney($data["factuurkorting"]));
         }
 
-        if (!empty($data["vestigingsAdres"])) {
+        if (! empty($data["vestigingsAdres"])) {
             $relatie->setVestigingsAdres($adresMapper->mapAdresToSnelstartObject($data["vestigingsAdres"]));
         }
 
-        if (!empty($data["correspondentieAdres"])) {
+        if (! empty($data["correspondentieAdres"])) {
             $relatie->setCorrespondentieAdres($adresMapper->mapAdresToSnelstartObject($data["correspondentieAdres"]));
         }
 
@@ -90,7 +99,7 @@ final class RelatieMapper extends AbstractMapper
             $relatie->setFactuurRelatie(
                 (new FactuurRelatie())
                     ->setId(Uuid::fromString($data["factuurRelatie"]["id"]))
-                    ->setUri($data["factuurRelatie"]["uri"])
+                    ->setUri($data["factuurRelatie"]["uri"]),
             );
         }
 
@@ -100,10 +109,11 @@ final class RelatieMapper extends AbstractMapper
                     return (new NaamWaarde())
                         ->setNaam($extraVeldKlant["naam"])
                         ->setWaarde($extraVeldKlant["waarde"]);
-                }, $data["extraVeldenKlant"]
+                },
+                $data["extraVeldenKlant"],
             );
 
-            $relatie->setExtraVeldenKlant(... $extraVeldenKlant);
+            $relatie->setExtraVeldenKlant(...$extraVeldenKlant);
         }
 
         $relatie->setOfferteEmailVersturen($this->mapEmailVersturenField($data["offerteEmailVersturen"]))
@@ -122,14 +132,14 @@ final class RelatieMapper extends AbstractMapper
         return new EmailVersturen(
             $emailVersturen["shouldSend"],
             $emailVersturen["email"],
-            $emailVersturen["ccEmail"]
+            $emailVersturen["ccEmail"],
         );
     }
 
     /**
      * Map many results to the mapper.
      */
-    protected function mapManyResultsToSubMappers(): \Generator
+    protected function mapManyResultsToSubMappers(): Generator
     {
         foreach ($this->responseData as $relatieData) {
             yield $this->mapResponseToRelatieModel(new Model\Relatie(), $relatieData);

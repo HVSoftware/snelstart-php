@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -6,6 +9,7 @@
 
 namespace SnelstartPHP\Model\V2;
 
+use DateTimeImmutable;
 use Money\Money;
 use SnelstartPHP\Model\Adres;
 use SnelstartPHP\Model\IncassoMachtiging;
@@ -15,144 +19,97 @@ use SnelstartPHP\Model\Type\ProcesStatus;
 use SnelstartPHP\Model\Type\VerkooporderBtwIngave;
 use SnelstartPHP\Snelstart;
 
+use function array_merge;
+use function array_unique;
+
 final class Verkooporder extends SnelstartObject
 {
-    /**
-     * @var Relatie|null
-     */
-    private $relatie;
+    private Relatie|null $relatie = null;
 
     /**
-     * Status van de order. Als deze niet is opgegeven wordt de default waarde order gebruikt. Contantbon en Factuur zijn niet beschikbaar
-     *
-     * @var ProcesStatus|null
+     * Status van de order. Als deze niet is opgegeven wordt de default waarde order gebruikt. Contantbon en Factuur
+     * zijn niet beschikbaar
      */
-    private $procesStatus;
+    private ProcesStatus|null $procesStatus = null;
 
     /**
      * Het ordernummer.
-     *
-     * @var int|null
      */
-    private $nummer;
+    private int|null $nummer = null;
 
     /**
      * Het tijdstip waarop de verkooporder voor het laatst is gewijzigd.
-     *
-     * @var \DateTimeImmutable|null
      */
-    private $modifiedOn;
+    private DateTimeImmutable|null $modifiedOn = null;
 
     /**
      * De orderdatum.
-     *
-     * @var \DateTimeImmutable|null
      */
-    private $datum;
+    private DateTimeImmutable|null $datum = null;
 
     /**
      * De krediettermijn (in dagen) van de verkooporder.
      * Indien dit veld leeg is dan wordt het krediettermijn van de klant gebruikt.
-     *
-     * @var int|null
      */
-    private $krediettermijn;
+    private int|null $krediettermijn = null;
 
     /**
      * De omschrijving van de order.
-     *
-     * @var string|null
      */
-    private $omschrijving;
+    private string|null $omschrijving = null;
 
     /**
      * Het betalingskenmerk van de order.
-     *
-     * @var string|null
      */
-    private $betalingskenmerk;
+    private string|null $betalingskenmerk = null;
 
     /**
      * De incassomachtiging.
-     *
-     * @var IncassoMachtiging|null
      */
-    private $incassomachtiging;
+    private IncassoMachtiging|null $incassomachtiging = null;
 
     /**
      * Het afleveradres
-     *
-     * @var Adres|null
      */
-    private $afleveradres;
+    private Adres|null $afleveradres = null;
 
     /**
      * Een container voor adres informatie.
-     *
-     * @var Adres|null
      */
-    private $factuuradres;
+    private Adres|null $factuuradres = null;
 
-    /**
-     * @var VerkooporderBtwIngave|null
-     */
-    private $verkooporderBtwIngaveModel;
+    private VerkooporderBtwIngave|null $verkooporderBtwIngaveModel = null;
 
-    /**
-     * @var Kostenplaats|null
-     */
-    private $kostenplaats;
+    private Kostenplaats|null $kostenplaats = null;
 
-    /**
-     * @var VerkooporderRegel[]|null
-     */
-    private $regels;
+    /** @var VerkooporderRegel[]|null */
+    private array|null $regels = null;
 
-    /**
-     * @var string|null
-     */
-    private $memo;
+    private string|null $memo = null;
 
     /**
      * De orderreferentie van een verkooporder. Deze wordt in de e-factuur en in de factuur als PDF opgenomen
-     *
-     * @var string|null
      */
-    private $orderreferentie;
+    private string|null $orderreferentie = null;
 
-    /**
-     * @var Money|null
-     */
-    private $factuurkorting;
+    private Money|null $factuurkorting = null;
 
     /**
      * Verkoopfactuur identifier
-     *
-     * @var Verkoopfactuur|null
      */
-    private $verkoopfactuur;
+    private Verkoopfactuur|null $verkoopfactuur = null;
 
     /**
      * Het te gebruiken sjaboon voor deze verkooporden. Dit veld is optioneel
-     *
-     * @var Verkoopordersjabloon|null
      */
-    private $verkoopordersjabloon;
+    private Verkoopordersjabloon|null $verkoopordersjabloon = null;
 
-    /**
-     * @var Money|null
-     */
-    private $totaalExclusiefBtw;
+    private Money|null $totaalExclusiefBtw = null;
 
-    /**
-     * @var Money|null
-     */
-    private $totaalInclusiefBtw;
+    private Money|null $totaalInclusiefBtw = null;
 
-    /**
-     * @var string[]
-     */
-    public static $editableAttributes = [
+    /** @var string[] */
+    public static array $editableAttributes = [
         "relatie",
         "procesStatus",
         "nummer",
@@ -178,12 +135,17 @@ final class Verkooporder extends SnelstartObject
 
     public static function getEditableAttributes(): array
     {
-        return \array_unique(
-            \array_merge(parent::$editableAttributes, parent::getEditableAttributes(), static::$editableAttributes, self::$editableAttributes)
+        return array_unique(
+            array_merge(
+                parent::$editableAttributes,
+                parent::getEditableAttributes(),
+                self::$editableAttributes,
+                self::$editableAttributes,
+            ),
         );
     }
 
-    public function getRelatie(): ?Relatie
+    public function getRelatie(): Relatie|null
     {
         return $this->relatie;
     }
@@ -195,7 +157,7 @@ final class Verkooporder extends SnelstartObject
         return $this;
     }
 
-    public function getProcesStatus(): ?ProcesStatus
+    public function getProcesStatus(): ProcesStatus|null
     {
         return $this->procesStatus;
     }
@@ -207,7 +169,7 @@ final class Verkooporder extends SnelstartObject
         return $this;
     }
 
-    public function getNummer(): ?int
+    public function getNummer(): int|null
     {
         return $this->nummer;
     }
@@ -219,31 +181,31 @@ final class Verkooporder extends SnelstartObject
         return $this;
     }
 
-    public function getModifiedOn(): ?\DateTimeImmutable
+    public function getModifiedOn(): DateTimeImmutable|null
     {
         return $this->modifiedOn;
     }
 
-    public function setModifiedOn(\DateTimeImmutable $modifiedOn): self
+    public function setModifiedOn(DateTimeImmutable $modifiedOn): self
     {
         $this->modifiedOn = $modifiedOn;
 
         return $this;
     }
 
-    public function getDatum(): ?\DateTimeImmutable
+    public function getDatum(): DateTimeImmutable|null
     {
         return $this->datum;
     }
 
-    public function setDatum(\DateTimeImmutable $datum): self
+    public function setDatum(DateTimeImmutable $datum): self
     {
         $this->datum = $datum;
 
         return $this;
     }
 
-    public function getKrediettermijn(): ?int
+    public function getKrediettermijn(): int|null
     {
         return $this->krediettermijn;
     }
@@ -255,7 +217,7 @@ final class Verkooporder extends SnelstartObject
         return $this;
     }
 
-    public function getOmschrijving(): ?string
+    public function getOmschrijving(): string|null
     {
         return $this->omschrijving;
     }
@@ -267,7 +229,7 @@ final class Verkooporder extends SnelstartObject
         return $this;
     }
 
-    public function getBetalingskenmerk(): ?string
+    public function getBetalingskenmerk(): string|null
     {
         return $this->betalingskenmerk;
     }
@@ -279,19 +241,19 @@ final class Verkooporder extends SnelstartObject
         return $this;
     }
 
-    public function getIncassomachtiging(): ?IncassoMachtiging
+    public function getIncassomachtiging(): IncassoMachtiging|null
     {
         return $this->incassomachtiging;
     }
 
-    public function setIncassomachtiging(?IncassoMachtiging $incassomachtiging): self
+    public function setIncassomachtiging(IncassoMachtiging|null $incassomachtiging): self
     {
         $this->incassomachtiging = $incassomachtiging;
 
         return $this;
     }
 
-    public function getAfleveradres(): ?Adres
+    public function getAfleveradres(): Adres|null
     {
         return $this->afleveradres;
     }
@@ -303,7 +265,7 @@ final class Verkooporder extends SnelstartObject
         return $this;
     }
 
-    public function getFactuuradres(): ?Adres
+    public function getFactuuradres(): Adres|null
     {
         return $this->factuuradres;
     }
@@ -315,7 +277,7 @@ final class Verkooporder extends SnelstartObject
         return $this;
     }
 
-    public function getVerkooporderBtwIngaveModel(): ?VerkooporderBtwIngave
+    public function getVerkooporderBtwIngaveModel(): VerkooporderBtwIngave|null
     {
         return $this->verkooporderBtwIngaveModel;
     }
@@ -327,22 +289,20 @@ final class Verkooporder extends SnelstartObject
         return $this;
     }
 
-    public function getKostenplaats(): ?Kostenplaats
+    public function getKostenplaats(): Kostenplaats|null
     {
         return $this->kostenplaats;
     }
 
-    public function setKostenplaats(?Kostenplaats $kostenplaats): self
+    public function setKostenplaats(Kostenplaats|null $kostenplaats): self
     {
         $this->kostenplaats = $kostenplaats;
 
         return $this;
     }
 
-    /**
-     * @return VerkooporderRegel[]
-     */
-    public function getRegels(): ?iterable
+    /** @return VerkooporderRegel[] */
+    public function getRegels(): iterable|null
     {
         return $this->regels;
     }
@@ -354,55 +314,55 @@ final class Verkooporder extends SnelstartObject
         return $this;
     }
 
-    public function getMemo(): ?string
+    public function getMemo(): string|null
     {
         return $this->memo;
     }
 
-    public function setMemo(?string $memo): self
+    public function setMemo(string|null $memo): self
     {
         $this->memo = $memo;
 
         return $this;
     }
 
-    public function getOrderreferentie(): ?string
+    public function getOrderreferentie(): string|null
     {
         return $this->orderreferentie;
     }
 
-    public function setOrderreferentie(?string $orderreferentie): self
+    public function setOrderreferentie(string|null $orderreferentie): self
     {
         $this->orderreferentie = $orderreferentie;
 
         return $this;
     }
 
-    public function getFactuurkorting(): ?Money
+    public function getFactuurkorting(): Money|null
     {
         return $this->factuurkorting;
     }
 
-    public function setFactuurkorting(?Money $factuurkorting): self
+    public function setFactuurkorting(Money|null $factuurkorting): self
     {
         $this->factuurkorting = $factuurkorting;
 
         return $this;
     }
 
-    public function getVerkoopfactuur(): ?Verkoopfactuur
+    public function getVerkoopfactuur(): Verkoopfactuur|null
     {
         return $this->verkoopfactuur;
     }
 
-    public function setVerkoopfactuur(?Verkoopfactuur $verkoopfactuur): self
+    public function setVerkoopfactuur(Verkoopfactuur|null $verkoopfactuur): self
     {
         $this->verkoopfactuur = $verkoopfactuur;
 
         return $this;
     }
 
-    public function getVerkoopordersjabloon(): ?Verkoopordersjabloon
+    public function getVerkoopordersjabloon(): Verkoopordersjabloon|null
     {
         return $this->verkoopordersjabloon;
     }
@@ -414,7 +374,7 @@ final class Verkooporder extends SnelstartObject
         return $this;
     }
 
-    public function getTotaalExclusiefBtw(): ?Money
+    public function getTotaalExclusiefBtw(): Money|null
     {
         return $this->totaalExclusiefBtw ?? new Money("0", Snelstart::getCurrency());
     }
@@ -426,7 +386,7 @@ final class Verkooporder extends SnelstartObject
         return $this;
     }
 
-    public function getTotaalInclusiefBtw(): ?Money
+    public function getTotaalInclusiefBtw(): Money|null
     {
         return $this->totaalInclusiefBtw ?? new Money("0", Snelstart::getCurrency());
     }

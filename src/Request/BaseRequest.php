@@ -1,7 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SnelstartPHP\Request;
 
+use DateTimeInterface;
+use JsonSerializable;
+use LogicException;
 use Money\Money;
 use Ramsey\Uuid\UuidInterface;
 use SnelstartPHP\Model\BaseObject;
@@ -9,14 +14,18 @@ use SnelstartPHP\Model\SnelstartObject;
 use SnelstartPHP\Serializer\RequestSerializerInterface;
 use SnelstartPHP\Serializer\SnelstartRequestRequestSerializer;
 
+use function count;
+use function gettype;
+use function is_array;
+use function is_scalar;
+use function method_exists;
+use function sprintf;
+use function trigger_error;
+use function ucfirst;
+
 abstract class BaseRequest
 {
-    /**
-     * @var RequestSerializerInterface
-     */
-    protected $serializer;
-
-    public function __construct(?RequestSerializerInterface $serializer = null)
+    public function __construct(protected RequestSerializerInterface|null $serializer = null)
     {
         $this->serializer = $serializer ?? new SnelstartRequestRequestSerializer();
     }
@@ -39,19 +48,25 @@ abstract class BaseRequest
             $methodExists = false;
             $methodName = null;
             $methodNames = [
-                "get" . \ucfirst($editableAttributeName),
-                "is" . \ucfirst($editableAttributeName),
+                "get" . ucfirst($editableAttributeName),
+                "is" . ucfirst($editableAttributeName),
             ];
 
             foreach ($methodNames as $methodName) {
-                if (\method_exists($object, $methodName)) {
+                if (method_exists($object, $methodName)) {
                     $methodExists = true;
                     break;
                 }
             }
 
-            if (!$methodExists) {
-                \trigger_error(sprintf("There is no method (get or is) on object %s for property %s", get_class($object), $editableAttributeName), \E_USER_NOTICE);
+            if (! $methodExists) {
+                trigger_error(
+                    sprintf(
+                        "There is no method (get or is) on object %s for property %s",
+                        $object::class,
+                        $editableAttributeName,
+                    ),
+                );
                 continue;
             }
 
@@ -59,29 +74,31 @@ abstract class BaseRequest
 
             if ($value instanceof UuidInterface) {
                 $value = $this->serializer->uuidInterfaceToString($value);
-            } else if ($value instanceof \DateTimeInterface) {
+            } elseif ($value instanceof DateTimeInterface) {
                 $value = $this->serializer->dateTimeToString($value);
             } elseif ($value instanceof Money) {
                 $value = $this->serializer->moneyFormatToString($value);
-            } else if ($editableAttributeName === "id" && $value === null) {
+            } elseif ($editableAttributeName === "id" && $value === null) {
                 // Whenever 'id' equals null skip it.
                 $this->serializer->scalarValue($value);
                 continue;
-            } else if ($value instanceof \JsonSerializable || is_scalar($value) || $value === null) {
+            } elseif ($value instanceof JsonSerializable || is_scalar($value) || $value === null) {
                 // We accept simple values.
                 $value = $this->serializer->scalarValue($value);
-            } else if (is_array($value)) {
+            } elseif (is_array($value)) {
                 // If our value is an array and contains anything that is an instance of 'BaseObject'
                 // Try to serialize that again. Please note that this is done by reference.
                 foreach ($value as &$subValue) {
-                    if ($subValue instanceof BaseObject) {
-                        $subValue = $this->prepareAddOrEditRequestForSerialization($subValue);
+                    if (! ($subValue instanceof BaseObject)) {
+                        continue;
                     }
+
+                    $subValue = $this->prepareAddOrEditRequestForSerialization($subValue);
                 }
 
                 // Else do nothing.
                 $value = $this->serializer->arrayValue($value);
-            } else if ($value instanceof SnelstartObject) {
+            } elseif ($value instanceof SnelstartObject) {
                 $editableSubAttributes = [];
 
                 if ($value->getId() !== null) {
@@ -90,15 +107,15 @@ abstract class BaseRequest
                 }
 
                 $value = $this->prepareAddOrEditRequestForSerialization($value, ...$editableSubAttributes);
-            } else if ($value instanceof BaseObject) {
+            } elseif ($value instanceof BaseObject) {
                 $value = $this->prepareAddOrEditRequestForSerialization($value);
             } else {
-                throw new \LogicException(
+                throw new LogicException(
                     sprintf(
                         "You need to implement something to handle the serialization of '%s' (type: %s)",
-                        \get_class($value),
-                        \gettype($value)
-                    )
+                        $value::class,
+                        gettype($value),
+                    ),
                 );
             }
 

@@ -1,7 +1,8 @@
 <?php
-/**
- * @author IntoWebDevelopment <info@intowebdevelopment.nl>
- */
+
+declare(strict_types=1);
+
+/** @author IntoWebDevelopment <info@intowebdevelopment.nl> */
 
 namespace SnelstartPHP\Model\Type;
 
@@ -9,7 +10,6 @@ use MyCLabs\Enum\Enum;
 
 /**
  * @psalm-immutable
- *
  * @method static Grootboekfunctie DIVERSEN()
  * @method static Grootboekfunctie DAGBOEKKAS()
  * @method static Grootboekfunctie DAGBOEKBANK()

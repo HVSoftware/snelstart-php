@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -7,27 +10,31 @@
 namespace SnelstartPHP\Mapper\V2;
 
 use Psr\Http\Message\ResponseInterface;
-use Ramsey\Uuid\Uuid;
 use SnelstartPHP\Mapper\AbstractMapper;
 use SnelstartPHP\Model\V2\Document;
 
+use function assert;
+
 final class DocumentMapper extends AbstractMapper
 {
-    public function find(ResponseInterface $response): ?Document
+    public function find(ResponseInterface $response): Document|null
     {
         $this->setResponseData($response);
+
         return $this->mapResponseToDocumentInstance();
     }
 
     public function update(ResponseInterface $response): Document
     {
         $this->setResponseData($response);
+
         return $this->mapResponseToDocumentInstance();
     }
 
     public function add(ResponseInterface $response): Document
     {
         $this->setResponseData($response);
+
         return $this->mapResponseToDocumentInstance();
     }
 
@@ -35,10 +42,9 @@ final class DocumentMapper extends AbstractMapper
     {
         $data = empty($data) ? $this->responseData : $data;
 
-        /**
-         * @var Document $document
-         */
         $document = $this->mapArrayDataToModel(new Document(), $data);
+        assert($document instanceof Document);
+
         return $document;
     }
 }

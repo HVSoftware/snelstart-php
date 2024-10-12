@@ -1,23 +1,28 @@
 <?php
+
+declare(strict_types=1);
+
 /**
+ * @see     https://b2bapi-developer.snelstart.nl/granttype_password
+ *
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
- * @see     https://b2bapi-developer.snelstart.nl/granttype_password
  */
 
 namespace SnelstartPHP\Secure\BearerToken;
 
+use InvalidArgumentException;
+
+use function base64_decode;
+use function count;
+use function explode;
+use function sprintf;
+
 final class PasswordBearerToken implements BearerTokenInterface
 {
-    /**
-     * @var string
-     */
-    private $username;
+    private string $username;
 
-    /**
-     * @var string
-     */
-    private $password;
+    private string $password;
 
     /**
      * The variable $koppelsleutel is according to the specs base64 encoded. Decode it and look for a ':'.
@@ -27,7 +32,9 @@ final class PasswordBearerToken implements BearerTokenInterface
         $koppelsleutelParts = explode(":", base64_decode($koppelsleutel));
 
         if (count($koppelsleutelParts) !== 2) {
-            throw new \InvalidArgumentException(sprintf("We expected 2 items while decoding this but we got %d", count($koppelsleutelParts)));
+            throw new InvalidArgumentException(
+                sprintf("We expected 2 items while decoding this but we got %d", count($koppelsleutelParts)),
+            );
         }
 
         $this->username = $koppelsleutelParts[0];

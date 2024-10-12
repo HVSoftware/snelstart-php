@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -12,25 +15,16 @@ use SnelstartPHP\Model\Type\BtwRegelSoort;
 
 final class Btwregel extends BaseObject
 {
-    /**
-     * @var BtwRegelSoort
-     */
-    private $btwSoort;
+    private BtwRegelSoort $btwSoort;
 
-    /**
-     * @var Money
-     */
-    private $btwBedrag;
-
-    public static $editableAttributes = [
+    public static array $editableAttributes = [
         "btwSoort",
         "btwBedrag",
     ];
 
-    public function __construct(BtwRegelSoort $btwRegelSoort, Money $btwBedrag)
+    public function __construct(BtwRegelSoort $btwRegelSoort, private Money $btwBedrag)
     {
         $this->btwSoort = $btwRegelSoort;
-        $this->btwBedrag = $btwBedrag;
     }
 
     public function getBtwSoort(): BtwRegelSoort

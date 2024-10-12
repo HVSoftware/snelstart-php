@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -6,7 +9,6 @@
 
 namespace SnelstartPHP\Mapper\V2;
 
-use Money\Money;
 use Psr\Http\Message\ResponseInterface;
 use Ramsey\Uuid\Uuid;
 use SnelstartPHP\Mapper\AbstractMapper;
@@ -20,13 +22,16 @@ use SnelstartPHP\Model\V2\Verkoopfactuur;
 use SnelstartPHP\Model\V2\Verkooporder;
 use SnelstartPHP\Model\V2\VerkooporderRegel;
 use SnelstartPHP\Model\V2\Verkoopordersjabloon;
-use SnelstartPHP\Snelstart;
+
+use function array_map;
+use function assert;
 
 final class VerkooporderMapper extends AbstractMapper
 {
     public function add(ResponseInterface $response): Verkooporder
     {
         $this->setResponseData($response);
+
         return $this->map(new Verkooporder());
     }
 
@@ -35,15 +40,15 @@ final class VerkooporderMapper extends AbstractMapper
         $data = empty($data) ? $this->responseData : $data;
         $adresMapper = new AdresMapper();
 
-        /**
-         * @var Verkooporder $verkooporder
-         */
         $verkooporder = $this->mapArrayDataToModel($verkooporder, $data);
+        assert($verkooporder instanceof Verkooporder);
         $verkooporder->setRelatie(Relatie::createFromUUID(Uuid::fromString($data["relatie"]["id"])))
             ->setProcesStatus(new ProcesStatus($data["procesStatus"]));
 
         if ($data["incassomachtiging"] !== null) {
-            $verkooporder->setIncassomachtiging(IncassoMachtiging::createFromUUID(Uuid::fromString($data["incassomachtiging"]["id"])));
+            $verkooporder->setIncassomachtiging(
+                IncassoMachtiging::createFromUUID(Uuid::fromString($data["incassomachtiging"]["id"])),
+            );
         }
 
         if ($data["afleveradres"] !== null) {
@@ -67,7 +72,8 @@ final class VerkooporderMapper extends AbstractMapper
                     ->setAantal($data["aantal"])
                     ->setKortingsPercentage($data["kortingsPercentage"])
                     ->setTotaal($this->getMoney($data["totaal"]));
-            }, $data["regels"]
+            },
+            $data["regels"],
         );
 
         $verkooporder->setRegels(...$regels);
@@ -89,11 +95,15 @@ final class VerkooporderMapper extends AbstractMapper
         }
 
         if ($data["verkoopordersjabloon"] !== null) {
-            $verkooporder->setVerkoopordersjabloon(Verkoopordersjabloon::createFromUUID(Uuid::fromString($data["verkoopordersjabloon"]["id"])));
+            $verkooporder->setVerkoopordersjabloon(
+                Verkoopordersjabloon::createFromUUID(Uuid::fromString($data["verkoopordersjabloon"]["id"])),
+            );
         }
 
         if ($data["verkooporderBtwIngaveModel"] !== null) {
-            $verkooporder->setVerkooporderBtwIngaveModel(VerkooporderBtwIngave::from($data["verkooporderBtwIngaveModel"]));
+            $verkooporder->setVerkooporderBtwIngaveModel(
+                VerkooporderBtwIngave::from($data["verkooporderBtwIngaveModel"]),
+            );
         }
 
         return $verkooporder;

@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -8,12 +11,14 @@
 
 namespace SnelstartPHP\Secure;
 
-final class ApiSubscriptionKey implements \IteratorAggregate
+use ArrayIterator;
+use Iterator;
+use IteratorAggregate;
+
+final class ApiSubscriptionKey implements IteratorAggregate
 {
-    /**
-     * @var array
-     */
-    private $keys = [];
+    /** @var array */
+    private array $keys = [];
 
     public function __construct(string $primaryKey, string $secondaryKey)
     {
@@ -36,8 +41,8 @@ final class ApiSubscriptionKey implements \IteratorAggregate
         return $this->keys;
     }
 
-    public function getIterator(): \Iterator
+    public function getIterator(): Iterator
     {
-        return new \ArrayIterator($this->getKeys());
+        return new ArrayIterator($this->getKeys());
     }
 }

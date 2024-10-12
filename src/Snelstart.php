@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -15,15 +18,9 @@ use Money\Parser\DecimalMoneyParser;
 
 final class Snelstart
 {
-    /**
-     * @var MoneyFormatter|null
-     */
-    private static $moneyFormatter;
+    private static MoneyFormatter|null $moneyFormatter = null;
 
-    /**
-     * @var MoneyParser|null
-     */
-    private static $moneyParser;
+    private static MoneyParser|null $moneyParser = null;
 
     // Example: 2018-08-07T06:24:48.12
     public const DATETIME_FORMAT = "Y-m-d\TH:i:s.u";

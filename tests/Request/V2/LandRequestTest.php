@@ -7,9 +7,9 @@ use Ramsey\Uuid\Uuid;
 use SnelstartPHP\Request\V2\LandRequest;
 use PHPUnit\Framework\TestCase;
 
-class LandRequestTest extends TestCase
+final class LandRequestTest extends TestCase
 {
-    private $landRequest;
+    private LandRequest $landRequest;
 
     public function setUp(): void
     {
@@ -18,7 +18,6 @@ class LandRequestTest extends TestCase
 
     public function testFindAll()
     {
-        $landRequest = new LandRequest();
         $this->assertEquals(new Request("GET", "landen"), $this->landRequest->findAll());
     }
 

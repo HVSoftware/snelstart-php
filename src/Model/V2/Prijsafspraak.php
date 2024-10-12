@@ -1,74 +1,45 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SnelstartPHP\Model\V2;
 
+use DateTimeInterface;
 use Money\Money;
 use SnelstartPHP\Model\BaseObject;
 use SnelstartPHP\Model\Type\PrijsBepalingSoort;
 
 final class Prijsafspraak extends BaseObject
 {
-    /**
-     * @var Relatie|null
-     */
-    private $relatie;
+    private Relatie|null $relatie = null;
 
-    /**
-     * @var Artikel
-     */
-    private $artikel;
+    private Artikel $artikel;
 
-    /**
-     * @var \DateTimeInterface
-     */
-    private $datum;
+    private DateTimeInterface $datum;
 
-    /**
-     * @var double
-     */
-    private $aantal;
+    private float $aantal;
 
-    /**
-     * @var double
-     */
-    private $korting;
+    private float $korting;
 
-    /**
-     * @var Money
-     */
-    private $verkoopprijs;
+    private Money $verkoopprijs;
 
-    /**
-     * @var Money
-     */
-    private $basisprijs;
+    private Money $basisprijs;
 
-    /**
-     * @var \DateTimeInterface|null
-     */
-    private $datumVanaf;
+    private DateTimeInterface|null $datumVanaf = null;
 
-    /**
-     * @var \DateTimeInterface|null
-     */
-    private $datumTotEnMet;
+    private DateTimeInterface|null $datumTotEnMet = null;
 
-    /**
-     * @var PrijsBepalingSoort
-     */
-    private $prijsBepalingSoort;
+    private PrijsBepalingSoort $prijsBepalingSoort;
 
-    /**
-     * @var string[]
-     */
-    public static $editableAttributes = [];
+    /** @var string[] */
+    public static array $editableAttributes = [];
 
-    public function getRelatie(): ?Relatie
+    public function getRelatie(): Relatie|null
     {
         return $this->relatie;
     }
 
-    public function setRelatie(?Relatie $relatie): self
+    public function setRelatie(Relatie|null $relatie): self
     {
         $this->relatie = $relatie;
 
@@ -87,12 +58,12 @@ final class Prijsafspraak extends BaseObject
         return $this;
     }
 
-    public function getDatum(): \DateTimeInterface
+    public function getDatum(): DateTimeInterface
     {
         return $this->datum;
     }
 
-    public function setDatum(\DateTimeInterface $datum): self
+    public function setDatum(DateTimeInterface $datum): self
     {
         $this->datum = $datum;
 
@@ -147,24 +118,24 @@ final class Prijsafspraak extends BaseObject
         return $this;
     }
 
-    public function getDatumVanaf(): ?\DateTimeInterface
+    public function getDatumVanaf(): DateTimeInterface|null
     {
         return $this->datumVanaf;
     }
 
-    public function setDatumVanaf(?\DateTimeInterface $datumVanaf): self
+    public function setDatumVanaf(DateTimeInterface|null $datumVanaf): self
     {
         $this->datumVanaf = $datumVanaf;
 
         return $this;
     }
 
-    public function getDatumTotEnMet(): ?\DateTimeInterface
+    public function getDatumTotEnMet(): DateTimeInterface|null
     {
         return $this->datumTotEnMet;
     }
 
-    public function setDatumTotEnMet(?\DateTimeInterface $datumTotEnMet): self
+    public function setDatumTotEnMet(DateTimeInterface|null $datumTotEnMet): self
     {
         $this->datumTotEnMet = $datumTotEnMet;
 

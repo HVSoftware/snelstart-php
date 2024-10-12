@@ -1,8 +1,12 @@
 <?php
+
+declare(strict_types=1);
+
 /**
+ * @deprecated
+ *
  * @author     IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project    SnelstartApiPHP
- * @deprecated
  */
 
 namespace SnelstartPHP\Model\V2;
@@ -13,17 +17,13 @@ final class RgsCode extends BaseObject
 {
     /**
      * Rgs versie
-     *
-     * @var string
      */
-    private $versie;
+    private string $versie;
 
     /**
      * Rgs code
-     *
-     * @var string
      */
-    private $rgsCode;
+    private string $rgsCode;
 
     public function __construct(string $versie, string $rgsCode)
     {

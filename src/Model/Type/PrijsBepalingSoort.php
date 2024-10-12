@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -10,7 +13,6 @@ use MyCLabs\Enum\Enum;
 
 /**
  * @psalm-immutable
- *
  * @method static PrijsBepalingSoort NORMALEVERKOOPPRIJS()
  * @method static PrijsBepalingSoort ACTIEPRIJZENPERARTIKEL()
  * @method static PrijsBepalingSoort ACTIEPRIJZENPERARTIKELKORTINGSGROEP()

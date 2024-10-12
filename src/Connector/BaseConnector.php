@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -10,10 +13,7 @@ use SnelstartPHP\Secure\ConnectionInterface;
 
 abstract class BaseConnector
 {
-    /**
-     * @var ConnectionInterface
-     */
-    protected $connection;
+    protected ConnectionInterface $connection;
 
     public function __construct(ConnectionInterface $provider)
     {

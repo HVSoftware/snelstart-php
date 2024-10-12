@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  OptiWise Technologies B.V. <info@optiwise.nl>
  * @project SnelstartApiPHP
@@ -12,14 +15,17 @@ use SnelstartPHP\Exception\PreValidationException;
 use SnelstartPHP\Model\V2\Verkooporder;
 use SnelstartPHP\Request\BaseRequest;
 
+use function GuzzleHttp\json_encode;
+
 final class VerkooporderRequest extends BaseRequest
 {
     public function add(Verkooporder $verkooporder): RequestInterface
     {
         return new Request(
-            "POST", "verkooporders", [
-            "Content-Type"  =>  "application/json"
-            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($verkooporder))
+            "POST",
+            "verkooporders",
+            ["Content-Type" => "application/json"],
+            json_encode($this->prepareAddOrEditRequestForSerialization($verkooporder)),
         );
     }
 

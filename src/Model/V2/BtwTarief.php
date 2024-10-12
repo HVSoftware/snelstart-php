@@ -10,39 +10,23 @@ use SnelstartPHP\Model\Type\BtwSoort;
 
 final class BtwTarief extends BaseObject
 {
-    /**
-     * @var BtwSoort
-     */
-    private $btwSoort;
+    private BtwSoort $btwSoort;
 
-    /**
-     * @var float
-     */
-    private $btwPercentage;
+    private float $btwPercentage;
 
-    /**
-     * @var DateTimeImmutable
-     */
-    private $datumVanaf;
+    private DateTimeImmutable $datumVanaf;
 
-    /**
-     * @var DateTimeImmutable
-     */
-    private $datumTotEnMet;
+    private DateTimeImmutable $datumTotEnMet;
 
-    /**
-     * @var string[]
-     */
-    public static $editableAttributes = [];
+    /** @var string[] */
+    public static array $editableAttributes = [];
 
     public function getBtwSoort(): BtwSoort
     {
         return $this->btwSoort;
     }
 
-    /**
-     * @return $this
-     */
+    /** @return $this */
     public function setBtwSoort(BtwSoort $btwSoort): self
     {
         $this->btwSoort = $btwSoort;
@@ -55,9 +39,7 @@ final class BtwTarief extends BaseObject
         return $this->btwPercentage;
     }
 
-    /**
-     * @return $this
-     */
+    /** @return $this */
     public function setBtwPercentage(float $btwPercentage): self
     {
         $this->btwPercentage = $btwPercentage;
@@ -70,9 +52,7 @@ final class BtwTarief extends BaseObject
         return $this->datumVanaf;
     }
 
-    /**
-     * @return $this
-     */
+    /** @return $this */
     public function setDatumVanaf(DateTimeImmutable $datumVanaf): self
     {
         $this->datumVanaf = $datumVanaf;
@@ -80,17 +60,12 @@ final class BtwTarief extends BaseObject
         return $this;
     }
 
-    /**
-     * @return DateTimeImmutable
-     */
-    public function getDatumTotEnMet(): ?DateTimeImmutable
+    public function getDatumTotEnMet(): DateTimeImmutable|null
     {
         return $this->datumTotEnMet;
     }
 
-    /**
-     * @return $this
-     */
+    /** @return $this */
     public function setDatumTotEnMet(DateTimeImmutable $datumTotEnMet): self
     {
         $this->datumTotEnMet = $datumTotEnMet;

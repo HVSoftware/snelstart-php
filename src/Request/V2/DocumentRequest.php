@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SnelstartPHP\Request\V2;
 
 use GuzzleHttp\Psr7\Request;
@@ -13,16 +15,24 @@ use SnelstartPHP\Model\V2\Relatie;
 use SnelstartPHP\Model\V2\Verkoopboeking;
 use SnelstartPHP\Request\BaseRequest;
 
+use function GuzzleHttp\json_encode;
+use function sprintf;
+
 final class DocumentRequest extends BaseRequest
 {
     public function find(UuidInterface $id): RequestInterface
     {
-        return new Request("GET", "documenten/" . $id->toString());
+        return new Request('GET', 'documenten/' . $id->toString());
     }
 
-    public function findByDocumentTypeAndParentIdentifier(DocumentType $documentType, UuidInterface $parentIdentifier): RequestInterface
-    {
-        return new Request("GET", sprintf("documenten/%s/%s", $documentType->getValue(), $parentIdentifier->toString()));
+    public function findByDocumentTypeAndParentIdentifier(
+        DocumentType $documentType,
+        UuidInterface $parentIdentifier,
+    ): RequestInterface {
+        return new Request(
+            'GET',
+            sprintf('documenten/%s/%s', $documentType->getValue(), $parentIdentifier->toString()),
+        );
     }
 
     public function addVerkoopBoekingDocument(Document $document, Verkoopboeking $verkoopboeking): RequestInterface
@@ -31,7 +41,10 @@ final class DocumentRequest extends BaseRequest
             throw PreValidationException::shouldHaveAnIdException();
         }
 
-        return $this->fromDocumentType($document->setParentIdentifier($verkoopboeking->getId()), DocumentType::VERKOOPBOEKINGEN());
+        return $this->fromDocumentType(
+            $document->setParentIdentifier($verkoopboeking->getId()),
+            DocumentType::VERKOOPBOEKINGEN(),
+        );
     }
 
     public function addInkoopBoekingDocument(Document $document, Inkoopboeking $inkoopboeking): RequestInterface
@@ -40,7 +53,10 @@ final class DocumentRequest extends BaseRequest
             throw PreValidationException::shouldHaveAnIdException();
         }
 
-        return $this->fromDocumentType($document->setParentIdentifier($inkoopboeking->getId()), DocumentType::INKOOPBOEKINGEN());
+        return $this->fromDocumentType(
+            $document->setParentIdentifier($inkoopboeking->getId()),
+            DocumentType::INKOOPBOEKINGEN(),
+        );
     }
 
     public function addRelatieDocument(Document $document, Relatie $relatie): RequestInterface
@@ -59,9 +75,10 @@ final class DocumentRequest extends BaseRequest
         }
 
         return new Request(
-            "PUT", "documenten/" . $document->getId()->toString(), [
-            "Content-Type"  =>  "application/json",
-            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($document))
+            'PUT',
+            'documenten/' . $document->getId()->toString(),
+            ['Content-Type' => 'application/json'],
+            json_encode($this->prepareAddOrEditRequestForSerialization($document)),
         );
     }
 
@@ -71,15 +88,16 @@ final class DocumentRequest extends BaseRequest
             throw PreValidationException::shouldHaveAnIdException();
         }
 
-        return new Request("DELETE", "documenten/" . $document->getId()->toString());
+        return new Request('DELETE', 'documenten/' . $document->getId()->toString());
     }
 
     protected function fromDocumentType(Document $document, DocumentType $documentType): RequestInterface
     {
         return new Request(
-            "POST", sprintf("documenten/%s", $documentType->getValue()), [
-            "Content-Type" =>   "application/json",
-            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($document))
+            'POST',
+            sprintf('documenten/%s', $documentType->getValue()),
+            ['Content-Type' => 'application/json'],
+            json_encode($this->prepareAddOrEditRequestForSerialization($document)),
         );
     }
 }

@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -13,6 +16,8 @@ use SnelstartPHP\Exception\PreValidationException;
 use SnelstartPHP\Model\V2 as Model;
 use SnelstartPHP\Request\BaseRequest;
 use SnelstartPHP\Request\ODataRequestDataInterface;
+
+use function GuzzleHttp\json_encode;
 
 final class RelatieRequest extends BaseRequest
 {
@@ -34,9 +39,10 @@ final class RelatieRequest extends BaseRequest
     public function add(Model\Relatie $relatie): RequestInterface
     {
         return new Request(
-            "POST", "relaties", [
-            "Content-Type"  =>  "application/json"
-            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($relatie))
+            "POST",
+            "relaties",
+            ["Content-Type" => "application/json"],
+            json_encode($this->prepareAddOrEditRequestForSerialization($relatie)),
         );
     }
 
@@ -47,9 +53,10 @@ final class RelatieRequest extends BaseRequest
         }
 
         return new Request(
-            "PUT", "relaties/" . $relatie->getId()->toString(), [
-            "Content-Type"  =>  "application/json"
-            ], \GuzzleHttp\json_encode($this->prepareAddOrEditRequestForSerialization($relatie))
+            "PUT",
+            "relaties/" . $relatie->getId()->toString(),
+            ["Content-Type" => "application/json"],
+            json_encode($this->prepareAddOrEditRequestForSerialization($relatie)),
         );
     }
 }

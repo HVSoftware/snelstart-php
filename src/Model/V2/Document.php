@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * @author  IntoWebDevelopment <info@intowebdevelopment.nl>
  * @project SnelstartApiPHP
@@ -6,54 +9,48 @@
 
 namespace SnelstartPHP\Model\V2;
 
+use InvalidArgumentException;
 use Ramsey\Uuid\UuidInterface;
 use SnelstartPHP\Model\SnelstartObject;
+use SplFileObject;
+
+use function base64_encode;
 
 final class Document extends SnelstartObject
 {
     /**
      * De inhoud van de bijlage.
-     *
-     * @var string
      */
-    protected $content;
+    protected string|null $content = null;
 
     /**
      * De public identifier van de gekoppelde parent.
-     *
-     * @var UuidInterface
      */
-    protected $parentIdentifier;
+    protected UuidInterface|null $parentIdentifier = null;
 
     /**
      * De naam van de bijlage.
-     *
-     * @var string
      */
-    protected $fileName;
+    protected string|null $fileName = null;
 
     /**
      * De bijlage is alleen-lezen.
-     *
-     * @var bool
      */
-    protected $readOnly;
+    protected bool $readOnly;
 
-    public static $editableAttributes = [
+    public static array $editableAttributes = [
         "id",
         "parentIdentifier",
         "content",
         "fileName",
     ];
 
-    public function getContent(): ?string
+    public function getContent(): string|null
     {
         return $this->content;
     }
 
-    /**
-     * @param string $content Should contain base64 encoded data
-     */
+    /** @param string $content Should contain base64 encoded data */
     public function setContent(string $content): self
     {
         $this->content = $content;
@@ -61,7 +58,7 @@ final class Document extends SnelstartObject
         return $this;
     }
 
-    public function getParentIdentifier(): ?UuidInterface
+    public function getParentIdentifier(): UuidInterface|null
     {
         return $this->parentIdentifier;
     }
@@ -73,7 +70,7 @@ final class Document extends SnelstartObject
         return $this;
     }
 
-    public function getFileName(): ?string
+    public function getFileName(): string|null
     {
         return $this->fileName;
     }
@@ -85,7 +82,7 @@ final class Document extends SnelstartObject
         return $this;
     }
 
-    public function isReadOnly(): ?bool
+    public function isReadOnly(): bool|null
     {
         return $this->readOnly;
     }
@@ -97,10 +94,10 @@ final class Document extends SnelstartObject
         return $this;
     }
 
-    public static function createFromFile(\SplFileObject $file, UuidInterface $parentIdentifier): self
+    public static function createFromFile(SplFileObject $file, UuidInterface $parentIdentifier): self
     {
-        if (!$file->isReadable()) {
-            throw new \InvalidArgumentException("Given file is not readable");
+        if (! $file->isReadable()) {
+            throw new InvalidArgumentException("Given file is not readable");
         }
 
         return (new static())

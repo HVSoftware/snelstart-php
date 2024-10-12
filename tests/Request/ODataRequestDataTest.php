@@ -7,7 +7,7 @@ use SnelstartPHP\Model\Type\Relatiesoort;
 use SnelstartPHP\Request\ODataRequestData;
 use PHPUnit\Framework\TestCase;
 
-class ODataRequestDataTest extends TestCase
+final class ODataRequestDataTest extends TestCase
 {
     public function testODataRequestMerge()
     {
@@ -15,9 +15,16 @@ class ODataRequestDataTest extends TestCase
             "testData"
         ]);
 
-        $ODataRequestData->setFilter(\array_merge(
-            $ODataRequestData->getFilter(),
-            [ sprintf("Relatiesoort/any(soort:soort eq '%s')", Relatiesoort::LEVERANCIER()->getValue()) ])
+        $ODataRequestData->setFilter(
+            array_merge(
+                $ODataRequestData->getFilter(),
+                [
+                    sprintf(
+                        "Relatiesoort/any(soort:soort eq '%s')",
+                        Relatiesoort::LEVERANCIER()->getValue()
+                    ),
+                ]
+            ),
         );
 
         $this->assertCount(2, $ODataRequestData->getFilter());
@@ -26,8 +33,15 @@ class ODataRequestDataTest extends TestCase
     public function testODataWithMerge()
     {
         $ODataRequestData = new ODataRequestData();
-        $ODataRequestData->setFilter(\array_merge(
-            [ sprintf("Relatiesoort/any(soort:soort eq '%s')", Relatiesoort::LEVERANCIER()->getValue()) ])
+        $ODataRequestData->setFilter(
+            array_merge(
+                [
+                    sprintf(
+                        "Relatiesoort/any(soort:soort eq '%s')",
+                        Relatiesoort::LEVERANCIER()->getValue()
+                    )
+                ],
+            ),
         );
 
         $this->assertCount(1, $ODataRequestData->getFilter());
